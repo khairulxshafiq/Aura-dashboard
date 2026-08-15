@@ -245,6 +245,67 @@ def collect_skills():
     ]
 
 
+def collect_deepseek_balance():
+    """Baki DeepSeek real-time dari API /user/balance."""
+    env_path = os.path.join(HERMES_HOME, ".env")
+    key = ""
+    if os.path.exists(env_path):
+        m = re.search(r"^DEEPSEEK_API_KEY=(.+)$", open(env_path, errors="ignore").read(), re.M)
+        if m:
+            key = m.group(1).strip().strip('"').strip("'")
+    if not key:
+        return {"status": "tiada key", "total": None, "currency": None, "topped_up": None, "granted": None}
+    try:
+        r = subprocess.run(
+            ["curl", "-s", "-m", "15", "https://api.deepseek.com/user/balance",
+             "-H", f"Authorization: Bearer {key}"],
+            capture_output=True, text=True, timeout=20)
+        d = json.loads(r.stdout)
+        if d.get("is_available") and d.get("balance_infos"):
+            b = d["balance_infos"][0]
+            return {
+                "status": "ok",
+                "total": b.get("total_balance"),
+                "currency": b.get("currency"),
+                "topped_up": b.get("topped_up_balance"),
+                "granted": b.get("granted_balance"),
+                "is_available": True,
+            }
+        return {"status": "error", "total": None, "raw": r.stdout[:120]}
+    except Exception as e:
+        return {"status": "error", "total": None, "raw": str(e)[:120]}
+
+
+def collect_token_usage():
+    """Token usage sebenar dari agent.log — aggregate purata & jumlah."""
+    logp = os.path.join(HERMES_HOME, "logs", "agent.log")
+    out = {"in_avg": "—", "out_avg": "—", "lat_avg": "—", "calls_total": 0,
+           "in_total": 0, "out_total": 0, "est_cost_usd": None}
+    if not os.path.exists(logp):
+        return out
+    ins, outs, lats = [], [], []
+    try:
+        with open(logp, errors="ignore") as f:
+            for line in f:
+                m = re.search(r"API call #\d+: model=\S+ provider=\S+ in=(\d+) out=(\d+) total=\d+ latency=([\d.]+)s", line)
+                if m:
+                    i, o, lat = int(m.group(1)), int(m.group(2)), float(m.group(3))
+                    ins.append(i); outs.append(o); lats.append(lat)
+    except Exception:
+        pass
+    if ins:
+        out["calls_total"] = len(ins)
+        out["in_total"] = sum(ins)
+        out["out_total"] = sum(outs)
+        out["in_avg"] = f"{sum(ins)//len(ins):,} tok"
+        out["out_avg"] = f"{sum(outs)//len(outs):,} tok"
+        out["lat_avg"] = f"{sum(lats)/len(lats):.1f}s"
+        # Anggaran kos: v4-flash $0.14/1M in, $0.28/1M out (kira cache 95% input)
+        est = (sum(ins) * 0.05 * 0.14 + sum(outs) * 0.28) / 1_000_000
+        out["est_cost_usd"] = round(est, 4)
+    return out
+
+
 def collect_quick():
     out = {}
     # Gateway
@@ -279,11 +340,8 @@ def main():
         "tools": collect_tools(),
         "skills": collect_skills(),
         "quick": collect_quick(),
-        "tokens": {
-            "in_avg": "—",
-            "out_avg": "—",
-            "lat_avg": "—",
-        },
+        "deepseek_balance": collect_deepseek_balance(),
+        "tokens": collect_token_usage(),
     }
     with open(OUT, "w") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)

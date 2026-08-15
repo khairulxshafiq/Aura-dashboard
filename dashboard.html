@@ -144,7 +144,37 @@
     <div class="card mbig span-3"><div class="k">Uptime</div><div class="v" id="mUp" style="font-size:20px;">—</div><div class="d" id="mUpD">—</div></div>
   </div>
 
-  <!-- SERVICES + API -->
+  <!-- DEEPSEEK BALANCE -->
+  <div class="grid" style="margin-bottom:14px;">
+    <div class="card span-12">
+      <h4>💰 DeepSeek — Balance &amp; Usage <span class="mini">real-time dari platform.deepseek.com/usage</span></h4>
+      <div style="display:flex;gap:24px;flex-wrap:wrap;align-items:center;">
+        <div class="mbig" style="flex:1;min-width:180px;">
+          <div class="k">Baki (real-time)</div>
+          <div class="v" id="dsBalance" style="color:var(--accent-2);">—</div>
+          <div class="d" id="dsBalanceD">—</div>
+        </div>
+        <div class="mbig" style="flex:1;min-width:160px;">
+          <div class="k">API calls (log)</div>
+          <div class="v" id="dsCalls" style="font-size:22px;">—</div>
+          <div class="d" id="dsCallsD">—</div>
+        </div>
+        <div class="mbig" style="flex:1;min-width:160px;">
+          <div class="k">Kos dianggarkan</div>
+          <div class="v" id="dsCost" style="font-size:22px;">—</div>
+          <div class="d">$ v4-flash (cache 95%)</div>
+        </div>
+        <div class="mbig" style="flex:1;min-width:160px;">
+          <div class="k">Purata latency</div>
+          <div class="v" id="dsLat" style="font-size:22px;">—</div>
+          <div class="d">per API call</div>
+        </div>
+      </div>
+      <div class="updated" style="margin-top:10px;">Data ditarik dari <code>api.deepseek.com/user/balance</code> + aggregate <code>agent.log</code> setiap 15 minit (cron).</div>
+    </div>
+  </div>
+
+  <!-- SERVIS + API -->
   <div class="grid" style="margin-bottom:14px;">
     <div class="card span-6">
       <h4>🖥️ Servis &amp; Proses <span class="mini">gateway · agent · cron</span></h4>
@@ -339,6 +369,21 @@
         '<tr><td class="lbl">' + x[0] + '</td><td><span class="st ' + x[1] + '">' + x[2] + '</span></td><td>' + x[3] + '</td></tr>'
       ).join('');
     }
+
+    // deepseek balance
+    const db = d.deepseek_balance || {};
+    if (db.total != null) {
+      setText('dsBalance', '$' + db.total + ' ' + (db.currency || ''));
+      setText('dsBalanceD', 'Top-up: $' + (db.topped_up || '0') + ' · Grant: $' + (db.granted || '0'));
+    } else {
+      setText('dsBalance', '—');
+      setText('dsBalanceD', db.status || '');
+    }
+    const tk = d.tokens || {};
+    setText('dsCalls', tk.calls_total != null ? String(tk.calls_total) : '—');
+    setText('dsCallsD', (tk.in_total != null ? tk.in_total.toLocaleString() + ' tok in' : '') + ' / ' + (tk.out_total != null ? tk.out_total.toLocaleString() + ' tok out' : ''));
+    setText('dsCost', tk.est_cost_usd != null ? '$' + tk.est_cost_usd : '—');
+    setText('dsLat', tk.lat_avg || '—');
 
     // quick
     const q = d.quick || {};
