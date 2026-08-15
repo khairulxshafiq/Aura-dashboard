@@ -12,6 +12,7 @@ import subprocess
 import datetime
 
 OUT = "/home/ubuntu/aura-dashboard/stats.json"
+HIST = "/home/ubuntu/aura-dashboard/usage_history.json"
 HERMES_HOME = os.path.expanduser("~/.hermes")
 
 
@@ -306,6 +307,48 @@ def collect_token_usage():
     return out
 
 
+def update_history(tokens, balance):
+    """Append snapshot harian ke usage_history.json (untuk trend chart).
+
+    Setiap hari satu entry — kos kumulatif, tokens kumulatif, baki.
+    Kalau hari sama sudah wujud, update entry tu (bukan duplicate).
+    """
+    today = datetime.date.today().isoformat()
+    hist = []
+    if os.path.exists(HIST):
+        try:
+            hist = json.load(open(HIST))
+        except Exception:
+            hist = []
+    # Balance real-time (string dari API)
+    bal = None
+    try:
+        if balance and balance.get("total") is not None:
+            bal = float(balance["total"])
+    except Exception:
+        pass
+    entry = {
+        "date": today,
+        "est_cost_usd": tokens.get("est_cost_usd") or 0,
+        "calls": tokens.get("calls_total") or 0,
+        "in_total": tokens.get("in_total") or 0,
+        "out_total": tokens.get("out_total") or 0,
+        "balance": bal,
+    }
+    # Update hari sama / append
+    for i, e in enumerate(hist):
+        if e.get("date") == today:
+            hist[i] = entry
+            break
+    else:
+        hist.append(entry)
+    # Simpan 60 hari je (elak membesar)
+    hist = hist[-60:]
+    with open(HIST, "w") as f:
+        json.dump(hist, f, ensure_ascii=False, indent=2)
+    return hist
+
+
 def collect_quick():
     out = {}
     # Gateway
@@ -343,6 +386,8 @@ def main():
         "deepseek_balance": collect_deepseek_balance(),
         "tokens": collect_token_usage(),
     }
+    # History trend (harian)
+    data["history"] = update_history(data["tokens"], data["deepseek_balance"])
     with open(OUT, "w") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
     print(f"stats.json dikemas ({data['generated_at']}) — {len(data['keys'])} keys, {len(data['services'])} services, {len(data['cron'])} cron")

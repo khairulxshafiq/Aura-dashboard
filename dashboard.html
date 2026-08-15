@@ -43,6 +43,21 @@
   .nav-links a.active { color: var(--accent-2); font-weight: 600; }
   .nav-cta { font-size: 12.5px; font-weight: 600; padding: 8px 16px; border-radius: 9px; background: var(--accent); color: #1a1206 !important; }
   .nav-cta:hover { background: var(--accent-2); }
+  .burger { display: none; background: none; border: 1px solid var(--border-2); border-radius: 8px; width: 36px; height: 34px; cursor: pointer; flex-direction: column; align-items: center; justify-content: center; gap: 4px; padding: 0; }
+  .burger span { display: block; width: 16px; height: 2px; background: var(--ink); border-radius: 2px; transition: transform 0.2s ease, opacity 0.2s ease; }
+  .burger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+  .burger.open span:nth-child(2) { opacity: 0; }
+  .burger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+  @media (max-width: 640px) {
+    .burger { display: flex; }
+    .nav-links {
+      display: none; position: fixed; top: 62px; left: 0; right: 0;
+      background: rgba(10,10,15,0.98); border-bottom: 1px solid var(--border);
+      flex-direction: column; padding: 12px 24px 18px; gap: 14px; z-index: 60;
+    }
+    .nav-links.open { display: flex; }
+    .nav-links a { font-size: 15px; padding: 6px 0; }
+  }
 
   /* header */
   .pagehead { padding: 40px 0 28px; border-bottom: 1px solid var(--border); margin-bottom: 26px; display: flex; align-items: flex-end; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
@@ -104,7 +119,12 @@
   }
   @media (max-width: 640px) {
     .nav-links { display: none; }
-    .wrap { padding: 0 16px; }
+    .wrap { padding: 0 14px 40px; }
+    .pagehead { padding: 28px 0 20px; }
+    .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    table { min-width: 480px; }
+    .mbig .v { font-size: 24px; }
+    .card { padding: 14px; }
   }
 </style>
 </head>
@@ -114,7 +134,7 @@
 <nav>
   <div class="nav-inner">
     <div class="nav-brand"><span class="nav-mark">A</span> AuraOne</div>
-    <div class="nav-links">
+    <div class="nav-links" id="navLinks">
       <a href="index.html">Tentang</a>
       <a href="index.html#kemampuan">Kemampuan</a>
       <a href="index.html#pasukan">Pasukan</a>
@@ -122,7 +142,12 @@
       <a href="dashboard.html" class="active">Dashboard</a>
       <a href="index.html#hubungi">Hubungi</a>
     </div>
-    <a class="nav-cta" href="index.html#hubungi">Chat Aura</a>
+    <div style="display:flex;align-items:center;gap:10px;">
+      <a class="nav-cta" href="index.html#hubungi">Chat Aura</a>
+      <button class="burger" id="burger" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </div>
 </nav>
 
@@ -142,6 +167,19 @@
     <div class="card mbig span-3"><div class="k">CPU</div><div class="v" id="mCpu">—</div><div class="d" id="mCpuD">—</div></div>
     <div class="card mbig span-3"><div class="k">Disk</div><div class="v" id="mDisk">—</div><div class="d" id="mDiskD">—</div></div>
     <div class="card mbig span-3"><div class="k">Uptime</div><div class="v" id="mUp" style="font-size:20px;">—</div><div class="d" id="mUpD">—</div></div>
+  </div>
+
+  <!-- TREND CHART -->
+  <div class="grid" style="margin-bottom:14px;">
+    <div class="card span-12">
+      <h4>📈 Trend — Kos &amp; Usage (ikut hari) <span class="mini">60 hari terakhir</span></h4>
+      <canvas id="trendChart" height="220" style="width:100%;"></canvas>
+      <div class="legend" style="margin-top:10px;">
+        <span><span class="sw" style="background:var(--accent);"></span> Kos dianggarkan (USD)</span>
+        <span><span class="sw" style="background:var(--blue);"></span> API calls</span>
+        <span><span class="sw" style="background:var(--green);"></span> Baki DeepSeek (USD)</span>
+      </div>
+    </div>
   </div>
 
   <!-- DEEPSEEK BALANCE -->
@@ -178,17 +216,17 @@
   <div class="grid" style="margin-bottom:14px;">
     <div class="card span-6">
       <h4>🖥️ Servis &amp; Proses <span class="mini">gateway · agent · cron</span></h4>
-      <table>
+      <div class="table-wrap"><table>
         <thead><tr><th>Servis</th><th>Status</th><th>PID</th><th>Mem</th><th>CPU</th></tr></thead>
         <tbody id="tblServices"><tr><td colspan="5" style="color:var(--muted-2)">Memuat…</td></tr></tbody>
-      </table>
+      </table></div>
     </div>
     <div class="card span-6">
       <h4>🔑 API Keys — Status <span class="mini">dari .env (masked)</span></h4>
-      <table>
+      <div class="table-wrap"><table>
         <thead><tr><th>Key</th><th>Status</th><th>Guna</th><th>Prefix</th></tr></thead>
         <tbody id="tblKeys"><tr><td colspan="4" style="color:var(--muted-2)">Memuat…</td></tr></tbody>
-      </table>
+      </table></div>
       <div class="legend">
         <span><span class="sw" style="background:var(--green);"></span> aktif</span>
         <span><span class="sw" style="background:var(--accent);"></span> backup</span>
@@ -210,10 +248,10 @@
     </div>
     <div class="card span-6">
       <h4>⏰ Cron Jobs <span class="mini">dijadual</span></h4>
-      <table>
+      <div class="table-wrap"><table>
         <thead><tr><th>Job</th><th>Jadual</th><th>Status</th></tr></thead>
         <tbody id="tblCron"><tr><td colspan="3" style="color:var(--muted-2)">Memuat…</td></tr></tbody>
-      </table>
+      </table></div>
     </div>
   </div>
 
@@ -221,10 +259,10 @@
   <div class="grid" style="margin-bottom:14px;">
     <div class="card span-12">
       <h4>🧰 Tools &amp; MCP — Disuntik <span class="mini">internal: untuk boss &amp; Aura</span></h4>
-      <table>
+      <div class="table-wrap"><table>
         <thead><tr><th>Tool / MCP</th><th>Status</th><th>Guna</th><th>Nota</th></tr></thead>
         <tbody id="tblTools"><tr><td colspan="4" style="color:var(--muted-2)">Memuat…</td></tr></tbody>
-      </table>
+      </table></div>
       <div class="legend">
         <span><span class="sw" style="background:var(--green);"></span> live — integrate &amp; jalan</span>
         <span><span class="sw" style="background:var(--accent);"></span> progress — sebahagian / issue</span>
@@ -237,10 +275,10 @@
   <div class="grid" style="margin-bottom:14px;">
     <div class="card span-12">
       <h4>📚 Skills — Disuntik <span class="mini">internal · capabilities &amp; future</span></h4>
-      <table>
+      <div class="table-wrap"><table>
         <thead><tr><th>Skill</th><th>Status</th><th>Capability</th></tr></thead>
         <tbody id="tblSkills"><tr><td colspan="3" style="color:var(--muted-2)">Memuat…</td></tr></tbody>
-      </table>
+      </table></div>
       <div class="updated" style="margin-top:10px;">Future = yang belum dibina — fokus seterusnya (Liya, Aziz, WordPress, parallax).</div>
     </div>
   </div>
@@ -253,10 +291,10 @@
       <div class="bar-wrap"><div class="bar-top"><span>Output tokens</span><span id="tOut">—</span></div><div class="bar"><i class="v" style="width:18%"></i></div></div>
       <div class="bar-wrap"><div class="bar-top"><span>Latensi purata</span><span id="tLat">—</span></div><div class="bar"><i class="c" style="width:22%"></i></div></div>
       <div style="height:8px"></div>
-      <table>
+      <div class="table-wrap"><table>
         <thead><tr><th>Masa</th><th>Platform</th><th>Model</th><th>Tokens</th><th>Lat</th></tr></thead>
         <tbody id="tblCalls"><tr><td colspan="5" style="color:var(--muted-2)">Memuat…</td></tr></tbody>
-      </table>
+      </table></div>
     </div>
     <div class="card span-4">
       <h4>⚡ Cepat Lihat</h4>
@@ -278,6 +316,21 @@
 </div>
 
 <script>
+  // Burger menu (mobile)
+  const burger = document.getElementById('burger');
+  const navLinks = document.getElementById('navLinks');
+  if (burger && navLinks) {
+    burger.addEventListener('click', () => {
+      const open = navLinks.classList.toggle('open');
+      burger.classList.toggle('open', open);
+      burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      navLinks.classList.remove('open'); burger.classList.remove('open');
+      burger.setAttribute('aria-expanded', 'false');
+    }));
+  }
+
   // Fallback data (kalau stats.json tak jumpa / belum dijana)
   const FALLBACK = {
     "generated_at": "belum dijana — jalankan script collector di VPS",
@@ -370,6 +423,11 @@
       ).join('');
     }
 
+    // trend chart
+    if (d.history && d.history.length && document.getElementById('trendChart')) {
+      drawTrend(d.history);
+    }
+
     // deepseek balance
     const db = d.deepseek_balance || {};
     if (db.total != null) {
@@ -394,6 +452,84 @@
     setText('qMcp', q.mcp || '—');
     setText('qImg', q.image || '—');
     setText('updatedAt', d.generated_at ? 'Dikemas: ' + d.generated_at : d.generated_at || '');
+  }
+
+  // ── Trend chart (canvas 2D — tiada dependency) ──
+  function drawTrend(hist) {
+    const cv = document.getElementById('trendChart');
+    if (!cv) return;
+    const dpr = window.devicePixelRatio || 1;
+    const W = cv.clientWidth || 900;
+    const H = 220;
+    cv.width = W * dpr; cv.height = H * dpr;
+    const ctx = cv.getContext('2d');
+    ctx.scale(dpr, dpr);
+    ctx.clearRect(0, 0, W, H);
+    const padL = 44, padR = 14, padT = 14, padB = 26;
+    const iw = W - padL - padR, ih = H - padT - padB;
+    const n = hist.length;
+    if (n === 0) return;
+
+    // skala
+    const costs = hist.map(h => h.est_cost_usd || 0);
+    const calls = hist.map(h => h.calls || 0);
+    const bals = hist.map(h => h.balance).filter(b => b != null);
+    const maxCost = Math.max(...costs, 0.01);
+    const maxCalls = Math.max(...calls, 1);
+    const maxBal = bals.length ? Math.max(...bals, 0.01) : 1;
+
+    // grid + paksi y
+    ctx.strokeStyle = 'rgba(255,255,255,0.06)';
+    ctx.fillStyle = '#5d5d78';
+    ctx.font = '10px "SF Mono", monospace';
+    for (let i = 0; i <= 4; i++) {
+      const y = padT + ih - (ih * i / 4);
+      ctx.beginPath(); ctx.moveTo(padL, y); ctx.lineTo(W - padR, y); ctx.stroke();
+      const v = (maxCost * i / 4).toFixed(2);
+      ctx.fillText('$' + v, 4, y + 3);
+    }
+
+    // paksi x (tarikh)
+    ctx.fillStyle = '#5d5d78';
+    const step = Math.max(1, Math.floor(n / 8));
+    hist.forEach((h, i) => {
+      if (i % step === 0 || i === n - 1) {
+        const x = padL + (iw * i / Math.max(n - 1, 1));
+        ctx.fillText(h.date.slice(5), x - 12, H - 8);
+      }
+    });
+
+    // bars — kos
+    const bw = Math.max(3, (iw / n) * 0.55);
+    hist.forEach((h, i) => {
+      const x = padL + (iw * i / Math.max(n - 1, 1)) - bw / 2;
+      const hh = (h.est_cost_usd || 0) / maxCost * ih;
+      ctx.fillStyle = 'rgba(245,166,35,0.65)';
+      ctx.fillRect(x, padT + ih - hh, bw, hh);
+    });
+
+    // line — calls (biru)
+    ctx.strokeStyle = '#60a5fa'; ctx.lineWidth = 1.6;
+    ctx.beginPath();
+    hist.forEach((h, i) => {
+      const x = padL + (iw * i / Math.max(n - 1, 1));
+      const y = padT + ih - ((h.calls || 0) / maxCalls * ih);
+      i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+    });
+    ctx.stroke();
+
+    // line — balance (hijau)
+    if (bals.length) {
+      ctx.strokeStyle = '#34d399'; ctx.lineWidth = 1.6;
+      ctx.beginPath();
+      hist.forEach((h, i) => {
+        if (h.balance == null) return;
+        const x = padL + (iw * i / Math.max(n - 1, 1));
+        const y = padT + ih - ((h.balance || 0) / maxBal * ih);
+        i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+      });
+      ctx.stroke();
+    }
   }
 
   fetch('stats.json').then(r => r.ok ? r.json() : Promise.reject()).then(render).catch(() => render(FALLBACK));
