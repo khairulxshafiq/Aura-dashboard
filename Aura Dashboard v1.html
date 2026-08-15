@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AuraOne — Command Dashboard</title>
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --bg-2: #101018;
+    --surface: #16161f;
+    --surface-2: #1c1c28;
+    --border: #26263a;
+    --ink: #f2f2f7;
+    --muted: #8b8ba3;
+    --accent: #f5a623;
+    --accent-2: #ffd28a;
+    --accent-glow: rgba(245, 166, 35, 0.35);
+    --green: #34d399;
+    --red: #f87171;
+    --blue: #60a5fa;
+    --violet: #a78bfa;
+    --pink: #f472b6;
+    --cyan: #22d3ee;
+    --radius: 16px;
+    --mono: "SF Mono", "JetBrains Mono", ui-monospace, monospace;
+    --sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+  ::selection { background: var(--accent-glow); color: #fff; }
+
+  /* ── Grid backdrop ── */
+  .bg-grid {
+    position: fixed; inset: 0; z-index: 0; pointer-events: none;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+    background-size: 44px 44px;
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 30%, transparent 75%);
+  }
+  .bg-orb {
+    position: fixed; z-index: 0; pointer-events: none; border-radius: 50%;
+    filter: blur(90px); opacity: 0.22;
+  }
+  .orb-1 { width: 480px; height: 480px; top: -160px; left: -120px; background: var(--accent); }
+  .orb-2 { width: 380px; height: 380px; bottom: -140px; right: -100px; background: var(--violet); }
+
+  .wrap { position: relative; z-index: 1; max-width: 1400px; margin: 0 auto; padding: 28px 32px 60px; }
+
+  /* ── Top bar ── */
+  .topbar {
+    display: flex; align-items: center; justify-content: space-between;
+    padding-bottom: 20px; border-bottom: 1px solid var(--border); margin-bottom: 28px;
+  }
+  .brand { display: flex; align-items: center; gap: 12px; }
+  .brand-mark {
+    width: 38px; height: 38px; border-radius: 11px;
+    background: linear-gradient(135deg, var(--accent), #c97712);
+    display: grid; place-items: center; font-weight: 800; font-size: 19px; color: #1a1206;
+    box-shadow: 0 0 22px var(--accent-glow);
+  }
+  .brand h1 { font-size: 17px; font-weight: 700; letter-spacing: -0.2px; }
+  .brand span { display: block; font-size: 11px; color: var(--muted); font-weight: 500; }
+
+  .top-meta { display: flex; align-items: center; gap: 14px; font-size: 12px; color: var(--muted); }
+  .status-pill {
+    display: inline-flex; align-items: center; gap: 7px;
+    padding: 6px 12px; border-radius: 999px; border: 1px solid var(--border);
+    background: var(--surface); font-size: 11.5px; font-weight: 600; color: var(--ink);
+  }
+  .status-pill .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--green); box-shadow: 0 0 8px var(--green); animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.45; } }
+
+  /* ── Hero: Aura ── */
+  .hero {
+    display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 44px;
+    align-items: center; margin-bottom: 40px;
+  }
+  .hero-copy h2 { font-size: clamp(30px, 4vw, 46px); font-weight: 800; letter-spacing: -1.2px; line-height: 1.08; }
+  .hero-copy h2 em { font-style: normal; color: var(--accent-2); }
+  .hero-copy p { margin-top: 14px; color: var(--muted); font-size: 15.5px; max-width: 520px; line-height: 1.65; }
+  .hero-tags { display: flex; gap: 8px; margin-top: 18px; flex-wrap: wrap; }
+  .tag {
+    font-family: var(--mono); font-size: 11px; padding: 5px 10px;
+    border: 1px solid var(--border); border-radius: 7px; color: var(--muted); background: var(--surface);
+  }
+  .tag.hot { color: var(--accent-2); border-color: rgba(245,166,35,0.35); background: rgba(245,166,35,0.07); }
+
+  /* ── Aura orb (animated self) ── */
+  .aura-stage { position: relative; height: 320px; display: grid; place-items: center; }
+  .aura-ring { position: absolute; border-radius: 50%; border: 1px solid rgba(245,166,35,0.25); }
+  .ring-1 { width: 280px; height: 280px; animation: spin 18s linear infinite; border-style: dashed; }
+  .ring-2 { width: 200px; height: 200px; animation: spin 12s linear infinite reverse; border-color: rgba(245,166,35,0.18); }
+  .ring-3 { width: 120px; height: 120px; animation: spin 7s linear infinite; border-color: rgba(255,210,138,0.35); border-style: dotted; }
+  .aura-core {
+    position: relative; width: 96px; height: 96px; border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, #ffe9c4, #f5a623 55%, #b35f0e);
+    box-shadow: 0 0 40px var(--accent-glow), 0 0 90px rgba(245,166,35,0.25);
+    animation: breathe 3.2s ease-in-out infinite;
+  }
+  .aura-core::after {
+    content: ""; position: absolute; inset: 8px; border-radius: 50%;
+    border: 2px solid rgba(255,255,255,0.35);
+    border-top-color: transparent;
+    animation: spin 3.5s linear infinite;
+  }
+  @keyframes breathe { 0%,100% { transform: scale(1); } 50% { transform: scale(1.06); } }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .aura-label { position: absolute; bottom: 8px; font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: 1px; }
+  .aura-status {
+    position: absolute; top: 26px; right: 4px;
+    font-family: var(--mono); font-size: 10.5px; color: var(--green);
+    background: rgba(52,211,153,0.1); border: 1px solid rgba(52,211,153,0.3);
+    padding: 4px 9px; border-radius: 999px;
+  }
+
+  /* ── Colleagues ── */
+  .section-label { font-size: 12px; font-weight: 700; letter-spacing: 1.6px; color: var(--muted); text-transform: uppercase; margin-bottom: 14px; }
+  .colleagues { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; margin-bottom: 40px; }
+  .colleague {
+    background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 16px; position: relative; overflow: hidden;
+    transition: transform 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+  }
+  .colleague:hover { transform: translateY(-3px); border-color: var(--accent); background: var(--surface-2); }
+  .colleague .avatar {
+    width: 40px; height: 40px; border-radius: 12px; display: grid; place-items: center;
+    font-weight: 800; font-size: 17px; color: #0a0a0f; margin-bottom: 12px;
+  }
+  .colleague h3 { font-size: 13.5px; font-weight: 700; }
+  .colleague p { font-size: 11px; color: var(--muted); margin-top: 3px; line-height: 1.45; }
+  .colleague .stat { display: flex; align-items: center; gap: 6px; margin-top: 10px; font-family: var(--mono); font-size: 10.5px; color: var(--muted); }
+  .colleague .stat .bar { flex: 1; height: 4px; border-radius: 4px; background: #2a2a3d; overflow: hidden; }
+  .colleague .stat .bar i { display: block; height: 100%; border-radius: 4px; background: var(--accent); }
+  .colleague .state { position: absolute; top: 14px; right: 14px; width: 8px; height: 8px; border-radius: 50%; }
+  .c-green { background: var(--green); box-shadow: 0 0 8px var(--green); }
+  .c-amber { background: var(--accent); box-shadow: 0 0 8px var(--accent-glow); }
+  .c-blue { background: var(--blue); box-shadow: 0 0 8px var(--blue); }
+  .c-violet { background: var(--violet); box-shadow: 0 0 8px var(--violet); }
+  .c-cyan { background: var(--cyan); box-shadow: 0 0 8px var(--cyan); }
+
+  /* ── Widgets grid ── */
+  .grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 16px; }
+  .card {
+    background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 18px;
+  }
+  .card h4 { font-size: 12.5px; font-weight: 700; letter-spacing: 0.4px; display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+  .card h4 .count { font-family: var(--mono); font-size: 10.5px; color: var(--muted); background: #22222f; padding: 2px 7px; border-radius: 999px; }
+  .span-4 { grid-column: span 4; }
+  .span-3 { grid-column: span 3; }
+  .span-6 { grid-column: span 6; }
+  .span-12 { grid-column: span 12; }
+
+  /* emails */
+  .email { display: flex; gap: 10px; padding: 9px 0; border-bottom: 1px solid #20202e; align-items: flex-start; }
+  .email:last-child { border-bottom: 0; }
+  .email .ic { width: 30px; height: 30px; border-radius: 9px; flex-shrink: 0; display: grid; place-items: center; font-size: 12px; }
+  .email .t { font-size: 12.5px; font-weight: 600; }
+  .email .s { font-size: 11px; color: var(--muted); margin-top: 2px; line-height: 1.4; }
+  .email .tm { margin-left: auto; font-family: var(--mono); font-size: 10px; color: var(--muted); white-space: nowrap; }
+
+  /* schedule */
+  .task { display: flex; align-items: center; gap: 10px; padding: 7px 0; font-size: 12.5px; }
+  .task .chk { width: 16px; height: 16px; border-radius: 5px; border: 1.5px solid #3a3a52; flex-shrink: 0; }
+  .task.done .chk { background: var(--accent); border-color: var(--accent); box-shadow: 0 0 8px var(--accent-glow); }
+  .task.done .lbl { text-decoration: line-through; color: var(--muted); }
+  .task .tm { margin-left: auto; font-family: var(--mono); font-size: 10.5px; color: var(--muted); }
+
+  /* workflow */
+  .flow { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; font-family: var(--mono); font-size: 11px; color: var(--muted); }
+  .flow .node { background: var(--surface-2); border: 1px solid var(--border); padding: 5px 10px; border-radius: 8px; color: var(--ink); }
+  .flow .node.done { border-color: rgba(52,211,153,0.4); color: var(--green); }
+  .flow .node.run { border-color: rgba(245,166,35,0.5); color: var(--accent-2); animation: pulse 1.6s infinite; }
+  .flow .arrow { color: #4a4a66; }
+
+  /* activity feed */
+  .feed { display: flex; flex-direction: column; gap: 0; }
+  .feed-item { display: flex; gap: 12px; padding: 9px 0; border-bottom: 1px solid #20202e; font-size: 12px; }
+  .feed-item:last-child { border-bottom: 0; }
+  .feed-item .dot { width: 8px; height: 8px; border-radius: 50%; margin-top: 5px; flex-shrink: 0; }
+  .feed-item .msg { color: var(--muted); line-height: 1.5; }
+  .feed-item .msg b { color: var(--ink); font-weight: 600; }
+  .feed-item .when { margin-left: auto; font-family: var(--mono); font-size: 10px; color: #55556e; white-space: nowrap; }
+
+  /* metric strip */
+  .metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 16px; }
+  .metric { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px 18px; }
+  .metric .k { font-size: 11px; color: var(--muted); letter-spacing: 0.6px; text-transform: uppercase; }
+  .metric .v { font-size: 24px; font-weight: 800; letter-spacing: -0.6px; margin-top: 5px; font-family: var(--mono); }
+  .metric .d { font-size: 11px; margin-top: 4px; font-family: var(--mono); }
+  .up { color: var(--green); } .down { color: var(--red); }
+
+  .footer { margin-top: 36px; padding-top: 18px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; color: #55556e; font-size: 11.5px; font-family: var(--mono); }
+
+  @media (max-width: 1080px) {
+    .hero { grid-template-columns: 1fr; }
+    .aura-stage { height: 260px; }
+    .colleagues { grid-template-columns: repeat(3, 1fr); }
+    .metrics { grid-template-columns: repeat(2, 1fr); }
+    .span-4, .span-3, .span-6 { grid-column: span 12; }
+  }
+  @media (max-width: 640px) {
+    .colleagues { grid-template-columns: repeat(2, 1fr); }
+    .metrics { grid-template-columns: 1fr; }
+    .wrap { padding: 18px 14px 40px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .ring-1, .ring-2, .ring-3, .aura-core::after, .aura-core { animation: none !important; }
+    .status-pill .dot, .flow .node.run { animation: none !important; }
+  }
+</style>
+</head>
+<body>
+<div class="bg-grid"></div>
+<div class="bg-orb orb-1"></div>
+<div class="bg-orb orb-2"></div>
+
+<div class="wrap">
+
+  <!-- Top bar -->
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-mark">A</div>
+      <div>
+        <h1>AuraOne</h1>
+        <span>Command Dashboard · Saklomak.my</span>
+      </div>
+    </div>
+    <div class="top-meta">
+      <span class="status-pill"><span class="dot"></span> Online</span>
+      <span style="font-family:var(--mono)">2026-08-14</span>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-copy">
+      <h2>One dashboard.<br>Five AI colleagues.<br><em>Infinite scaling.</em></h2>
+      <p>AuraOne memimpin pasukan AI yang uruskan berita, kandungan, jualan, analisis saham dan operasi harian — automasi penuh, dikawal satu tempat.</p>
+      <div class="hero-tags">
+        <span class="tag hot">● 5 agent aktif</span>
+        <span class="tag">deepseek-v4-flash</span>
+        <span class="tag">Airtable</span>
+        <span class="tag">Telegram</span>
+        <span class="tag">Bursa MY</span>
+      </div>
+    </div>
+    <div class="aura-stage">
+      <div class="aura-ring ring-1"></div>
+      <div class="aura-ring ring-2"></div>
+      <div class="aura-ring ring-3"></div>
+      <div class="aura-core"></div>
+      <span class="aura-status">AURA · ACTIVE</span>
+      <span class="aura-label">aura@saklomak.my</span>
+    </div>
+  </section>
+
+  <!-- Colleagues -->
+  <div class="section-label">AI Colleagues — 5 aktif</div>
+  <section class="colleagues">
+    <div class="colleague">
+      <span class="state c-green"></span>
+      <div class="avatar" style="background:#ffd28a;">📰</div>
+      <h3>Sakluma News</h3>
+      <p>Trending Malaysia · cross-source</p>
+      <div class="stat"><span>88%</span><div class="bar"><i style="width:88%"></i></div></div>
+    </div>
+    <div class="colleague">
+      <span class="state c-amber"></span>
+      <div class="avatar" style="background:#ffe0b0;">✍️</div>
+      <h3>Sakluma Content</h3>
+      <p>Draf sosial · ads · FB</p>
+      <div class="stat"><span>72%</span><div class="bar"><i style="width:72%"></i></div></div>
+    </div>
+    <div class="colleague">
+      <span class="state c-blue"></span>
+      <div class="avatar" style="background:#bcd8ff;">📈</div>
+      <h3>AURA-Trade</h3>
+      <p>Bursa MY · Asri Ahmad method</p>
+      <div class="stat"><span>64%</span><div class="bar"><i style="width:64%"></i></div></div>
+    </div>
+    <div class="colleague">
+      <span class="state c-violet"></span>
+      <div class="avatar" style="background:#d9ccff;">🛍️</div>
+      <h3>Commerce</h3>
+      <p>Shopee · e-commerce</p>
+      <div class="stat"><span>51%</span><div class="bar"><i style="width:51%"></i></div></div>
+    </div>
+    <div class="colleague">
+      <span class="state c-cyan"></span>
+      <div class="avatar" style="background:#b8ecf5;">⚙️</div>
+      <h3>Ops</h3>
+      <p>Email · jadual · automasi</p>
+      <div class="stat"><span>95%</span><div class="bar"><i style="width:95%"></i></div></div>
+    </div>
+  </section>
+
+  <!-- Metrics -->
+  <section class="metrics">
+    <div class="metric"><div class="k">Artikel diproses</div><div class="v">1,284</div><div class="d up">▲ 12.4% minggu ini</div></div>
+    <div class="metric"><div class="k">Draf dihantar</div><div class="v">342</div><div class="d up">▲ 8.1%</div></div>
+    <div class="metric"><div class="k">Automasi aktif</div><div class="v">17</div><div class="d">5 agent · 12 workflow</div></div>
+    <div class="metric"><div class="k">Masa dijimat</div><div class="v">31j</div><div class="d up">▲ 3.2j hari ini</div></div>
+  </section>
+
+  <!-- Widgets -->
+  <section class="grid">
+    <div class="card span-4">
+      <h4>📥 Inbox <span class="count">4 belum dibaca</span></h4>
+      <div class="email">
+        <div class="ic" style="background:#2a2010;color:#f5a623;">🛒</div>
+        <div><div class="t">Shopee — Pesanan baharu</div><div class="s">3 pesanan menunggu pengesahan stok.</div></div>
+        <span class="tm">09:12</span>
+      </div>
+      <div class="email">
+        <div class="ic" style="background:#1c2a24;color:#34d399;">📊</div>
+        <div><div class="t">Bursa — Senarai watchlist</div><div class="s">INARI +2.1% · GENM +0.8% · AEMULUS -1.2%</div></div>
+        <span class="tm">08:45</span>
+      </div>
+      <div class="email">
+        <div class="ic" style="background:#221c2e;color:#a78bfa;">📰</div>
+        <div><div class="t">Trending harian sedia</div><div class="s">5 artikel viral proven sedia untuk semakan.</div></div>
+        <span class="tm">08:00</span>
+      </div>
+      <div class="email">
+        <div class="ic" style="background:#1e2226;color:#60a5fa;">💬</div>
+        <div><div class="t">Telegram — 2 mesej</div><div class="s">Permintaan kategori &amp; draf.</div></div>
+        <span class="tm">07:58</span>
+      </div>
+    </div>
+
+    <div class="card span-4">
+      <h4>📅 Jadual Hari Ini <span class="count">6 tugas</span></h4>
+      <div class="task done"><div class="chk"></div><span class="lbl">Scrape trending berita pagi</span><span class="tm">08:00</span></div>
+      <div class="task done"><div class="chk"></div><span class="lbl">Draf FB Viral Santai</span><span class="tm">08:30</span></div>
+      <div class="task"><div class="chk"></div><span class="lbl">Push 3 artikel ke Airtable</span><span class="tm">10:00</span></div>
+      <div class="task"><div class="chk"></div><span class="lbl">Semakan watchlist saham</span><span class="tm">14:00</span></div>
+      <div class="task"><div class="chk"></div><span class="lbl">Draf iklan Shopee</span><span class="tm">16:00</span></div>
+      <div class="task"><div class="chk"></div><span class="lbl">Laporan harian Telegram</span><span class="tm">20:00</span></div>
+    </div>
+
+    <div class="card span-4">
+      <h4>⚡ Workflow Aktif <span class="count">3/17</span></h4>
+      <div class="flow">
+        <span class="node done">scrape</span><span class="arrow">→</span>
+        <span class="node run">draft</span><span class="arrow">→</span>
+        <span class="node">confirm</span><span class="arrow">→</span>
+        <span class="node">airtable</span>
+      </div>
+      <div style="height:12px"></div>
+      <div class="flow">
+        <span class="node done">rss</span><span class="arrow">→</span>
+        <span class="node run">trends</span><span class="arrow">→</span>
+        <span class="node">publish</span>
+      </div>
+      <div style="height:12px"></div>
+      <div class="flow">
+        <span class="node done">quote</span><span class="arrow">→</span>
+        <span class="node">alert</span><span class="arrow">→</span>
+        <span class="node">telegram</span>
+      </div>
+      <div style="height:14px"></div>
+      <div class="feed-item" style="border:0;padding:0;"><span class="dot" style="background:var(--accent)"></span><span class="msg"><b>Aura</b> menjalankan workflow berita — menunggu confirm boss.</span></div>
+    </div>
+
+    <div class="card span-6">
+      <h4>🕘 Aktiviti Terkini</h4>
+      <div class="feed">
+        <div class="feed-item"><span class="dot" style="background:var(--green)"></span><span class="msg"><b>Sakluma News</b> — 5 trending proven dikumpul (🔥x2 + 📈)</span><span class="when">08:00</span></div>
+        <div class="feed-item"><span class="dot" style="background:var(--accent)"></span><span class="msg"><b>Content</b> — draf FB Viral Santai disediakan untuk review</span><span class="when">08:32</span></div>
+        <div class="feed-item"><span class="dot" style="background:var(--blue)"></span><span class="msg"><b>AURA-Trade</b> — semakan pasaran Bursa MY selesai, 3 kaunter pada watchlist</span><span class="when">09:15</span></div>
+        <div class="feed-item"><span class="dot" style="background:var(--violet)"></span><span class="msg"><b>Commerce</b> — harga produk Shopee disemak semula</span><span class="when">10:02</span></div>
+        <div class="feed-item"><span class="dot" style="background:var(--cyan)"></span><span class="msg"><b>Ops</b> — backup Airtable &amp; log diarkibkan</span><span class="when">11:30</span></div>
+      </div>
+    </div>
+
+    <div class="card span-6">
+      <h4>📈 Pasaran — Watchlist</h4>
+      <div class="email">
+        <div><div class="t">INARI (0166) — Teknologi</div><div class="s">Semikonduktor · Shariah ✓ · Vol 11.4M</div></div>
+        <div style="margin-left:auto;text-align:right"><div style="font-family:var(--mono);font-weight:700">RM3.82</div><div style="font-family:var(--mono);font-size:11px;color:var(--green)">▲ +2.1%</div></div>
+      </div>
+      <div class="email">
+        <div><div class="t">GENM (4715) — Leisure</div><div class="s">Genting Malaysia · dividen konsisten</div></div>
+        <div style="margin-left:auto;text-align:right"><div style="font-family:var(--mono);font-weight:700">RM2.94</div><div style="font-family:var(--mono);font-size:11px;color:var(--green)">▲ +0.8%</div></div>
+      </div>
+      <div class="email">
+        <div><div class="t">AEMULUS (0181) — ATE</div><div class="s">Order book ~RM87j · recovery cip global</div></div>
+        <div style="margin-left:auto;text-align:right"><div style="font-family:var(--mono);font-weight:700">RM0.38</div><div style="font-family:var(--mono);font-size:11px;color:var(--red)">▼ -1.2%</div></div>
+      </div>
+      <div style="height:8px"></div>
+      <div class="task"><div class="chk"></div><span class="lbl">Alert: INARI hampir TP1 (RM4.20)</span><span class="tm">🟢</span></div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <span>AuraOne v2.4 · Saklomak.my</span>
+    <span>sales@saklomak.my · +60 12 848 5677</span>
+  </footer>
+</div>
+</body>
+</html>
