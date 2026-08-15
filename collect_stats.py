@@ -200,6 +200,51 @@ def collect_calls():
     return rows
 
 
+def collect_tools():
+    """Tools/MCP/skills yang disuntik — dengan status & future. Internal dashboard."""
+    tools = [
+        # (nama, status_class, status_label, guna, nota)
+        ("Exa Search (MCP)", "st-live", "LIVE", "Web search berkuasa", "mcporter · exa.web_search_exa"),
+        ("Moomoo/OpenD (MCP)", "st-progress", "PROGRESS", "Trading Bursa/US/HK/SG", "Skill moomoo-trading-mcp ada; OpenD perlu deploy (Railway)"),
+        ("Jina Reader", "st-live", "LIVE", "Scrape artikel & halaman", "r.jina.ai — auto-resolve link"),
+        ("yt-dlp", "st-live", "LIVE", "Download video/audio", "agent-reach v1.5.0"),
+        ("Telegram Bot", "st-live", "LIVE", "auraSakluma_bot", "Gateway · button kategori · reply"),
+        ("Airtable", "st-live", "LIVE", "Content Station (draf/artikel)", "API key aktif · push flow"),
+        ("Google Drive", "st-progress", "PROGRESS", "Host gambar artikel", "Service account email ada; JSON key perlu semak"),
+        ("DeepSeek API", "st-live", "LIVE", "deepseek-v4-flash (primary)", "Model utama semua kerja"),
+        ("Groq API", "st-live", "LIVE", "llama-3.3-70b (backup)", "Free-tier fallback"),
+        ("Gemini API", "st-live", "LIVE", "Backup free + image gen", "gemini-2.5-flash · gemini-3-pro-image"),
+        ("Pollinations.ai", "st-live", "LIVE", "Generate gambar free", "No key · primary image"),
+        ("Replicate (FLUX)", "st-progress", "PROGRESS", "Gambar pro (belum topup)", "Token ada; credit belum masuk"),
+        ("Apify", "st-live", "LIVE", "Scrape automation", "APIFY_API_TOKEN aktif"),
+        ("Supabase", "st-progress", "PROGRESS", "DB/host (belum sambung)", "Publishable key je — perlu semak"),
+        ("Firecrawl", "st-live", "LIVE", "Web scraping lanjutan", "FC_API_KEY aktif"),
+        ("gh (GitHub)", "st-live", "LIVE", "Repo & Pages", "Aura-dashboard live"),
+        ("MCP server setup", "st-live", "LIVE", "Skill & workflow", "Skill: mcp-server-setup, trading-mcp-integration"),
+    ]
+    return tools
+
+
+def collect_skills():
+    """Skills Sakluma/Aura yang wujud — status & future."""
+    return [
+        ("sakluma-news", "st-live", "LIVE", "Berita trending MY — cross-source + Google Trends"),
+        ("sakluma-content", "st-live", "LIVE", "5 persona kandungan — FB/ads/caption"),
+        ("sakluma-publish", "st-live", "LIVE", "Push ke Airtable — confirm flow"),
+        ("aura-trading", "st-progress", "PROGRESS", "Asri Ahmad method — menunggu Moomoo"),
+        ("moomoo-trading-mcp", "st-progress", "PROGRESS", "Integrasi OpenD — deploy Railway"),
+        ("trading-mcp-integration", "st-live", "LIVE", "Blueprint sambung trading MCP"),
+        ("telegram-native-ui", "st-live", "LIVE", "Button sebenar Telegram"),
+        ("model-routing", "st-live", "LIVE", "DeepSeek primary + fallback"),
+        ("image-prompt-enhancer", "st-live", "LIVE", "JSON enhancer + Pollinations"),
+        ("screenshot-ocr-fallback", "st-live", "LIVE", "OCR bila vision tiada"),
+        ("FUTURE: Shopee API", "st-off", "PLAN", "E-commerce — belum wujud (Liya)"),
+        ("FUTURE: Finance/HR", "st-off", "PLAN", "Bajet & tunai — belum wujud (Aziz)"),
+        ("FUTURE: WordPress", "st-off", "PLAN", "Website/theme — belum wujud"),
+        ("FUTURE: Website parallax", "st-off", "PLAN", "Landing interaktif — belum wujud"),
+    ]
+
+
 def collect_quick():
     out = {}
     # Gateway
@@ -231,6 +276,8 @@ def main():
         "model": collect_model(),
         "cron": collect_cron(),
         "calls": collect_calls(),
+        "tools": collect_tools(),
+        "skills": collect_skills(),
         "quick": collect_quick(),
         "tokens": {
             "in_avg": "—",

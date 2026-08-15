@@ -1,16 +1,16 @@
 {
-  "generated_at": "2026-08-16 00:52:19",
+  "generated_at": "2026-08-16 00:56:39",
   "system": {
     "ram_total_mb": 1967,
-    "ram_used_mb": 1190,
-    "ram_used_pct": 60.5,
-    "ram_used": "1190MB / 1967MB",
-    "cpu_load": "0.10 0.06 0.06",
-    "cpu_pct": 5.0,
+    "ram_used_mb": 1203,
+    "ram_used_pct": 61.2,
+    "ram_used": "1203MB / 1967MB",
+    "cpu_load": "0.01 0.05 0.06",
+    "cpu_pct": 0.5,
     "disk_used": "26%",
     "disk_pct": 24.5,
-    "uptime": "4h 2j 11m",
-    "uptime_detail": "353489s"
+    "uptime": "4h 2j 15m",
+    "uptime_detail": "353748s"
   },
   "services": [
     {
@@ -99,66 +99,273 @@
     "provider": "deepseek",
     "fallback1": "gemini-2.5-flash (gemini)",
     "fallback2": "llama-3.3-70b-versatile (groq)",
-    "cache_hit_pct": 95.5
+    "cache_hit_pct": 95.6
   },
   "cron": [],
   "calls": [
     {
-      "time": "2026-08-16 00:52:18",
+      "time": "2026-08-16 00:56:37",
       "platform": "agent",
       "model": "deepseek-v4-flash",
-      "tokens": "356,223 in / 97 out",
+      "tokens": "367,912 in / 171 out",
+      "latency": "4.0s"
+    },
+    {
+      "time": "2026-08-16 00:56:33",
+      "platform": "agent",
+      "model": "deepseek-v4-flash",
+      "tokens": "367,140 in / 475 out",
+      "latency": "4.4s"
+    },
+    {
+      "time": "2026-08-16 00:56:28",
+      "platform": "agent",
+      "model": "deepseek-v4-flash",
+      "tokens": "366,206 in / 545 out",
+      "latency": "5.7s"
+    },
+    {
+      "time": "2026-08-16 00:56:23",
+      "platform": "agent",
+      "model": "deepseek-v4-flash",
+      "tokens": "365,632 in / 258 out",
+      "latency": "4.3s"
+    },
+    {
+      "time": "2026-08-16 00:56:18",
+      "platform": "agent",
+      "model": "deepseek-v4-flash",
+      "tokens": "365,262 in / 172 out",
       "latency": "3.2s"
     },
     {
-      "time": "2026-08-16 00:52:15",
+      "time": "2026-08-16 00:56:15",
       "platform": "agent",
       "model": "deepseek-v4-flash",
-      "tokens": "355,421 in / 404 out",
-      "latency": "5.2s"
+      "tokens": "362,653 in / 1,218 out",
+      "latency": "12.2s"
     },
     {
-      "time": "2026-08-16 00:52:09",
+      "time": "2026-08-16 00:56:02",
       "platform": "agent",
       "model": "deepseek-v4-flash",
-      "tokens": "354,961 in / 162 out",
+      "tokens": "361,394 in / 187 out",
       "latency": "3.7s"
     },
     {
-      "time": "2026-08-16 00:52:03",
+      "time": "2026-08-16 00:53:38",
       "platform": "agent",
       "model": "deepseek-v4-flash",
-      "tokens": "354,765 in / 101 out",
-      "latency": "2.9s"
-    },
-    {
-      "time": "2026-08-16 00:52:00",
-      "platform": "agent",
-      "model": "deepseek-v4-flash",
-      "tokens": "353,964 in / 419 out",
-      "latency": "4.8s"
-    },
-    {
-      "time": "2026-08-16 00:51:54",
-      "platform": "agent",
-      "model": "deepseek-v4-flash",
-      "tokens": "353,200 in / 225 out",
-      "latency": "3.8s"
-    },
-    {
-      "time": "2026-08-16 00:51:48",
-      "platform": "agent",
-      "model": "deepseek-v4-flash",
-      "tokens": "353,069 in / 72 out",
-      "latency": "2.6s"
-    },
-    {
-      "time": "2026-08-16 00:51:37",
-      "platform": "agent",
-      "model": "deepseek-v4-flash",
-      "tokens": "350,244 in / 2,740 out",
-      "latency": "17.5s"
+      "tokens": "360,921 in / 260 out",
+      "latency": "4.7s"
     }
+  ],
+  "tools": [
+    [
+      "Exa Search (MCP)",
+      "st-live",
+      "LIVE",
+      "Web search berkuasa",
+      "mcporter · exa.web_search_exa"
+    ],
+    [
+      "Moomoo/OpenD (MCP)",
+      "st-progress",
+      "PROGRESS",
+      "Trading Bursa/US/HK/SG",
+      "Skill moomoo-trading-mcp ada; OpenD perlu deploy (Railway)"
+    ],
+    [
+      "Jina Reader",
+      "st-live",
+      "LIVE",
+      "Scrape artikel & halaman",
+      "r.jina.ai — auto-resolve link"
+    ],
+    [
+      "yt-dlp",
+      "st-live",
+      "LIVE",
+      "Download video/audio",
+      "agent-reach v1.5.0"
+    ],
+    [
+      "Telegram Bot",
+      "st-live",
+      "LIVE",
+      "auraSakluma_bot",
+      "Gateway · button kategori · reply"
+    ],
+    [
+      "Airtable",
+      "st-live",
+      "LIVE",
+      "Content Station (draf/artikel)",
+      "API key aktif · push flow"
+    ],
+    [
+      "Google Drive",
+      "st-progress",
+      "PROGRESS",
+      "Host gambar artikel",
+      "Service account email ada; JSON key perlu semak"
+    ],
+    [
+      "DeepSeek API",
+      "st-live",
+      "LIVE",
+      "deepseek-v4-flash (primary)",
+      "Model utama semua kerja"
+    ],
+    [
+      "Groq API",
+      "st-live",
+      "LIVE",
+      "llama-3.3-70b (backup)",
+      "Free-tier fallback"
+    ],
+    [
+      "Gemini API",
+      "st-live",
+      "LIVE",
+      "Backup free + image gen",
+      "gemini-2.5-flash · gemini-3-pro-image"
+    ],
+    [
+      "Pollinations.ai",
+      "st-live",
+      "LIVE",
+      "Generate gambar free",
+      "No key · primary image"
+    ],
+    [
+      "Replicate (FLUX)",
+      "st-progress",
+      "PROGRESS",
+      "Gambar pro (belum topup)",
+      "Token ada; credit belum masuk"
+    ],
+    [
+      "Apify",
+      "st-live",
+      "LIVE",
+      "Scrape automation",
+      "APIFY_API_TOKEN aktif"
+    ],
+    [
+      "Supabase",
+      "st-progress",
+      "PROGRESS",
+      "DB/host (belum sambung)",
+      "Publishable key je — perlu semak"
+    ],
+    [
+      "Firecrawl",
+      "st-live",
+      "LIVE",
+      "Web scraping lanjutan",
+      "FC_API_KEY aktif"
+    ],
+    [
+      "gh (GitHub)",
+      "st-live",
+      "LIVE",
+      "Repo & Pages",
+      "Aura-dashboard live"
+    ],
+    [
+      "MCP server setup",
+      "st-live",
+      "LIVE",
+      "Skill & workflow",
+      "Skill: mcp-server-setup, trading-mcp-integration"
+    ]
+  ],
+  "skills": [
+    [
+      "sakluma-news",
+      "st-live",
+      "LIVE",
+      "Berita trending MY — cross-source + Google Trends"
+    ],
+    [
+      "sakluma-content",
+      "st-live",
+      "LIVE",
+      "5 persona kandungan — FB/ads/caption"
+    ],
+    [
+      "sakluma-publish",
+      "st-live",
+      "LIVE",
+      "Push ke Airtable — confirm flow"
+    ],
+    [
+      "aura-trading",
+      "st-progress",
+      "PROGRESS",
+      "Asri Ahmad method — menunggu Moomoo"
+    ],
+    [
+      "moomoo-trading-mcp",
+      "st-progress",
+      "PROGRESS",
+      "Integrasi OpenD — deploy Railway"
+    ],
+    [
+      "trading-mcp-integration",
+      "st-live",
+      "LIVE",
+      "Blueprint sambung trading MCP"
+    ],
+    [
+      "telegram-native-ui",
+      "st-live",
+      "LIVE",
+      "Button sebenar Telegram"
+    ],
+    [
+      "model-routing",
+      "st-live",
+      "LIVE",
+      "DeepSeek primary + fallback"
+    ],
+    [
+      "image-prompt-enhancer",
+      "st-live",
+      "LIVE",
+      "JSON enhancer + Pollinations"
+    ],
+    [
+      "screenshot-ocr-fallback",
+      "st-live",
+      "LIVE",
+      "OCR bila vision tiada"
+    ],
+    [
+      "FUTURE: Shopee API",
+      "st-off",
+      "PLAN",
+      "E-commerce — belum wujud (Liya)"
+    ],
+    [
+      "FUTURE: Finance/HR",
+      "st-off",
+      "PLAN",
+      "Bajet & tunai — belum wujud (Aziz)"
+    ],
+    [
+      "FUTURE: WordPress",
+      "st-off",
+      "PLAN",
+      "Website/theme — belum wujud"
+    ],
+    [
+      "FUTURE: Website parallax",
+      "st-off",
+      "PLAN",
+      "Landing interaktif — belum wujud"
+    ]
   ],
   "quick": {
     "gateway": "🟢 running",

@@ -187,6 +187,34 @@
     </div>
   </div>
 
+  <!-- TOOLS & MCP -->
+  <div class="grid" style="margin-bottom:14px;">
+    <div class="card span-12">
+      <h4>🧰 Tools &amp; MCP — Disuntik <span class="mini">internal: untuk boss &amp; Aura</span></h4>
+      <table>
+        <thead><tr><th>Tool / MCP</th><th>Status</th><th>Guna</th><th>Nota</th></tr></thead>
+        <tbody id="tblTools"><tr><td colspan="4" style="color:var(--muted-2)">Memuat…</td></tr></tbody>
+      </table>
+      <div class="legend">
+        <span><span class="sw" style="background:var(--green);"></span> live — integrate &amp; jalan</span>
+        <span><span class="sw" style="background:var(--accent);"></span> progress — sebahagian / issue</span>
+        <span><span class="sw" style="background:var(--muted-2);"></span> plan — belum siap</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- SKILLS -->
+  <div class="grid" style="margin-bottom:14px;">
+    <div class="card span-12">
+      <h4>📚 Skills — Disuntik <span class="mini">internal · capabilities &amp; future</span></h4>
+      <table>
+        <thead><tr><th>Skill</th><th>Status</th><th>Capability</th></tr></thead>
+        <tbody id="tblSkills"><tr><td colspan="3" style="color:var(--muted-2)">Memuat…</td></tr></tbody>
+      </table>
+      <div class="updated" style="margin-top:10px;">Future = yang belum dibina — fokus seterusnya (Liya, Aziz, WordPress, parallax).</div>
+    </div>
+  </div>
+
   <!-- AKTIVITI / API CALLS -->
   <div class="grid">
     <div class="card span-8">
@@ -294,6 +322,22 @@
       setText('tIn', d.tokens.in_avg || '—');
       setText('tOut', d.tokens.out_avg || '—');
       setText('tLat', d.tokens.lat_avg || '—');
+    }
+
+    // tools
+    const tbT = document.getElementById('tblTools');
+    if (d.tools && d.tools.length) {
+      tbT.innerHTML = d.tools.map(x =>
+        '<tr><td class="lbl">' + x[0] + '</td><td><span class="st ' + x[1] + '">' + x[2] + '</span></td><td>' + x[3] + '</td><td>' + x[4] + '</td></tr>'
+      ).join('');
+    }
+
+    // skills
+    const tbS2 = document.getElementById('tblSkills');
+    if (d.skills && d.skills.length) {
+      tbS2.innerHTML = d.skills.map(x =>
+        '<tr><td class="lbl">' + x[0] + '</td><td><span class="st ' + x[1] + '">' + x[2] + '</span></td><td>' + x[3] + '</td></tr>'
+      ).join('');
     }
 
     // quick
