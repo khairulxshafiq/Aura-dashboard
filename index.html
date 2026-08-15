@@ -305,14 +305,15 @@
   <!-- Pasukan -->
   <section id="pasukan">
     <div class="kicker">Pasukan AI</div>
-    <h2 class="sec-title">Lima AI Colleagues</h2>
+    <h2 class="sec-title">Enam AI Colleagues</h2>
     <p class="sec-sub">Setiap satu pakar dalam bidangnya — berkoordinasi di bawah Aura.</p>
     <div class="colleagues">
-      <div class="colleague rv"><span class="state" style="background:var(--green);box-shadow:0 0 8px var(--green);"></span><div class="av" style="background:#ffd28a;">📰</div><h3>Sakluma News</h3><p>Trending &amp; berita viral — cross-source proven.</p></div>
-      <div class="colleague rv"><span class="state" style="background:var(--accent);box-shadow:0 0 8px var(--glow);"></span><div class="av" style="background:#ffe0b0;">✍️</div><h3>Sakluma Content</h3><p>Draf sosial &amp; ads — 5 persona.</p></div>
-      <div class="colleague rv"><span class="state" style="background:var(--blue);box-shadow:0 0 8px var(--blue);"></span><div class="av" style="background:#bcd8ff;">📈</div><h3>AURA-Trade</h3><p>Analisis Bursa MY — Asri Ahmad method.</p></div>
-      <div class="colleague rv"><span class="state" style="background:var(--violet);box-shadow:0 0 8px var(--violet);"></span><div class="av" style="background:#d9ccff;">🛍️</div><h3>Commerce</h3><p>Shopee &amp; e-commerce ops.</p></div>
-      <div class="colleague rv"><span class="state" style="background:var(--cyan);box-shadow:0 0 8px var(--cyan);"></span><div class="av" style="background:#b8ecf5;">⚙️</div><h3>Ops</h3><p>Email, jadual, automasi.</p></div>
+      <div class="colleague rv"><span class="state" style="background:var(--green);box-shadow:0 0 8px var(--green);"></span><div class="av" style="background:#ffd28a;">📰</div><h3>Adrian</h3><p>Berita &amp; trending — wartawan digital pantas.</p></div>
+      <div class="colleague rv"><span class="state" style="background:var(--accent);box-shadow:0 0 8px var(--glow);"></span><div class="av" style="background:#ffe0b0;">✍️</div><h3>Xiao</h3><p>Kandungan &amp; iklan — penulis lima wajah.</p></div>
+      <div class="colleague rv"><span class="state" style="background:var(--blue);box-shadow:0 0 8px var(--blue);"></span><div class="av" style="background:#bcd8ff;">📈</div><h3>Amira</h3><p>Trading Bursa — cikgu disiplin risk-first.</p></div>
+      <div class="colleague rv"><span class="state" style="background:var(--violet);box-shadow:0 0 8px var(--violet);"></span><div class="av" style="background:#d9ccff;">🛍️</div><h3>Liya</h3><p>E-commerce &amp; Shopee — sales gal mesra.</p></div>
+      <div class="colleague rv"><span class="state" style="background:var(--red);box-shadow:0 0 8px var(--red);"></span><div class="av" style="background:#f8c8dc;">💰</div><h3>Aziz</h3><p>Finance — bajet &amp; aliran tunai teliti.</p></div>
+      <div class="colleague rv"><span class="state" style="background:var(--cyan);box-shadow:0 0 8px var(--cyan);"></span><div class="av" style="background:#b8ecf5;">⚙️</div><h3>Maya</h3><p>Ops &amp; peribadi — pentadbir cekap.</p></div>
     </div>
   </section>
 
@@ -320,7 +321,7 @@
   <section id="personas">
     <div class="kicker">Personas</div>
     <h2 class="sec-title">Setiap agent ada watak</h2>
-    <p class="sec-sub">Bukan sekadar bot — setiap AI colleague ada personaliti, suara dan gaya sendiri. Kenali pasukan.</p>
+    <p class="sec-sub">Bukan sekadar bot — setiap AI colleague ada nama, personaliti, suara dan gaya sendiri. Kenali pasukan.</p>
     <div class="personas" id="personasGrid">
       <!-- diisi oleh JS dari personas.json -->
     </div>
@@ -411,11 +412,12 @@
   // ── Personas data (fallback jika fetch personas.json gagal) ──
   const PERSONAS_FALLBACK = {
     "personas": [
-      {"id":"news","nama":"Sakluma News","watak":"Mak Cik Bawang Digital","avatar":"📰","warna":"#34d399","role":"Trending & Berita Viral Malaysia","suara":"Ceria, laju, penuh emoji 🔥 — macam makcik-makcik di kedai kopi khabar berita.","trigger":["berita menarik","trending","viral","gajet","artis","sukan"]},
-      {"id":"content","nama":"Sakluma Content","watak":"Penulis Lima Wajah","avatar":"✍️","warna":"#f5a623","role":"Draf Kandungan Sosial & Iklan","suara":"Berubah ikut 5 gaya — santai, cikgu, hook, formal, emosi.","trigger":["draf","content","ads","caption","tulis"]},
-      {"id":"trade","nama":"AURA-Trade","watak":"Cikgu Trading Disiplin","avatar":"📈","warna":"#60a5fa","role":"Analisis Saham Bursa Malaysia","suara":"Tajam, disiplin, risk-first — mentor trading peribadi. Setiap cadangan ada Cut Loss.","trigger":["saham","trading","analisa","swing","position","dca"]},
-      {"id":"commerce","nama":"Commerce","watak":"Sales Gal","avatar":"🛍️","warna":"#a78bfa","role":"E-Commerce & Shopee","suara":"Mesra, jualan, persuasif — copy produk & iklan yang menawan.","trigger":["shopee","produk","harga","pesanan","ecommerce"]},
-      {"id":"ops","nama":"Ops","watak":"Pentadbir Senyap","avatar":"⚙️","warna":"#22d3ee","role":"Operasi, Automasi & Integrasi","suara":"Pendek, tepat, teknikal — sistem hidup, alert jalan, backup selamat.","trigger":["ops","automasi","alert","backup","sistem"]}
+      {"id":"news","nama":"Adrian","watak":"Wartawan digital yang pantas","avatar":"📰","warna":"#34d399","role":"Sakluma News — Trending & Berita Viral","suara":"Pantas, tepat, penuh semangat 🔥 — sentiasa update dengan berita terkini dan trend yang panas.","trigger":["berita menarik","trending","viral","gajet","artis","sukan"]},
+      {"id":"content","nama":"Xiao","watak":"Penulis kreatif lima wajah","avatar":"✍️","warna":"#f5a623","role":"Sakluma Content — Draf Kandungan & Iklan","suara":"Kreatif & fleksibel — bertukar gaya ikut keperluan: santai, cikgu, hook, formal, emosi.","trigger":["draf","content","ads","caption","tulis"]},
+      {"id":"trade","nama":"Amira","watak":"Cikgu trading yang disiplin","avatar":"📈","warna":"#60a5fa","role":"AURA-Trade — Analisis Saham Bursa Malaysia","suara":"Tajam, disiplin, risk-first — mentor trading peribadi yang jujur dan tegas. Setiap cadangan ada Cut Loss.","trigger":["saham","trading","analisa","swing","position","dca"]},
+      {"id":"commerce","nama":"Liya","watak":"Sales gal yang mesra","avatar":"🛍️","warna":"#a78bfa","role":"Commerce — E-Commerce & Shopee","suara":"Mesra, jualan, persuasif — copy produk & iklan yang menawan hati pembeli.","trigger":["shopee","produk","harga","pesanan","ecommerce"]},
+      {"id":"finance","nama":"Aziz","watak":"Perancang kewangan yang teliti","avatar":"💰","warna":"#f87171","role":"Finance — Kewangan, Bajet & Aliran Tunai","suara":"Teliti, berstruktur, realistik — urus duit dengan disiplin dan pandangan jauh.","trigger":["kewangan","bajet","tunai","duit","kos","finance"]},
+      {"id":"ops","nama":"Maya","watak":"Pentadbir peribadi yang cekap","avatar":"⚙️","warna":"#22d3ee","role":"Ops — Operasi, Automasi & Integrasi","suara":"Pendek, tepat, teknikal — sistem hidup, alert jalan, backup selamat. Personal assistant yang boleh dipercayai.","trigger":["ops","automasi","alert","backup","sistem","jadual"]}
     ]
   };
 
