@@ -1,0 +1,176 @@
+{
+  "generated_at": "2026-08-16 00:52:19",
+  "system": {
+    "ram_total_mb": 1967,
+    "ram_used_mb": 1190,
+    "ram_used_pct": 60.5,
+    "ram_used": "1190MB / 1967MB",
+    "cpu_load": "0.10 0.06 0.06",
+    "cpu_pct": 5.0,
+    "disk_used": "26%",
+    "disk_pct": 24.5,
+    "uptime": "4h 2j 11m",
+    "uptime_detail": "353489s"
+  },
+  "services": [
+    {
+      "name": "Gateway (telegram)",
+      "status": "running",
+      "pid": "963144",
+      "mem": "296MB",
+      "cpu": "0.5%"
+    },
+    {
+      "name": "Agent (CLI sesi)",
+      "status": "running",
+      "pid": "1369763",
+      "mem": "?",
+      "cpu": "?"
+    }
+  ],
+  "keys": [
+    {
+      "name": "DEEPSEEK_API_KEY",
+      "status": "aktif",
+      "cls": "st-live",
+      "role": "deepseek-v4-flash",
+      "prefix": "sk-654e51...",
+      "tag": "deepseek"
+    },
+    {
+      "name": "GROQ_API_KEY",
+      "status": "backup",
+      "cls": "st-live",
+      "role": "backup free",
+      "prefix": "gsk_Lxi0t...",
+      "tag": "groq"
+    },
+    {
+      "name": "GEMINI_API_KEY",
+      "status": "backup",
+      "cls": "st-live",
+      "role": "backup free",
+      "prefix": "AIzaSyA2S...",
+      "tag": "google"
+    },
+    {
+      "name": "OPENROUTER_API_KEY",
+      "status": "takda",
+      "cls": "st-off",
+      "role": "—",
+      "prefix": "—",
+      "tag": "openrouter"
+    },
+    {
+      "name": "TELEGRAM_BOT_TOKEN",
+      "status": "aktif",
+      "cls": "st-live",
+      "role": "auraSakluma_bot",
+      "prefix": "795896944...",
+      "tag": "telegram"
+    },
+    {
+      "name": "AIRTABLE_API_KEY",
+      "status": "aktif",
+      "cls": "st-live",
+      "role": "Content Station",
+      "prefix": "patVVUxY4...",
+      "tag": "airtable"
+    },
+    {
+      "name": "REPLICATE_API_TOKEN",
+      "status": "relek",
+      "cls": "st-progress",
+      "role": "FLUX (belum topup)",
+      "prefix": "r8_DByefj...",
+      "tag": "replicate"
+    },
+    {
+      "name": "APIFY_API_TOKEN",
+      "status": "aktif",
+      "cls": "st-live",
+      "role": "scrape",
+      "prefix": "apify_api...",
+      "tag": "apify"
+    }
+  ],
+  "model": {
+    "default": "deepseek-v4-flash",
+    "provider": "deepseek",
+    "fallback1": "gemini-2.5-flash (gemini)",
+    "fallback2": "llama-3.3-70b-versatile (groq)",
+    "cache_hit_pct": 95.5
+  },
+  "cron": [],
+  "calls": [
+    {
+      "time": "2026-08-16 00:52:18",
+      "platform": "agent",
+      "model": "deepseek-v4-flash",
+      "tokens": "356,223 in / 97 out",
+      "latency": "3.2s"
+    },
+    {
+      "time": "2026-08-16 00:52:15",
+      "platform": "agent",
+      "model": "deepseek-v4-flash",
+      "tokens": "355,421 in / 404 out",
+      "latency": "5.2s"
+    },
+    {
+      "time": "2026-08-16 00:52:09",
+      "platform": "agent",
+      "model": "deepseek-v4-flash",
+      "tokens": "354,961 in / 162 out",
+      "latency": "3.7s"
+    },
+    {
+      "time": "2026-08-16 00:52:03",
+      "platform": "agent",
+      "model": "deepseek-v4-flash",
+      "tokens": "354,765 in / 101 out",
+      "latency": "2.9s"
+    },
+    {
+      "time": "2026-08-16 00:52:00",
+      "platform": "agent",
+      "model": "deepseek-v4-flash",
+      "tokens": "353,964 in / 419 out",
+      "latency": "4.8s"
+    },
+    {
+      "time": "2026-08-16 00:51:54",
+      "platform": "agent",
+      "model": "deepseek-v4-flash",
+      "tokens": "353,200 in / 225 out",
+      "latency": "3.8s"
+    },
+    {
+      "time": "2026-08-16 00:51:48",
+      "platform": "agent",
+      "model": "deepseek-v4-flash",
+      "tokens": "353,069 in / 72 out",
+      "latency": "2.6s"
+    },
+    {
+      "time": "2026-08-16 00:51:37",
+      "platform": "agent",
+      "model": "deepseek-v4-flash",
+      "tokens": "350,244 in / 2,740 out",
+      "latency": "17.5s"
+    }
+  ],
+  "quick": {
+    "gateway": "🟢 running",
+    "telegram": "🟢 connected (polling)",
+    "airtable": "🟢 key ada",
+    "moomoo": "🟡 belum connect (OpenD)",
+    "mcp": "🟢 exa",
+    "image": "🟢 Pollinations + Gemini"
+  },
+  "tokens": {
+    "in_avg": "—",
+    "out_avg": "—",
+    "lat_avg": "—"
+  }
+}
