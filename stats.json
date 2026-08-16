@@ -1,16 +1,16 @@
 {
-  "generated_at": "2026-08-16 19:38:58",
+  "generated_at": "2026-08-16 19:54:58",
   "system": {
     "ram_total_mb": 1967,
-    "ram_used_mb": 872,
-    "ram_used_pct": 44.3,
-    "ram_used": "872MB / 1967MB",
-    "cpu_load": "0.00 0.01 0.09",
-    "cpu_pct": 0.0,
+    "ram_used_mb": 883,
+    "ram_used_pct": 44.9,
+    "ram_used": "883MB / 1967MB",
+    "cpu_load": "0.03 0.04 0.05",
+    "cpu_pct": 1.5,
     "disk_used": "30%",
     "disk_pct": 27.9,
-    "uptime": "4h 20j 58m",
-    "uptime_detail": "421087s"
+    "uptime": "4h 21j 14m",
+    "uptime_detail": "422048s"
   },
   "services": [
     {
