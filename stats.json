@@ -1,16 +1,16 @@
 {
-  "generated_at": "2026-08-16 21:31:00",
+  "generated_at": "2026-08-16 21:47:00",
   "system": {
     "ram_total_mb": 1967,
-    "ram_used_mb": 1199,
-    "ram_used_pct": 61.0,
-    "ram_used": "1199MB / 1967MB",
-    "cpu_load": "0.30 0.56 0.41",
-    "cpu_pct": 15.0,
+    "ram_used_mb": 1438,
+    "ram_used_pct": 73.1,
+    "ram_used": "1438MB / 1967MB",
+    "cpu_load": "0.42 0.30 0.33",
+    "cpu_pct": 21.0,
     "disk_used": "34%",
     "disk_pct": 32.3,
-    "uptime": "4h 22j 50m",
-    "uptime_detail": "427809s"
+    "uptime": "4h 23j 6m",
+    "uptime_detail": "428769s"
   },
   "services": [
     {
@@ -23,7 +23,7 @@
     {
       "name": "Agent (CLI sesi)",
       "status": "running",
-      "pid": "1646912",
+      "pid": "1667167",
       "mem": "?",
       "cpu": "?"
     }
@@ -110,60 +110,60 @@
   ],
   "calls": [
     {
-      "time": "2026-08-16 20:57:42",
+      "time": "2026-08-16 21:46:50",
       "platform": "agent",
       "model": "deepseek-v4-flash",
-      "tokens": "383,477 in / 798 out",
-      "latency": "9.7s"
+      "tokens": "375,420 in / 869 out",
+      "latency": "10.9s"
     },
     {
-      "time": "2026-08-16 20:57:32",
+      "time": "2026-08-16 21:46:35",
       "platform": "agent",
       "model": "deepseek-v4-flash",
-      "tokens": "382,776 in / 625 out",
-      "latency": "6.1s"
+      "tokens": "374,775 in / 356 out",
+      "latency": "16.0s"
     },
     {
-      "time": "2026-08-16 20:57:26",
+      "time": "2026-08-16 21:45:46",
       "platform": "agent",
       "model": "deepseek-v4-flash",
-      "tokens": "381,992 in / 651 out",
-      "latency": "8.2s"
+      "tokens": "373,531 in / 1,140 out",
+      "latency": "12.3s"
     },
     {
-      "time": "2026-08-16 20:57:18",
+      "time": "2026-08-16 21:45:34",
       "platform": "agent",
       "model": "deepseek-v4-flash",
-      "tokens": "380,963 in / 953 out",
-      "latency": "10.3s"
+      "tokens": "372,930 in / 518 out",
+      "latency": "6.6s"
     },
     {
-      "time": "2026-08-16 20:57:07",
+      "time": "2026-08-16 21:45:06",
       "platform": "agent",
       "model": "deepseek-v4-flash",
-      "tokens": "380,043 in / 705 out",
-      "latency": "7.6s"
+      "tokens": "380,289 in / 750 out",
+      "latency": "10.2s"
     },
     {
-      "time": "2026-08-16 20:57:00",
+      "time": "2026-08-16 21:44:55",
       "platform": "agent",
       "model": "deepseek-v4-flash",
-      "tokens": "378,068 in / 1,759 out",
-      "latency": "14.5s"
+      "tokens": "377,436 in / 48 out",
+      "latency": "2.9s"
     },
     {
-      "time": "2026-08-16 20:56:45",
+      "time": "2026-08-16 21:44:52",
       "platform": "agent",
       "model": "deepseek-v4-flash",
-      "tokens": "375,847 in / 85 out",
-      "latency": "4.1s"
+      "tokens": "376,347 in / 995 out",
+      "latency": "8.7s"
     },
     {
-      "time": "2026-08-16 20:56:41",
+      "time": "2026-08-16 21:44:43",
       "platform": "agent",
       "model": "deepseek-v4-flash",
-      "tokens": "372,610 in / 3,053 out",
-      "latency": "26.0s"
+      "tokens": "373,033 in / 2,445 out",
+      "latency": "21.1s"
     }
   ],
   "tools": [
@@ -383,29 +383,29 @@
   },
   "deepseek_balance": {
     "status": "ok",
-    "total": "3.94",
+    "total": "3.93",
     "currency": "USD",
-    "topped_up": "3.94",
+    "topped_up": "3.93",
     "granted": "0.00",
     "is_available": true
   },
   "tokens": {
-    "in_avg": "190,476 tok",
-    "out_avg": "718 tok",
+    "in_avg": "192,727 tok",
+    "out_avg": "719 tok",
     "lat_avg": "10.5s",
-    "calls_total": 1356,
-    "in_total": 258285830,
-    "out_total": 974063,
-    "est_cost_usd": 2.0807
+    "calls_total": 1373,
+    "in_total": 264615102,
+    "out_total": 987292,
+    "est_cost_usd": 2.1287
   },
   "history": [
     {
       "date": "2026-08-16",
-      "est_cost_usd": 2.0807,
-      "calls": 1356,
-      "in_total": 258285830,
-      "out_total": 974063,
-      "balance": 3.94
+      "est_cost_usd": 2.1287,
+      "calls": 1373,
+      "in_total": 264615102,
+      "out_total": 987292,
+      "balance": 3.93
     }
   ]
 }
