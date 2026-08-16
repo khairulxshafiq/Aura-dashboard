@@ -1,16 +1,16 @@
 {
-  "generated_at": "2026-08-16 18:02:57",
+  "generated_at": "2026-08-16 18:18:57",
   "system": {
     "ram_total_mb": 1967,
-    "ram_used_mb": 788,
-    "ram_used_pct": 40.1,
-    "ram_used": "788MB / 1967MB",
-    "cpu_load": "0.00 0.01 0.00",
-    "cpu_pct": 0.0,
+    "ram_used_mb": 993,
+    "ram_used_pct": 50.5,
+    "ram_used": "993MB / 1967MB",
+    "cpu_load": "0.04 0.06 0.01",
+    "cpu_pct": 2.0,
     "disk_used": "26%",
-    "disk_pct": 24.6,
-    "uptime": "4h 19j 22m",
-    "uptime_detail": "415326s"
+    "disk_pct": 24.7,
+    "uptime": "4h 19j 38m",
+    "uptime_detail": "416286s"
   },
   "services": [
     {
@@ -50,7 +50,7 @@
       "status": "backup",
       "cls": "st-live",
       "role": "backup free",
-      "prefix": "AIzaSyA2S...",
+      "prefix": "AQ.Ab8RN6...",
       "tag": "google"
     },
     {
@@ -110,60 +110,60 @@
   ],
   "calls": [
     {
+      "time": "2026-08-16 18:17:58",
+      "platform": "agent",
+      "model": "deepseek-v4-flash",
+      "tokens": "160,229 in / 1,382 out",
+      "latency": "15.0s"
+    },
+    {
+      "time": "2026-08-16 18:17:42",
+      "platform": "agent",
+      "model": "deepseek-v4-flash",
+      "tokens": "158,767 in / 1,177 out",
+      "latency": "11.1s"
+    },
+    {
+      "time": "2026-08-16 18:17:30",
+      "platform": "agent",
+      "model": "deepseek-v4-flash",
+      "tokens": "158,241 in / 404 out",
+      "latency": "4.3s"
+    },
+    {
+      "time": "2026-08-16 18:15:32",
+      "platform": "agent",
+      "model": "deepseek-v4-flash",
+      "tokens": "157,091 in / 1,101 out",
+      "latency": "12.9s"
+    },
+    {
+      "time": "2026-08-16 18:15:12",
+      "platform": "agent",
+      "model": "deepseek-v4-flash",
+      "tokens": "155,163 in / 1,648 out",
+      "latency": "13.8s"
+    },
+    {
+      "time": "2026-08-16 18:14:58",
+      "platform": "agent",
+      "model": "deepseek-v4-flash",
+      "tokens": "153,891 in / 845 out",
+      "latency": "7.8s"
+    },
+    {
+      "time": "2026-08-16 18:14:50",
+      "platform": "agent",
+      "model": "deepseek-v4-flash",
+      "tokens": "150,329 in / 2,083 out",
+      "latency": "19.2s"
+    },
+    {
       "time": "2026-08-16 16:37:40",
       "platform": "agent",
       "model": "deepseek-v4-flash",
       "tokens": "149,097 in / 1,171 out",
       "latency": "14.5s"
-    },
-    {
-      "time": "2026-08-16 16:36:29",
-      "platform": "agent",
-      "model": "deepseek-v4-flash",
-      "tokens": "148,468 in / 611 out",
-      "latency": "7.3s"
-    },
-    {
-      "time": "2026-08-16 16:36:19",
-      "platform": "agent",
-      "model": "deepseek-v4-flash",
-      "tokens": "147,600 in / 444 out",
-      "latency": "4.2s"
-    },
-    {
-      "time": "2026-08-16 16:36:15",
-      "platform": "agent",
-      "model": "deepseek-v4-flash",
-      "tokens": "144,847 in / 2,658 out",
-      "latency": "26.3s"
-    },
-    {
-      "time": "2026-08-16 16:35:48",
-      "platform": "agent",
-      "model": "deepseek-v4-flash",
-      "tokens": "141,322 in / 1,567 out",
-      "latency": "14.0s"
-    },
-    {
-      "time": "2026-08-16 16:33:45",
-      "platform": "agent",
-      "model": "deepseek-v4-flash",
-      "tokens": "139,787 in / 1,446 out",
-      "latency": "19.3s"
-    },
-    {
-      "time": "2026-08-16 16:33:10",
-      "platform": "agent",
-      "model": "deepseek-v4-flash",
-      "tokens": "137,995 in / 1,690 out",
-      "latency": "17.9s"
-    },
-    {
-      "time": "2026-08-16 16:32:50",
-      "platform": "agent",
-      "model": "deepseek-v4-flash",
-      "tokens": "133,302 in / 2,417 out",
-      "latency": "24.5s"
     }
   ],
   "tools": [
@@ -383,29 +383,29 @@
   },
   "deepseek_balance": {
     "status": "ok",
-    "total": "4.22",
+    "total": "4.21",
     "currency": "USD",
-    "topped_up": "4.22",
+    "topped_up": "4.21",
     "granted": "0.00",
     "is_available": true
   },
   "tokens": {
-    "in_avg": "172,804 tok",
-    "out_avg": "676 tok",
+    "in_avg": "172,699 tok",
+    "out_avg": "679 tok",
     "lat_avg": "10.7s",
-    "calls_total": 1103,
-    "in_total": 190603189,
-    "out_total": 746043,
-    "est_cost_usd": 1.5431
+    "calls_total": 1110,
+    "in_total": 191696900,
+    "out_total": 754683,
+    "est_cost_usd": 1.5532
   },
   "history": [
     {
       "date": "2026-08-16",
-      "est_cost_usd": 1.5431,
-      "calls": 1103,
-      "in_total": 190603189,
-      "out_total": 746043,
-      "balance": 4.22
+      "est_cost_usd": 1.5532,
+      "calls": 1110,
+      "in_total": 191696900,
+      "out_total": 754683,
+      "balance": 4.21
     }
   ]
 }
