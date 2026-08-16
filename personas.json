@@ -72,9 +72,9 @@
       "watak": "Cikgu trading yang disiplin & risk-first",
       "avatar": "📈",
       "warna": "#60a5fa",
-      "status": "progress",
-      "status_label": "PROGRESS",
-      "note": "Metodologi Asri Ahmad sedia; Moomoo/OpenD belum connect (Railway).",
+      "status": "live",
+      "status_label": "LIVE",
+      "note": "MCP Moomoo (SIMULATE) + klse-screener-py (fundamentals Bursa MY) — data penuh.",
       "suara": "Tajam, disiplin, risk-first — mentor trading peribadi yang jujur dan tegas.",
       "tugas": [
         "Metodologi Asri Ahmad: Top-Down, CR Market Flow, 3M, DACE",
