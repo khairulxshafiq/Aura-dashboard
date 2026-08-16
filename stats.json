@@ -1,23 +1,23 @@
 {
-  "generated_at": "2026-08-16 16:26:55",
+  "generated_at": "2026-08-16 16:42:56",
   "system": {
     "ram_total_mb": 1967,
-    "ram_used_mb": 783,
-    "ram_used_pct": 39.8,
-    "ram_used": "783MB / 1967MB",
-    "cpu_load": "0.00 0.00 0.00",
-    "cpu_pct": 0.0,
+    "ram_used_mb": 784,
+    "ram_used_pct": 39.9,
+    "ram_used": "784MB / 1967MB",
+    "cpu_load": "0.10 0.05 0.01",
+    "cpu_pct": 5.0,
     "disk_used": "26%",
     "disk_pct": 24.6,
-    "uptime": "4h 17j 46m",
-    "uptime_detail": "409565s"
+    "uptime": "4h 18j 2m",
+    "uptime_detail": "410525s"
   },
   "services": [
     {
       "name": "Gateway (telegram)",
       "status": "running",
       "pid": "963144",
-      "mem": "215MB",
+      "mem": "201MB",
       "cpu": "0.4%"
     },
     {
@@ -110,60 +110,60 @@
   ],
   "calls": [
     {
-      "time": "2026-08-16 16:25:39",
+      "time": "2026-08-16 16:37:40",
       "platform": "agent",
       "model": "deepseek-v4-flash",
-      "tokens": "96,532 in / 104 out",
-      "latency": "3.4s"
+      "tokens": "149,097 in / 1,171 out",
+      "latency": "14.5s"
     },
     {
-      "time": "2026-08-16 01:34:44",
+      "time": "2026-08-16 16:36:29",
       "platform": "agent",
       "model": "deepseek-v4-flash",
-      "tokens": "96,917 in / 488 out",
-      "latency": "6.0s"
+      "tokens": "148,468 in / 611 out",
+      "latency": "7.3s"
     },
     {
-      "time": "2026-08-16 01:34:38",
+      "time": "2026-08-16 16:36:19",
       "platform": "agent",
       "model": "deepseek-v4-flash",
-      "tokens": "96,162 in / 572 out",
-      "latency": "4.6s"
+      "tokens": "147,600 in / 444 out",
+      "latency": "4.2s"
     },
     {
-      "time": "2026-08-16 01:34:33",
+      "time": "2026-08-16 16:36:15",
       "platform": "agent",
       "model": "deepseek-v4-flash",
-      "tokens": "94,191 in / 1,591 out",
-      "latency": "10.2s"
+      "tokens": "144,847 in / 2,658 out",
+      "latency": "26.3s"
     },
     {
-      "time": "2026-08-16 01:34:23",
+      "time": "2026-08-16 16:35:48",
       "platform": "agent",
       "model": "deepseek-v4-flash",
-      "tokens": "91,611 in / 2,501 out",
-      "latency": "20.6s"
+      "tokens": "141,322 in / 1,567 out",
+      "latency": "14.0s"
     },
     {
-      "time": "2026-08-16 01:33:55",
+      "time": "2026-08-16 16:33:45",
       "platform": "agent",
       "model": "deepseek-v4-flash",
-      "tokens": "90,786 in / 218 out",
-      "latency": "2.5s"
+      "tokens": "139,787 in / 1,446 out",
+      "latency": "19.3s"
     },
     {
-      "time": "2026-08-16 01:33:42",
+      "time": "2026-08-16 16:33:10",
       "platform": "agent",
       "model": "deepseek-v4-flash",
-      "tokens": "90,207 in / 235 out",
-      "latency": "2.3s"
+      "tokens": "137,995 in / 1,690 out",
+      "latency": "17.9s"
     },
     {
-      "time": "2026-08-16 01:33:40",
+      "time": "2026-08-16 16:32:50",
       "platform": "agent",
       "model": "deepseek-v4-flash",
-      "tokens": "88,269 in / 1,889 out",
-      "latency": "18.6s"
+      "tokens": "133,302 in / 2,417 out",
+      "latency": "24.5s"
     }
   ],
   "tools": [
@@ -383,29 +383,29 @@
   },
   "deepseek_balance": {
     "status": "ok",
-    "total": "4.24",
+    "total": "4.22",
     "currency": "USD",
-    "topped_up": "4.24",
+    "topped_up": "4.22",
     "granted": "0.00",
     "is_available": true
   },
   "tokens": {
-    "in_avg": "173,503 tok",
-    "out_avg": "667 tok",
+    "in_avg": "172,804 tok",
+    "out_avg": "676 tok",
     "lat_avg": "10.7s",
-    "calls_total": 1085,
-    "in_total": 188251333,
-    "out_total": 723802,
-    "est_cost_usd": 1.5204
+    "calls_total": 1103,
+    "in_total": 190603189,
+    "out_total": 746043,
+    "est_cost_usd": 1.5431
   },
   "history": [
     {
       "date": "2026-08-16",
-      "est_cost_usd": 1.5204,
-      "calls": 1085,
-      "in_total": 188251333,
-      "out_total": 723802,
-      "balance": 4.24
+      "est_cost_usd": 1.5431,
+      "calls": 1103,
+      "in_total": 190603189,
+      "out_total": 746043,
+      "balance": 4.22
     }
   ]
 }
