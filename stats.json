@@ -1,16 +1,16 @@
 {
-  "generated_at": "2026-08-16 20:58:59",
+  "generated_at": "2026-08-16 21:14:59",
   "system": {
     "ram_total_mb": 1967,
-    "ram_used_mb": 1050,
-    "ram_used_pct": 53.4,
-    "ram_used": "1050MB / 1967MB",
-    "cpu_load": "0.31 0.24 0.22",
-    "cpu_pct": 15.5,
+    "ram_used_mb": 1216,
+    "ram_used_pct": 61.8,
+    "ram_used": "1216MB / 1967MB",
+    "cpu_load": "0.15 0.15 0.16",
+    "cpu_pct": 7.5,
     "disk_used": "34%",
     "disk_pct": 32.3,
-    "uptime": "4h 22j 18m",
-    "uptime_detail": "425888s"
+    "uptime": "4h 22j 34m",
+    "uptime_detail": "426849s"
   },
   "services": [
     {
@@ -383,9 +383,9 @@
   },
   "deepseek_balance": {
     "status": "ok",
-    "total": "3.95",
+    "total": "3.94",
     "currency": "USD",
-    "topped_up": "3.95",
+    "topped_up": "3.94",
     "granted": "0.00",
     "is_available": true
   },
@@ -405,7 +405,7 @@
       "calls": 1356,
       "in_total": 258285830,
       "out_total": 974063,
-      "balance": 3.95
+      "balance": 3.94
     }
   ]
 }
