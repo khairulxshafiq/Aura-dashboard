@@ -1,16 +1,16 @@
 {
-  "generated_at": "2026-08-16 11:22:12",
+  "generated_at": "2026-08-16 11:38:14",
   "system": {
     "ram_total_mb": 1967,
     "ram_used_mb": 608,
     "ram_used_pct": 30.9,
     "ram_used": "608MB / 1967MB",
-    "cpu_load": "0.00 0.00 0.00",
-    "cpu_pct": 0.0,
+    "cpu_load": "1.02 0.51 0.19",
+    "cpu_pct": 51.0,
     "disk_used": "26%",
     "disk_pct": 24.7,
-    "uptime": "4h 12j 41m",
-    "uptime_detail": "391281s"
+    "uptime": "4h 12j 57m",
+    "uptime_detail": "392244s"
   },
   "services": [
     {
@@ -23,7 +23,7 @@
     {
       "name": "Agent (CLI sesi)",
       "status": "running",
-      "pid": "1540185",
+      "pid": "1543971",
       "mem": "?",
       "cpu": "?"
     }
