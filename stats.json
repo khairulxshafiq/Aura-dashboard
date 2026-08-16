@@ -1,16 +1,16 @@
 {
-  "generated_at": "2026-08-16 20:10:59",
+  "generated_at": "2026-08-16 20:26:59",
   "system": {
     "ram_total_mb": 1967,
-    "ram_used_mb": 1166,
-    "ram_used_pct": 59.3,
-    "ram_used": "1166MB / 1967MB",
-    "cpu_load": "0.00 0.11 0.18",
+    "ram_used_mb": 1094,
+    "ram_used_pct": 55.6,
+    "ram_used": "1094MB / 1967MB",
+    "cpu_load": "0.00 0.02 0.07",
     "cpu_pct": 0.0,
     "disk_used": "31%",
     "disk_pct": 29.0,
-    "uptime": "4h 21j 30m",
-    "uptime_detail": "423008s"
+    "uptime": "4h 21j 46m",
+    "uptime_detail": "423968s"
   },
   "services": [
     {
@@ -110,60 +110,60 @@
   ],
   "calls": [
     {
-      "time": "2026-08-16 20:06:01",
+      "time": "2026-08-16 20:18:08",
       "platform": "agent",
       "model": "deepseek-v4-flash",
-      "tokens": "294,098 in / 803 out",
-      "latency": "7.9s"
+      "tokens": "310,650 in / 1,524 out",
+      "latency": "17.8s"
     },
     {
-      "time": "2026-08-16 20:04:15",
+      "time": "2026-08-16 20:17:50",
       "platform": "agent",
       "model": "deepseek-v4-flash",
-      "tokens": "293,280 in / 473 out",
-      "latency": "5.3s"
+      "tokens": "306,005 in / 1,411 out",
+      "latency": "16.9s"
     },
     {
-      "time": "2026-08-16 20:04:09",
+      "time": "2026-08-16 20:17:10",
       "platform": "agent",
       "model": "deepseek-v4-flash",
-      "tokens": "292,435 in / 766 out",
-      "latency": "7.1s"
+      "tokens": "308,322 in / 220 out",
+      "latency": "5.1s"
     },
     {
-      "time": "2026-08-16 20:03:58",
+      "time": "2026-08-16 20:17:05",
       "platform": "agent",
       "model": "deepseek-v4-flash",
-      "tokens": "291,720 in / 585 out",
-      "latency": "5.4s"
+      "tokens": "308,027 in / 219 out",
+      "latency": "3.4s"
     },
     {
-      "time": "2026-08-16 20:03:52",
+      "time": "2026-08-16 20:17:01",
       "platform": "agent",
       "model": "deepseek-v4-flash",
-      "tokens": "291,151 in / 515 out",
-      "latency": "5.9s"
+      "tokens": "306,094 in / 1,430 out",
+      "latency": "14.8s"
     },
     {
-      "time": "2026-08-16 20:03:39",
+      "time": "2026-08-16 20:16:46",
       "platform": "agent",
       "model": "deepseek-v4-flash",
-      "tokens": "289,811 in / 1,150 out",
-      "latency": "8.9s"
+      "tokens": "305,832 in / 144 out",
+      "latency": "3.3s"
     },
     {
-      "time": "2026-08-16 20:03:22",
+      "time": "2026-08-16 20:15:41",
       "platform": "agent",
       "model": "deepseek-v4-flash",
-      "tokens": "288,592 in / 1,118 out",
-      "latency": "10.6s"
+      "tokens": "304,497 in / 1,313 out",
+      "latency": "13.4s"
     },
     {
-      "time": "2026-08-16 20:03:07",
+      "time": "2026-08-16 20:15:20",
       "platform": "agent",
       "model": "deepseek-v4-flash",
-      "tokens": "287,589 in / 644 out",
-      "latency": "7.7s"
+      "tokens": "314,059 in / 477 out",
+      "latency": "5.1s"
     }
   ],
   "tools": [
@@ -383,29 +383,29 @@
   },
   "deepseek_balance": {
     "status": "ok",
-    "total": "4.05",
+    "total": "4.02",
     "currency": "USD",
-    "topped_up": "4.05",
+    "topped_up": "4.02",
     "granted": "0.00",
     "is_available": true
   },
   "tokens": {
-    "in_avg": "180,353 tok",
-    "out_avg": "715 tok",
+    "in_avg": "182,543 tok",
+    "out_avg": "719 tok",
     "lat_avg": "10.5s",
-    "calls_total": 1266,
-    "in_total": 228328032,
-    "out_total": 905320,
-    "est_cost_usd": 1.8518
+    "calls_total": 1289,
+    "in_total": 235299166,
+    "out_total": 927676,
+    "est_cost_usd": 1.9068
   },
   "history": [
     {
       "date": "2026-08-16",
-      "est_cost_usd": 1.8518,
-      "calls": 1266,
-      "in_total": 228328032,
-      "out_total": 905320,
-      "balance": 4.05
+      "est_cost_usd": 1.9068,
+      "calls": 1289,
+      "in_total": 235299166,
+      "out_total": 927676,
+      "balance": 4.02
     }
   ]
 }
