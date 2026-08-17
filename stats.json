@@ -1,16 +1,16 @@
 {
-  "generated_at": "2026-08-17 12:58:56",
+  "generated_at": "2026-08-17 13:14:57",
   "system": {
     "ram_total_mb": 1967,
-    "ram_used_mb": 838,
-    "ram_used_pct": 42.6,
-    "ram_used": "838MB / 1967MB",
-    "cpu_load": "0.39 0.20 0.19",
-    "cpu_pct": 19.5,
+    "ram_used_mb": 825,
+    "ram_used_pct": 41.9,
+    "ram_used": "825MB / 1967MB",
+    "cpu_load": "0.09 0.06 0.10",
+    "cpu_pct": 4.5,
     "disk_used": "36%",
     "disk_pct": 33.9,
-    "uptime": "5h 14j 18m",
-    "uptime_detail": "483486s"
+    "uptime": "5h 14j 34m",
+    "uptime_detail": "484446s"
   },
   "services": [
     {
@@ -23,7 +23,7 @@
     {
       "name": "Agent (CLI sesi)",
       "status": "running",
-      "pid": "1956588",
+      "pid": "1960704",
       "mem": "?",
       "cpu": "?"
     }
@@ -383,9 +383,9 @@
   },
   "deepseek_balance": {
     "status": "ok",
-    "total": "2.06",
+    "total": "2.05",
     "currency": "USD",
-    "topped_up": "2.06",
+    "topped_up": "2.05",
     "granted": "0.00",
     "is_available": true
   },
@@ -413,7 +413,7 @@
       "calls": 1985,
       "in_total": 411028284,
       "out_total": 1393036,
-      "balance": 2.06
+      "balance": 2.05
     }
   ]
 }
