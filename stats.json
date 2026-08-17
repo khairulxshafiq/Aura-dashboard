@@ -1,29 +1,29 @@
 {
-  "generated_at": "2026-08-17 13:46:57",
+  "generated_at": "2026-08-17 14:02:57",
   "system": {
     "ram_total_mb": 1967,
-    "ram_used_mb": 826,
-    "ram_used_pct": 42.0,
-    "ram_used": "826MB / 1967MB",
-    "cpu_load": "0.57 0.28 0.14",
-    "cpu_pct": 28.5,
+    "ram_used_mb": 832,
+    "ram_used_pct": 42.3,
+    "ram_used": "832MB / 1967MB",
+    "cpu_load": "0.17 0.26 0.20",
+    "cpu_pct": 8.5,
     "disk_used": "36%",
     "disk_pct": 33.9,
-    "uptime": "5h 15j 6m",
-    "uptime_detail": "486366s"
+    "uptime": "5h 15j 22m",
+    "uptime_detail": "487326s"
   },
   "services": [
     {
       "name": "Gateway (telegram)",
       "status": "running",
       "pid": "1743855",
-      "mem": "317MB",
+      "mem": "316MB",
       "cpu": "0.7%"
     },
     {
       "name": "Agent (CLI sesi)",
       "status": "running",
-      "pid": "1968928",
+      "pid": "1973023",
       "mem": "?",
       "cpu": "?"
     }
