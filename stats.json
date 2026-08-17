@@ -1,29 +1,29 @@
 {
-  "generated_at": "2026-08-17 12:26:56",
+  "generated_at": "2026-08-17 12:42:56",
   "system": {
     "ram_total_mb": 1967,
-    "ram_used_mb": 809,
-    "ram_used_pct": 41.1,
-    "ram_used": "809MB / 1967MB",
-    "cpu_load": "0.19 0.11 0.08",
-    "cpu_pct": 9.5,
+    "ram_used_mb": 838,
+    "ram_used_pct": 42.6,
+    "ram_used": "838MB / 1967MB",
+    "cpu_load": "0.33 0.26 0.19",
+    "cpu_pct": 16.5,
     "disk_used": "36%",
     "disk_pct": 33.9,
-    "uptime": "5h 13j 46m",
-    "uptime_detail": "481565s"
+    "uptime": "5h 14j 2m",
+    "uptime_detail": "482525s"
   },
   "services": [
     {
       "name": "Gateway (telegram)",
       "status": "running",
       "pid": "1743855",
-      "mem": "289MB",
+      "mem": "304MB",
       "cpu": "0.7%"
     },
     {
       "name": "Agent (CLI sesi)",
       "status": "running",
-      "pid": "1948265",
+      "pid": "1952444",
       "mem": "?",
       "cpu": "?"
     }
@@ -110,6 +110,41 @@
   ],
   "calls": [
     {
+      "time": "2026-08-17 12:34:45",
+      "platform": "agent",
+      "model": "deepseek-v4-flash",
+      "tokens": "370,685 in / 751 out",
+      "latency": "9.1s"
+    },
+    {
+      "time": "2026-08-17 12:34:35",
+      "platform": "agent",
+      "model": "deepseek-v4-flash",
+      "tokens": "369,801 in / 264 out",
+      "latency": "3.8s"
+    },
+    {
+      "time": "2026-08-17 12:34:29",
+      "platform": "agent",
+      "model": "deepseek-v4-flash",
+      "tokens": "368,264 in / 362 out",
+      "latency": "4.2s"
+    },
+    {
+      "time": "2026-08-17 12:34:25",
+      "platform": "agent",
+      "model": "deepseek-v4-flash",
+      "tokens": "368,046 in / 84 out",
+      "latency": "3.1s"
+    },
+    {
+      "time": "2026-08-17 12:34:19",
+      "platform": "agent",
+      "model": "deepseek-v4-flash",
+      "tokens": "366,599 in / 201 out",
+      "latency": "4.0s"
+    },
+    {
       "time": "2026-08-17 12:24:18",
       "platform": "agent",
       "model": "deepseek-v4-flash",
@@ -129,41 +164,6 @@
       "model": "deepseek-v4-flash",
       "tokens": "371,112 in / 2,229 out",
       "latency": "17.0s"
-    },
-    {
-      "time": "2026-08-17 12:23:43",
-      "platform": "agent",
-      "model": "deepseek-v4-flash",
-      "tokens": "366,698 in / 3,552 out",
-      "latency": "27.7s"
-    },
-    {
-      "time": "2026-08-17 12:23:15",
-      "platform": "agent",
-      "model": "deepseek-v4-flash",
-      "tokens": "365,468 in / 1,139 out",
-      "latency": "13.1s"
-    },
-    {
-      "time": "2026-08-17 12:23:01",
-      "platform": "agent",
-      "model": "deepseek-v4-flash",
-      "tokens": "364,597 in / 595 out",
-      "latency": "6.7s"
-    },
-    {
-      "time": "2026-08-17 12:20:42",
-      "platform": "agent",
-      "model": "deepseek-v4-flash",
-      "tokens": "363,883 in / 692 out",
-      "latency": "8.8s"
-    },
-    {
-      "time": "2026-08-17 12:20:33",
-      "platform": "agent",
-      "model": "deepseek-v4-flash",
-      "tokens": "363,536 in / 184 out",
-      "latency": "3.7s"
     }
   ],
   "tools": [
@@ -383,20 +383,20 @@
   },
   "deepseek_balance": {
     "status": "ok",
-    "total": "2.15",
+    "total": "2.12",
     "currency": "USD",
-    "topped_up": "2.15",
+    "topped_up": "2.12",
     "granted": "0.00",
     "is_available": true
   },
   "tokens": {
-    "in_avg": "204,657 tok",
-    "out_avg": "700 tok",
+    "in_avg": "205,074 tok",
+    "out_avg": "699 tok",
     "lat_avg": "9.4s",
-    "calls_total": 1958,
-    "in_total": 400718517,
-    "out_total": 1371805,
-    "est_cost_usd": 3.1891
+    "calls_total": 1963,
+    "in_total": 402561912,
+    "out_total": 1373467,
+    "est_cost_usd": 3.2025
   },
   "history": [
     {
@@ -409,11 +409,11 @@
     },
     {
       "date": "2026-08-17",
-      "est_cost_usd": 3.1891,
-      "calls": 1958,
-      "in_total": 400718517,
-      "out_total": 1371805,
-      "balance": 2.15
+      "est_cost_usd": 3.2025,
+      "calls": 1963,
+      "in_total": 402561912,
+      "out_total": 1373467,
+      "balance": 2.12
     }
   ]
 }
