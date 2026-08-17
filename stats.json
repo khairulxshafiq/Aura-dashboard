@@ -1,29 +1,29 @@
 {
-  "generated_at": "2026-08-17 23:54:42",
+  "generated_at": "2026-08-18 00:10:43",
   "system": {
     "ram_total_mb": 1967,
-    "ram_used_mb": 642,
-    "ram_used_pct": 32.6,
-    "ram_used": "642MB / 1967MB",
-    "cpu_load": "1.15 0.49 0.32",
-    "cpu_pct": 57.5,
+    "ram_used_mb": 637,
+    "ram_used_pct": 32.4,
+    "ram_used": "637MB / 1967MB",
+    "cpu_load": "0.05 0.18 0.23",
+    "cpu_pct": 2.5,
     "disk_used": "36%",
-    "disk_pct": 34.1,
-    "uptime": "6h 1j 13m",
-    "uptime_detail": "522832s"
+    "disk_pct": 34.2,
+    "uptime": "6h 1j 29m",
+    "uptime_detail": "523792s"
   },
   "services": [
     {
       "name": "Gateway (telegram)",
       "status": "running",
       "pid": "2115926",
-      "mem": "141MB",
+      "mem": "142MB",
       "cpu": "0.4%"
     },
     {
       "name": "Agent (CLI sesi)",
       "status": "running",
-      "pid": "2128781",
+      "pid": "2133226",
       "mem": "?",
       "cpu": "?"
     }
@@ -409,6 +409,14 @@
     },
     {
       "date": "2026-08-17",
+      "est_cost_usd": 3.6299,
+      "calls": 2150,
+      "in_total": 457075526,
+      "out_total": 1537203,
+      "balance": 1.51
+    },
+    {
+      "date": "2026-08-18",
       "est_cost_usd": 3.6299,
       "calls": 2150,
       "in_total": 457075526,
