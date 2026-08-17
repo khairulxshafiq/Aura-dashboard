@@ -1,29 +1,29 @@
 {
-  "generated_at": "2026-08-17 11:22:52",
+  "generated_at": "2026-08-17 11:38:54",
   "system": {
     "ram_total_mb": 1967,
-    "ram_used_mb": 707,
-    "ram_used_pct": 35.9,
-    "ram_used": "707MB / 1967MB",
-    "cpu_load": "0.07 0.17 0.19",
+    "ram_used_mb": 773,
+    "ram_used_pct": 39.3,
+    "ram_used": "773MB / 1967MB",
+    "cpu_load": "0.07 0.09 0.10",
     "cpu_pct": 3.5,
     "disk_used": "36%",
     "disk_pct": 33.9,
-    "uptime": "5h 12j 42m",
-    "uptime_detail": "477721s"
+    "uptime": "5h 12j 58m",
+    "uptime_detail": "478684s"
   },
   "services": [
     {
       "name": "Gateway (telegram)",
       "status": "running",
       "pid": "1743855",
-      "mem": "185MB",
+      "mem": "236MB",
       "cpu": "0.7%"
     },
     {
       "name": "Agent (CLI sesi)",
       "status": "running",
-      "pid": "1931288",
+      "pid": "1935532",
       "mem": "?",
       "cpu": "?"
     }
@@ -110,6 +110,27 @@
   ],
   "calls": [
     {
+      "time": "2026-08-17 11:37:32",
+      "platform": "agent",
+      "model": "deepseek-v4-flash",
+      "tokens": "345,889 in / 1,644 out",
+      "latency": "16.4s"
+    },
+    {
+      "time": "2026-08-17 11:37:13",
+      "platform": "agent",
+      "model": "deepseek-v4-flash",
+      "tokens": "344,256 in / 837 out",
+      "latency": "9.5s"
+    },
+    {
+      "time": "2026-08-17 11:37:00",
+      "platform": "agent",
+      "model": "deepseek-v4-flash",
+      "tokens": "342,592 in / 341 out",
+      "latency": "5.7s"
+    },
+    {
       "time": "2026-08-17 01:47:14",
       "platform": "agent",
       "model": "deepseek-v4-flash",
@@ -143,27 +164,6 @@
       "model": "deepseek-v4-flash",
       "tokens": "318,113 in / 918 out",
       "latency": "9.3s"
-    },
-    {
-      "time": "2026-08-17 01:44:30",
-      "platform": "agent",
-      "model": "deepseek-v4-flash",
-      "tokens": "317,683 in / 268 out",
-      "latency": "4.3s"
-    },
-    {
-      "time": "2026-08-17 01:44:26",
-      "platform": "agent",
-      "model": "deepseek-v4-flash",
-      "tokens": "316,027 in / 48 out",
-      "latency": "2.3s"
-    },
-    {
-      "time": "2026-08-17 01:44:23",
-      "platform": "agent",
-      "model": "deepseek-v4-flash",
-      "tokens": "315,653 in / 280 out",
-      "latency": "4.6s"
     }
   ],
   "tools": [
@@ -390,13 +390,13 @@
     "is_available": true
   },
   "tokens": {
-    "in_avg": "201,326 tok",
-    "out_avg": "696 tok",
+    "in_avg": "201,550 tok",
+    "out_avg": "697 tok",
     "lat_avg": "9.4s",
-    "calls_total": 1918,
-    "in_total": 386145163,
-    "out_total": 1336371,
-    "est_cost_usd": 3.0772
+    "calls_total": 1921,
+    "in_total": 387177900,
+    "out_total": 1339193,
+    "est_cost_usd": 3.0852
   },
   "history": [
     {
@@ -409,10 +409,10 @@
     },
     {
       "date": "2026-08-17",
-      "est_cost_usd": 3.0772,
-      "calls": 1918,
-      "in_total": 386145163,
-      "out_total": 1336371,
+      "est_cost_usd": 3.0852,
+      "calls": 1921,
+      "in_total": 387177900,
+      "out_total": 1339193,
       "balance": 2.3
     }
   ]
