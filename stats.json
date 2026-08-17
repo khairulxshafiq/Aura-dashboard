@@ -1,23 +1,23 @@
 {
-  "generated_at": "2026-08-17 23:07:10",
+  "generated_at": "2026-08-17 23:22:42",
   "system": {
     "ram_total_mb": 1967,
-    "ram_used_mb": 1059,
-    "ram_used_pct": 53.8,
-    "ram_used": "1059MB / 1967MB",
-    "cpu_load": "0.14 0.13 0.10",
-    "cpu_pct": 7.0,
+    "ram_used_mb": 851,
+    "ram_used_pct": 43.3,
+    "ram_used": "851MB / 1967MB",
+    "cpu_load": "0.15 0.13 0.09",
+    "cpu_pct": 7.5,
     "disk_used": "36%",
-    "disk_pct": 34.0,
-    "uptime": "6h 0j 26m",
-    "uptime_detail": "519979s"
+    "disk_pct": 34.1,
+    "uptime": "6h 0j 41m",
+    "uptime_detail": "520911s"
   },
   "services": [
     {
       "name": "Gateway (telegram)",
       "status": "running",
-      "pid": "1743855",
-      "mem": "334MB",
+      "pid": "2115926",
+      "mem": "140MB",
       "cpu": "0.6%"
     },
     {
@@ -95,11 +95,11 @@
     }
   ],
   "model": {
-    "default": "deepseek-v4-flash",
-    "provider": "deepseek",
-    "fallback1": "gemini-3.5-flash (gemini)",
-    "fallback2": "llama-3.3-70b-versatile (groq)",
-    "cache_hit_pct": 97.6
+    "default": "glm-5.1",
+    "provider": "tokenhub",
+    "fallback1": "deepseek-v4-flash (deepseek)",
+    "fallback2": "gemini-3.5-flash (gemini)",
+    "cache_hit_pct": 97.5
   },
   "cron": [
     {
@@ -110,60 +110,60 @@
   ],
   "calls": [
     {
-      "time": "2026-08-17 23:07:00",
+      "time": "2026-08-17 23:22:39",
       "platform": "agent",
       "model": "deepseek-v4-flash",
-      "tokens": "336,770 in / 6,107 out",
-      "latency": "53.0s"
+      "tokens": "374,898 in / 276 out",
+      "latency": "5.2s"
     },
     {
-      "time": "2026-08-17 23:06:07",
+      "time": "2026-08-17 23:22:33",
       "platform": "agent",
       "model": "deepseek-v4-flash",
-      "tokens": "334,971 in / 526 out",
-      "latency": "7.0s"
+      "tokens": "373,024 in / 117 out",
+      "latency": "4.0s"
     },
     {
-      "time": "2026-08-17 23:06:00",
+      "time": "2026-08-17 23:22:29",
       "platform": "agent",
       "model": "deepseek-v4-flash",
-      "tokens": "334,146 in / 749 out",
-      "latency": "7.5s"
+      "tokens": "371,674 in / 1,182 out",
+      "latency": "8.4s"
     },
     {
-      "time": "2026-08-17 23:05:53",
+      "time": "2026-08-17 23:22:21",
       "platform": "agent",
       "model": "deepseek-v4-flash",
-      "tokens": "332,254 in / 1,228 out",
-      "latency": "11.0s"
+      "tokens": "370,411 in / 1,183 out",
+      "latency": "8.4s"
     },
     {
-      "time": "2026-08-17 23:05:41",
-      "platform": "agent",
-      "model": "glm-5.1",
-      "tokens": "22,376 in / 55 out",
-      "latency": "7.4s"
-    },
-    {
-      "time": "2026-08-17 23:05:30",
+      "time": "2026-08-17 23:22:12",
       "platform": "agent",
       "model": "deepseek-v4-flash",
-      "tokens": "331,956 in / 161 out",
-      "latency": "3.8s"
+      "tokens": "366,282 in / 4,050 out",
+      "latency": "37.0s"
     },
     {
-      "time": "2026-08-17 23:05:23",
+      "time": "2026-08-17 23:21:35",
       "platform": "agent",
       "model": "deepseek-v4-flash",
-      "tokens": "331,380 in / 422 out",
-      "latency": "5.4s"
+      "tokens": "364,087 in / 592 out",
+      "latency": "8.7s"
     },
     {
-      "time": "2026-08-17 23:05:18",
+      "time": "2026-08-17 23:21:25",
       "platform": "agent",
       "model": "deepseek-v4-flash",
-      "tokens": "330,736 in / 584 out",
-      "latency": "6.2s"
+      "tokens": "363,883 in / 141 out",
+      "latency": "3.1s"
+    },
+    {
+      "time": "2026-08-17 23:21:21",
+      "platform": "agent",
+      "model": "deepseek-v4-flash",
+      "tokens": "363,545 in / 235 out",
+      "latency": "4.1s"
     }
   ],
   "tools": [
@@ -383,20 +383,20 @@
   },
   "deepseek_balance": {
     "status": "ok",
-    "total": "1.94",
+    "total": "1.71",
     "currency": "USD",
-    "topped_up": "1.94",
+    "topped_up": "1.71",
     "granted": "0.00",
     "is_available": true
   },
   "tokens": {
-    "in_avg": "205,441 tok",
-    "out_avg": "709 tok",
+    "in_avg": "208,814 tok",
+    "out_avg": "711 tok",
     "lat_avg": "9.4s",
-    "calls_total": 2053,
-    "in_total": 421771259,
-    "out_total": 1456993,
-    "est_cost_usd": 3.3604
+    "calls_total": 2103,
+    "in_total": 439137520,
+    "out_total": 1496432,
+    "est_cost_usd": 3.493
   },
   "history": [
     {
@@ -409,11 +409,11 @@
     },
     {
       "date": "2026-08-17",
-      "est_cost_usd": 3.3604,
-      "calls": 2053,
-      "in_total": 421771259,
-      "out_total": 1456993,
-      "balance": 1.94
+      "est_cost_usd": 3.493,
+      "calls": 2103,
+      "in_total": 439137520,
+      "out_total": 1496432,
+      "balance": 1.71
     }
   ]
 }
