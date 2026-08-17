@@ -1,29 +1,29 @@
 {
-  "generated_at": "2026-08-17 19:55:06",
+  "generated_at": "2026-08-17 20:11:08",
   "system": {
     "ram_total_mb": 1967,
-    "ram_used_mb": 833,
-    "ram_used_pct": 42.3,
-    "ram_used": "833MB / 1967MB",
-    "cpu_load": "0.72 0.17 0.12",
-    "cpu_pct": 36.0,
+    "ram_used_mb": 869,
+    "ram_used_pct": 44.2,
+    "ram_used": "869MB / 1967MB",
+    "cpu_load": "0.09 0.16 0.12",
+    "cpu_pct": 4.5,
     "disk_used": "36%",
     "disk_pct": 34.1,
-    "uptime": "5h 21j 14m",
-    "uptime_detail": "508455s"
+    "uptime": "5h 21j 30m",
+    "uptime_detail": "509417s"
   },
   "services": [
     {
       "name": "Gateway (telegram)",
       "status": "running",
       "pid": "1743855",
-      "mem": "317MB",
+      "mem": "342MB",
       "cpu": "0.6%"
     },
     {
       "name": "Agent (CLI sesi)",
       "status": "running",
-      "pid": "2063606",
+      "pid": "2068494",
       "mem": "?",
       "cpu": "?"
     }
@@ -110,60 +110,60 @@
   ],
   "calls": [
     {
-      "time": "2026-08-17 12:57:47",
+      "time": "2026-08-17 20:10:57",
       "platform": "agent",
       "model": "deepseek-v4-flash",
-      "tokens": "381,906 in / 443 out",
-      "latency": "7.0s"
+      "tokens": "50,918 in / 764 out",
+      "latency": "7.8s"
     },
     {
-      "time": "2026-08-17 12:57:39",
+      "time": "2026-08-17 20:10:49",
       "platform": "agent",
       "model": "deepseek-v4-flash",
-      "tokens": "381,021 in / 431 out",
-      "latency": "4.9s"
+      "tokens": "48,190 in / 2,467 out",
+      "latency": "22.7s"
     },
     {
-      "time": "2026-08-17 12:56:42",
+      "time": "2026-08-17 20:10:25",
       "platform": "agent",
       "model": "deepseek-v4-flash",
-      "tokens": "380,580 in / 392 out",
-      "latency": "6.3s"
+      "tokens": "46,826 in / 1,128 out",
+      "latency": "8.4s"
     },
     {
-      "time": "2026-08-17 12:56:07",
+      "time": "2026-08-17 20:10:15",
       "platform": "agent",
       "model": "deepseek-v4-flash",
-      "tokens": "379,836 in / 683 out",
-      "latency": "9.0s"
+      "tokens": "40,116 in / 5,435 out",
+      "latency": "50.8s"
     },
     {
-      "time": "2026-08-17 12:55:55",
+      "time": "2026-08-17 20:09:22",
       "platform": "agent",
       "model": "deepseek-v4-flash",
-      "tokens": "379,047 in / 91 out",
-      "latency": "2.9s"
+      "tokens": "38,848 in / 106 out",
+      "latency": "2.0s"
     },
     {
-      "time": "2026-08-17 12:55:48",
+      "time": "2026-08-17 20:09:16",
       "platform": "agent",
       "model": "deepseek-v4-flash",
-      "tokens": "377,671 in / 764 out",
-      "latency": "9.3s"
+      "tokens": "38,528 in / 142 out",
+      "latency": "2.0s"
     },
     {
-      "time": "2026-08-17 12:54:53",
+      "time": "2026-08-17 20:09:13",
       "platform": "agent",
       "model": "deepseek-v4-flash",
-      "tokens": "376,029 in / 1,626 out",
-      "latency": "15.7s"
+      "tokens": "38,075 in / 98 out",
+      "latency": "1.6s"
     },
     {
-      "time": "2026-08-17 12:51:56",
+      "time": "2026-08-17 20:09:10",
       "platform": "agent",
       "model": "deepseek-v4-flash",
-      "tokens": "374,085 in / 1,345 out",
-      "latency": "14.9s"
+      "tokens": "37,901 in / 128 out",
+      "latency": "2.1s"
     }
   ],
   "tools": [
@@ -390,13 +390,13 @@
     "is_available": true
   },
   "tokens": {
-    "in_avg": "207,067 tok",
-    "out_avg": "701 tok",
+    "in_avg": "205,889 tok",
+    "out_avg": "703 tok",
     "lat_avg": "9.4s",
-    "calls_total": 1985,
-    "in_total": 411028284,
-    "out_total": 1393036,
-    "est_cost_usd": 3.2672
+    "calls_total": 1999,
+    "in_total": 411573040,
+    "out_total": 1406080,
+    "est_cost_usd": 3.2747
   },
   "history": [
     {
@@ -409,10 +409,10 @@
     },
     {
       "date": "2026-08-17",
-      "est_cost_usd": 3.2672,
-      "calls": 1985,
-      "in_total": 411028284,
-      "out_total": 1393036,
+      "est_cost_usd": 3.2747,
+      "calls": 1999,
+      "in_total": 411573040,
+      "out_total": 1406080,
       "balance": 2.05
     }
   ]
