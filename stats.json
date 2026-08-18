@@ -1,16 +1,16 @@
 {
-  "generated_at": "2026-08-18 10:34:50",
+  "generated_at": "2026-08-18 10:50:50",
   "system": {
     "ram_total_mb": 1967,
-    "ram_used_mb": 864,
-    "ram_used_pct": 43.9,
-    "ram_used": "864MB / 1967MB",
-    "cpu_load": "0.81 0.32 0.21",
-    "cpu_pct": 40.5,
+    "ram_used_mb": 879,
+    "ram_used_pct": 44.7,
+    "ram_used": "879MB / 1967MB",
+    "cpu_load": "0.69 0.27 0.19",
+    "cpu_pct": 34.5,
     "disk_used": "36%",
-    "disk_pct": 34.3,
-    "uptime": "6h 11j 53m",
-    "uptime_detail": "561239s"
+    "disk_pct": 34.2,
+    "uptime": "6h 12j 9m",
+    "uptime_detail": "562199s"
   },
   "services": [
     {
@@ -110,6 +110,13 @@
   ],
   "calls": [
     {
+      "time": "2026-08-18 10:45:01",
+      "platform": "agent",
+      "model": "glm-5.1",
+      "tokens": "68,678 in / 802 out",
+      "latency": "31.3s"
+    },
+    {
       "time": "2026-08-18 10:31:44",
       "platform": "agent",
       "model": "glm-5.1",
@@ -157,13 +164,6 @@
       "model": "glm-5.1",
       "tokens": "72,272 in / 337 out",
       "latency": "17.4s"
-    },
-    {
-      "time": "2026-08-18 10:25:49",
-      "platform": "agent",
-      "model": "glm-5.1",
-      "tokens": "65,772 in / 189 out",
-      "latency": "12.4s"
     }
   ],
   "tools": [
@@ -390,13 +390,13 @@
     "is_available": true
   },
   "tokens": {
-    "in_avg": "210,554 tok",
+    "in_avg": "210,489 tok",
     "out_avg": "709 tok",
     "lat_avg": "9.5s",
-    "calls_total": 2180,
-    "in_total": 459009620,
-    "out_total": 1546848,
-    "est_cost_usd": 3.6462
+    "calls_total": 2181,
+    "in_total": 459078298,
+    "out_total": 1547650,
+    "est_cost_usd": 3.6469
   },
   "history": [
     {
@@ -417,10 +417,10 @@
     },
     {
       "date": "2026-08-18",
-      "est_cost_usd": 3.6462,
-      "calls": 2180,
-      "in_total": 459009620,
-      "out_total": 1546848,
+      "est_cost_usd": 3.6469,
+      "calls": 2181,
+      "in_total": 459078298,
+      "out_total": 1547650,
       "balance": 1.51
     }
   ]
