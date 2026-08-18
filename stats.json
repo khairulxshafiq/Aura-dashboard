@@ -1,29 +1,29 @@
 {
-  "generated_at": "2026-08-18 22:51:16",
+  "generated_at": "2026-08-18 23:07:18",
   "system": {
     "ram_total_mb": 1967,
-    "ram_used_mb": 798,
-    "ram_used_pct": 40.6,
-    "ram_used": "798MB / 1967MB",
-    "cpu_load": "0.54 0.54 0.33",
-    "cpu_pct": 27.0,
+    "ram_used_mb": 972,
+    "ram_used_pct": 49.4,
+    "ram_used": "972MB / 1967MB",
+    "cpu_load": "0.02 0.08 0.19",
+    "cpu_pct": 1.0,
     "disk_used": "39%",
     "disk_pct": 36.6,
-    "uptime": "7h 0j 10m",
-    "uptime_detail": "605425s"
+    "uptime": "7h 0j 26m",
+    "uptime_detail": "606387s"
   },
   "services": [
     {
       "name": "Gateway (telegram)",
       "status": "running",
       "pid": "2115926",
-      "mem": "255MB",
+      "mem": "260MB",
       "cpu": "0.4%"
     },
     {
       "name": "Agent (CLI sesi)",
       "status": "running",
-      "pid": "2487408",
+      "pid": "2488409",
       "mem": "?",
       "cpu": "?"
     }
@@ -99,7 +99,7 @@
     "provider": "tokenhub",
     "fallback1": "deepseek-v4-flash (deepseek)",
     "fallback2": "gemini-3.5-flash (gemini)",
-    "cache_hit_pct": 87.7
+    "cache_hit_pct": 89.6
   },
   "cron": [
     {
@@ -109,6 +109,48 @@
     }
   ],
   "calls": [
+    {
+      "time": "2026-08-18 23:04:05",
+      "platform": "agent",
+      "model": "glm-5.1",
+      "tokens": "47,812 in / 22 out",
+      "latency": "3.5s"
+    },
+    {
+      "time": "2026-08-18 23:04:01",
+      "platform": "agent",
+      "model": "glm-5.1",
+      "tokens": "47,592 in / 406 out",
+      "latency": "18.3s"
+    },
+    {
+      "time": "2026-08-18 23:03:43",
+      "platform": "agent",
+      "model": "glm-5.1",
+      "tokens": "47,384 in / 123 out",
+      "latency": "8.0s"
+    },
+    {
+      "time": "2026-08-18 23:03:15",
+      "platform": "agent",
+      "model": "glm-5.1",
+      "tokens": "47,063 in / 204 out",
+      "latency": "10.6s"
+    },
+    {
+      "time": "2026-08-18 23:02:54",
+      "platform": "agent",
+      "model": "glm-5.1",
+      "tokens": "46,838 in / 402 out",
+      "latency": "18.9s"
+    },
+    {
+      "time": "2026-08-18 23:02:22",
+      "platform": "agent",
+      "model": "glm-5.1",
+      "tokens": "46,578 in / 403 out",
+      "latency": "14.5s"
+    },
     {
       "time": "2026-08-18 17:12:41",
       "platform": "agent",
@@ -122,48 +164,6 @@
       "model": "glm-5.1",
       "tokens": "59,228 in / 349 out",
       "latency": "16.7s"
-    },
-    {
-      "time": "2026-08-18 17:12:10",
-      "platform": "agent",
-      "model": "glm-5.1",
-      "tokens": "58,258 in / 839 out",
-      "latency": "34.4s"
-    },
-    {
-      "time": "2026-08-18 17:11:36",
-      "platform": "agent",
-      "model": "glm-5.1",
-      "tokens": "53,993 in / 14 out",
-      "latency": "5.5s"
-    },
-    {
-      "time": "2026-08-18 17:11:30",
-      "platform": "agent",
-      "model": "glm-5.1",
-      "tokens": "51,331 in / 17 out",
-      "latency": "6.7s"
-    },
-    {
-      "time": "2026-08-18 17:11:23",
-      "platform": "agent",
-      "model": "glm-5.1",
-      "tokens": "47,824 in / 1,432 out",
-      "latency": "53.1s"
-    },
-    {
-      "time": "2026-08-18 17:10:30",
-      "platform": "agent",
-      "model": "glm-5.1",
-      "tokens": "45,747 in / 515 out",
-      "latency": "21.0s"
-    },
-    {
-      "time": "2026-08-18 17:10:08",
-      "platform": "agent",
-      "model": "glm-5.1",
-      "tokens": "45,204 in / 298 out",
-      "latency": "15.0s"
     }
   ],
   "tools": [
@@ -390,13 +390,13 @@
     "is_available": true
   },
   "tokens": {
-    "in_avg": "45,395 tok",
+    "in_avg": "45,747 tok",
     "out_avg": "261 tok",
-    "lat_avg": "13.7s",
-    "calls_total": 25,
-    "in_total": 1134895,
-    "out_total": 6541,
-    "est_cost_usd": 0.0098
+    "lat_avg": "13.4s",
+    "calls_total": 31,
+    "in_total": 1418162,
+    "out_total": 8101,
+    "est_cost_usd": 0.0122
   },
   "history": [
     {
@@ -417,10 +417,10 @@
     },
     {
       "date": "2026-08-18",
-      "est_cost_usd": 0.0098,
-      "calls": 25,
-      "in_total": 1134895,
-      "out_total": 6541,
+      "est_cost_usd": 0.0122,
+      "calls": 31,
+      "in_total": 1418162,
+      "out_total": 8101,
       "balance": 1.44
     }
   ]
