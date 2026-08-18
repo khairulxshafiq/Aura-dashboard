@@ -1,29 +1,29 @@
 {
-  "generated_at": "2026-08-18 14:18:55",
+  "generated_at": "2026-08-18 14:34:55",
   "system": {
     "ram_total_mb": 1967,
-    "ram_used_mb": 797,
-    "ram_used_pct": 40.5,
-    "ram_used": "797MB / 1967MB",
-    "cpu_load": "0.07 0.18 0.14",
-    "cpu_pct": 3.5,
+    "ram_used_mb": 792,
+    "ram_used_pct": 40.3,
+    "ram_used": "792MB / 1967MB",
+    "cpu_load": "0.13 0.12 0.09",
+    "cpu_pct": 6.5,
     "disk_used": "36%",
-    "disk_pct": 34.3,
-    "uptime": "6h 15j 38m",
-    "uptime_detail": "574684s"
+    "disk_pct": 34.1,
+    "uptime": "6h 15j 54m",
+    "uptime_detail": "575644s"
   },
   "services": [
     {
       "name": "Gateway (telegram)",
       "status": "running",
       "pid": "2115926",
-      "mem": "287MB",
+      "mem": "285MB",
       "cpu": "0.4%"
     },
     {
       "name": "Agent (CLI sesi)",
       "status": "running",
-      "pid": "2354151",
+      "pid": "2358891",
       "mem": "?",
       "cpu": "?"
     }
@@ -110,60 +110,60 @@
   ],
   "calls": [
     {
-      "time": "2026-08-18 14:17:32",
+      "time": "2026-08-18 14:34:47",
       "platform": "agent",
       "model": "glm-5.1",
-      "tokens": "94,308 in / 893 out",
-      "latency": "37.3s"
+      "tokens": "109,517 in / 322 out",
+      "latency": "16.1s"
     },
     {
-      "time": "2026-08-18 14:16:37",
+      "time": "2026-08-18 14:34:31",
       "platform": "agent",
       "model": "glm-5.1",
-      "tokens": "93,786 in / 197 out",
-      "latency": "12.5s"
+      "tokens": "108,849 in / 604 out",
+      "latency": "24.4s"
     },
     {
-      "time": "2026-08-18 14:15:48",
+      "time": "2026-08-18 14:34:07",
       "platform": "agent",
       "model": "glm-5.1",
-      "tokens": "91,355 in / 1,665 out",
-      "latency": "53.8s"
+      "tokens": "107,319 in / 147 out",
+      "latency": "10.4s"
     },
     {
-      "time": "2026-08-18 14:13:11",
+      "time": "2026-08-18 14:33:56",
       "platform": "agent",
       "model": "glm-5.1",
-      "tokens": "90,521 in / 814 out",
-      "latency": "30.6s"
+      "tokens": "105,771 in / 996 out",
+      "latency": "37.9s"
     },
     {
-      "time": "2026-08-18 14:12:29",
+      "time": "2026-08-18 14:33:18",
       "platform": "agent",
       "model": "glm-5.1",
-      "tokens": "89,339 in / 705 out",
-      "latency": "25.4s"
+      "tokens": "103,935 in / 291 out",
+      "latency": "19.6s"
     },
     {
-      "time": "2026-08-18 14:11:51",
+      "time": "2026-08-18 14:32:44",
       "platform": "agent",
       "model": "glm-5.1",
-      "tokens": "87,679 in / 1,531 out",
-      "latency": "50.4s"
+      "tokens": "103,739 in / 125 out",
+      "latency": "9.9s"
     },
     {
-      "time": "2026-08-18 14:09:00",
+      "time": "2026-08-18 14:32:30",
       "platform": "agent",
       "model": "glm-5.1",
-      "tokens": "87,211 in / 883 out",
-      "latency": "37.4s"
+      "tokens": "103,659 in / 32 out",
+      "latency": "7.3s"
     },
     {
-      "time": "2026-08-18 14:05:32",
+      "time": "2026-08-18 14:32:22",
       "platform": "agent",
       "model": "glm-5.1",
-      "tokens": "86,850 in / 303 out",
-      "latency": "15.9s"
+      "tokens": "103,512 in / 73 out",
+      "latency": "7.0s"
     }
   ],
   "tools": [
@@ -390,13 +390,13 @@
     "is_available": true
   },
   "tokens": {
-    "in_avg": "208,313 tok",
-    "out_avg": "705 tok",
+    "in_avg": "206,742 tok",
+    "out_avg": "697 tok",
     "lat_avg": "9.6s",
-    "calls_total": 2224,
-    "in_total": 463289417,
-    "out_total": 1569646,
-    "est_cost_usd": 3.6825
+    "calls_total": 2257,
+    "in_total": 466618458,
+    "out_total": 1574773,
+    "est_cost_usd": 3.7073
   },
   "history": [
     {
@@ -417,10 +417,10 @@
     },
     {
       "date": "2026-08-18",
-      "est_cost_usd": 3.6825,
-      "calls": 2224,
-      "in_total": 463289417,
-      "out_total": 1569646,
+      "est_cost_usd": 3.7073,
+      "calls": 2257,
+      "in_total": 466618458,
+      "out_total": 1574773,
       "balance": 1.44
     }
   ]
