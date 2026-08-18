@@ -1,29 +1,29 @@
 {
-  "generated_at": "2026-08-18 14:50:55",
+  "generated_at": "2026-08-18 15:06:56",
   "system": {
     "ram_total_mb": 1967,
-    "ram_used_mb": 772,
-    "ram_used_pct": 39.2,
-    "ram_used": "772MB / 1967MB",
-    "cpu_load": "0.05 0.07 0.08",
-    "cpu_pct": 2.5,
+    "ram_used_mb": 763,
+    "ram_used_pct": 38.8,
+    "ram_used": "763MB / 1967MB",
+    "cpu_load": "0.08 0.29 0.23",
+    "cpu_pct": 4.0,
     "disk_used": "36%",
     "disk_pct": 34.2,
-    "uptime": "6h 16j 10m",
-    "uptime_detail": "576605s"
+    "uptime": "6h 16j 26m",
+    "uptime_detail": "577565s"
   },
   "services": [
     {
       "name": "Gateway (telegram)",
       "status": "running",
       "pid": "2115926",
-      "mem": "279MB",
+      "mem": "276MB",
       "cpu": "0.4%"
     },
     {
       "name": "Agent (CLI sesi)",
       "status": "running",
-      "pid": "2363055",
+      "pid": "2367156",
       "mem": "?",
       "cpu": "?"
     }
@@ -110,6 +110,13 @@
   ],
   "calls": [
     {
+      "time": "2026-08-18 15:03:24",
+      "platform": "agent",
+      "model": "glm-5.1",
+      "tokens": "105,170 in / 334 out",
+      "latency": "18.0s"
+    },
+    {
       "time": "2026-08-18 14:38:42",
       "platform": "agent",
       "model": "glm-5.1",
@@ -157,13 +164,6 @@
       "model": "glm-5.1",
       "tokens": "111,691 in / 90 out",
       "latency": "9.2s"
-    },
-    {
-      "time": "2026-08-18 14:35:19",
-      "platform": "agent",
-      "model": "glm-5.1",
-      "tokens": "111,291 in / 325 out",
-      "latency": "16.9s"
     }
   ],
   "tools": [
@@ -390,13 +390,13 @@
     "is_available": true
   },
   "tokens": {
-    "in_avg": "206,350 tok",
-    "out_avg": "696 tok",
+    "in_avg": "206,306 tok",
+    "out_avg": "695 tok",
     "lat_avg": "9.6s",
-    "calls_total": 2266,
-    "in_total": 467590768,
-    "out_total": 1577348,
-    "est_cost_usd": 3.7148
+    "calls_total": 2267,
+    "in_total": 467695938,
+    "out_total": 1577682,
+    "est_cost_usd": 3.7156
   },
   "history": [
     {
@@ -417,10 +417,10 @@
     },
     {
       "date": "2026-08-18",
-      "est_cost_usd": 3.7148,
-      "calls": 2266,
-      "in_total": 467590768,
-      "out_total": 1577348,
+      "est_cost_usd": 3.7156,
+      "calls": 2267,
+      "in_total": 467695938,
+      "out_total": 1577682,
       "balance": 1.44
     }
   ]
