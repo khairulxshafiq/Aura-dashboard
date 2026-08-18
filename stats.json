@@ -1,29 +1,29 @@
 {
-  "generated_at": "2026-08-18 15:22:56",
+  "generated_at": "2026-08-18 15:38:56",
   "system": {
     "ram_total_mb": 1967,
-    "ram_used_mb": 788,
-    "ram_used_pct": 40.1,
-    "ram_used": "788MB / 1967MB",
-    "cpu_load": "0.02 0.08 0.14",
-    "cpu_pct": 1.0,
+    "ram_used_mb": 768,
+    "ram_used_pct": 39.0,
+    "ram_used": "768MB / 1967MB",
+    "cpu_load": "0.03 0.03 0.07",
+    "cpu_pct": 1.5,
     "disk_used": "36%",
     "disk_pct": 34.2,
-    "uptime": "6h 16j 42m",
-    "uptime_detail": "578525s"
+    "uptime": "6h 16j 58m",
+    "uptime_detail": "579485s"
   },
   "services": [
     {
       "name": "Gateway (telegram)",
       "status": "running",
       "pid": "2115926",
-      "mem": "280MB",
+      "mem": "278MB",
       "cpu": "0.4%"
     },
     {
       "name": "Agent (CLI sesi)",
       "status": "running",
-      "pid": "2371364",
+      "pid": "2375583",
       "mem": "?",
       "cpu": "?"
     }
@@ -99,7 +99,7 @@
     "provider": "tokenhub",
     "fallback1": "deepseek-v4-flash (deepseek)",
     "fallback2": "gemini-3.5-flash (gemini)",
-    "cache_hit_pct": 97.3
+    "cache_hit_pct": null
   },
   "cron": [
     {
@@ -108,64 +108,7 @@
       "status": "active"
     }
   ],
-  "calls": [
-    {
-      "time": "2026-08-18 15:22:36",
-      "platform": "agent",
-      "model": "glm-5.1",
-      "tokens": "28,242 in / 100 out",
-      "latency": "12.6s"
-    },
-    {
-      "time": "2026-08-18 15:22:11",
-      "platform": "agent",
-      "model": "glm-5.1",
-      "tokens": "28,143 in / 64 out",
-      "latency": "8.4s"
-    },
-    {
-      "time": "2026-08-18 15:22:03",
-      "platform": "agent",
-      "model": "glm-5.1",
-      "tokens": "28,085 in / 23 out",
-      "latency": "4.6s"
-    },
-    {
-      "time": "2026-08-18 15:21:37",
-      "platform": "agent",
-      "model": "glm-5.1",
-      "tokens": "27,967 in / 74 out",
-      "latency": "9.0s"
-    },
-    {
-      "time": "2026-08-18 15:21:28",
-      "platform": "agent",
-      "model": "glm-5.1",
-      "tokens": "27,918 in / 23 out",
-      "latency": "7.3s"
-    },
-    {
-      "time": "2026-08-18 15:21:21",
-      "platform": "agent",
-      "model": "glm-5.1",
-      "tokens": "27,858 in / 165 out",
-      "latency": "11.0s"
-    },
-    {
-      "time": "2026-08-18 15:21:09",
-      "platform": "agent",
-      "model": "glm-5.1",
-      "tokens": "26,787 in / 26 out",
-      "latency": "4.7s"
-    },
-    {
-      "time": "2026-08-18 15:21:05",
-      "platform": "agent",
-      "model": "glm-5.1",
-      "tokens": "23,137 in / 189 out",
-      "latency": "12.1s"
-    }
-  ],
+  "calls": [],
   "tools": [
     [
       "Exa Search (MCP)",
@@ -390,13 +333,13 @@
     "is_available": true
   },
   "tokens": {
-    "in_avg": "205,632 tok",
-    "out_avg": "693 tok",
-    "lat_avg": "9.6s",
-    "calls_total": 2276,
-    "in_total": 468019521,
-    "out_total": 1578354,
-    "est_cost_usd": 3.7181
+    "in_avg": "—",
+    "out_avg": "—",
+    "lat_avg": "—",
+    "calls_total": 0,
+    "in_total": 0,
+    "out_total": 0,
+    "est_cost_usd": null
   },
   "history": [
     {
@@ -417,10 +360,10 @@
     },
     {
       "date": "2026-08-18",
-      "est_cost_usd": 3.7181,
-      "calls": 2276,
-      "in_total": 468019521,
-      "out_total": 1578354,
+      "est_cost_usd": 0,
+      "calls": 0,
+      "in_total": 0,
+      "out_total": 0,
       "balance": 1.44
     }
   ]
