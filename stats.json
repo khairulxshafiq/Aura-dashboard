@@ -1,23 +1,23 @@
 {
-  "generated_at": "2026-08-18 10:50:50",
+  "generated_at": "2026-08-18 11:06:50",
   "system": {
     "ram_total_mb": 1967,
-    "ram_used_mb": 879,
-    "ram_used_pct": 44.7,
-    "ram_used": "879MB / 1967MB",
-    "cpu_load": "0.69 0.27 0.19",
-    "cpu_pct": 34.5,
+    "ram_used_mb": 878,
+    "ram_used_pct": 44.6,
+    "ram_used": "878MB / 1967MB",
+    "cpu_load": "0.04 0.17 0.20",
+    "cpu_pct": 2.0,
     "disk_used": "36%",
     "disk_pct": 34.2,
-    "uptime": "6h 12j 9m",
-    "uptime_detail": "562199s"
+    "uptime": "6h 12j 25m",
+    "uptime_detail": "563159s"
   },
   "services": [
     {
       "name": "Gateway (telegram)",
       "status": "running",
       "pid": "2115926",
-      "mem": "216MB",
+      "mem": "215MB",
       "cpu": "0.3%"
     },
     {
