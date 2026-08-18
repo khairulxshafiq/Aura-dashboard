@@ -1,16 +1,16 @@
 {
-  "generated_at": "2026-08-18 15:38:56",
+  "generated_at": "2026-08-18 15:54:56",
   "system": {
     "ram_total_mb": 1967,
-    "ram_used_mb": 768,
-    "ram_used_pct": 39.0,
-    "ram_used": "768MB / 1967MB",
-    "cpu_load": "0.03 0.03 0.07",
-    "cpu_pct": 1.5,
+    "ram_used_mb": 763,
+    "ram_used_pct": 38.8,
+    "ram_used": "763MB / 1967MB",
+    "cpu_load": "0.05 0.10 0.12",
+    "cpu_pct": 2.5,
     "disk_used": "36%",
     "disk_pct": 34.2,
-    "uptime": "6h 16j 58m",
-    "uptime_detail": "579485s"
+    "uptime": "6h 17j 14m",
+    "uptime_detail": "580445s"
   },
   "services": [
     {
@@ -23,7 +23,7 @@
     {
       "name": "Agent (CLI sesi)",
       "status": "running",
-      "pid": "2375583",
+      "pid": "2379718",
       "mem": "?",
       "cpu": "?"
     }
@@ -99,7 +99,7 @@
     "provider": "tokenhub",
     "fallback1": "deepseek-v4-flash (deepseek)",
     "fallback2": "gemini-3.5-flash (gemini)",
-    "cache_hit_pct": null
+    "cache_hit_pct": 94.8
   },
   "cron": [
     {
@@ -108,7 +108,22 @@
       "status": "active"
     }
   ],
-  "calls": [],
+  "calls": [
+    {
+      "time": "2026-08-18 15:53:55",
+      "platform": "agent",
+      "model": "glm-5.1",
+      "tokens": "36,032 in / 286 out",
+      "latency": "14.8s"
+    },
+    {
+      "time": "2026-08-18 15:52:07",
+      "platform": "agent",
+      "model": "glm-5.1",
+      "tokens": "35,090 in / 280 out",
+      "latency": "12.9s"
+    }
+  ],
   "tools": [
     [
       "Exa Search (MCP)",
@@ -333,13 +348,13 @@
     "is_available": true
   },
   "tokens": {
-    "in_avg": "—",
-    "out_avg": "—",
-    "lat_avg": "—",
-    "calls_total": 0,
-    "in_total": 0,
-    "out_total": 0,
-    "est_cost_usd": null
+    "in_avg": "35,561 tok",
+    "out_avg": "283 tok",
+    "lat_avg": "13.9s",
+    "calls_total": 2,
+    "in_total": 71122,
+    "out_total": 566,
+    "est_cost_usd": 0.0007
   },
   "history": [
     {
@@ -360,10 +375,10 @@
     },
     {
       "date": "2026-08-18",
-      "est_cost_usd": 0,
-      "calls": 0,
-      "in_total": 0,
-      "out_total": 0,
+      "est_cost_usd": 0.0007,
+      "calls": 2,
+      "in_total": 71122,
+      "out_total": 566,
       "balance": 1.44
     }
   ]
