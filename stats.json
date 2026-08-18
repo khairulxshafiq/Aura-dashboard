@@ -1,16 +1,16 @@
 {
-  "generated_at": "2026-08-18 23:55:19",
+  "generated_at": "2026-08-19 00:11:19",
   "system": {
     "ram_total_mb": 1967,
-    "ram_used_mb": 794,
-    "ram_used_pct": 40.4,
-    "ram_used": "794MB / 1967MB",
-    "cpu_load": "0.11 0.10 0.09",
-    "cpu_pct": 5.5,
+    "ram_used_mb": 801,
+    "ram_used_pct": 40.7,
+    "ram_used": "801MB / 1967MB",
+    "cpu_load": "0.00 0.10 0.13",
+    "cpu_pct": 0.0,
     "disk_used": "39%",
-    "disk_pct": 36.6,
-    "uptime": "7h 1j 14m",
-    "uptime_detail": "609268s"
+    "disk_pct": 36.7,
+    "uptime": "7h 1j 30m",
+    "uptime_detail": "610228s"
   },
   "services": [
     {
@@ -23,7 +23,7 @@
     {
       "name": "Agent (CLI sesi)",
       "status": "running",
-      "pid": "2504723",
+      "pid": "2509073",
       "mem": "?",
       "cpu": "?"
     }
@@ -99,7 +99,7 @@
     "provider": "tokenhub",
     "fallback1": "deepseek-v4-flash (deepseek)",
     "fallback2": "gemini-3.5-flash (gemini)",
-    "cache_hit_pct": 94.2
+    "cache_hit_pct": 95.0
   },
   "cron": [
     {
@@ -110,60 +110,60 @@
   ],
   "calls": [
     {
-      "time": "2026-08-18 23:55:13",
+      "time": "2026-08-19 00:08:05",
       "platform": "agent",
       "model": "glm-5.1",
-      "tokens": "83,330 in / 1,055 out",
-      "latency": "31.7s"
+      "tokens": "70,267 in / 221 out",
+      "latency": "13.7s"
     },
     {
-      "time": "2026-08-18 23:54:41",
+      "time": "2026-08-19 00:07:51",
       "platform": "agent",
       "model": "glm-5.1",
-      "tokens": "82,100 in / 1,056 out",
-      "latency": "33.6s"
+      "tokens": "69,903 in / 291 out",
+      "latency": "14.6s"
     },
     {
-      "time": "2026-08-18 23:54:07",
+      "time": "2026-08-19 00:07:37",
       "platform": "agent",
       "model": "glm-5.1",
-      "tokens": "80,871 in / 1,055 out",
-      "latency": "30.4s"
+      "tokens": "68,900 in / 343 out",
+      "latency": "17.4s"
     },
     {
-      "time": "2026-08-18 23:53:37",
+      "time": "2026-08-19 00:06:10",
       "platform": "agent",
       "model": "glm-5.1",
-      "tokens": "79,438 in / 1,259 out",
-      "latency": "39.3s"
+      "tokens": "68,560 in / 556 out",
+      "latency": "25.5s"
     },
     {
-      "time": "2026-08-18 23:52:57",
+      "time": "2026-08-19 00:05:11",
       "platform": "agent",
       "model": "glm-5.1",
-      "tokens": "78,040 in / 1,328 out",
-      "latency": "47.4s"
+      "tokens": "68,505 in / 36 out",
+      "latency": "5.7s"
     },
     {
-      "time": "2026-08-18 23:52:10",
+      "time": "2026-08-18 23:58:42",
       "platform": "agent",
       "model": "glm-5.1",
-      "tokens": "70,636 in / 72 out",
-      "latency": "7.2s"
+      "tokens": "68,335 in / 146 out",
+      "latency": "10.5s"
     },
     {
-      "time": "2026-08-18 23:52:03",
+      "time": "2026-08-18 23:58:18",
       "platform": "agent",
       "model": "glm-5.1",
-      "tokens": "67,117 in / 29 out",
-      "latency": "6.9s"
+      "tokens": "67,761 in / 105 out",
+      "latency": "8.4s"
     },
     {
-      "time": "2026-08-18 23:51:56",
+      "time": "2026-08-18 23:57:56",
       "platform": "agent",
       "model": "glm-5.1",
-      "tokens": "66,619 in / 1,958 out",
-      "latency": "65.2s"
+      "tokens": "67,563 in / 104 out",
+      "latency": "8.7s"
     }
   ],
   "tools": [
@@ -390,13 +390,13 @@
     "is_available": true
   },
   "tokens": {
-    "in_avg": "53,485 tok",
-    "out_avg": "339 tok",
-    "lat_avg": "15.4s",
-    "calls_total": 79,
-    "in_total": 4225335,
-    "out_total": 26803,
-    "est_cost_usd": 0.0371
+    "in_avg": "56,870 tok",
+    "out_avg": "307 tok",
+    "lat_avg": "14.6s",
+    "calls_total": 97,
+    "in_total": 5516396,
+    "out_total": 29851,
+    "est_cost_usd": 0.047
   },
   "history": [
     {
@@ -421,6 +421,14 @@
       "calls": 79,
       "in_total": 4225335,
       "out_total": 26803,
+      "balance": 1.44
+    },
+    {
+      "date": "2026-08-19",
+      "est_cost_usd": 0.047,
+      "calls": 97,
+      "in_total": 5516396,
+      "out_total": 29851,
       "balance": 1.44
     }
   ]
