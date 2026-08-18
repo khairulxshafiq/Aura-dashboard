@@ -1,29 +1,29 @@
 {
-  "generated_at": "2026-08-18 16:10:56",
+  "generated_at": "2026-08-18 16:26:57",
   "system": {
     "ram_total_mb": 1967,
-    "ram_used_mb": 759,
-    "ram_used_pct": 38.6,
-    "ram_used": "759MB / 1967MB",
-    "cpu_load": "0.00 0.08 0.11",
-    "cpu_pct": 0.0,
+    "ram_used_mb": 755,
+    "ram_used_pct": 38.4,
+    "ram_used": "755MB / 1967MB",
+    "cpu_load": "0.15 0.29 0.18",
+    "cpu_pct": 7.5,
     "disk_used": "36%",
     "disk_pct": 34.2,
-    "uptime": "6h 17j 30m",
-    "uptime_detail": "581406s"
+    "uptime": "6h 17j 46m",
+    "uptime_detail": "582366s"
   },
   "services": [
     {
       "name": "Gateway (telegram)",
       "status": "running",
       "pid": "2115926",
-      "mem": "275MB",
+      "mem": "276MB",
       "cpu": "0.4%"
     },
     {
       "name": "Agent (CLI sesi)",
       "status": "running",
-      "pid": "2383817",
+      "pid": "2387997",
       "mem": "?",
       "cpu": "?"
     }
@@ -99,7 +99,7 @@
     "provider": "tokenhub",
     "fallback1": "deepseek-v4-flash (deepseek)",
     "fallback2": "gemini-3.5-flash (gemini)",
-    "cache_hit_pct": 93.8
+    "cache_hit_pct": 83.9
   },
   "cron": [
     {
@@ -109,6 +109,34 @@
     }
   ],
   "calls": [
+    {
+      "time": "2026-08-18 16:17:07",
+      "platform": "agent",
+      "model": "glm-5.1",
+      "tokens": "42,964 in / 448 out",
+      "latency": "21.7s"
+    },
+    {
+      "time": "2026-08-18 16:16:46",
+      "platform": "agent",
+      "model": "glm-5.1",
+      "tokens": "42,738 in / 152 out",
+      "latency": "9.8s"
+    },
+    {
+      "time": "2026-08-18 16:16:17",
+      "platform": "agent",
+      "model": "glm-5.1",
+      "tokens": "42,361 in / 195 out",
+      "latency": "10.0s"
+    },
+    {
+      "time": "2026-08-18 16:16:05",
+      "platform": "agent",
+      "model": "glm-5.1",
+      "tokens": "41,140 in / 285 out",
+      "latency": "10.5s"
+    },
     {
       "time": "2026-08-18 15:55:23",
       "platform": "agent",
@@ -362,13 +390,13 @@
     "is_available": true
   },
   "tokens": {
-    "in_avg": "37,017 tok",
-    "out_avg": "279 tok",
-    "lat_avg": "14.5s",
-    "calls_total": 4,
-    "in_total": 148071,
-    "out_total": 1117,
-    "est_cost_usd": 0.0013
+    "in_avg": "39,659 tok",
+    "out_avg": "274 tok",
+    "lat_avg": "13.7s",
+    "calls_total": 8,
+    "in_total": 317274,
+    "out_total": 2197,
+    "est_cost_usd": 0.0028
   },
   "history": [
     {
@@ -389,10 +417,10 @@
     },
     {
       "date": "2026-08-18",
-      "est_cost_usd": 0.0013,
-      "calls": 4,
-      "in_total": 148071,
-      "out_total": 1117,
+      "est_cost_usd": 0.0028,
+      "calls": 8,
+      "in_total": 317274,
+      "out_total": 2197,
       "balance": 1.44
     }
   ]
