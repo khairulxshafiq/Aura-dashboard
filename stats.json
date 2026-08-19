@@ -1,29 +1,29 @@
 {
-  "generated_at": "2026-08-19 11:23:44",
+  "generated_at": "2026-08-19 11:39:44",
   "system": {
     "ram_total_mb": 1967,
-    "ram_used_mb": 921,
-    "ram_used_pct": 46.8,
-    "ram_used": "921MB / 1967MB",
-    "cpu_load": "0.18 0.35 0.26",
-    "cpu_pct": 9.0,
+    "ram_used_mb": 922,
+    "ram_used_pct": 46.9,
+    "ram_used": "922MB / 1967MB",
+    "cpu_load": "0.25 0.32 0.25",
+    "cpu_pct": 12.5,
     "disk_used": "39%",
     "disk_pct": 36.6,
-    "uptime": "7h 12j 42m",
-    "uptime_detail": "650573s"
+    "uptime": "7h 12j 58m",
+    "uptime_detail": "651533s"
   },
   "services": [
     {
       "name": "Gateway (telegram)",
       "status": "running",
       "pid": "2115926",
-      "mem": "283MB",
+      "mem": "282MB",
       "cpu": "0.5%"
     },
     {
       "name": "Agent (CLI sesi)",
       "status": "running",
-      "pid": "2687153",
+      "pid": "2691332",
       "mem": "?",
       "cpu": "?"
     }
@@ -383,9 +383,9 @@
   },
   "deepseek_balance": {
     "status": "ok",
-    "total": "1.25",
+    "total": "1.20",
     "currency": "USD",
-    "topped_up": "1.25",
+    "topped_up": "1.20",
     "granted": "0.00",
     "is_available": true
   },
@@ -429,7 +429,7 @@
       "calls": 241,
       "in_total": 16137102,
       "out_total": 103274,
-      "balance": 1.25
+      "balance": 1.2
     }
   ]
 }
