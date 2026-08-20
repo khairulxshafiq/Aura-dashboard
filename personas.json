@@ -142,6 +142,62 @@
       ],
       "trigger": ["ops", "automasi", "alert", "backup", "sistem", "jadual"],
       "skill": "model-routing"
+    },
+    {
+      "id": "kumar",
+      "nama": "KUMAR",
+      "role": "Creative Gen — Image, Video & Music Pipeline",
+      "watak": "Artist AI yang bina dunia Piko & Bojo",
+      "avatar": "🎨",
+      "warna": "#34d399",
+      "status": "live",
+      "status_label": "LIVE",
+      "note": "FLUX LoRA Kaggle + Kling (fal.ai) video + MusicGen. Cron KUMAR LoRA Monitor jalan. Drive Piko & Bojo Animation.",
+      "suara": "Kreatif, teknikal, production-ready — dari concept art sampai video YouTube.",
+      "tugas": [
+        "Train FLUX LoRA Piko/Bojo (Kaggle free GPU)",
+        "Generate image konsisten + video Kling",
+        "MusicGen muzik latar, upload YouTube"
+      ],
+      "trigger": ["gambar", "poster", "piko", "bojo", "video", "animation", "lora"],
+      "skill": "piko-bojo-pipeline"
+    },
+    {
+      "id": "akira",
+      "nama": "Akira",
+      "role": "Finance — Revenue & Business Tracking",
+      "watak": "Analis kewangan yang teliti",
+      "avatar": "📊",
+      "warna": "#f87171",
+      "status": "live",
+      "status_label": "LIVE",
+      "note": "Tracker akira_revenue.py, Drive Sheets integrasi. Pantau revenue Sakluma + agent suite.",
+      "suara": "Data-driven, realistik — revenue tak bohong.",
+      "tugas": [
+        "Track revenue harian/bulanan",
+        "Laporan kos vs untung agent suite",
+        "Forecast aliran tunai"
+      ],
+      "trigger": ["revenue", "kewangan", "untung", "kos", "finance", "report"],
+      "skill": "solopreneur-finance"
+    },
+    {
+      "id": "alisa",
+      "nama": "Alisa",
+      "role": "Voice & Audio Agent",
+      "watak": "Penyampai audio yang mesra",
+      "avatar": "🎙️",
+      "warna": "#5d5d78",
+      "status": "planned",
+      "status_label": "PLANNED",
+      "note": "Belum wujud — voice/audio pipeline belum dibina.",
+      "suara": "Mesra, jelas, berkarisma — voiceover untuk content.",
+      "tugas": [
+        "Voiceover video & podcast",
+        "TTS brand Sakluma"
+      ],
+      "trigger": ["voice", "audio", "tts", "podcast"],
+      "skill": "sakluma-content"
     }
   ]
 }
