@@ -272,6 +272,7 @@
       <a href="#kemampuan">Kemampuan</a>
       <a href="#pasukan">Pasukan</a>
       <a href="#aliran">Aliran</a>
+      <a href="#optlog">Optimize</a>
       <a href="dashboard.html">Dashboard</a>
       <a href="#hubungi">Hubungi</a>
     </div>
@@ -401,6 +402,29 @@
         <span class="p">▸ Menghantar senarai + butang kategori…</span><br>
         <span class="c">aura@saklomak.my:~$</span><span class="term-cursor"></span>
       </div>
+    </div>
+  </section>
+
+  <!-- Optimization Log -->
+  <section id="optlog">
+    <div class="kicker">Optimization Log</div>
+    <h2 class="sec-title">Aura token &amp; overhead — 20 Aug 2026</h2>
+    <p class="sec-sub">Sesi tekanan token: study repo Hermes-Bot-Mode, compress SOUL/identity, disable toolset tak guna kat Telegram. Static prompt jatuh ~24.5K → ~12K token.</p>
+    <div class="stats">
+      <div class="stat rv"><div class="k">Static sebelum</div><div class="v">~24.5K</div><div class="d down">token / prompt</div></div>
+      <div class="stat rv"><div class="k">Static sekarang</div><div class="v">~12K</div><div class="d up">▼ ~51% jimat</div></div>
+      <div class="stat rv"><div class="k">Tool schema</div><div class="v">70→26KB</div><div class="d down">30→11 tools</div></div>
+      <div class="stat rv"><div class="k">Memory store</div><div class="v">759→620</div><div class="d up">28% char</div></div>
+    </div>
+    <div class="flow-wrap rv" style="margin-top:22px;">
+      <div class="flow">
+        <span class="node done">✓ study Bot-Mode (ARCHIVED)</span><span class="arr">→</span>
+        <span class="node done">✓ disable computer_use/tts</span><span class="arr">→</span>
+        <span class="node done">✓ trim memory</span><span class="arr">→</span>
+        <span class="node done">✓ compress SOUL/IDENTITY</span><span class="arr">→</span>
+        <span class="node done">✓ disable 9 toolsets</span>
+      </div>
+      <div class="flow-note">Toolset dimatikan kat Telegram (phone): browser, cronjob, delegation, image_gen, vision, code_execution, web, clarify, todo. Core (file, terminal, memory, skills, session_search) kekal. Re-measure guna <b>hermes prompt-size --platform telegram</b>.</div>
     </div>
   </section>
 

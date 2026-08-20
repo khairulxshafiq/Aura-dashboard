@@ -133,7 +133,7 @@
       "warna": "#22d3ee",
       "status": "live",
       "status_label": "LIVE",
-      "note": "Cron job, alert, Airtable, Telegram, MCP — jalan penuh.",
+      "note": "Cron job, alert, Airtable, Telegram, MCP — jalan penuh. 20 Aug: optimize Hermes token — compress SOUL/IDENTITY, disable 9 toolsets kat Telegram (static ~24.5K→~12K).",
       "suara": "Pendek, tepat, teknikal — sistem hidup, alert jalan, backup selamat. Personal assistant yang boleh dipercayai.",
       "tugas": [
         "Cron job, alert, backup",

@@ -3,13 +3,7 @@
 set -e
 cd /home/ubuntu/aura-dashboard
 
-echo "═══ 1. Buang repo lowercase (duplicate) ═══"
-if gh repo view khairulxshafiq/aura-dashboard >/dev/null 2>&1; then
-  gh repo delete khairulxshafiq/aura-dashboard --yes 2>&1 | tail -2
-  echo "lowercase deleted"
-else
-  echo "lowercase tak wujud / dah buang"
-fi
+echo "═══ 1. (skip) Buang repo lowercase — ⚠️ BUG DULU: GitHub repo name case-insensitive, step ni delete repo BETUL (Aura-dashboard). Dah dibuang. ═══"
 
 echo "═══ 2. Git identity ═══"
 git config --global user.name  >/dev/null 2>&1 || git config --global user.name "Sakluma"
