@@ -1,0 +1,435 @@
+{
+  "generated_at": "2026-08-19 12:11:45",
+  "system": {
+    "ram_total_mb": 1967,
+    "ram_used_mb": 945,
+    "ram_used_pct": 48.0,
+    "ram_used": "945MB / 1967MB",
+    "cpu_load": "0.10 0.08 0.20",
+    "cpu_pct": 5.0,
+    "disk_used": "39%",
+    "disk_pct": 36.6,
+    "uptime": "7h 13j 30m",
+    "uptime_detail": "653454s"
+  },
+  "services": [
+    {
+      "name": "Gateway (telegram)",
+      "status": "running",
+      "pid": "2115926",
+      "mem": "309MB",
+      "cpu": "0.5%"
+    },
+    {
+      "name": "Agent (CLI sesi)",
+      "status": "running",
+      "pid": "2699608",
+      "mem": "?",
+      "cpu": "?"
+    }
+  ],
+  "keys": [
+    {
+      "name": "DEEPSEEK_API_KEY",
+      "status": "aktif",
+      "cls": "st-live",
+      "role": "deepseek-v4-flash",
+      "prefix": "sk-654e51...",
+      "tag": "deepseek"
+    },
+    {
+      "name": "GROQ_API_KEY",
+      "status": "backup",
+      "cls": "st-live",
+      "role": "backup free",
+      "prefix": "gsk_Lxi0t...",
+      "tag": "groq"
+    },
+    {
+      "name": "GEMINI_API_KEY",
+      "status": "backup",
+      "cls": "st-live",
+      "role": "backup free",
+      "prefix": "AQ.Ab8RN6...",
+      "tag": "google"
+    },
+    {
+      "name": "OPENROUTER_API_KEY",
+      "status": "takda",
+      "cls": "st-off",
+      "role": "—",
+      "prefix": "—",
+      "tag": "openrouter"
+    },
+    {
+      "name": "TELEGRAM_BOT_TOKEN",
+      "status": "aktif",
+      "cls": "st-live",
+      "role": "auraSakluma_bot",
+      "prefix": "795896944...",
+      "tag": "telegram"
+    },
+    {
+      "name": "AIRTABLE_API_KEY",
+      "status": "aktif",
+      "cls": "st-live",
+      "role": "Content Station",
+      "prefix": "patVVUxY4...",
+      "tag": "airtable"
+    },
+    {
+      "name": "REPLICATE_API_TOKEN",
+      "status": "relek",
+      "cls": "st-progress",
+      "role": "FLUX (belum topup)",
+      "prefix": "r8_DByefj...",
+      "tag": "replicate"
+    },
+    {
+      "name": "APIFY_API_TOKEN",
+      "status": "aktif",
+      "cls": "st-live",
+      "role": "scrape",
+      "prefix": "apify_api...",
+      "tag": "apify"
+    }
+  ],
+  "model": {
+    "default": "glm-5.1",
+    "provider": "tokenhub",
+    "fallback1": "deepseek-v4-flash (deepseek)",
+    "fallback2": "gemini-3.5-flash (gemini)",
+    "cache_hit_pct": 95.8
+  },
+  "cron": [
+    {
+      "name": "jobs",
+      "schedule": "?",
+      "status": "active"
+    }
+  ],
+  "calls": [
+    {
+      "time": "2026-08-19 12:10:59",
+      "platform": "agent",
+      "model": "deepseek-v4-flash",
+      "tokens": "94,294 in / 408 out",
+      "latency": "5.7s"
+    },
+    {
+      "time": "2026-08-19 11:23:21",
+      "platform": "agent",
+      "model": "deepseek-v4-flash",
+      "tokens": "132,088 in / 634 out",
+      "latency": "7.2s"
+    },
+    {
+      "time": "2026-08-19 11:23:14",
+      "platform": "agent",
+      "model": "deepseek-v4-flash",
+      "tokens": "130,506 in / 1,506 out",
+      "latency": "11.5s"
+    },
+    {
+      "time": "2026-08-19 11:23:03",
+      "platform": "agent",
+      "model": "deepseek-v4-flash",
+      "tokens": "129,187 in / 1,155 out",
+      "latency": "9.3s"
+    },
+    {
+      "time": "2026-08-19 11:22:53",
+      "platform": "agent",
+      "model": "deepseek-v4-flash",
+      "tokens": "127,585 in / 102 out",
+      "latency": "2.2s"
+    },
+    {
+      "time": "2026-08-19 11:22:51",
+      "platform": "agent",
+      "model": "deepseek-v4-flash",
+      "tokens": "126,254 in / 1,278 out",
+      "latency": "8.1s"
+    },
+    {
+      "time": "2026-08-19 11:22:43",
+      "platform": "agent",
+      "model": "deepseek-v4-flash",
+      "tokens": "124,664 in / 1,511 out",
+      "latency": "13.6s"
+    },
+    {
+      "time": "2026-08-19 11:22:29",
+      "platform": "agent",
+      "model": "deepseek-v4-flash",
+      "tokens": "124,015 in / 527 out",
+      "latency": "4.2s"
+    }
+  ],
+  "tools": [
+    [
+      "Exa Search (MCP)",
+      "st-live",
+      "LIVE",
+      "Web search berkuasa",
+      "mcporter · exa.web_search_exa"
+    ],
+    [
+      "Moomoo/OpenD (MCP)",
+      "st-progress",
+      "PROGRESS",
+      "Trading Bursa/US/HK/SG",
+      "Skill moomoo-trading-mcp ada; OpenD perlu deploy (Railway)"
+    ],
+    [
+      "Jina Reader",
+      "st-live",
+      "LIVE",
+      "Scrape artikel & halaman",
+      "r.jina.ai — auto-resolve link"
+    ],
+    [
+      "yt-dlp",
+      "st-live",
+      "LIVE",
+      "Download video/audio",
+      "agent-reach v1.5.0"
+    ],
+    [
+      "Telegram Bot",
+      "st-live",
+      "LIVE",
+      "auraSakluma_bot",
+      "Gateway · button kategori · reply"
+    ],
+    [
+      "Airtable",
+      "st-live",
+      "LIVE",
+      "Content Station (draf/artikel)",
+      "API key aktif · push flow"
+    ],
+    [
+      "Google Drive",
+      "st-progress",
+      "PROGRESS",
+      "Host gambar artikel",
+      "Service account email ada; JSON key perlu semak"
+    ],
+    [
+      "DeepSeek API",
+      "st-live",
+      "LIVE",
+      "deepseek-v4-flash (primary)",
+      "Model utama semua kerja"
+    ],
+    [
+      "Groq API",
+      "st-live",
+      "LIVE",
+      "llama-3.3-70b (backup)",
+      "Free-tier fallback"
+    ],
+    [
+      "Gemini API",
+      "st-live",
+      "LIVE",
+      "Backup free + image gen",
+      "gemini-2.5-flash · gemini-3-pro-image"
+    ],
+    [
+      "Pollinations.ai",
+      "st-live",
+      "LIVE",
+      "Generate gambar free",
+      "No key · primary image"
+    ],
+    [
+      "Replicate (FLUX)",
+      "st-progress",
+      "PROGRESS",
+      "Gambar pro (belum topup)",
+      "Token ada; credit belum masuk"
+    ],
+    [
+      "Apify",
+      "st-live",
+      "LIVE",
+      "Scrape automation",
+      "APIFY_API_TOKEN aktif"
+    ],
+    [
+      "Supabase",
+      "st-progress",
+      "PROGRESS",
+      "DB/host (belum sambung)",
+      "Publishable key je — perlu semak"
+    ],
+    [
+      "Firecrawl",
+      "st-live",
+      "LIVE",
+      "Web scraping lanjutan",
+      "FC_API_KEY aktif"
+    ],
+    [
+      "gh (GitHub)",
+      "st-live",
+      "LIVE",
+      "Repo & Pages",
+      "Aura-dashboard live"
+    ],
+    [
+      "MCP server setup",
+      "st-live",
+      "LIVE",
+      "Skill & workflow",
+      "Skill: mcp-server-setup, trading-mcp-integration"
+    ]
+  ],
+  "skills": [
+    [
+      "sakluma-news",
+      "st-live",
+      "LIVE",
+      "Berita trending MY — cross-source + Google Trends"
+    ],
+    [
+      "sakluma-content",
+      "st-live",
+      "LIVE",
+      "5 persona kandungan — FB/ads/caption"
+    ],
+    [
+      "sakluma-publish",
+      "st-live",
+      "LIVE",
+      "Push ke Airtable — confirm flow"
+    ],
+    [
+      "aura-trading",
+      "st-progress",
+      "PROGRESS",
+      "Asri Ahmad method — menunggu Moomoo"
+    ],
+    [
+      "moomoo-trading-mcp",
+      "st-progress",
+      "PROGRESS",
+      "Integrasi OpenD — deploy Railway"
+    ],
+    [
+      "trading-mcp-integration",
+      "st-live",
+      "LIVE",
+      "Blueprint sambung trading MCP"
+    ],
+    [
+      "telegram-native-ui",
+      "st-live",
+      "LIVE",
+      "Button sebenar Telegram"
+    ],
+    [
+      "model-routing",
+      "st-live",
+      "LIVE",
+      "DeepSeek primary + fallback"
+    ],
+    [
+      "image-prompt-enhancer",
+      "st-live",
+      "LIVE",
+      "JSON enhancer + Pollinations"
+    ],
+    [
+      "screenshot-ocr-fallback",
+      "st-live",
+      "LIVE",
+      "OCR bila vision tiada"
+    ],
+    [
+      "FUTURE: Shopee API",
+      "st-off",
+      "PLAN",
+      "E-commerce — belum wujud (Liya)"
+    ],
+    [
+      "FUTURE: Finance/HR",
+      "st-off",
+      "PLAN",
+      "Bajet & tunai — belum wujud (Aziz)"
+    ],
+    [
+      "FUTURE: WordPress",
+      "st-off",
+      "PLAN",
+      "Website/theme — belum wujud"
+    ],
+    [
+      "FUTURE: Website parallax",
+      "st-off",
+      "PLAN",
+      "Landing interaktif — belum wujud"
+    ]
+  ],
+  "quick": {
+    "gateway": "🟢 running",
+    "telegram": "🟢 connected (polling)",
+    "airtable": "🟢 key ada",
+    "moomoo": "🟡 belum connect (OpenD)",
+    "mcp": "🟢 exa",
+    "image": "🟢 Pollinations + Gemini"
+  },
+  "deepseek_balance": {
+    "status": "ok",
+    "total": "1.20",
+    "currency": "USD",
+    "topped_up": "1.20",
+    "granted": "0.00",
+    "is_available": true
+  },
+  "tokens": {
+    "in_avg": "67,071 tok",
+    "out_avg": "428 tok",
+    "lat_avg": "11.6s",
+    "calls_total": 242,
+    "in_total": 16231396,
+    "out_total": 103682,
+    "est_cost_usd": 0.1427
+  },
+  "history": [
+    {
+      "date": "2026-08-16",
+      "est_cost_usd": 2.4438,
+      "calls": 1629,
+      "in_total": 302410114,
+      "out_total": 1167750,
+      "balance": 3.69
+    },
+    {
+      "date": "2026-08-17",
+      "est_cost_usd": 3.6299,
+      "calls": 2150,
+      "in_total": 457075526,
+      "out_total": 1537203,
+      "balance": 1.51
+    },
+    {
+      "date": "2026-08-18",
+      "est_cost_usd": 0.0371,
+      "calls": 79,
+      "in_total": 4225335,
+      "out_total": 26803,
+      "balance": 1.44
+    },
+    {
+      "date": "2026-08-19",
+      "est_cost_usd": 0.1427,
+      "calls": 242,
+      "in_total": 16231396,
+      "out_total": 103682,
+      "balance": 1.2
+    }
+  ]
+}
