@@ -223,11 +223,11 @@
       "API key aktif · push flow"
     ],
     [
-      "Google Drive",
-      "st-progress",
-      "PROGRESS",
-      "Host gambar artikel",
-      "Service account email ada; JSON key perlu semak"
+      "Google Workspace (Drive/Sheets/Docs)",
+      "st-live",
+      "LIVE",
+      "Drive Assets, Sheets Finance & Docs Quotation",
+      "OAuth2 live — AuraOne, Kumar, Akira & Aziz shared storage"
     ],
     [
       "DeepSeek API",
