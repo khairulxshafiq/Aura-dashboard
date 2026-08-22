@@ -1,6 +1,6 @@
 {
   "system": "Persona Manager — AuraOne",
-  "version": "1.4",
+  "version": "1.5",
   "description": "Setiap persona = satu watak AI dengan identiti, suara, gaya bahasa dan tugas. Tally dengan 9 AI colleagues + Luma AGY Engine (Google Cloud SG VM) + AuraOne Hermes Manager.",
   "manager": {
     "name": "Aura",
@@ -275,5 +275,9 @@
       ],
       "skill": "sakluma-content"
     }
-  ]
+  ],
+  "telegram_ux": {
+    "live_progress_card": "Charm.sh & MPB minimalist real-time progress card with braille spinners & dynamic bar",
+    "hitl_one_tap_buttons": "One-tap survey inline keyboard buttons for instant decision making with write-in option"
+  }
 }
