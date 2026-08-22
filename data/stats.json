@@ -33,7 +33,7 @@
       "name": "DEEPSEEK_API_KEY",
       "status": "aktif",
       "cls": "st-live",
-      "role": "deepseek-v4-flash",
+      "role": "Primary (deepseek-v4-flash)",
       "prefix": "sk-654e51...",
       "tag": "deepseek"
     },
@@ -41,25 +41,25 @@
       "name": "GROQ_API_KEY",
       "status": "backup",
       "cls": "st-live",
-      "role": "backup free",
+      "role": "Fallback (Groq Free Tier)",
       "prefix": "gsk_Lxi0t...",
       "tag": "groq"
     },
     {
       "name": "GEMINI_API_KEY",
-      "status": "backup",
+      "status": "aktif",
       "cls": "st-live",
-      "role": "backup free",
+      "role": "Auxiliary (Multimodal / Long Context)",
       "prefix": "AQ.Ab8RN6...",
       "tag": "google"
     },
     {
-      "name": "OPENROUTER_API_KEY",
-      "status": "takda",
-      "cls": "st-off",
-      "role": "—",
-      "prefix": "—",
-      "tag": "openrouter"
+      "name": "ZAI_API_KEY",
+      "status": "aktif",
+      "cls": "st-live",
+      "role": "Auxiliary (GLM-4 Specialized)",
+      "prefix": "0c864d...",
+      "tag": "zai"
     },
     {
       "name": "TELEGRAM_BOT_TOKEN",
@@ -73,25 +73,25 @@
       "name": "AIRTABLE_API_KEY",
       "status": "aktif",
       "cls": "st-live",
-      "role": "Content Station",
-      "prefix": "patVVUxY4...",
+      "role": "Content Station (Unified)",
+      "prefix": "patWYR0f...",
       "tag": "airtable"
-    },
-    {
-      "name": "REPLICATE_API_TOKEN",
-      "status": "relek",
-      "cls": "st-progress",
-      "role": "FLUX (belum topup)",
-      "prefix": "r8_DByefj...",
-      "tag": "replicate"
     },
     {
       "name": "APIFY_API_TOKEN",
       "status": "aktif",
       "cls": "st-live",
-      "role": "scrape",
+      "role": "Web Scraping Engine",
       "prefix": "apify_api...",
       "tag": "apify"
+    },
+    {
+      "name": "REPLICATE_API_TOKEN",
+      "status": "relek",
+      "cls": "st-progress",
+      "role": "FLUX Image/Video (Idle)",
+      "prefix": "r8_DByefj...",
+      "tag": "replicate"
     }
   ],
   "model": {
@@ -99,7 +99,13 @@
     "provider": "tokenhub",
     "fallback1": "deepseek-v4-flash (deepseek)",
     "fallback2": "gemini-3.5-flash (gemini)",
-    "cache_hit_pct": 95.8
+    "cache_hit_pct": 95.8,
+    "primary": "DeepSeek-V4-Flash",
+    "fallback": "Groq Llama-3",
+    "auxiliary": [
+      "Gemini-2.5-Flash",
+      "GLM-4 (zAI)"
+    ]
   },
   "cron": [
     {
@@ -172,7 +178,7 @@
       "st-live",
       "LIVE",
       "Web search berkuasa",
-      "mcporter · exa.web_search_exa"
+      "mcporter \u00b7 exa.web_search_exa"
     ],
     [
       "Moomoo/OpenD (MCP)",
@@ -186,7 +192,7 @@
       "st-live",
       "LIVE",
       "Scrape artikel & halaman",
-      "r.jina.ai — auto-resolve link"
+      "r.jina.ai \u2014 auto-resolve link"
     ],
     [
       "yt-dlp",
@@ -200,14 +206,14 @@
       "st-live",
       "LIVE",
       "auraSakluma_bot",
-      "Gateway · button kategori · reply"
+      "Gateway \u00b7 button kategori \u00b7 reply"
     ],
     [
       "Airtable",
       "st-live",
       "LIVE",
       "Content Station (draf/artikel)",
-      "API key aktif · push flow"
+      "API key aktif \u00b7 push flow"
     ],
     [
       "Google Drive",
@@ -235,14 +241,14 @@
       "st-live",
       "LIVE",
       "Backup free + image gen",
-      "gemini-2.5-flash · gemini-3-pro-image"
+      "gemini-2.5-flash \u00b7 gemini-3-pro-image"
     ],
     [
       "Pollinations.ai",
       "st-live",
       "LIVE",
       "Generate gambar free",
-      "No key · primary image"
+      "No key \u00b7 primary image"
     ],
     [
       "Replicate (FLUX)",
@@ -263,7 +269,7 @@
       "st-progress",
       "PROGRESS",
       "DB/host (belum sambung)",
-      "Publishable key je — perlu semak"
+      "Publishable key je \u2014 perlu semak"
     ],
     [
       "Firecrawl",
@@ -292,31 +298,31 @@
       "sakluma-news",
       "st-live",
       "LIVE",
-      "Berita trending MY — cross-source + Google Trends"
+      "Berita trending MY \u2014 cross-source + Google Trends"
     ],
     [
       "sakluma-content",
       "st-live",
       "LIVE",
-      "5 persona kandungan — FB/ads/caption"
+      "5 persona kandungan \u2014 FB/ads/caption"
     ],
     [
       "sakluma-publish",
       "st-live",
       "LIVE",
-      "Push ke Airtable — confirm flow"
+      "Push ke Airtable \u2014 confirm flow"
     ],
     [
       "aura-trading",
       "st-progress",
       "PROGRESS",
-      "Asri Ahmad method — menunggu Moomoo"
+      "Asri Ahmad method \u2014 menunggu Moomoo"
     ],
     [
       "moomoo-trading-mcp",
       "st-progress",
       "PROGRESS",
-      "Integrasi OpenD — deploy Railway"
+      "Integrasi OpenD \u2014 deploy Railway"
     ],
     [
       "trading-mcp-integration",
@@ -352,34 +358,34 @@
       "FUTURE: Shopee API",
       "st-off",
       "PLAN",
-      "E-commerce — belum wujud (Liya)"
+      "E-commerce \u2014 belum wujud (Liya)"
     ],
     [
       "FUTURE: Finance/HR",
       "st-off",
       "PLAN",
-      "Bajet & tunai — belum wujud (Aziz)"
+      "Bajet & tunai \u2014 belum wujud (Aziz)"
     ],
     [
       "FUTURE: WordPress",
       "st-off",
       "PLAN",
-      "Website/theme — belum wujud"
+      "Website/theme \u2014 belum wujud"
     ],
     [
       "FUTURE: Website parallax",
       "st-off",
       "PLAN",
-      "Landing interaktif — belum wujud"
+      "Landing interaktif \u2014 belum wujud"
     ]
   ],
   "quick": {
-    "gateway": "🟢 running",
-    "telegram": "🟢 connected (polling)",
-    "airtable": "🟢 key ada",
-    "moomoo": "🟡 belum connect (OpenD)",
-    "mcp": "🟢 exa",
-    "image": "🟢 Pollinations + Gemini"
+    "gateway": "\ud83d\udfe2 running",
+    "telegram": "\ud83d\udfe2 connected (polling)",
+    "airtable": "\ud83d\udfe2 key ada",
+    "moomoo": "\ud83d\udfe1 belum connect (OpenD)",
+    "mcp": "\ud83d\udfe2 exa",
+    "image": "\ud83d\udfe2 Pollinations + Gemini"
   },
   "deepseek_balance": {
     "status": "ok",
