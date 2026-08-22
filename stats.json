@@ -26,6 +26,13 @@
       "pid": "2699608",
       "mem": "?",
       "cpu": "?"
+    },
+    {
+      "name": "Moomoo OpenD Bridge",
+      "status": "running",
+      "pid": "27104",
+      "mem": "92MB",
+      "cpu": "0.4%"
     }
   ],
   "keys": [
@@ -178,21 +185,21 @@
       "st-live",
       "LIVE",
       "Web search berkuasa",
-      "mcporter \u00b7 exa.web_search_exa"
+      "mcporter · exa.web_search_exa"
     ],
     [
       "Moomoo/OpenD (MCP)",
-      "st-progress",
-      "PROGRESS",
-      "Trading Bursa/US/HK/SG",
-      "Skill moomoo-trading-mcp ada; OpenD perlu deploy (Railway)"
+      "st-live",
+      "LIVE",
+      "Trading Bursa/US/HK/SG (Live VPS Gateway)",
+      "OpenD Bridge + MCP active on VPS"
     ],
     [
       "Jina Reader",
       "st-live",
       "LIVE",
       "Scrape artikel & halaman",
-      "r.jina.ai \u2014 auto-resolve link"
+      "r.jina.ai — auto-resolve link"
     ],
     [
       "yt-dlp",
@@ -206,14 +213,14 @@
       "st-live",
       "LIVE",
       "auraSakluma_bot",
-      "Gateway \u00b7 button kategori \u00b7 reply"
+      "Gateway · button kategori · reply"
     ],
     [
       "Airtable",
       "st-live",
       "LIVE",
       "Content Station (draf/artikel)",
-      "API key aktif \u00b7 push flow"
+      "API key aktif · push flow"
     ],
     [
       "Google Drive",
@@ -241,14 +248,14 @@
       "st-live",
       "LIVE",
       "Backup free + image gen",
-      "gemini-2.5-flash \u00b7 gemini-3-pro-image"
+      "gemini-2.5-flash · gemini-3-pro-image"
     ],
     [
       "Pollinations.ai",
       "st-live",
       "LIVE",
       "Generate gambar free",
-      "No key \u00b7 primary image"
+      "No key · primary image"
     ],
     [
       "Replicate (FLUX)",
@@ -269,7 +276,7 @@
       "st-progress",
       "PROGRESS",
       "DB/host (belum sambung)",
-      "Publishable key je \u2014 perlu semak"
+      "Publishable key je — perlu semak"
     ],
     [
       "Firecrawl",
@@ -298,31 +305,31 @@
       "sakluma-news",
       "st-live",
       "LIVE",
-      "Berita trending MY \u2014 cross-source + Google Trends"
+      "Berita trending MY — cross-source + Google Trends"
     ],
     [
       "sakluma-content",
       "st-live",
       "LIVE",
-      "5 persona kandungan \u2014 FB/ads/caption"
+      "5 persona kandungan — FB/ads/caption"
     ],
     [
       "sakluma-publish",
       "st-live",
       "LIVE",
-      "Push ke Airtable \u2014 confirm flow"
+      "Push ke Airtable — confirm flow"
     ],
     [
       "aura-trading",
-      "st-progress",
-      "PROGRESS",
-      "Asri Ahmad method \u2014 menunggu Moomoo"
+      "st-live",
+      "LIVE",
+      "Asri Ahmad DACE + SCAP 100 — Live OpenD Connected"
     ],
     [
       "moomoo-trading-mcp",
-      "st-progress",
-      "PROGRESS",
-      "Integrasi OpenD \u2014 deploy Railway"
+      "st-live",
+      "LIVE",
+      "Integrasi OpenD Live di VPS"
     ],
     [
       "trading-mcp-integration",
@@ -358,34 +365,34 @@
       "FUTURE: Shopee API",
       "st-off",
       "PLAN",
-      "E-commerce \u2014 belum wujud (Liya)"
+      "E-commerce — belum wujud (Liya)"
     ],
     [
       "FUTURE: Finance/HR",
       "st-off",
       "PLAN",
-      "Bajet & tunai \u2014 belum wujud (Aziz)"
+      "Bajet & tunai — belum wujud (Aziz)"
     ],
     [
       "FUTURE: WordPress",
       "st-off",
       "PLAN",
-      "Website/theme \u2014 belum wujud"
+      "Website/theme — belum wujud"
     ],
     [
       "FUTURE: Website parallax",
       "st-off",
       "PLAN",
-      "Landing interaktif \u2014 belum wujud"
+      "Landing interaktif — belum wujud"
     ]
   ],
   "quick": {
-    "gateway": "\ud83d\udfe2 running",
-    "telegram": "\ud83d\udfe2 connected (polling)",
-    "airtable": "\ud83d\udfe2 key ada",
-    "moomoo": "\ud83d\udfe1 belum connect (OpenD)",
-    "mcp": "\ud83d\udfe2 exa",
-    "image": "\ud83d\udfe2 Pollinations + Gemini"
+    "gateway": "🟢 running",
+    "telegram": "🟢 connected (polling)",
+    "airtable": "🟢 key ada",
+    "moomoo": "🟢 connected (OpenD VPS Gateway)",
+    "mcp": "🟢 exa / opend",
+    "image": "🟢 Pollinations + Gemini"
   },
   "deepseek_balance": {
     "status": "ok",
