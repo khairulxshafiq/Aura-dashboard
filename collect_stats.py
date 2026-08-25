@@ -84,7 +84,7 @@ def collect_services():
         psp = ps.split()
         mem_mb = round(int(psp[0]) / 1024, 0) if psp else "?"
         cpu = psp[1] if len(psp) > 1 else "?"
-        rows.append({"name": "Gateway (telegram)", "status": "running", "pid": pid, "mem": f"{mem_mb:.0f}MB", "cpu": f"{cpu}%"})
+        rows.append({"name": "Gateway (telegram)", "status": "running", "pid": pid, "mem": f"{mem_mb}MB" if isinstance(mem_mb, str) else f"{mem_mb:.0f}MB", "cpu": f"{cpu}%"})
     else:
         rows.append({"name": "Gateway", "status": "stopped", "pid": "—", "mem": "—", "cpu": "—"})
     # Agent CLI aktif
@@ -99,7 +99,7 @@ def collect_services():
         psp = ps.split()
         mem_mb = round(int(psp[0]) / 1024, 0) if psp else "?"
         cpu = psp[1] if len(psp) > 1 else "?"
-        rows.append({"name": "Moomoo OpenD Bridge", "status": "running", "pid": pid, "mem": f"{mem_mb:.0f}MB", "cpu": f"{cpu}%"})
+        rows.append({"name": "Moomoo OpenD Bridge", "status": "running", "pid": pid, "mem": f"{mem_mb}MB" if isinstance(mem_mb, str) else f"{mem_mb:.0f}MB", "cpu": f"{cpu}%"})
     else:
         rows.append({"name": "Moomoo OpenD Bridge", "status": "running", "pid": "27104", "mem": "92MB", "cpu": "0.4%"})
     return rows

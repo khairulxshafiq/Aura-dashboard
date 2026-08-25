@@ -1,0 +1,10 @@
+__pycache__/
+stats.json
+usage_history.json
+*.log
+
+# Legacy untracked files & duplicates at root
+Aura Dashboard v1.html
+dashboard.html
+index.v1.html
+personas.json
