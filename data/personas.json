@@ -77,7 +77,7 @@
       "warna": "#f5a623",
       "status": "live",
       "status_label": "LIVE",
-      "note": "5 gaya bahasa, flow confirm & push — jalan penuh.",
+      "note": "6 persona FB + 4 platform (FB/Threads/X/Lemon8). Butang confirm & push tengah fix (clarify), Airtable tunggu PAT.",
       "suara": "Kreatif & fleksibel — bertukar gaya ikut keperluan: santai, cikgu, hook, formal, emosi.",
       "tugas": [
         "Draf FB, ads, caption ikut persona dipilih",
@@ -93,11 +93,12 @@
       ],
       "skill": "sakluma-content",
       "gaya": [
-        "santai_malaysia",
-        "cikgu_fadhli",
-        "hook_pembaca",
-        "formal",
-        "emotional"
+        "berita",
+        "kedai_kopi",
+        "makcik_bawang",
+        "pemerhati",
+        "viral_santai",
+        "kisah_inspirasi"
       ]
     },
     {
@@ -162,7 +163,7 @@
         "pesanan",
         "ecommerce"
       ],
-      "skill": "sakluma-content"
+      "skill": "liya-commerce"
     },
     {
       "id": "ops",
@@ -276,7 +277,7 @@
         "tts",
         "alisa"
       ],
-      "skill": "sakluma-content"
+      "skill": "alisa-media-pipeline"
     }
   ]
 }
