@@ -49,7 +49,7 @@
       "warna": "#34d399",
       "status": "live",
       "status_label": "LIVE",
-      "note": "Trending proven, button kategori, Airtable — jalan penuh.",
+      "note": "Trending proven + badge (🔥xN/📈) + action bar siap 26Ogo. Airtable tunggu PAT baharu (blocker).",
       "suara": "Pantas, tepat, penuh semangat 🔥 — sentiasa update dengan berita terkini dan trend yang panas.",
       "tugas": [
         "Kumpul trending proven (cross-source ≥2 portal + Google Trends MY)",
@@ -109,7 +109,7 @@
       "warna": "#60a5fa",
       "status": "live",
       "status_label": "LIVE",
-      "note": "OpenD Live Gateway aktif di VPS + Asri Ahmad DACE + SCAP Premium (scoring 100). Harga masa-nyata & pelan dagangan automatik.",
+      "note": "Bot AURA-Trade aktif + Asri Ahmad DACE + SCAP Premium (scoring 100). OpenD container up (127.0.0.1:11111) — menunggu login untuk harga live. Data Bursa: klse-screener (15-min delay).",
       "suara": "Tajam, disiplin, risk-first — mentor trading peribadi yang jujur dan tegas berasaskan data OpenD.",
       "tugas": [
         "Suntik harga live & Level-2 data dari OpenD Gateway di VPS",
