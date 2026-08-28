@@ -8,11 +8,11 @@ import json
 import requests
 import datetime
 
-# Glance API Credentials
-FEED_ID = "5efc8734-0a99-4dce-9ec2-175f351300c9"
-INGEST_URL = f"https://glance-api.fly.dev/ingest/{FEED_ID}"
-WRITE_KEY = "9Bcf1_tLI-RaQb0olS_Kq08A8WgE17vhDAZMDQxwl-I"
-LAYOUT_ID = "a8284d6e-3ff9-4fb4-aa51-ad8f65d51071"
+# Glance API Credentials (loaded from environment)
+FEED_ID = os.getenv("GLANCE_FEED_ID", "")
+WRITE_KEY = os.getenv("GLANCE_WRITE_KEY", "")
+LAYOUT_ID = os.getenv("GLANCE_LAYOUT_ID", "a8284d6e-3ff9-4fb4-aa51-ad8f65d51071")
+INGEST_URL = f"https://glance-api.fly.dev/ingest/{FEED_ID}" if FEED_ID else ""
 
 def format_elegant_payload(portfolio_summary, positions):
     """
