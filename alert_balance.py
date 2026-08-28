@@ -17,7 +17,6 @@ import urllib.request
 
 THRESHOLD = 1.0  # USD
 HERMES_HOME = os.path.expanduser("~/.hermes")
-CHAT_ID = "7833562484"  # Sakluma Original
 
 
 def env_val(name):
@@ -26,7 +25,10 @@ def env_val(name):
         m = re.search(rf"^{re.escape(name)}=(.+)$", open(p, errors="ignore").read(), re.M)
         if m:
             return m.group(1).strip().strip('"').strip("'")
-    return ""
+    return os.getenv(name, "")
+
+
+CHAT_ID = env_val("TELEGRAM_CHAT_ID")
 
 
 def get_balance():
