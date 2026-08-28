@@ -23,8 +23,8 @@
 
 | Phase | Title | Initial Status | Entry Criteria | Key Deliverables | Exit Criteria | Blockers |
 |---|---|---|---|---|---|---|
-| **Phase 0** | Emergency Security Containment | **In Progress** | Pre-flight repository verification passed | `PUBLIC_DATA_POLICY.md`, `PHASE_0_SECURITY_REPORT.md`, secret containment | Zero exposed secrets in tracked files; remote URL sanitized; public data policy active | Credential rotation verification |
-| **Phase 1** | Baseline Verification and Architecture Decision | **Planning** | Phase 0 completed & approved | `DASHBOARD_BASELINE.md`, `ADR-001-CANONICAL-FRONTEND.md`, `PHASE_1_BASELINE_REPORT.md` | Baseline documented; canonical frontend ADR resolved | Phase 0 sign-off |
+| **Phase 0** | Emergency Security Containment | **PASS WITH MANUAL ROTATION REQUIRED** | Pre-flight repository verification passed | `PUBLIC_DATA_POLICY.md`, `PHASE_0_SECURITY_REPORT.md`, secret containment | Zero exposed secrets in tracked files; remote URL sanitized; public data policy active | Credential rotation verification |
+| **Phase 1** | Baseline Verification and Architecture Decision | **PASS WITH CONDITIONS** | Phase 0 completed & approved | `DASHBOARD_BASELINE.md`, `ADR-001-CANONICAL-FRONTEND.md`, `PHASE_1_BASELINE_REPORT.md` | Baseline documented; canonical frontend ADR resolved | Phase 0 sign-off |
 | **Phase 2** | Canonical Repository and Deployment Foundation | **Locked** | Phase 1 ADR approved | Clean repository layout, GitHub Actions CI/CD workflow, source structure | Single build pipeline; automated deployment active | Phase 1 completion |
 | **Phase 3** | AuraOne Alignment and Canonical Data Contract | **Locked** | Phase 2 foundation active | Data contract specification, updated `personas.json` & collector schemas | 100% data contract alignment with AuraOne Master | Phase 2 completion |
 | **Phase 4** | Unified Dashboard UX | **Locked** | Phase 3 data contract active | Unified SPA components, dark clay command center theme, responsive layouts | Unified SPA active; broken cross-page links eliminated | Phase 3 completion |
@@ -60,6 +60,36 @@
 
 ---
 
+---
+
+# Roadmap Freeze
+
+The official roadmap is frozen as follows:
+
+- **Phase 0 Security:** Emergency Security Containment (`PASS WITH MANUAL ROTATION REQUIRED`)
+- **Phase 1 Verification:** Baseline Verification & Architecture Decision (`PASS WITH CONDITIONS`)
+- **Phase 2 Foundation:** Canonical Repository & Deployment Foundation (**Locked**)
+- **Phase 3 Alignment:** AuraOne Alignment & Canonical Data Contract (**Locked**)
+- **Phase 4 UX:** Unified Dashboard UX (**Locked**)
+- **Phase 5 Observability:** Live Observability (**Locked**)
+- **Phase 6 Intelligence & Business:** Controlled Intelligence, HITL, Trading & Business Modules (**Locked**)
+
+### Sub-Phases Specification
+- **Phase 2A:** Repository Foundation
+- **Phase 2B:** Deployment Foundation
+- **Phase 2C:** Frontend Foundation
+- **Phase 5A:** System Health
+- **Phase 5B:** Agent Status
+- **Phase 5C:** Usage Monitoring
+- **Phase 6A:** Luma Intelligence
+- **Phase 6B:** HITL Control
+- **Phase 6C:** Trading Analytics
+- **Phase 6D:** CFO Analytics
+
+*No new phases or sub-phases may be introduced without a formal Architecture Decision Record (ADR).*
+
+---
+
 ## Change-Control Rules
 
 Any proposed modification to this roadmap must formally document:
@@ -69,3 +99,4 @@ Any proposed modification to this roadmap must formally document:
 4. **Decision Owner:** Founder approval requirement.
 5. **ADR Requirement:** Formal ADR creation if architectural scope changes.
 6. **AuraOne Master Update:** Synchronization requirement with `auraone-notes/core/AURAONE_MASTER_OPERATING_STATE.md`.
+
