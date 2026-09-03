@@ -893,10 +893,11 @@
         <div class="header-subtitle">
           sakluma.my / antigravity-workspace · audit: 2026-08-23 · by khairulxshafiq
         </div>
-        <div style="display:flex; align-items:center; gap: 12px;">
-        <div class="live-badge" style="background: rgba(108,99,255,0.12); border-color: rgba(108,99,255,0.3); color: var(--accent-aura);">
-          <div class="live-dot" style="background: var(--accent-aura);"></div>
-          Snapshot Data (31 Aug 2026)
+      </div>
+      <div style="display:flex; align-items:center; gap: 12px;">
+        <div class="live-badge">
+          <div class="live-dot"></div>
+          Data Sebenar
         </div>
       </div>
     </header>
@@ -905,273 +906,18 @@
     <div class="question-banner">
       <div class="q-icon">🔍</div>
       <div class="q-text">
-        <strong>Soalan Penyelidikan:</strong> Bagaimanakah enjin seni bina AuraOne Hermes beroperasi dalam menguruskan ReAct loop, 8 domain kemampuan, dan integrasi executor Luma?
-        <strong>Apakah status verified audit dan sprint terkini (Aug 31, 2026)?</strong>
+        <strong>Soalan Penyelidikan:</strong> Harini ada banyak perkara yang AuraOne buat dalam Telegram — tambah Aura-Trade ke group, buat Glance, tukar API dan lain-lain.
+        <strong>Adakah Luma terlibat dalam kerja-kerja ini?</strong> Jika ya, apa buktinya? Berapa token digunakan? Siapa yang execute?
       </div>
     </div>
 
     <!-- VERDICT -->
     <div class="verdict-box">
-      <div class="verdict-label">✅ Dapatan Audit Seni Bina (Snapshot: 31 Aug 2026)</div>
+      <div class="verdict-label">✅ Dapatan Audit</div>
       <div class="verdict-text">
-        <strong>Aura = Central Decision Maker & Orchestrator.</strong> AuraOne (Hermes) bertindak sebagai pembuat keputusan utama ReAct loop. <strong>Luma (Antigravity/AGY)</strong> bertindak sebagai <em>Development Executor</em>. Semua 8 ejen yang dinamakan (Amira, Xiao, Liya, Akira, Maya, Adrian, Kumar, Alisa) bertindak sebagai <strong>domain kemampuan & modul persona</strong> (bukan microservices berasingan). Enjin utama menggunakan penyedia <strong>OpenCode</strong> (Primary) dan <strong>zAI GLM-4</strong> (Fallback).
-      </div>
-    </div>
-
-    <!-- 1. ARCHITECTURE OVERVIEW & SYSTEM MATURITY -->
-    <div class="card full-width" style="margin-bottom: 24px; background: linear-gradient(135deg, rgba(13,20,40,0.9), rgba(10,15,30,0.95)); border: 1px solid rgba(108,99,255,0.3);">
-      <div class="card-header">
-        <div class="card-title">👑 1. Architecture Overview & System Maturity</div>
-        <span class="card-badge badge-aura">ReAct Orchestration Audit Score: 91.5 / 100</span>
-      </div>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-bottom: 20px;">
-        <div style="background: rgba(108,99,255,0.08); border: 1px solid rgba(108,99,255,0.2); border-radius: 12px; padding: 16px;">
-          <div style="font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px;">Pembuat Keputusan Utama</div>
-          <div style="font-size: 20px; font-weight: 800; color: var(--accent-aura); margin: 6px 0;">👑 Aura (Lead Orchestrator)</div>
-          <div style="font-size: 12px; color: var(--text-secondary);">Perancangan matlamat, penghalaan ReAct, penilaian pemerhatian & jawapan akhir Telegram.</div>
-        </div>
-        <div style="background: rgba(0,212,255,0.08); border: 1px solid rgba(0,212,255,0.2); border-radius: 12px; padding: 16px;">
-          <div style="font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px;">Pelaksana Pembangunan</div>
-          <div style="font-size: 20px; font-weight: 800; color: var(--accent-luma); margin: 6px 0;">⚡ Luma (AGY Executor)</div>
-          <div style="font-size: 12px; color: var(--text-secondary);">Pelaksana koding, ujian unit, penstrukturan sistem & audit teknikal GCP.</div>
-        </div>
-        <div style="background: rgba(245,158,11,0.08); border: 1px solid rgba(245,158,11,0.2); border-radius: 12px; padding: 16px;">
-          <div style="font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px;">Model Provider Active SOT</div>
-          <div style="font-size: 18px; font-weight: 700; color: var(--accent-gold); margin: 6px 0;">🥇 OpenCode (Primary)</div>
-          <div style="font-size: 12px; color: var(--text-secondary);">Sandaran Utama: 🇨🇳 zAI GLM-4 (`~/.hermes/config.yaml`).</div>
-        </div>
-      </div>
-
-      <div style="font-size: 13px; font-weight: 700; color: var(--text-secondary); margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1px;">Komponen Seni Bina Disahkan (Verified: 31 Aug 2026):</div>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px; margin-bottom: 20px;">
-        <div style="font-size: 12px; background: rgba(16,185,129,0.08); border: 1px solid rgba(16,185,129,0.2); padding: 8px 12px; border-radius: 8px; color: var(--accent-green);">VERIFIED: ReAct Reasoning Loop</div>
-        <div style="font-size: 12px; background: rgba(16,185,129,0.08); border: 1px solid rgba(16,185,129,0.2); padding: 8px 12px; border-radius: 8px; color: var(--accent-green);">VERIFIED: Central Orchestrator</div>
-        <div style="font-size: 12px; background: rgba(16,185,129,0.08); border: 1px solid rgba(16,185,129,0.2); padding: 8px 12px; border-radius: 8px; color: var(--accent-green);">VERIFIED: Capability Separation</div>
-        <div style="font-size: 12px; background: rgba(16,185,129,0.08); border: 1px solid rgba(16,185,129,0.2); padding: 8px 12px; border-radius: 8px; color: var(--accent-green);">VERIFIED: Episodic Memory Layer</div>
-        <div style="font-size: 12px; background: rgba(16,185,129,0.08); border: 1px solid rgba(16,185,129,0.2); padding: 8px 12px; border-radius: 8px; color: var(--accent-green);">VERIFIED: State Database (`state.db`)</div>
-        <div style="font-size: 12px; background: rgba(16,185,129,0.08); border: 1px solid rgba(16,185,129,0.2); padding: 8px 12px; border-radius: 8px; color: var(--accent-green);">VERIFIED: Async Delegation Tracker</div>
-        <div style="font-size: 12px; background: rgba(16,185,129,0.08); border: 1px solid rgba(16,185,129,0.2); padding: 8px 12px; border-radius: 8px; color: var(--accent-green);">VERIFIED: Native Tool Calling (MCP)</div>
-        <div style="font-size: 12px; background: rgba(16,185,129,0.08); border: 1px solid rgba(16,185,129,0.2); padding: 8px 12px; border-radius: 8px; color: var(--accent-green);">VERIFIED: Provider Fallback (zAI)</div>
-        <div style="font-size: 12px; background: rgba(16,185,129,0.08); border: 1px solid rgba(16,185,129,0.2); padding: 8px 12px; border-radius: 8px; color: var(--accent-green);">VERIFIED: Knowledge Base (`INDEX.md`)</div>
-        <div style="font-size: 12px; background: rgba(16,185,129,0.08); border: 1px solid rgba(16,185,129,0.2); padding: 8px 12px; border-radius: 8px; color: var(--accent-green);">VERIFIED: Audit Trail & ADR-006</div>
-        <div style="font-size: 12px; background: rgba(16,185,129,0.08); border: 1px solid rgba(16,185,129,0.2); padding: 8px 12px; border-radius: 8px; color: var(--accent-green);">VERIFIED: Domain Context Isolation</div>
-        <div style="font-size: 12px; background: rgba(16,185,129,0.08); border: 1px solid rgba(16,185,129,0.2); padding: 8px 12px; border-radius: 8px; color: var(--accent-green);">VERIFIED: Observation Contract v1.0 (Runtime Integrated)</div>
-      </div>
-
-      <div style="font-size: 13px; font-weight: 700; color: var(--text-secondary); margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1px;">Status Keselamatan Infrastruktur (Remediation Pending):</div>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 10px;">
-        <div style="font-size: 12px; background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.2); padding: 8px 12px; border-radius: 8px; color: var(--accent-red);">REMEDIATION_PENDING: SSH Password Hardening</div>
-        <div style="font-size: 12px; background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.2); padding: 8px 12px; border-radius: 8px; color: var(--accent-red);">REMEDIATION_PENDING: UFW Firewall Activation</div>
-        <div style="font-size: 12px; background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.2); padding: 8px 12px; border-radius: 8px; color: var(--accent-red);">REMEDIATION_PENDING: Fail2ban Service Installation</div>
-      </div>
-    </div>
-
-    <!-- 2. SPRINT STATUS BOARD -->
-    <div class="card full-width" style="margin-bottom: 24px;">
-      <div class="card-header">
-        <div class="card-title">🛡️ 2. Sprint Status & Gate Verification (Aug 31, 2026)</div>
-        <span class="card-badge badge-aura">Sprints 1-4 Overview</span>
-      </div>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px;">
-        <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(16,185,129,0.3); border-radius: 12px; padding: 16px;">
-          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 8px;">
-            <strong style="color: var(--text-primary);">Sprint 1A: GitHub PAT</strong>
-            <span style="font-size: 10px; font-weight:700; color: var(--accent-green); background: rgba(16,185,129,0.15); padding: 2px 8px; border-radius: 100px;">COMPLETE</span>
-          </div>
-          <p style="font-size: 12px; color: var(--text-secondary);">Token dipindahkan ke `${GITHUB_TOKEN}` (`chmod 600`). PAT baharu dirotasi oleh founder.</p>
-        </div>
-
-        <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(16,185,129,0.3); border-radius: 12px; padding: 16px;">
-          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 8px;">
-            <strong style="color: var(--text-primary);">Sprint 1B: Liya v1 Agent</strong>
-            <span style="font-size: 10px; font-weight:700; color: var(--accent-green); background: rgba(16,185,129,0.15); padding: 2px 8px; border-radius: 100px;">COMPLETE</span>
-          </div>
-          <p style="font-size: 12px; color: var(--text-secondary);">Persona Commerce & Saklomak Shopee catalog (`catalog.json` & `faq.json`) sedia digunakan.</p>
-        </div>
-
-        <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(16,185,129,0.3); border-radius: 12px; padding: 16px;">
-          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 8px;">
-            <strong style="color: var(--text-primary);">Sprint 1C: Knowledge Dedup</strong>
-            <span style="font-size: 10px; font-weight:700; color: var(--accent-green); background: rgba(16,185,129,0.15); padding: 2px 8px; border-radius: 100px;">COMPLETE</span>
-          </div>
-          <p style="font-size: 12px; color: var(--text-secondary);">`config.yaml` disahkan sebagai Single Source of Truth. Pengurangan 80% pertindihan maklumat.</p>
-        </div>
-
-        <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(16,185,129,0.3); border-radius: 12px; padding: 16px;">
-          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 8px;">
-            <strong style="color: var(--text-primary);">Sprint 2A: Domain Isolation</strong>
-            <span style="font-size: 10px; font-weight:700; color: var(--accent-green); background: rgba(16,185,129,0.15); padding: 2px 8px; border-radius: 100px;">COMPLETE</span>
-          </div>
-          <p style="font-size: 12px; color: var(--text-secondary);">Penapisan 10 domain context (`domain_context_isolation.py`). 0% kebocoran konteks merentasi domain.</p>
-        </div>
-
-        <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(245,158,11,0.3); border-radius: 12px; padding: 16px;">
-          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 8px;">
-            <strong style="color: var(--text-primary);">Sprint 2B: Tirith Scanner</strong>
-            <span style="font-size: 10px; font-weight:700; color: var(--accent-gold); background: rgba(245,158,11,0.15); padding: 2px 8px; border-radius: 100px;">PAUSED (BLOCKED)</span>
-          </div>
-          <p style="font-size: 12px; color: var(--text-secondary);">Binary `tirith` tiada dalam PATH. Perlindungan fail-closed ditahan untuk mengelakkan gangguan servis.</p>
-        </div>
-
-        <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(16,185,129,0.3); border-radius: 12px; padding: 16px;">
-          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 8px;">
-            <strong style="color: var(--text-primary);">Sprint 3: ReAct Reliability</strong>
-            <span style="font-size: 10px; font-weight:700; color: var(--accent-green); background: rgba(16,185,129,0.15); padding: 2px 8px; border-radius: 100px;">COMPLETE</span>
-          </div>
-          <p style="font-size: 12px; color: var(--text-secondary);">Disahkan 20 criteria. Enjin ReAct mengendalikan multi-capability chaining tanpa memerlukan DAG luaran.</p>
-        </div>
-
-        <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(16,185,129,0.3); border-radius: 12px; padding: 16px;">
-          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 8px;">
-            <strong style="color: var(--text-primary);">Sprint 4: Observation v1.0</strong>
-            <span style="font-size: 10px; font-weight:700; color: var(--accent-green); background: rgba(16,185,129,0.15); padding: 2px 8px; border-radius: 100px;">COMPLETE</span>
-          </div>
-          <p style="font-size: 12px; color: var(--text-secondary);">Schema & 12 adapter disahkan (52/52 Ujian Lulus). Integrasi runtime aktif disahkan sepenuhnya di `telegram_bot.py`.</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- 3. CAPABILITY MAP GRID (8 PERSONAS + LUMA) -->
-    <div class="card full-width" style="margin-bottom: 24px;">
-      <div class="card-header">
-        <div class="card-title">👥 3. Capability Map (8 Domain Ejen + Luma Executor)</div>
-        <span class="card-badge badge-aura">Swarm Roster</span>
-      </div>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 14px;">
-        
-        <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 12px; padding: 16px;">
-          <div style="display:flex; align-items:center; gap: 10px; margin-bottom: 8px;">
-            <span style="font-size: 24px;">📈</span>
-            <div>
-              <strong style="color: var(--text-primary); font-size: 14px;">Amira (Trading)</strong>
-              <div style="font-size: 11px; color: var(--text-muted);">Bursa Malaysia & Crypto</div>
-            </div>
-          </div>
-          <p style="font-size: 12px; color: var(--text-secondary);">Analisis teknikal saham SCAP, Asri Ahmad method, Hyperliquid perps & format Eye-Viewing Telegram.</p>
-        </div>
-
-        <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 12px; padding: 16px;">
-          <div style="display:flex; align-items:center; gap: 10px; margin-bottom: 8px;">
-            <span style="font-size: 24px;">✍️</span>
-            <div>
-              <strong style="color: var(--text-primary); font-size: 14px;">Xiao (Content)</strong>
-              <div style="font-size: 11px; color: var(--text-muted);">Media Sosial & Copywriting</div>
-            </div>
-          </div>
-          <p style="font-size: 12px; color: var(--text-secondary);">Copywriting 5 gaya bahasa (santai, profesional, iklan, cerita, motivasi) & sync Airtable Content Station.</p>
-        </div>
-
-        <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 12px; padding: 16px;">
-          <div style="display:flex; align-items:center; gap: 10px; margin-bottom: 8px;">
-            <span style="font-size: 24px;">🛍️</span>
-            <div>
-              <strong style="color: var(--text-primary); font-size: 14px;">Liya (Commerce)</strong>
-              <div style="font-size: 11px; color: var(--text-muted);">Shopee & Saklomak Support</div>
-            </div>
-          </div>
-          <p style="font-size: 12px; color: var(--text-secondary);">Semakan katalog produk Saklomak (`catalog.json`), maklumat harga, stok & soalan lazim Shopee (`faq.json`).</p>
-        </div>
-
-        <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 12px; padding: 16px;">
-          <div style="display:flex; align-items:center; gap: 10px; margin-bottom: 8px;">
-            <span style="font-size: 24px;">📊</span>
-            <div>
-              <strong style="color: var(--text-primary); font-size: 14px;">Akira (Finance)</strong>
-              <div style="font-size: 11px; color: var(--text-muted);">CFO & Revenue Ops</div>
-            </div>
-          </div>
-          <p style="font-size: 12px; color: var(--text-secondary);">Laporan kewangan, pendapatan jualan, aliran tunai, margin untung & penyelarasan Google Sheets.</p>
-        </div>
-
-        <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 12px; padding: 16px;">
-          <div style="display:flex; align-items:center; gap: 10px; margin-bottom: 8px;">
-            <span style="font-size: 24px;">⚙️</span>
-            <div>
-              <strong style="color: var(--text-primary); font-size: 14px;">Maya (Ops)</strong>
-              <div style="font-size: 11px; color: var(--text-muted);">VPS & System Health</div>
-            </div>
-          </div>
-          <p style="font-size: 12px; color: var(--text-secondary);">Pengurusan cronjobs (`morning_brief.py`, `daily_recap.py`), pemantauan VPS watchdog & pembersihan log.</p>
-        </div>
-
-        <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 12px; padding: 16px;">
-          <div style="display:flex; align-items:center; gap: 10px; margin-bottom: 8px;">
-            <span style="font-size: 24px;">📰</span>
-            <div>
-              <strong style="color: var(--text-primary); font-size: 14px;">Adrian (News)</strong>
-              <div style="font-size: 11px; color: var(--text-muted);">Malaysia & Tech News</div>
-            </div>
-          </div>
-          <p style="font-size: 12px; color: var(--text-secondary);">Kurasi berita trending Malaysia, carian GNews, integrasi RSS feed & ringkasan fakta terpantas.</p>
-        </div>
-
-        <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 12px; padding: 16px;">
-          <div style="display:flex; align-items:center; gap: 10px; margin-bottom: 8px;">
-            <span style="font-size: 24px;">🎨</span>
-            <div>
-              <strong style="color: var(--text-primary); font-size: 14px;">Kumar (Visual)</strong>
-              <div style="font-size: 11px; color: var(--text-muted);">Image Generation Master</div>
-            </div>
-          </div>
-          <p style="font-size: 12px; color: var(--text-secondary);">Jana poster & gambar (FLUX LoRA, zAI Imagen, Pollinations). Fokus kepada **pembentukan gambar sahaja**.</p>
-        </div>
-
-        <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 12px; padding: 16px;">
-          <div style="display:flex; align-items:center; gap: 10px; margin-bottom: 8px;">
-            <span style="font-size: 24px;">🎙️</span>
-            <div>
-              <strong style="color: var(--text-primary); font-size: 14px;">Alisa (Media)</strong>
-              <div style="font-size: 11px; color: var(--text-muted);">Video & Audio Director</div>
-            </div>
-          </div>
-          <p style="font-size: 12px; color: var(--text-secondary);">Menukar gambar Kumar ➔ Video Reels/Shorts, pemilihan trek audio, TTS/STT Whisper & penyuntingan media.</p>
-        </div>
-
-        <div style="background: rgba(0,212,255,0.04); border: 1px solid rgba(0,212,255,0.3); border-radius: 12px; padding: 16px;">
-          <div style="display:flex; align-items:center; gap: 10px; margin-bottom: 8px;">
-            <span style="font-size: 24px;">⚡</span>
-            <div>
-              <strong style="color: var(--accent-luma); font-size: 14px;">Luma (Development)</strong>
-              <div style="font-size: 11px; color: var(--text-muted);">Heavy Technical Executor</div>
-            </div>
-          </div>
-          <p style="font-size: 12px; color: var(--text-secondary);">Pelaksana koding, penyuntingan fail, pembaikan bug, ujian unit & pengurusan infrastruktur GCP VM.</p>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- 4. AUDIT LEDGER & ADR REPOSITORY -->
-    <div class="card full-width" style="margin-bottom: 24px;">
-      <div class="card-header">
-        <div class="card-title">📜 4. Audit Ledger & Rekod Keputusan Seni Bina (ADR)</div>
-        <span class="card-badge badge-aura">Verified 2026-08-31</span>
-      </div>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px;">
-        <a href="https://github.com/khairulxshafiq/auraone-notes/blob/main/audits/2026-08-31/HERMES_REALITY_SYNC.md" target="_blank" style="text-decoration:none; background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 10px; padding: 12px; display:block;">
-          <div style="font-weight:700; color: var(--accent-aura); font-size: 13px;">📄 HERMES_REALITY_SYNC.md</div>
-          <div style="font-size: 11px; color: var(--text-muted); margin-top: 4px;">Pemeriksaan kenyataan runtime vs dokumen legacy.</div>
-        </a>
-        <a href="https://github.com/khairulxshafiq/auraone-notes/blob/main/audits/2026-08-31/HERMES_REACT_ORCHESTRATION_AUDIT.md" target="_blank" style="text-decoration:none; background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 10px; padding: 12px; display:block;">
-          <div style="font-weight:700; color: var(--accent-aura); font-size: 13px;">📄 HERMES_REACT_ORCHESTRATION_AUDIT.md</div>
-          <div style="font-size: 11px; color: var(--text-muted); margin-top: 4px;">Audit bukti enjin ReAct & penolakan DAG tegar.</div>
-        </a>
-        <a href="https://github.com/khairulxshafiq/auraone-notes/blob/main/audits/2026-08-31/REACT_RELIABILITY_AUDIT.md" target="_blank" style="text-decoration:none; background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 10px; padding: 12px; display:block;">
-          <div style="font-weight:700; color: var(--accent-aura); font-size: 13px;">📄 REACT_RELIABILITY_AUDIT.md</div>
-          <div style="font-size: 11px; color: var(--text-muted); margin-top: 4px;">Audit mekanik pusingan ReAct (Reason-Act-Observe-Finish).</div>
-        </a>
-        <a href="https://github.com/khairulxshafiq/auraone-notes/blob/main/audits/2026-08-31/HERMES_JOB_LIFECYCLE_AUDIT.md" target="_blank" style="text-decoration:none; background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 10px; padding: 12px; display:block;">
-          <div style="font-weight:700; color: var(--accent-aura); font-size: 13px;">📄 HERMES_JOB_LIFECYCLE_AUDIT.md</div>
-          <div style="font-size: 11px; color: var(--text-muted); margin-top: 4px;">Audit kitaran hayat tugasan & SQLite `state.db`.</div>
-        </a>
-        <a href="https://github.com/khairulxshafiq/auraone-notes/blob/main/audits/2026-08-31/OBSERVATION_CONTRACT_AUDIT.md" target="_blank" style="text-decoration:none; background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 10px; padding: 12px; display:block;">
-          <div style="font-weight:700; color: var(--accent-aura); font-size: 13px;">📄 OBSERVATION_CONTRACT_AUDIT.md</div>
-          <div style="font-size: 11px; color: var(--text-muted); margin-top: 4px;">Audit kontrak pemerhatian & reka bentuk standard v1.0.</div>
-        </a>
-        <a href="https://github.com/khairulxshafiq/auraone-notes/blob/main/architecture/ADR-HERMES-REACT-ORCHESTRATION.md" target="_blank" style="text-decoration:none; background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 10px; padding: 12px; display:block;">
-          <div style="font-weight:700; color: var(--accent-luma); font-size: 13px;">📄 ADR-006: ReAct Primary Architecture</div>
-          <div style="font-size: 11px; color: var(--text-muted); margin-top: 4px;">Rekod keputusan mengekalkan enjin ReAct sebagai corak teras.</div>
-        </a>
+        <strong>Ya — Luma terlibat secara langsung.</strong> AuraOne (Hermes) adalah antara muka utama di Telegram, tetapi <strong>Luma (Antigravity/AGY)</strong> yang sebenarnya <em>execute</em> kerja-kerja teknikal: menulis fail, menjalankan command, membuat agent persona, push ke GitHub, dan mengkonfigurasi semula sistem. Luma bertindak sebagai <em>Architect & DevOps Engineer</em> — sementara AuraOne bertindak sebagai <em>interface & task delegator</em> kepada Boss.
+        <br><br>
+        Bukti: <strong>8 sesi conversation</strong> antara Boss dan Luma dikesan, dengan jumlah <strong>585 tool executions</strong> dan lebih <strong>1,400+ langkah agentik</strong> dalam tempoh Aug 21–22, 2026.
       </div>
     </div>
 
