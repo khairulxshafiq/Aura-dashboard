@@ -1,22 +1,22 @@
 {
   "system": "Persona Manager — AuraOne Reference Implementation",
-  "version": "1.5.0",
-  "snapshot_timestamp": "2026-09-02T19:00:00Z",
-  "description": "AuraOne Master Architecture & Capability Health Matrix (Phase O Owner Reference Validation).",
+  "version": "1.5.0-phase-p-rc1",
+  "snapshot_timestamp": "2026-09-06T20:55:00Z",
+  "description": "AuraOne Master Architecture & Capability Health Matrix (Phase P Release Candidate Freeze).",
   "status_summary": {
-    "architecture_status": "VERIFIED",
+    "architecture_status": "CLOSED_VERIFIED",
     "platform_foundation": "VERIFIED",
-    "sprint_4_status": "COMPLETE, Runtime Integrated and Verified",
-    "phase_n_status": "COMPLETE_WITH_LIMITATIONS",
-    "phase_n_ux_score": "88.5 / 100",
-    "phase_n_score_status": "PROVISIONAL",
-    "wave_1": "COMPLETE",
-    "wave_2": "COMPLETE",
-    "wave_3": "COMPLETE",
-    "wave_4": "COMPLETE",
-    "phase_o_stage": "OWNER REFERENCE VALIDATION",
+    "observation_contract": "RUNTIME_VERIFIED",
+    "phase_n_status": "CLOSED_WITH_LIMITATIONS",
+    "phase_o_status": "OWNER_REFERENCE_VALIDATED_WITH_LIMITATIONS",
+    "phase_p_status": "READY_WITH_LIMITATIONS, NOT STARTED",
+    "p0_5_wave_1_status": "IMPLEMENTED_LOCAL, SHADOW_TESTED, NOT_DEPLOYED",
     "commercial_readiness": "ON HOLD",
-    "current_focus": "Real owner usage, capability maturity, UX telemetry, governed improvement proposals"
+    "current_mission": "P0.5 Runtime Behaviour Refinement",
+    "next_mission": "Phase P Sustained Owner Dogfooding",
+    "future_mission": "First External Tenant",
+    "phase_n_ux_score": "88.5 / 100",
+    "phase_n_score_status": "PROVISIONAL"
   },
   "manager": {
     "name": "Aura",
@@ -36,7 +36,7 @@
       "evidence_level": "MEASURED_RUNTIME",
       "telemetry_data_status": "MEASURED",
       "top_known_issue": "Moomoo TCP reconnect silent fail on socket drop",
-      "last_verified": "2026-09-02"
+      "last_verified": "2026-09-06"
     },
     {
       "capability_id": "adrian.news_intelligence",
@@ -47,7 +47,7 @@
       "evidence_level": "MEASURED_RUNTIME",
       "telemetry_data_status": "MEASURED",
       "top_known_issue": "Malformed XML RSS feed parser fallback",
-      "last_verified": "2026-09-02"
+      "last_verified": "2026-09-06"
     },
     {
       "capability_id": "xiao.content_copywriting",
@@ -58,7 +58,7 @@
       "evidence_level": "MEASURED_RUNTIME",
       "telemetry_data_status": "MEASURED",
       "top_known_issue": "Direct API social publishing connector required",
-      "last_verified": "2026-09-02"
+      "last_verified": "2026-09-06"
     },
     {
       "capability_id": "liya.commerce_guidance",
@@ -69,7 +69,7 @@
       "evidence_level": "PROVISIONAL",
       "telemetry_data_status": "INSUFFICIENT_DATA",
       "top_known_issue": "Shopee live API integration pending owner catalog sync",
-      "last_verified": "2026-09-02"
+      "last_verified": "2026-09-06"
     },
     {
       "capability_id": "kumar.visual_generation",
@@ -80,7 +80,7 @@
       "evidence_level": "MEASURED_RUNTIME",
       "telemetry_data_status": "MEASURED",
       "top_known_issue": "GPU budget approval gate required ($0.03/img paid limit)",
-      "last_verified": "2026-09-02"
+      "last_verified": "2026-09-06"
     },
     {
       "capability_id": "maya.operations_schedule",
@@ -91,7 +91,7 @@
       "evidence_level": "PROVISIONAL",
       "telemetry_data_status": "INSUFFICIENT_DATA",
       "top_known_issue": "Destructive task deletion requires explicit confirmation",
-      "last_verified": "2026-09-02"
+      "last_verified": "2026-09-06"
     },
     {
       "capability_id": "akira.revenue_audit",
@@ -102,7 +102,7 @@
       "evidence_level": "PROVISIONAL",
       "telemetry_data_status": "INSUFFICIENT_DATA",
       "top_known_issue": "Owner confidentiality ledger isolation check",
-      "last_verified": "2026-09-02"
+      "last_verified": "2026-09-06"
     },
     {
       "capability_id": "alisa.media_narration",
@@ -113,7 +113,7 @@
       "evidence_level": "PROVISIONAL",
       "telemetry_data_status": "INSUFFICIENT_DATA",
       "top_known_issue": "Edge-TTS free fallback active; fal.ai video render pending",
-      "last_verified": "2026-09-02"
+      "last_verified": "2026-09-06"
     },
     {
       "capability_id": "luma.technical_execution",
@@ -124,7 +124,7 @@
       "evidence_level": "MEASURED_RUNTIME",
       "telemetry_data_status": "MEASURED",
       "top_known_issue": "Restricted read-only operation; push/deploy requires explicit approval",
-      "last_verified": "2026-09-02"
+      "last_verified": "2026-09-06"
     },
     {
       "capability_id": "aura.general_orchestration",
@@ -135,7 +135,7 @@
       "evidence_level": "MEASURED_RUNTIME",
       "telemetry_data_status": "MEASURED",
       "top_known_issue": "Public tenant isolation unproven in production",
-      "last_verified": "2026-09-02"
+      "last_verified": "2026-09-06"
     }
   ]
 }
