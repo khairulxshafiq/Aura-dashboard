@@ -10,7 +10,7 @@
     "phase_n_status": "CLOSED_WITH_LIMITATIONS",
     "phase_o_status": "OWNER_REFERENCE_VALIDATED_WITH_LIMITATIONS",
     "phase_p_status": "READY_WITH_LIMITATIONS, NOT STARTED",
-    "p0_5_wave_1_status": "IMPLEMENTED_LOCAL, SHADOW_TESTED, NOT_DEPLOYED",
+    "p0_5_wave_1_status": "WAVE1_OWNER_CANARY_DEPLOYED_AWAITING_OWNER_TEST",
     "commercial_readiness": "ON HOLD",
     "current_mission": "P0.5 Runtime Behaviour Refinement",
     "next_mission": "Phase P Sustained Owner Dogfooding",
