@@ -1,0 +1,428 @@
+<!doctype html>
+<html lang="ms">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AuraOne Cloud — Interface Prototype</title>
+<style>
+:root{
+  --bg:#0b0e14; --surface:#11141c; --surface2:#181c26; --border:#232838;
+  --ink:#e8eaf2; --muted:#8a91a5; --accent:#f4b860; --accent2:#e8956d;
+  --green:#4ade80; --red:#f87171;
+  --radius:14px; --radius-sm:10px;
+}
+*{margin:0;box-sizing:border-box}
+body{font-family:"Segoe UI",system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.5}
+button{font:inherit;cursor:pointer;border:none;border-radius:var(--radius-sm)}
+input{font:inherit}
+
+/* ===== NAV ===== */
+nav{display:flex;align-items:center;gap:18px;padding:14px 26px;border-bottom:1px solid var(--border);background:#0d1018;position:sticky;top:0;z-index:20}
+.logo{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:.5px}
+.logo .ring{width:26px;height:26px;border-radius:50%;background:conic-gradient(from 180deg,var(--accent),var(--accent2),var(--accent));-webkit-mask:radial-gradient(circle,transparent 42%,#000 45%);mask:radial-gradient(circle,transparent 42%,#000 45%)}
+.logo small{color:var(--muted);font-weight:400}
+nav .spacer{flex:1}
+.navlink{color:var(--muted);text-decoration:none;padding:6px 12px;border-radius:8px}
+.navlink:hover{color:var(--ink);background:var(--surface2)}
+.pill{background:var(--surface2);border:1px solid var(--border);color:var(--accent);padding:6px 14px;border-radius:999px;font-size:.85rem}
+
+/* ===== SCREENS ===== */
+.screen{display:none;padding:34px 26px;max-width:1180px;margin:0 auto}
+.screen.active{display:block}
+
+/* ===== 1. HERO/LANDING (Decide surface) ===== */
+.hero{display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:center;padding:30px 0 50px}
+.hero h1{font-size:2.6rem;line-height:1.15;letter-spacing:-.5px}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero p{color:var(--muted);margin:18px 0 26px;max-width:46ch}
+.btn{padding:12px 22px;border-radius:10px;font-weight:600}
+.btn.primary{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#1a1206}
+.btn.primary:hover{filter:brightness(1.08)}
+.btn.ghost{background:var(--surface2);color:var(--ink);border:1px solid var(--border)}
+.cardrow{display:flex;gap:12px;flex-wrap:wrap}
+.stat{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:14px 18px;min-width:120px}
+.stat b{font-size:1.3rem;display:block}
+.stat span{color:var(--muted);font-size:.8rem}
+
+/* ===== 2. PRICING (Compare surface) ===== */
+.plans{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:26px}
+.plan{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:22px;position:relative;display:flex;flex-direction:column;gap:10px}
+.plan.pop{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent)}
+.plan .tag{position:absolute;top:-11px;left:50%;transform:translateX(-50%);background:var(--accent);color:#1a1206;font-size:.72rem;font-weight:700;padding:3px 12px;border-radius:999px}
+.plan h3{font-size:1rem}
+.plan .price{font-size:1.8rem;font-weight:700}
+.plan .price small{font-size:.8rem;color:var(--muted);font-weight:400}
+.plan ul{list-style:none;display:flex;flex-direction:column;gap:7px;font-size:.85rem;color:var(--muted);flex:1}
+.plan li::before{content:"▸ ";color:var(--accent)}
+.plan button{margin-top:auto;width:100%}
+
+/* ===== 3. LOGIN (Configure surface) ===== */
+.loginwrap{max-width:400px;margin:60px auto;text-align:center}
+.loginwrap .ring{width:54px;height:54px;margin:0 auto 18px;background:conic-gradient(from 180deg,var(--accent),var(--accent2),var(--accent));-webkit-mask:radial-gradient(circle,transparent 40%,#000 44%);mask:radial-gradient(circle,transparent 40%,#000 44%)}
+.loginwrap h2{margin-bottom:6px}
+.loginwrap p{color:var(--muted);font-size:.9rem;margin-bottom:26px}
+.gbtn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;background:#fff;color:#222;padding:12px;border-radius:10px;font-weight:600}
+.gbtn:hover{background:#f1f1f1}
+.loginwrap .fine{margin-top:14px;font-size:.75rem;color:var(--muted)}
+.loginwrap .fine a{color:var(--accent)}
+
+/* ===== 4. DASHBOARD (Monitor surface) ===== */
+.dash-head{display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:14px;margin-bottom:22px}
+.bar{display:flex;align-items:center;gap:10px}
+.balcard{background:linear-gradient(135deg,#1b1508,#231b0e);border:1px solid #4a3a14;border-radius:var(--radius);padding:18px 22px;min-width:220px}
+.balcard small{color:var(--muted)}
+.balcard b{font-size:1.6rem;color:var(--accent)}
+.topbar-mini{display:flex;gap:8px;margin-top:10px}
+.chip{background:var(--surface2);border:1px solid var(--border);color:var(--ink);padding:6px 12px;border-radius:999px;font-size:.85rem}
+.chip:hover{border-color:var(--accent)}
+.chip.on{border-color:var(--accent);color:var(--accent)}
+
+.grid2{display:grid;grid-template-columns:2fr 1fr;gap:16px}
+.panel{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:20px}
+.panel h4{font-size:.95rem;margin-bottom:14px;display:flex;justify-content:space-between;align-items:center}
+.panel h4 span{color:var(--muted);font-weight:400;font-size:.8rem}
+.agents{display:flex;flex-direction:column;gap:10px}
+.agent{display:flex;align-items:center;gap:14px;background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius-sm);padding:12px 16px;cursor:pointer;transition:border .15s}
+.agent:hover{border-color:var(--accent)}
+.agent .dot{width:9px;height:9px;border-radius:50%;background:var(--green)}
+.agent .dot.off{background:var(--muted)}
+.agent b{display:block;font-size:.9rem}
+.agent small{color:var(--muted)}
+.agent .run{margin-left:auto;background:transparent;color:var(--accent);border:1px solid var(--border);padding:6px 14px;border-radius:8px}
+.agent .run:hover{border-color:var(--accent)}
+.connectors{display:flex;flex-wrap:wrap;gap:8px}
+.conn{display:flex;align-items:center;gap:8px;background:var(--surface2);border:1px solid var(--border);border-radius:999px;padding:7px 14px;font-size:.85rem;cursor:pointer}
+.conn .sw{width:26px;height:15px;border-radius:999px;background:var(--border);position:relative;flex-shrink:0}
+.conn .sw::after{content:"";position:absolute;width:11px;height:11px;border-radius:50%;background:var(--muted);top:2px;left:2px;transition:.15s}
+.conn.on .sw{background:#3a5a2a}
+.conn.on .sw::after{left:13px;background:var(--green)}
+.conn.on{border-color:#3a5a2a}
+.conn:hover{border-color:var(--accent)}
+
+/* chat preview */
+.chatlog{display:flex;flex-direction:column;gap:10px;max-height:280px;overflow-y:auto;font-size:.88rem}
+.msg{padding:10px 14px;border-radius:12px;max-width:85%}
+.msg.u{align-self:flex-end;background:var(--accent);color:#1a1206;border-bottom-right-radius:4px}
+.msg.a{align-self:flex-start;background:var(--surface2);border:1px solid var(--border);border-bottom-left-radius:4px}
+.chatbar{display:flex;gap:8px;margin-top:12px}
+.chatbar input{flex:1;background:var(--surface2);border:1px solid var(--border);color:var(--ink);padding:10px 14px;border-radius:10px;outline:none}
+.chatbar input:focus{border-color:var(--accent)}
+.chatbar button{background:var(--accent);color:#1a1206;padding:0 18px;font-weight:700}
+
+/* ===== 5. TRADING (Monitor + profile) ===== */
+.profile-quiz .q{margin-bottom:18px}
+.profile-quiz label{display:block;margin-bottom:8px;font-size:.9rem}
+.profile-quiz select{width:100%;background:var(--surface2);border:1px solid var(--border);color:var(--ink);padding:10px;border-radius:10px}
+.tradecols{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-top:18px}
+.stock{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--border);font-size:.9rem}
+.stock:last-child{border:none}
+.stock .up{color:var(--green)} .stock .dn{color:var(--red)}
+.badge{font-size:.68rem;padding:2px 8px;border-radius:999px;border:1px solid var(--border);color:var(--muted)}
+.badge.warn{border-color:#8a5a1a;color:var(--accent)}
+
+/* ===== tabs ===== */
+.tabs{display:flex;gap:6px;margin-bottom:20px;flex-wrap:wrap}
+.tabs button{background:var(--surface2);color:var(--muted);padding:8px 18px;border-radius:999px;border:1px solid var(--border)}
+.tabs button.act{color:var(--accent);border-color:var(--accent)}
+
+/* ===== footer ===== */
+footer{text-align:center;color:var(--muted);font-size:.78rem;padding:26px;border-top:1px solid var(--border)}
+.disclaimer{background:#1a1410;border:1px solid #4a3a14;color:#d9b87a;border-radius:var(--radius-sm);padding:10px 16px;font-size:.78rem;max-width:900px;margin:0 auto 14px}
+
+/* ===== modal ===== */
+.modal{display:none;position:fixed;inset:0;background:rgba(5,7,12,.7);z-index:50;align-items:center;justify-content:center;padding:20px}
+.modal.open{display:flex}
+.modal .box{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:26px;max-width:430px;width:100%}
+.modal h3{margin-bottom:8px}
+.modal p{color:var(--muted);font-size:.88rem;margin-bottom:16px}
+.modal input{width:100%;background:var(--surface2);border:1px solid var(--border);color:var(--ink);padding:11px;border-radius:10px;outline:none;margin-bottom:14px}
+.modal input:focus{border-color:var(--accent)}
+.modal .row{display:flex;gap:10px}
+.modal .row .btn{flex:1}
+
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr}
+  .plans{grid-template-columns:1fr 1fr}
+  .grid2{grid-template-columns:1fr}
+  .tradecols{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo"><div class="ring"></div>AuraOne <small>Cloud</small></div>
+  <div class="spacer"></div>
+  <a class="navlink" onclick="show('landing')">Utama</a>
+  <a class="navlink" onclick="show('pricing')">Harga</a>
+  <span class="pill" id="navBal" style="display:none">⚡ 0 kredit</span>
+  <button class="btn primary" id="navDash" style="padding:8px 18px;display:none" onclick="show('dashboard')">Masuk</button>
+</nav>
+
+<!-- ===== LANDING ===== -->
+<section class="screen active" id="s-landing">
+  <div class="hero">
+    <div>
+      <h1>AI agent <em>yang kerja</em> untuk bisnes kau.</h1>
+      <p>Buat gambar brand, tulis content, monitor saham Bursa — pilih agent, sambung API kau sendiri, siap. Tiada coding. Tiada prompt engineering. Bahasa kau je.</p>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <button class="btn primary" onclick="show('pricing')">Cuba Percuma — 7 Hari</button>
+        <button class="btn ghost" onclick="show('demo')">Lihat Agent Beraksi</button>
+      </div>
+    </div>
+    <div class="style="display:grid;gap:10px">
+      <div class="stat"><b>3</b><span>template agent sedia</span></div>
+      <div class="stat"><b>10+</b><span>connector API (toggle on/off)</span></div>
+      <div class="stat"><b>BM / EN</b><span>agent auto-jawab bahasa kau</span></div>
+      <div class="stat"><b>⚡ advise</b><span>trading co-pilot — tak execute order</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PRICING ===== -->
+<section class="screen" id="s-pricing">
+  <h2 style="font-size:1.6rem">Pilih plan ikut saiz bisnes kau</h2>
+  <p style="color:var(--muted);margin-top:6px">Semua plan termasuk chat agent BM/EN. Kredit ditolak ikut guna — tak guna tak rugi.</p>
+  <div class="plans">
+    <div class="plan">
+      <h3>Cuba</h3><div class="price">RM0<small>/7 hari</small></div>
+      <ul><li>20 kredit percuma</li><li>1 agent template</li><li>Semua connector preview</li></ul>
+      <button class="btn ghost" onclick="show('login')">Mula Trial</button>
+    </div>
+    <div class="plan pop">
+      <span class="tag">PALING LARIS</span>
+      <h3>Starter</h3><div class="price">RM19<small>/bln</small></div>
+      <ul><li>300 kredit / bulan</li><li>1 agent aktif + chat tanpa had</li><li>Trading co-pilot (delayed data)</li></ul>
+      <button class="btn primary" onclick="show('login')">Pilih</button>
+    </div>
+    <div class="plan">
+      <h3>Pro</h3><div class="price">RM49<small>/bln</small></div>
+      <ul><li>1,000 kredit / bulan</li><li>Semua connector + FB auto-post</li><li>Image brand generator</li></ul>
+      <button class="btn primary" onclick="show('login')">Pilih</button>
+    </div>
+    <div class="plan">
+      <h3>Top-Up</h3><div class="price">RM10<small>/200 kredit</small></div>
+      <ul><li>Pay-as-you-go</li><li>Tak komit monthly</li><li>Kredit tak luput 90 hari</li></ul>
+      <button class="btn ghost" onclick="show('login')">Top-Up</button>
+    </div>
+  </div>
+  <div class="disclaimer" style="margin-top:26px">⚠️ Agent AuraOne memberi analisis &amp; pendidikan sahaja — BUKAN nasihat pelaburan berlesen. Tiada jaminan pulangan. Semua keputusan dagangan adalah tanggungjawab anda sendiri.</div>
+</section>
+
+<!-- ===== LOGIN ===== -->
+<section class="screen" id="s-login">
+  <div class="loginwrap">
+    <div class="ring"></div>
+    <h2>Selamat kembali 👋</h2>
+    <p>Sign in guna Google — tiada password untuk ingat.</p>
+    <button class="gbtn" onclick="show('dashboard')">
+      <svg width="18" height="18" viewBox="0 0 24 24"><path fill="#4285F4" d="M23.5 12.3c0-.8-.1-1.6-.2-2.3H12v4.5h6.5a5.6 5.6 0 0 1-2.4 3.7v3h3.9c2.2-2 3.5-5 3.5-8.9z"/><path fill="#34A853" d="M12 24c3.2 0 6-1.1 8-2.9l-3.9-3a7.2 7.2 0 0 1-4.1 1.1 7.2 7.2 0 0 1-6.7-5H1.3v3.1A12 12 0 0 0 12 24z"/><path fill="#FBBC05" d="M5.3 14.2a7.2 7.2 0 0 1 0-4.4V6.7H1.3a12 12 0 0 0 0 10.6l4-3.1z"/><path fill="#EA4335" d="M12 4.8c1.8 0 3.4.6 4.6 1.8l3.5-3.5A12 12 0 0 0 1.3 6.7l4 3.1A7.2 7.2 0 0 1 12 4.8z"/></svg>
+      Continue with Google
+    </button>
+    <p class="fine">Dengan mendaftar, anda bersetuju dengan <a href="#">Terma Perkhidmatan</a> &amp; <a href="#">Dasar Privasi (PDPA)</a>.</p>
+  </div>
+</section>
+
+<!-- ===== DASHBOARD ===== -->
+<section class="screen" id="s-dashboard">
+  <div class="dash-head">
+    <div>
+      <h2 style="font-size:1.5rem">Hei, Khairul 👋</h2>
+      <p style="color:var(--muted);font-size:.9rem">Agent kau dah siap menunggu arahan.</p>
+    </div>
+    <div class="bar">
+      <div class="balcard"><small>Baki kredit</small><br><b>📊 260 ⚡</b>
+        <div class="topbar-mini">
+          <button class="chip" onclick="openModal()">＋ Top-Up</button>
+          <button class="chip" onclick="show('trading')">📈 Trading</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tabs">
+    <button class="act" id="tab-agents" onclick="tab('agents')">Agent Saya</button>
+    <button id="tab-connect" onclick="tab('connect')">Connectors</button>
+    <button id="tab-set" onclick="tab('set')">Tetapan</button>
+  </div>
+
+  <div class="grid2">
+    <div>
+      <div class="panel" id="pane-agents">
+        <h4>Agent Aktif <span>3 dari 3 siap</span></h4>
+        <div class="agents">
+          <div class="agent" onclick="runAgent(this)">
+            <span class="dot"></span>
+            <div><b>📸 Content Marketing</b><small>"Buat 5 idea post FB untuk produk smoker ayam"</small></div>
+            <button class="run">Jalankan</button>
+          </div>
+          <div class="agent" onclick="runAgent(this)">
+            <span class="dot"></span>
+            <div><b>🎨 Image Brand Generator</b></div>
+            <button class="run">Jalankan</button>
+          </div>
+          <div class="agent" onclick="runAgent(this)">
+            <span class="dot off"></span>
+            <div><b>⏰ Reminder & Report Bisnes</b></div>
+            <button class="run">Set Up</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel" id="pane-connect" style="display:none">
+        <h4>Connectors <span>Klik untuk toggle ON/OFF</span></h4>
+        <div class="connectors">
+          <div class="conn on" onclick="tog(this)"><span class="sw"></span>Telegram</div>
+          <div class="conn" onclick="tog(this)"><span class="sw"></span>GDrive</div>
+          <div class="conn" onclick="tog(this)"><span class="sw"></span>Dropbox</div>
+          <div class="conn" onclick="tog(this)"><span class="sw"></span>Google Sheets</div>
+          <div class="conn" onclick="tog(this)"><span class="sw"></span>FB Page</div>
+          <div class="conn" onclick="tog(this)"><span class="sw"></span>WhatsApp</div>
+          <div class="conn" onclick="tog(this)"><span class="sw"></span>Shopee</div>
+          <div class="conn" onclick="tog(this)"><span class="sw"></span>Gmail</div>
+        </div>
+        <p style="color:var(--muted);font-size:.8rem;margin-top:14px">Bila toggle ON, agent akan minta API key dari connector tu. Kau boleh putuskan bila-bila masa.</p>
+      </div>
+
+      <div class="panel profile-quiz" id="pane-set" style="display:none">
+        <h4>Profil Agent</h4>
+        <div class="q"><label>Bahasa utama agent</label>
+          <select><option>Auto-detect (BM / EN)</option><option>BM sahaja</option><option>English sahaja</option></select>
+        </div>
+        <div class="q"><label>Persona agent</label>
+          <select><option>Professional santai</option><option>Professional formal</option><option>Santai ("cikgu")</option></select>
+        </div>
+        <div class="q"><label>Aktiviti maksimum agent per hari</label>
+          <select><option>Ringan — 20 tindakan</option><option>Sederhana — 60 tindakan</option></select>
+        </div>
+        <button class="btn primary" onclick="alert('Simpan — demo prototype')">Simpan</button>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h4>Live Demo Chat <span>Ketik — agent akan jawab BM</span></h4>
+      <div class="chatlog" id="chatlog">
+        <div class="msg a">Selamat petang, Khairul! Aku dah sedia. Nak aku buat apa hari ni — content, gambar, atau semak saham?</div>
+      </div>
+      <div class="chatbar">
+        <input id="chatInput" placeholder="Taip BM/EN..." onkeydown="if(event.key==='Enter')sendMsg()">
+        <button onclick="sendMsg()">➤</button>
+      </div>
+    </div>
+ </div>
+</section>
+
+<!-- ===== TRADING ===== -->
+<section class="screen" id="s-trading">
+  <div class="dash-head">
+    <div><h2 style="font-size:1.5rem">📈 Trading Co-Pilot</h2>
+    <p style="color:var(--muted);font-size:.9rem">Analisis & pendidikan sahaja — Aura tak akan execute order.</p></div>
+  </div>
+
+  <div class="grid2">
+    <div class="panel profile-quiz">
+      <h4>Profil Dagangan Kau</h4>
+      <div class="q"><label>1. Level pengalaman</label>
+        <select><option>Beginner</option><option>Intermediate</option><option>Advanced</option></select></div>
+      <div class="q"><label>2. Market fokus</label>
+        <select><option>Bursa Malaysia</option><option>US Market</option><option>Crypto</option><option>Forex</option></select></div>
+      <div class="q"><label>3. Gaya dagangan</label>
+        <select><option>DCA bulanan</option><option>Swing (hari-minggu)</option><option>Long-term hold</option></select></div>
+      <div class="q"><label>4. Selera risiko</label>
+        <select><option>Konservatif</option><option>Moderate</option><option>Agresif</option></select></div>
+      <button class="btn primary" onclick="alert('Auto generate watchlist + daily report — demo')">Simpan Profil → Generate Plan</button>
+    </div>
+
+    <div class="panel">
+      <h4>Watchlist (delayed 15m) <span class="badge">Plan Starter</span></h4>
+      <div class="stock"><span>MAYBANK</span><span class="up">RM9.98 ▲0.4%</span></div>
+      <div class="stock"><span>PETRONAS Dagangan</span><span class="dn">RM21.4 ▼0.8%</span></div>
+      <div class="stock"><span>GAMUDA</span><span class="up">RM4.86 ▲1.2%</span></div>
+      <div class="stock"><span>SUNWAY</span><span class="dn">RM3.42 ▼0.3%</span></div>
+      <p style="color:var(--muted);font-size:.78rem;margin-top:10px">Upgrade ke Pro untuk data realtime + alert harga + news sentiment.</p>
+      <h4 style="margin-top:22px">Sentiment Berita Hari Ini</h4>
+      <p style="font-size:.88rem;color:var(--muted)">🟢 Bank & reit sawan <b>moderate positive</b> — interest hold, inflasi turun sikit.</p>
+      <p style="font-size:.88rem;color:var(--muted)">🟡 Construction &  data KTM project — watchlist Gamuda, MRCB.</p>
+    </div>
+
+    <div class="panel">
+      <h4>Aktiviti Agent (7 hari)</h4>
+      <div class="stock"><span>Laporan harian dihantar</span><span class="badge">Telegram</span></div>
+      <div class="stock"><span>Alert harga: MAYBANK par RM10</span><span class="badge warn">aktif</span></div>
+      <div class="stock"><span>Sentiment DEX scan (Kripto)</span><span class="badge">Jumaat</span></div>
+      <div class="stock"><span>Kredit digunakan bln ini</span><span class="badge">40/300</span></div>
+    </div>
+  </div>
+  <div class="disclaimer" style="margin-top:22px">⚠️ AuraOne Cloud memberi analisis &amp; pendidikan sahaja. BUKAN nasihat pelaburan berlisens. Tiada jaminan profit. Keputusan beli/jual untuk anda sendiri buat.</div>
+</section>
+
+<!-- ===== MODAL: topup ===== -->
+<div class="modal" id="modalTopup">
+  <div class="box">
+    <h3>Top-up Kredit</h3>
+    <p>(Demo prototype — production akan pakai ToyyibPay)</p>
+    <input placeholder="RM10 = 200 kredit · RM30 = 650 · RM50 = 1,150">
+    <div class="row">
+      <button class="btn ghost" onclick="closeModal()">Batal</button>
+      <button class="btn primary" onclick="closeModal();alert('ToyyibPay → kredit auto-tambah — demo')">Bayar</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== modal: connector API key ===== -->
+<div class="modal" id="modalKey">
+  <div class="box">
+    <h3 id="mKeyTitle">Sambung Connector</h3>
+    <p>Ok, kalau ON — agent perlukan credential connector ini (AES-256 encrypted).</p>
+    <input placeholder="Paste API key / token sini...">
+    <div class="row">
+      <button class="btn ghost" onclick="closeKey()">Batal</button>
+      <button class="btn primary" onclick="closeKey();alert('Connected! ✅')">Sambung</button>
+    </div>
+  </div>
+</div>
+
+<script>
+function show(id){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  document.getElementById('s-'+id).classList.add('active');
+  document.getElementById('navBal').style.display = id=='dashboard'||id=='trading' ? 'inline' : 'none';
+  document.querySelectorAll('nav .navlink').forEach(n=>n.style.color='');
+  window.scrollTo(0,0);
+}
+function tab(name){
+  document.querySelectorAll('.tabs button').forEach(b=>b.classList.remove('act'));
+  event.target.classList.add('act');
+  ['agents','connect','set'].forEach(p=>{
+    document.getElementById('pane-'+p).style.display = p==name ? '' : 'none';
+  });
+}
+function tog(el){
+  if(!el.classList.contains('on')){ openKey(el.textContent.trim()); }
+  el.classList.toggle('on');
+}
+function openKey(name){
+  document.getElementById('mKeyTitle').textContent='Sambung '+name;
+  document.getElementById('modalKey').classList.add('open');
+}
+function closeKey(){ document.getElementById('modalKey').classList.remove('open') }
+function openModal(){ document.getElementById('modalTopup').classList.add('open') }
+function closeModal(){ document.getElementById('modalTopup').classList.remove('open') }
+function runAgent(el){ el.querySelector('.run').textContent='⏳ Lari...'; setTimeout(()=>{ el.querySelector('.run').textContent='✅ Siap'; setTimeout(()=>el.querySelector('.run').textContent='Jalankan',1800) },1200) }
+function sendMsg(){
+  const inp=document.getElementById('chatInput'); const t=inp.value.trim(); if(!t)return;
+  const log=document.getElementById('chatlog');
+  log.insertAdjacentHTML('beforeend','<div class="msg u">'+t.replace(/</g,'&lt;')+'</div>');
+  inp.value='';
+  setTimeout(()=>{
+    let reply;
+    if(/saham|trade|stock| TP|SL|bursa/i.test(t)) reply='📈 Aku analisis ikut profil kau (beginner · Bursa · DCA): MAYBANK momentum stabil, near-support RM9.80. Dca entry zone RM9.70–9.95, TP ref RM10.50, SL ref RM9.40. Ini analisis sahaja — keputusan kat kau ya! 😉';
+    else if(/gambar|image|logo|poster/i.test(t)) reply='🎨 Siap! Aku akan generate 3 varian gambar brand. Setiap satu −20 kredit. Nak gaya minimalis, kontekstual, atau bold?';
+    else reply='✅ Noted! Aku draf untuk kau — lepas tu kau boleh approve atau edit sebelum agent aku post ke FB. Nak aku tunjuk draf sekarang?';
+    log.insertAdjacentHTML('beforeend','<div class="msg a">'+reply+'</div>');
+    log.scrollTop=log.scrollHeight;
+  },700);
+}
+</script>
+</body>
+</html>
