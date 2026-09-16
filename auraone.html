@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="ms">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>AuraOne Cloud — Interface Prototype</title>
+<title>AuraOne Cloud — Your Personal AI Workforce</title>
 <style>
 :root{
   --bg:#0b0e14; --surface:#11141c; --surface2:#181c26; --border:#232838;
@@ -153,73 +153,73 @@ footer{text-align:center;color:var(--muted);font-size:.78rem;padding:26px;border
 <nav>
   <div class="logo"><div class="ring"></div>AuraOne <small>Cloud</small></div>
   <div class="spacer"></div>
-  <a class="navlink" onclick="show('landing')">Utama</a>
-  <a class="navlink" onclick="show('pricing')">Harga</a>
+  <a class="navlink" onclick="show('landing')">Home</a>
+  <a class="navlink" onclick="show('pricing')">Pricing</a>
   <span class="pill" id="navBal" style="display:none">⚡ 0 kredit</span>
-  <button class="btn primary" id="navDash" style="padding:8px 18px;display:none" onclick="show('dashboard')">Masuk</button>
+  <button class="btn primary" id="navDash" style="padding:8px 18px;display:none" onclick="show('dashboard')">Sign In</button>
 </nav>
 
 <!-- ===== LANDING ===== -->
 <section class="screen active" id="s-landing">
   <div class="hero">
     <div>
-      <h1>AI agent <em>yang kerja</em> untuk bisnes kau.</h1>
-      <p>Buat gambar brand, tulis content, monitor saham Bursa — pilih agent, sambung API kau sendiri, siap. Tiada coding. Tiada prompt engineering. Bahasa kau je.</p>
+      <h1>Meet <em>Aura</em> — the AI agent that actually <em>works</em> for your business.</h1>
+      <p>Generate brand imagery, write content, monitor the market — simply choose an agent, connect your APIs, and go. No coding. No prompt engineering. Just results.</p>
       <div style="display:flex;gap:10px;flex-wrap:wrap">
-        <button class="btn primary" onclick="show('pricing')">Cuba Percuma — 7 Hari</button>
-        <button class="btn ghost" onclick="show('demo')">Lihat Agent Beraksi</button>
+        <button class="btn primary" onclick="show('pricing')">Start Your Free 7-Day Trial</button>
+        <button class="btn ghost" onclick="show('demo')">See Aura in Action</button>
       </div>
     </div>
     <div class="style="display:grid;gap:10px">
-      <div class="stat"><b>3</b><span>template agent sedia</span></div>
-      <div class="stat"><b>10+</b><span>connector API (toggle on/off)</span></div>
-      <div class="stat"><b>BM / EN</b><span>agent auto-jawab bahasa kau</span></div>
-      <div class="stat"><b>⚡ advise</b><span>trading co-pilot — tak execute order</span></div>
+      <div class="stat"><b>3</b><span>ready-made agent templates</span></div>
+      <div class="stat"><b>10+</b><span>API connectors — toggle on/off</span></div>
+      <div class="stat"><b>BM / EN</b><span>replies in your language</span></div>
+      <div class="stat"><b>⚡ advise</b><span>trading co-pilot — advises, never executes</span></div>
     </div>
   </div>
 </section>
 
 <!-- ===== PRICING ===== -->
 <section class="screen" id="s-pricing">
-  <h2 style="font-size:1.6rem">Pilih plan ikut saiz bisnes kau</h2>
-  <p style="color:var(--muted);margin-top:6px">Semua plan termasuk chat agent BM/EN. Kredit ditolak ikut guna — tak guna tak rugi.</p>
+  <h2 style="font-size:1.6rem">Choose the plan that fits your business</h2>
+  <p style="color:var(--muted);margin-top:6px">Every plan includes the full AI chat. Credits are deducted only for what you actually use — nothing goes to waste.</p>
   <div class="plans">
     <div class="plan">
-      <h3>Cuba</h3><div class="price">RM0<small>/7 hari</small></div>
-      <ul><li>20 kredit percuma</li><li>1 agent template</li><li>Semua connector preview</li></ul>
-      <button class="btn ghost" onclick="show('login')">Mula Trial</button>
+      <h3>Trial</h3><div class="price">RM0<small>/7 days</small></div>
+      <ul><li>20 free credits</li><li>1 agent template</li><li>Preview all connectors</li></ul>
+      <button class="btn ghost" onclick="show('login')">Start Trial</button>
     </div>
     <div class="plan pop">
       <span class="tag">PALING LARIS</span>
       <h3>Starter</h3><div class="price">RM19<small>/bln</small></div>
-      <ul><li>300 kredit / bulan</li><li>1 agent aktif + chat tanpa had</li><li>Trading co-pilot (delayed data)</li></ul>
+      <ul><li>300 credits / month</li><li>1 active agent + unlimited chat</li><li>Trading co-pilot (delayed data)</li></ul>
       <button class="btn primary" onclick="show('login')">Pilih</button>
     </div>
     <div class="plan">
       <h3>Pro</h3><div class="price">RM49<small>/bln</small></div>
-      <ul><li>1,000 kredit / bulan</li><li>Semua connector + FB auto-post</li><li>Image brand generator</li></ul>
+      <ul><li>1,000 credits / month</li><li>All connectors + FB auto-post</li><li>Brand image generator</li></ul>
       <button class="btn primary" onclick="show('login')">Pilih</button>
     </div>
     <div class="plan">
       <h3>Top-Up</h3><div class="price">RM10<small>/200 kredit</small></div>
-      <ul><li>Pay-as-you-go</li><li>Tak komit monthly</li><li>Kredit tak luput 90 hari</li></ul>
+      <ul><li>Pay-as-you-go</li><li>No monthly commitment</li><li>Credits valid for 90 days</li></ul>
       <button class="btn ghost" onclick="show('login')">Top-Up</button>
     </div>
   </div>
-  <div class="disclaimer" style="margin-top:26px">⚠️ Agent AuraOne memberi analisis &amp; pendidikan sahaja — BUKAN nasihat pelaburan berlesen. Tiada jaminan pulangan. Semua keputusan dagangan adalah tanggungjawab anda sendiri.</div>
+  <div class="disclaimer" style="margin-top:26px">⚠️ AuraOne Cloud provides analysis and educational content only — it is not a licensed investment adviser. Past performance is no guarantee of future results. All trading decisions remain your own responsibility.</div>
 </section>
 
 <!-- ===== LOGIN ===== -->
 <section class="screen" id="s-login">
   <div class="loginwrap">
     <div class="ring"></div>
-    <h2>Selamat kembali 👋</h2>
-    <p>Sign in guna Google — tiada password untuk ingat.</p>
+    <h2>Welcome back 👋</h2>
+    <p>Sign in with Google — no password to remember.</p>
     <button class="gbtn" onclick="show('dashboard')">
       <svg width="18" height="18" viewBox="0 0 24 24"><path fill="#4285F4" d="M23.5 12.3c0-.8-.1-1.6-.2-2.3H12v4.5h6.5a5.6 5.6 0 0 1-2.4 3.7v3h3.9c2.2-2 3.5-5 3.5-8.9z"/><path fill="#34A853" d="M12 24c3.2 0 6-1.1 8-2.9l-3.9-3a7.2 7.2 0 0 1-4.1 1.1 7.2 7.2 0 0 1-6.7-5H1.3v3.1A12 12 0 0 0 12 24z"/><path fill="#FBBC05" d="M5.3 14.2a7.2 7.2 0 0 1 0-4.4V6.7H1.3a12 12 0 0 0 0 10.6l4-3.1z"/><path fill="#EA4335" d="M12 4.8c1.8 0 3.4.6 4.6 1.8l3.5-3.5A12 12 0 0 0 1.3 6.7l4 3.1A7.2 7.2 0 0 1 12 4.8z"/></svg>
       Continue with Google
     </button>
-    <p class="fine">Dengan mendaftar, anda bersetuju dengan <a href="#">Terma Perkhidmatan</a> &amp; <a href="#">Dasar Privasi (PDPA)</a>.</p>
+    <p class="fine">By registering, you agree to our <a href="#">Terms of Service</a> &amp; <a href="#">Privacy Policy (PDPA)</a>.</p>
   </div>
 </section>
 
@@ -227,11 +227,11 @@ footer{text-align:center;color:var(--muted);font-size:.78rem;padding:26px;border
 <section class="screen" id="s-dashboard">
   <div class="dash-head">
     <div>
-      <h2 style="font-size:1.5rem">Hei, Khairul 👋</h2>
-      <p style="color:var(--muted);font-size:.9rem">Agent kau dah siap menunggu arahan.</p>
+      <h2 style="font-size:1.5rem">Welcome back, Khairul 👋</h2>
+      <p style="color:var(--muted);font-size:.9rem">Your agents are standing by for your instructions.</p>
     </div>
     <div class="bar">
-      <div class="balcard"><small>Baki kredit</small><br><b>📊 260 ⚡</b>
+      <div class="balcard"><small>Credit balance</small><br><b>📊 260 ⚡</b>
         <div class="topbar-mini">
           <button class="chip" onclick="openModal()">＋ Top-Up</button>
           <button class="chip" onclick="show('trading')">📈 Trading</button>
@@ -241,25 +241,25 @@ footer{text-align:center;color:var(--muted);font-size:.78rem;padding:26px;border
   </div>
 
   <div class="tabs">
-    <button class="act" id="tab-agents" onclick="tab('agents')">Agent Saya</button>
+    <button class="act" id="tab-agents" onclick="tab('agents')">My Agents</button>
     <button id="tab-connect" onclick="tab('connect')">Connectors</button>
-    <button id="tab-set" onclick="tab('set')">Tetapan</button>
+    <button id="tab-set" onclick="tab('set')">Settings</button>
   </div>
 
   <div class="grid2">
     <div>
       <div class="panel" id="pane-agents">
-        <h4>Agent Aktif <span>3 dari 3 siap</span></h4>
+        <h4>Active Agents <span>3 of 3 ready</span></h4>
         <div class="agents">
           <div class="agent" onclick="runAgent(this)">
             <span class="dot"></span>
-            <div><b>📸 Content Marketing</b><small>"Buat 5 idea post FB untuk produk smoker ayam"</small></div>
-            <button class="run">Jalankan</button>
+            <div><b>📸 Content Marketing</b><small>“5 fresh Facebook post ideas for our smoked products line”</small></div>
+            <button class="run">Run</button>
           </div>
           <div class="agent" onclick="runAgent(this)">
             <span class="dot"></span>
             <div><b>🎨 Image Brand Generator</b></div>
-            <button class="run">Jalankan</button>
+            <button class="run">Run</button>
           </div>
           <div class="agent" onclick="runAgent(this)">
             <span class="dot off"></span>
@@ -270,7 +270,7 @@ footer{text-align:center;color:var(--muted);font-size:.78rem;padding:26px;border
       </div>
 
       <div class="panel" id="pane-connect" style="display:none">
-        <h4>Connectors <span>Klik untuk toggle ON/OFF</span></h4>
+        <h4>Connectors <span>Click to toggle ON/OFF</span></h4>
         <div class="connectors">
           <div class="conn on" onclick="tog(this)"><span class="sw"></span>Telegram</div>
           <div class="conn" onclick="tog(this)"><span class="sw"></span>GDrive</div>
@@ -281,31 +281,31 @@ footer{text-align:center;color:var(--muted);font-size:.78rem;padding:26px;border
           <div class="conn" onclick="tog(this)"><span class="sw"></span>Shopee</div>
           <div class="conn" onclick="tog(this)"><span class="sw"></span>Gmail</div>
         </div>
-        <p style="color:var(--muted);font-size:.8rem;margin-top:14px">Bila toggle ON, agent akan minta API key dari connector tu. Kau boleh putuskan bila-bila masa.</p>
+        <p style="color:var(--muted);font-size:.8rem;margin-top:14px">When toggled ON, your agent will request the connector's API key. You can disconnect anytime.</p>
       </div>
 
       <div class="panel profile-quiz" id="pane-set" style="display:none">
-        <h4>Profil Agent</h4>
-        <div class="q"><label>Bahasa utama agent</label>
-          <select><option>Auto-detect (BM / EN)</option><option>BM sahaja</option><option>English sahaja</option></select>
+        <h4>Agent Preferences</h4>
+        <div class="q"><label>Primary agent language</label>
+          <select><option>Auto-detect (BM / EN)</option><option>Bahasa Malaysia only</option><option>English only</option></select>
         </div>
-        <div class="q"><label>Persona agent</label>
-          <select><option>Professional santai</option><option>Professional formal</option><option>Santai ("cikgu")</option></select>
+        <div class="q"><label>Agent persona</label>
+          <select><option>Professional, friendly</option><option>Professional, formal</option><option>Casual, mentor-style</option></select>
         </div>
-        <div class="q"><label>Aktiviti maksimum agent per hari</label>
-          <select><option>Ringan — 20 tindakan</option><option>Sederhana — 60 tindakan</option></select>
+        <div class="q"><label>Maximum agent actions per day</label>
+          <select><option>Light — 20 actions/day</option><option>Standard — 60 actions/day</option></select>
         </div>
-        <button class="btn primary" onclick="alert('Simpan — demo prototype')">Simpan</button>
+        <button class="btn primary" onclick="alert('Saved — prototype demo')">Simpan</button>
       </div>
     </div>
 
     <div class="panel">
-      <h4>Live Demo Chat <span>Ketik — agent akan jawab BM</span></h4>
+      <h4>Try the Chat <span>Type in English or Malay — Aura replies in kind</span></h4>
       <div class="chatlog" id="chatlog">
-        <div class="msg a">Selamat petang, Khairul! Aku dah sedia. Nak aku buat apa hari ni — content, gambar, atau semak saham?</div>
+        <div class="msg a">Good evening, Khairul! I'm all set. What may I help you with today — content, imagery, or a market check?</div>
       </div>
       <div class="chatbar">
-        <input id="chatInput" placeholder="Taip BM/EN..." onkeydown="if(event.key==='Enter')sendMsg()">
+        <input id="chatInput" placeholder="Type in English or Malay..." onkeydown="if(event.key==='Enter')sendMsg()">
         <button onclick="sendMsg()">➤</button>
       </div>
     </div>
@@ -316,55 +316,55 @@ footer{text-align:center;color:var(--muted);font-size:.78rem;padding:26px;border
 <section class="screen" id="s-trading">
   <div class="dash-head">
     <div><h2 style="font-size:1.5rem">📈 Trading Co-Pilot</h2>
-    <p style="color:var(--muted);font-size:.9rem">Analisis & pendidikan sahaja — Aura tak akan execute order.</p></div>
+    <p style="color:var(--muted);font-size:.9rem">Analysis and education only — Aura never places orders.</p></div>
   </div>
 
   <div class="grid2">
     <div class="panel profile-quiz">
-      <h4>Profil Dagangan Kau</h4>
-      <div class="q"><label>1. Level pengalaman</label>
+      <h4>Your Trading Profile</h4>
+      <div class="q"><label>1. Experience level</label>
         <select><option>Beginner</option><option>Intermediate</option><option>Advanced</option></select></div>
-      <div class="q"><label>2. Market fokus</label>
+      <div class="q"><label>2. Market focus</label>
         <select><option>Bursa Malaysia</option><option>US Market</option><option>Crypto</option><option>Forex</option></select></div>
-      <div class="q"><label>3. Gaya dagangan</label>
-        <select><option>DCA bulanan</option><option>Swing (hari-minggu)</option><option>Long-term hold</option></select></div>
-      <div class="q"><label>4. Selera risiko</label>
-        <select><option>Konservatif</option><option>Moderate</option><option>Agresif</option></select></div>
-      <button class="btn primary" onclick="alert('Auto generate watchlist + daily report — demo')">Simpan Profil → Generate Plan</button>
+      <div class="q"><label>3. Trading style</label>
+        <select><option>Monthly DCA</option><option>Swing (days-to-weeks)</option><option>Long-term hold</option></select></div>
+      <div class="q"><label>4. Risk appetite</label>
+        <select><option>Conservative</option><option>Moderate</option><option>Aggressive</option></select></div>
+      <button class="btn primary" onclick="alert('Demo: watchlist + daily report generated')">Simpan Profil → Generate Plan</button>
     </div>
 
     <div class="panel">
-      <h4>Watchlist (delayed 15m) <span class="badge">Plan Starter</span></h4>
+      <h4>Watchlist (15-min delayed) <span class="badge">Starter Plan</span></h4>
       <div class="stock"><span>MAYBANK</span><span class="up">RM9.98 ▲0.4%</span></div>
       <div class="stock"><span>PETRONAS Dagangan</span><span class="dn">RM21.4 ▼0.8%</span></div>
       <div class="stock"><span>GAMUDA</span><span class="up">RM4.86 ▲1.2%</span></div>
       <div class="stock"><span>SUNWAY</span><span class="dn">RM3.42 ▼0.3%</span></div>
-      <p style="color:var(--muted);font-size:.78rem;margin-top:10px">Upgrade ke Pro untuk data realtime + alert harga + news sentiment.</p>
-      <h4 style="margin-top:22px">Sentiment Berita Hari Ini</h4>
-      <p style="font-size:.88rem;color:var(--muted)">🟢 Bank & reit sawan <b>moderate positive</b> — interest hold, inflasi turun sikit.</p>
+      <p style="color:var(--muted);font-size:.78rem;margin-top:10px">Upgrade to Pro for real-time data, price alerts, and news sentiment.</p>
+      <h4 style="margin-top:22px">Today's News Sentiment</h4>
+      <p style="font-size:.88rem;color:var(--muted)">🟢 Banks & REITs: <b>moderately positive</b> — rate hold, easing inflation.</p>
       <p style="font-size:.88rem;color:var(--muted)">🟡 Construction &  data KTM project — watchlist Gamuda, MRCB.</p>
     </div>
 
     <div class="panel">
-      <h4>Aktiviti Agent (7 hari)</h4>
-      <div class="stock"><span>Laporan harian dihantar</span><span class="badge">Telegram</span></div>
-      <div class="stock"><span>Alert harga: MAYBANK par RM10</span><span class="badge warn">aktif</span></div>
-      <div class="stock"><span>Sentiment DEX scan (Kripto)</span><span class="badge">Jumaat</span></div>
-      <div class="stock"><span>Kredit digunakan bln ini</span><span class="badge">40/300</span></div>
+      <h4>Agent Activity (7 days)</h4>
+      <div class="stock"><span>Daily report delivered</span><span class="badge">Telegram</span></div>
+      <div class="stock"><span>Price alert: MAYBANK at RM10</span><span class="badge warn">active</span></div>
+      <div class="stock"><span>DEX sentiment scan (Crypto)</span><span class="badge">Friday</span></div>
+      <div class="stock"><span>Credits used this month</span><span class="badge">40/300</span></div>
     </div>
   </div>
-  <div class="disclaimer" style="margin-top:22px">⚠️ AuraOne Cloud memberi analisis &amp; pendidikan sahaja. BUKAN nasihat pelaburan berlisens. Tiada jaminan profit. Keputusan beli/jual untuk anda sendiri buat.</div>
+  <div class="disclaimer" style="margin-top:22px">⚠️ AuraOne Cloud provides analysis and education only. It is not a licensed investment adviser. No profit is guaranteed. All buy/sell decisions are entirely your own.</div>
 </section>
 
 <!-- ===== MODAL: topup ===== -->
 <div class="modal" id="modalTopup">
   <div class="box">
-    <h3>Top-up Kredit</h3>
-    <p>(Demo prototype — production akan pakai ToyyibPay)</p>
+    <h3>Top Up Credits</h3>
+    <p>(Prototype demo — production will use ToyyibPay)</p>
     <input placeholder="RM10 = 200 kredit · RM30 = 650 · RM50 = 1,150">
     <div class="row">
-      <button class="btn ghost" onclick="closeModal()">Batal</button>
-      <button class="btn primary" onclick="closeModal();alert('ToyyibPay → kredit auto-tambah — demo')">Bayar</button>
+      <button class="btn ghost" onclick="closeModal()">Cancel</button>
+      <button class="btn primary" onclick="closeModal();alert('ToyyibPay → kredit auto-tambah — demo')">Pay Now</button>
     </div>
   </div>
 </div>
@@ -372,12 +372,12 @@ footer{text-align:center;color:var(--muted);font-size:.78rem;padding:26px;border
 <!-- ===== modal: connector API key ===== -->
 <div class="modal" id="modalKey">
   <div class="box">
-    <h3 id="mKeyTitle">Sambung Connector</h3>
-    <p>Ok, kalau ON — agent perlukan credential connector ini (AES-256 encrypted).</p>
+    <h3 id="mKeyTitle">Connect Service</h3>
+    <p>Once enabled, your agent needs this connector's credentials (stored AES-256 encrypted).</p>
     <input placeholder="Paste API key / token sini...">
     <div class="row">
-      <button class="btn ghost" onclick="closeKey()">Batal</button>
-      <button class="btn primary" onclick="closeKey();alert('Connected! ✅')">Sambung</button>
+      <button class="btn ghost" onclick="closeKey()">Cancel</button>
+      <button class="btn primary" onclick="closeKey();alert('Connected! ✅')">Connect</button>
     </div>
   </div>
 </div>
@@ -402,13 +402,13 @@ function tog(el){
   el.classList.toggle('on');
 }
 function openKey(name){
-  document.getElementById('mKeyTitle').textContent='Sambung '+name;
+  document.getElementById('mKeyTitle').textContent='Connect '+name;
   document.getElementById('modalKey').classList.add('open');
 }
 function closeKey(){ document.getElementById('modalKey').classList.remove('open') }
 function openModal(){ document.getElementById('modalTopup').classList.add('open') }
 function closeModal(){ document.getElementById('modalTopup').classList.remove('open') }
-function runAgent(el){ el.querySelector('.run').textContent='⏳ Lari...'; setTimeout(()=>{ el.querySelector('.run').textContent='✅ Siap'; setTimeout(()=>el.querySelector('.run').textContent='Jalankan',1800) },1200) }
+function runAgent(el){ el.querySelector('.run').textContent='⏳ Lari...'; setTimeout(()=>{ el.querySelector('.run').textContent='✅ Siap'; setTimeout(()=>el.querySelector('.run').textContent='Run',1800) },1200) }
 function sendMsg(){
   const inp=document.getElementById('chatInput'); const t=inp.value.trim(); if(!t)return;
   const log=document.getElementById('chatlog');
@@ -416,9 +416,9 @@ function sendMsg(){
   inp.value='';
   setTimeout(()=>{
     let reply;
-    if(/saham|trade|stock| TP|SL|bursa/i.test(t)) reply='📈 Aku analisis ikut profil kau (beginner · Bursa · DCA): MAYBANK momentum stabil, near-support RM9.80. Dca entry zone RM9.70–9.95, TP ref RM10.50, SL ref RM9.40. Ini analisis sahaja — keputusan kat kau ya! 😉';
-    else if(/gambar|image|logo|poster/i.test(t)) reply='🎨 Siap! Aku akan generate 3 varian gambar brand. Setiap satu −20 kredit. Nak gaya minimalis, kontekstual, atau bold?';
-    else reply='✅ Noted! Aku draf untuk kau — lepas tu kau boleh approve atau edit sebelum agent aku post ke FB. Nak aku tunjuk draf sekarang?';
+    if(/saham|trade|stock| TP|SL|bursa/i.test(t)) reply='📈 Based on your profile (Beginner · Bursa · DCA): MAYBANK shows steady momentum near RM9.80 support. Suggested DCA entry zone: RM9.70–9.95 · reference take-profit: RM10.50 · reference stop-loss: RM9.40. This is analysis only — the decision is always yours. 😉';
+    else if(/gambar|image|logo|poster/i.test(t)) reply='🎨 Right away! I'll generate 3 brand image variants at 20 credits each. Would you prefer a minimal, contextual, or bold style?';
+    else reply='✅ Noted! I'll draft that for you — you can review and approve before my agent posts to Facebook. Shall I show you the draft now?';
     log.insertAdjacentHTML('beforeend','<div class="msg a">'+reply+'</div>');
     log.scrollTop=log.scrollHeight;
   },700);
