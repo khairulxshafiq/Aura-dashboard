@@ -13,38 +13,48 @@
 }
 *{margin:0;box-sizing:border-box}
 body{font-family:"Segoe UI",system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.5}
-button{font:inherit;cursor:pointer;border:none;border-radius:var(--radius-sm)}
-input{font:inherit}
+button{font:inherit;cursor:pointer;border:none;border-radius:var(--radius-sm);background:none;color:inherit}
+a{color:var(--accent)}
+input,select{font:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
 
 /* ===== NAV ===== */
-nav{display:flex;align-items:center;gap:18px;padding:14px 26px;border-bottom:1px solid var(--border);background:#0d1018;position:sticky;top:0;z-index:20}
-.logo{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:.5px}
+nav{display:flex;align-items:center;gap:14px;padding:14px 26px;border-bottom:1px solid var(--border);background:#0d1018;position:sticky;top:0;z-index:20;flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:.5px;text-decoration:none;color:var(--ink)}
 .logo .ring{width:26px;height:26px;border-radius:50%;background:conic-gradient(from 180deg,var(--accent),var(--accent2),var(--accent));-webkit-mask:radial-gradient(circle,transparent 42%,#000 45%);mask:radial-gradient(circle,transparent 42%,#000 45%)}
 .logo small{color:var(--muted);font-weight:400}
 nav .spacer{flex:1}
 .navlink{color:var(--muted);text-decoration:none;padding:6px 12px;border-radius:8px}
 .navlink:hover{color:var(--ink);background:var(--surface2)}
+.navlink.act{color:var(--accent)}
 .pill{background:var(--surface2);border:1px solid var(--border);color:var(--accent);padding:6px 14px;border-radius:999px;font-size:.85rem}
 
 /* ===== SCREENS ===== */
 .screen{display:none;padding:34px 26px;max-width:1180px;margin:0 auto}
 .screen.active{display:block}
 
-/* ===== 1. HERO/LANDING (Decide surface) ===== */
-.hero{display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:center;padding:30px 0 50px}
-.hero h1{font-size:2.6rem;line-height:1.15;letter-spacing:-.5px}
-.hero h1 em{font-style:normal;color:var(--accent)}
-.hero p{color:var(--muted);margin:18px 0 26px;max-width:46ch}
 .btn{padding:12px 22px;border-radius:10px;font-weight:600}
 .btn.primary{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#1a1206}
 .btn.primary:hover{filter:brightness(1.08)}
 .btn.ghost{background:var(--surface2);color:var(--ink);border:1px solid var(--border)}
-.cardrow{display:flex;gap:12px;flex-wrap:wrap}
-.stat{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:14px 18px;min-width:120px}
+.btn.ghost:hover{border-color:var(--accent)}
+
+/* HOME */
+.hero{display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:center;padding:30px 0 50px}
+.hero h1{font-size:2.6rem;line-height:1.15;letter-spacing:-.5px}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero p{color:var(--muted);margin:18px 0 26px;max-width:46ch}
+.cardrow{display:grid;gap:12px}
+.stat{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:14px 18px}
 .stat b{font-size:1.3rem;display:block}
 .stat span{color:var(--muted);font-size:.8rem}
+.features{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:26px 0 40px}
+.feature{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:24px}
+.feature h3{font-size:1.05rem;margin-bottom:8px}
+.feature p{color:var(--muted);font-size:.88rem}
 
-/* ===== 2. PRICING (Compare surface) ===== */
+/* PRICING */
 .plans{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:26px}
 .plan{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:22px;position:relative;display:flex;flex-direction:column;gap:10px}
 .plan.pop{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent)}
@@ -56,19 +66,22 @@ nav .spacer{flex:1}
 .plan li::before{content:"▸ ";color:var(--accent)}
 .plan button{margin-top:auto;width:100%}
 
-/* ===== 3. LOGIN (Configure surface) ===== */
+/* LOGIN */
 .loginwrap{max-width:400px;margin:60px auto;text-align:center}
 .loginwrap .ring{width:54px;height:54px;margin:0 auto 18px;background:conic-gradient(from 180deg,var(--accent),var(--accent2),var(--accent));-webkit-mask:radial-gradient(circle,transparent 40%,#000 44%);mask:radial-gradient(circle,transparent 40%,#000 44%)}
 .loginwrap h2{margin-bottom:6px}
 .loginwrap p{color:var(--muted);font-size:.9rem;margin-bottom:26px}
-.gbtn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;background:#fff;color:#222;padding:12px;border-radius:10px;font-weight:600}
-.gbtn:hover{background:#f1f1f1}
-.loginwrap .fine{margin-top:14px;font-size:.75rem;color:var(--muted)}
-.loginwrap .fine a{color:var(--accent)}
+.field{width:100%;background:var(--surface2);border:1px solid var(--border);color:var(--ink);padding:11px;border-radius:10px;outline:none;margin-bottom:12px}
+.field:focus{border-color:var(--accent)}
+.fine{margin-top:14px;font-size:.75rem;color:var(--muted)}
+.err{color:var(--red);font-size:.85rem;min-height:1.3em;margin:8px 0}
+.quick{display:flex;gap:10px;margin-top:14px}
+.quick button{flex:1;background:var(--surface2);border:1px solid var(--border);color:var(--muted);padding:9px;border-radius:10px;font-size:.85rem}
+.quick button:hover{border-color:var(--accent);color:var(--accent)}
 
-/* ===== 4. DASHBOARD (Monitor surface) ===== */
+/* APP */
 .dash-head{display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:14px;margin-bottom:22px}
-.bar{display:flex;align-items:center;gap:10px}
+.bar{display:flex;gap:10px}
 .balcard{background:linear-gradient(135deg,#1b1508,#231b0e);border:1px solid #4a3a14;border-radius:var(--radius);padding:18px 22px;min-width:220px}
 .balcard small{color:var(--muted)}
 .balcard b{font-size:1.6rem;color:var(--accent)}
@@ -76,22 +89,20 @@ nav .spacer{flex:1}
 .chip{background:var(--surface2);border:1px solid var(--border);color:var(--ink);padding:6px 12px;border-radius:999px;font-size:.85rem}
 .chip:hover{border-color:var(--accent)}
 .chip.on{border-color:var(--accent);color:var(--accent)}
-
 .grid2{display:grid;grid-template-columns:2fr 1fr;gap:16px}
 .panel{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:20px}
-.panel h4{font-size:.95rem;margin-bottom:14px;display:flex;justify-content:space-between;align-items:center}
+.panel h4{font-size:.95rem;margin-bottom:14px;display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
 .panel h4 span{color:var(--muted);font-weight:400;font-size:.8rem}
 .agents{display:flex;flex-direction:column;gap:10px}
-.agent{display:flex;align-items:center;gap:14px;background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius-sm);padding:12px 16px;cursor:pointer;transition:border .15s}
-.agent:hover{border-color:var(--accent)}
-.agent .dot{width:9px;height:9px;border-radius:50%;background:var(--green)}
+.agent{display:flex;align-items:center;gap:14px;background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius-sm);padding:12px 16px}
+.agent .dot{width:9px;height:9px;border-radius:50%;background:var(--green);flex-shrink:0}
 .agent .dot.off{background:var(--muted)}
 .agent b{display:block;font-size:.9rem}
 .agent small{color:var(--muted)}
-.agent .run{margin-left:auto;background:transparent;color:var(--accent);border:1px solid var(--border);padding:6px 14px;border-radius:8px}
+.agent .run{margin-left:auto;background:transparent;color:var(--accent);border:1px solid var(--border);padding:6px 14px;border-radius:8px;flex-shrink:0}
 .agent .run:hover{border-color:var(--accent)}
 .connectors{display:flex;flex-wrap:wrap;gap:8px}
-.conn{display:flex;align-items:center;gap:8px;background:var(--surface2);border:1px solid var(--border);border-radius:999px;padding:7px 14px;font-size:.85rem;cursor:pointer}
+.conn{display:flex;align-items:center;gap:8px;background:var(--surface2);border:1px solid var(--border);border-radius:999px;padding:7px 14px;font-size:.85rem}
 .conn .sw{width:26px;height:15px;border-radius:999px;background:var(--border);position:relative;flex-shrink:0}
 .conn .sw::after{content:"";position:absolute;width:11px;height:11px;border-radius:50%;background:var(--muted);top:2px;left:2px;transition:.15s}
 .conn.on .sw{background:#3a5a2a}
@@ -99,84 +110,108 @@ nav .spacer{flex:1}
 .conn.on{border-color:#3a5a2a}
 .conn:hover{border-color:var(--accent)}
 
-/* chat preview */
-.chatlog{display:flex;flex-direction:column;gap:10px;max-height:280px;overflow-y:auto;font-size:.88rem}
-.msg{padding:10px 14px;border-radius:12px;max-width:85%}
+/* chat */
+.chatlog{display:flex;flex-direction:column;gap:10px;max-height:300px;overflow-y:auto;font-size:.88rem}
+.msg{padding:10px 14px;border-radius:12px;max-width:85%;white-space:pre-wrap}
 .msg.u{align-self:flex-end;background:var(--accent);color:#1a1206;border-bottom-right-radius:4px}
 .msg.a{align-self:flex-start;background:var(--surface2);border:1px solid var(--border);border-bottom-left-radius:4px}
 .chatbar{display:flex;gap:8px;margin-top:12px}
 .chatbar input{flex:1;background:var(--surface2);border:1px solid var(--border);color:var(--ink);padding:10px 14px;border-radius:10px;outline:none}
 .chatbar input:focus{border-color:var(--accent)}
-.chatbar button{background:var(--accent);color:#1a1206;padding:0 18px;font-weight:700}
+.chatbar button{background:var(--accent);color:#1a1206;padding:0 18px;font-weight:700;border-radius:10px}
 
-/* ===== 5. TRADING (Monitor + profile) ===== */
+/* TRADING */
 .profile-quiz .q{margin-bottom:18px}
 .profile-quiz label{display:block;margin-bottom:8px;font-size:.9rem}
 .profile-quiz select{width:100%;background:var(--surface2);border:1px solid var(--border);color:var(--ink);padding:10px;border-radius:10px}
-.tradecols{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-top:18px}
-.stock{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--border);font-size:.9rem}
+.stock{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:10px 0;border-bottom:1px solid var(--border);font-size:.9rem}
 .stock:last-child{border:none}
 .stock .up{color:var(--green)} .stock .dn{color:var(--red)}
-.badge{font-size:.68rem;padding:2px 8px;border-radius:999px;border:1px solid var(--border);color:var(--muted)}
+.badge{font-size:.68rem;padding:2px 8px;border-radius:999px;border:1px solid var(--border);color:var(--muted);white-space:nowrap}
 .badge.warn{border-color:#8a5a1a;color:var(--accent)}
+.badge.ok{border-color:#2a5a3a;color:var(--green)}
 
-/* ===== tabs ===== */
+/* tabs */
 .tabs{display:flex;gap:6px;margin-bottom:20px;flex-wrap:wrap}
 .tabs button{background:var(--surface2);color:var(--muted);padding:8px 18px;border-radius:999px;border:1px solid var(--border)}
 .tabs button.act{color:var(--accent);border-color:var(--accent)}
 
-/* ===== footer ===== */
-footer{text-align:center;color:var(--muted);font-size:.78rem;padding:26px;border-top:1px solid var(--border)}
+/* ADMIN */
+.stats4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px}
+table{width:100%;border-collapse:collapse;font-size:.88rem}
+th,td{text-align:left;padding:10px 8px;border-bottom:1px solid var(--border)}
+th{color:var(--muted);font-weight:500;font-size:.78rem}
+.pill-st{font-size:.7rem;padding:2px 10px;border-radius:999px;border:1px solid var(--border);color:var(--muted)}
+.pill-st.on{border-color:#2a5a3a;color:var(--green)}
+.rowbtn{background:transparent;border:1px solid var(--border);color:var(--accent);padding:4px 12px;border-radius:8px;font-size:.78rem}
+.rowbtn:hover{border-color:var(--accent)}
+
+/* footer */
+footer{text-align:center;color:var(--muted);font-size:.78rem;padding:26px;border-top:1px solid var(--border);margin-top:40px}
+footer a{color:var(--muted);margin:0 8px}
+footer a:hover{color:var(--accent)}
 .disclaimer{background:#1a1410;border:1px solid #4a3a14;color:#d9b87a;border-radius:var(--radius-sm);padding:10px 16px;font-size:.78rem;max-width:900px;margin:0 auto 14px}
 
-/* ===== modal ===== */
+/* modal */
 .modal{display:none;position:fixed;inset:0;background:rgba(5,7,12,.7);z-index:50;align-items:center;justify-content:center;padding:20px}
 .modal.open{display:flex}
-.modal .box{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:26px;max-width:430px;width:100%}
+.modal .box{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:26px;max-width:440px;width:100%;max-height:80vh;overflow-y:auto}
 .modal h3{margin-bottom:8px}
 .modal p{color:var(--muted);font-size:.88rem;margin-bottom:16px}
-.modal input{width:100%;background:var(--surface2);border:1px solid var(--border);color:var(--ink);padding:11px;border-radius:10px;outline:none;margin-bottom:14px}
-.modal input:focus{border-color:var(--accent)}
 .modal .row{display:flex;gap:10px}
 .modal .row .btn{flex:1}
 
 @media(max-width:900px){
   .hero{grid-template-columns:1fr}
+  .features{grid-template-columns:1fr}
   .plans{grid-template-columns:1fr 1fr}
   .grid2{grid-template-columns:1fr}
-  .tradecols{grid-template-columns:1fr}
+  .stats4{grid-template-columns:1fr 1fr}
+}
+@media(max-width:560px){
+  .plans{grid-template-columns:1fr}
+  nav{padding:12px 16px}
+  .screen{padding:24px 16px}
 }
 </style>
 </head>
 <body>
 
 <nav>
-  <div class="logo"><div class="ring"></div>AuraOne <small>Cloud</small></div>
+  <a class="logo" href="#/home"><div class="ring"></div>AuraOne <small>Cloud</small></a>
   <div class="spacer"></div>
-  <a class="navlink" onclick="show('landing')">Home</a>
-  <a class="navlink" onclick="show('pricing')">Pricing</a>
-  <span class="pill" id="navBal" style="display:none">⚡ 0 kredit</span>
-  <button class="btn primary" id="navDash" style="padding:8px 18px;display:none" onclick="show('dashboard')">Sign In</button>
+  <a class="navlink" href="#/home" data-nav="home">Home</a>
+  <a class="navlink" href="#/pricing" data-nav="pricing">Pricing</a>
+  <span class="pill" id="navBal" style="display:none"><span id="navBalNum">260</span> ⚡</span>
+  <a class="btn ghost" id="navDash" style="padding:7px 16px;display:none;text-decoration:none" href="#/app">My Dashboard</a>
+  <button class="btn primary" id="navSign" style="padding:7px 16px" onclick="go('#/login')">Sign In</button>
+  <button class="btn ghost" id="navOut" style="padding:7px 16px;display:none" onclick="logout()">Sign Out</button>
 </nav>
 
-<!-- ===== LANDING ===== -->
-<section class="screen active" id="s-landing">
+<!-- ===== HOME ===== -->
+<section class="screen active" id="s-home">
   <div class="hero">
     <div>
       <h1>Meet <em>Aura</em> — the AI agent that actually <em>works</em> for your business.</h1>
       <p>Generate brand imagery, write content, monitor the market — simply choose an agent, connect your APIs, and go. No coding. No prompt engineering. Just results.</p>
       <div style="display:flex;gap:10px;flex-wrap:wrap">
-        <button class="btn primary" onclick="show('pricing')">Start Your Free 7-Day Trial</button>
-        <button class="btn ghost" onclick="show('demo')">See Aura in Action</button>
+        <button class="btn primary" onclick="go('#/login')">Start Free Trial</button>
+        <button class="btn ghost" onclick="demoChat()">See Aura in Action</button>
       </div>
     </div>
-    <div class="style="display:grid;gap:10px">
+    <div class="cardrow">
       <div class="stat"><b>3</b><span>ready-made agent templates</span></div>
       <div class="stat"><b>10+</b><span>API connectors — toggle on/off</span></div>
       <div class="stat"><b>BM / EN</b><span>replies in your language</span></div>
       <div class="stat"><b>⚡ advise</b><span>trading co-pilot — advises, never executes</span></div>
     </div>
   </div>
+  <div class="features">
+    <div class="feature"><h3>🤖 Agent Templates</h3><p>Pick a ready-made agent — content writer, brand image generator, or business reminder — and it starts working the moment you connect. Every draft is yours to review and approve before anything is published.</p></div>
+    <div class="feature"><h3>🔌 Toggle Connectors</h3><p>Connect Telegram, Google Drive, Facebook Page, Shopee, Gmail and more with a single click. API keys are stored encrypted, and you can disconnect any connector at any time — your data stays yours.</p></div>
+    <div class="feature"><h3>📈 Trading Co-Pilot (advise-only)</h3><p>Aura watches Bursa Malaysia and delivers a daily DCA analysis and news sentiment report. It only ever advises and never places orders — every buy or sell decision remains entirely yours.</p></div>
+  </div>
+  <div class="disclaimer">⚠️ AuraOne Cloud provides analysis and educational content only — it is not a licensed investment adviser. Past performance is no guarantee of future results. All trading decisions remain your own responsibility.</div>
 </section>
 
 <!-- ===== PRICING ===== -->
@@ -187,23 +222,23 @@ footer{text-align:center;color:var(--muted);font-size:.78rem;padding:26px;border
     <div class="plan">
       <h3>Trial</h3><div class="price">RM0<small>/7 days</small></div>
       <ul><li>20 free credits</li><li>1 agent template</li><li>Preview all connectors</li></ul>
-      <button class="btn ghost" onclick="show('login')">Start Trial</button>
+      <button class="btn ghost" onclick="go('#/login')">Start Trial</button>
     </div>
     <div class="plan pop">
-      <span class="tag">PALING LARIS</span>
-      <h3>Starter</h3><div class="price">RM19<small>/bln</small></div>
+      <span class="tag">MOST POPULAR</span>
+      <h3>Starter</h3><div class="price">RM19<small>/mo</small></div>
       <ul><li>300 credits / month</li><li>1 active agent + unlimited chat</li><li>Trading co-pilot (delayed data)</li></ul>
-      <button class="btn primary" onclick="show('login')">Pilih</button>
+      <button class="btn primary" onclick="go('#/login?plan=starter')">Choose Starter</button>
     </div>
     <div class="plan">
-      <h3>Pro</h3><div class="price">RM49<small>/bln</small></div>
+      <h3>Pro</h3><div class="price">RM49<small>/mo</small></div>
       <ul><li>1,000 credits / month</li><li>All connectors + FB auto-post</li><li>Brand image generator</li></ul>
-      <button class="btn primary" onclick="show('login')">Pilih</button>
+      <button class="btn primary" onclick="go('#/login?plan=pro')">Choose Pro</button>
     </div>
     <div class="plan">
-      <h3>Top-Up</h3><div class="price">RM10<small>/200 kredit</small></div>
+      <h3>Top-Up</h3><div class="price">RM10<small>/200 credits</small></div>
       <ul><li>Pay-as-you-go</li><li>No monthly commitment</li><li>Credits valid for 90 days</li></ul>
-      <button class="btn ghost" onclick="show('login')">Top-Up</button>
+      <button class="btn ghost" onclick="openTopup()">Top-Up</button>
     </div>
   </div>
   <div class="disclaimer" style="margin-top:26px">⚠️ AuraOne Cloud provides analysis and educational content only — it is not a licensed investment adviser. Past performance is no guarantee of future results. All trading decisions remain your own responsibility.</div>
@@ -214,215 +249,484 @@ footer{text-align:center;color:var(--muted);font-size:.78rem;padding:26px;border
   <div class="loginwrap">
     <div class="ring"></div>
     <h2>Welcome back 👋</h2>
-    <p>Sign in with Google — no password to remember.</p>
-    <button class="gbtn" onclick="show('dashboard')">
-      <svg width="18" height="18" viewBox="0 0 24 24"><path fill="#4285F4" d="M23.5 12.3c0-.8-.1-1.6-.2-2.3H12v4.5h6.5a5.6 5.6 0 0 1-2.4 3.7v3h3.9c2.2-2 3.5-5 3.5-8.9z"/><path fill="#34A853" d="M12 24c3.2 0 6-1.1 8-2.9l-3.9-3a7.2 7.2 0 0 1-4.1 1.1 7.2 7.2 0 0 1-6.7-5H1.3v3.1A12 12 0 0 0 12 24z"/><path fill="#FBBC05" d="M5.3 14.2a7.2 7.2 0 0 1 0-4.4V6.7H1.3a12 12 0 0 0 0 10.6l4-3.1z"/><path fill="#EA4335" d="M12 4.8c1.8 0 3.4.6 4.6 1.8l3.5-3.5A12 12 0 0 0 1.3 6.7l4 3.1A7.2 7.2 0 0 1 12 4.8z"/></svg>
-      Continue with Google
-    </button>
-    <p class="fine">By registering, you agree to our <a href="#">Terms of Service</a> &amp; <a href="#">Privacy Policy (PDPA)</a>.</p>
+    <p id="loginLead">Sign in to your AuraOne dashboard. (Google sign-in coming soon.)</p>
+    <form id="loginForm">
+      <input class="field" id="loginEmail" type="email" placeholder="Email address" autocomplete="username" required>
+      <input class="field" id="loginPass" type="password" placeholder="Password" autocomplete="current-password" required>
+      <div class="err" id="loginErr" role="alert"></div>
+      <label style="font-size:.8rem;color:var(--muted);display:flex;gap:8px;align-items:flex-start;text-align:left;margin-bottom:14px">
+        <input type="checkbox" id="agree" style="margin-top:3px">
+        <span>I agree to the <a href="#" onclick="openLegal('terms');return false">Terms of Service</a> &amp; <a href="#" onclick="openLegal('privacy');return false">Privacy Policy (PDPA)</a>.</span>
+      </label>
+      <button class="btn primary" type="submit" style="width:100%">Continue</button>
+      <div class="quick">
+        <button type="button" onclick="fillDemo('user')">Use demo user</button>
+        <button type="button" onclick="fillDemo('admin')">Use demo admin</button>
+      </div>
+    </form>
+    <p class="fine">Demo accounts — user: demo@auraone.my / demo123 · admin: boss@auraone.my / aura2026</p>
   </div>
 </section>
 
-<!-- ===== DASHBOARD ===== -->
-<section class="screen" id="s-dashboard">
+<!-- ===== APP (USER) ===== -->
+<section class="screen" id="s-app">
   <div class="dash-head">
     <div>
-      <h2 style="font-size:1.5rem">Welcome back, Khairul 👋</h2>
+      <h2 style="font-size:1.5rem">Welcome back, <span id="userName">Khairul</span> 👋</h2>
       <p style="color:var(--muted);font-size:.9rem">Your agents are standing by for your instructions.</p>
     </div>
     <div class="bar">
-      <div class="balcard"><small>Credit balance</small><br><b>📊 260 ⚡</b>
+      <div class="balcard"><small>Credit balance</small><br><b>📊 <span id="balNum">260</span> ⚡</b>
         <div class="topbar-mini">
-          <button class="chip" onclick="openModal()">＋ Top-Up</button>
-          <button class="chip" onclick="show('trading')">📈 Trading</button>
+          <button class="chip" onclick="openTopup()">＋ Top-Up</button>
+          <button class="chip" onclick="switchTab('trading')">📈 Trading</button>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="tabs">
-    <button class="act" id="tab-agents" onclick="tab('agents')">My Agents</button>
-    <button id="tab-connect" onclick="tab('connect')">Connectors</button>
-    <button id="tab-set" onclick="tab('set')">Settings</button>
+  <div class="tabs" id="appTabs">
+    <button class="act" data-tab="agents">My Agents</button>
+    <button data-tab="connect">Connectors</button>
+    <button data-tab="set">Settings</button>
+    <button data-tab="trading">Trading</button>
   </div>
 
-  <div class="grid2">
+  <div class="grid2" id="appCols">
     <div>
       <div class="panel" id="pane-agents">
         <h4>Active Agents <span>3 of 3 ready</span></h4>
         <div class="agents">
-          <div class="agent" onclick="runAgent(this)">
+          <div class="agent">
             <span class="dot"></span>
             <div><b>📸 Content Marketing</b><small>“5 fresh Facebook post ideas for our smoked products line”</small></div>
-            <button class="run">Run</button>
+            <button class="run" onclick="runAgent(this)">Run</button>
           </div>
-          <div class="agent" onclick="runAgent(this)">
+          <div class="agent">
             <span class="dot"></span>
-            <div><b>🎨 Image Brand Generator</b></div>
-            <button class="run">Run</button>
+            <div><b>🎨 Image Brand Generator</b><small>3 brand-aligned variants per run</small></div>
+            <button class="run" onclick="runAgent(this)">Run</button>
           </div>
-          <div class="agent" onclick="runAgent(this)">
+          <div class="agent">
             <span class="dot off"></span>
-            <div><b>⏰ Reminder & Report Bisnes</b></div>
-            <button class="run">Set Up</button>
+            <div><b>⏰ Reminder &amp; Report Agent</b><small>Daily business report to Telegram</small></div>
+            <button class="run" onclick="runAgent(this)">Run</button>
           </div>
         </div>
+        <p style="color:var(--muted);font-size:.78rem;margin-top:14px">Each run deducts 5 ⚡ credits.</p>
       </div>
 
       <div class="panel" id="pane-connect" style="display:none">
         <h4>Connectors <span>Click to toggle ON/OFF</span></h4>
-        <div class="connectors">
-          <div class="conn on" onclick="tog(this)"><span class="sw"></span>Telegram</div>
-          <div class="conn" onclick="tog(this)"><span class="sw"></span>GDrive</div>
-          <div class="conn" onclick="tog(this)"><span class="sw"></span>Dropbox</div>
-          <div class="conn" onclick="tog(this)"><span class="sw"></span>Google Sheets</div>
-          <div class="conn" onclick="tog(this)"><span class="sw"></span>FB Page</div>
-          <div class="conn" onclick="tog(this)"><span class="sw"></span>WhatsApp</div>
-          <div class="conn" onclick="tog(this)"><span class="sw"></span>Shopee</div>
-          <div class="conn" onclick="tog(this)"><span class="sw"></span>Gmail</div>
-        </div>
-        <p style="color:var(--muted);font-size:.8rem;margin-top:14px">When toggled ON, your agent will request the connector's API key. You can disconnect anytime.</p>
+        <div class="connectors" id="connList"></div>
+        <p style="color:var(--muted);font-size:.8rem;margin-top:14px">When toggled ON, your agent will request the connector's API key. Keys are stored AES-256 encrypted. You can disconnect anytime.</p>
       </div>
 
       <div class="panel profile-quiz" id="pane-set" style="display:none">
         <h4>Agent Preferences</h4>
         <div class="q"><label>Primary agent language</label>
-          <select><option>Auto-detect (BM / EN)</option><option>Bahasa Malaysia only</option><option>English only</option></select>
+          <select id="setLang"><option>Auto-detect (BM / EN)</option><option>Bahasa Malaysia only</option><option>English only</option></select>
         </div>
         <div class="q"><label>Agent persona</label>
-          <select><option>Professional, friendly</option><option>Professional, formal</option><option>Casual, mentor-style</option></select>
+          <select id="setPersona"><option>Professional, friendly</option><option>Professional, formal</option><option>Casual, mentor-style</option></select>
         </div>
         <div class="q"><label>Maximum agent actions per day</label>
-          <select><option>Light — 20 actions/day</option><option>Standard — 60 actions/day</option></select>
+          <select id="setMax"><option>Light — 20 actions/day</option><option>Standard — 60 actions/day</option></select>
         </div>
-        <button class="btn primary" onclick="alert('Saved — prototype demo')">Simpan</button>
+        <button class="btn primary" onclick="saveSettings()">Save Preferences</button>
+        <span id="setSaved" style="color:var(--green);font-size:.85rem;margin-left:10px"></span>
+      </div>
+
+      <div class="panel profile-quiz" id="pane-trading" style="display:none">
+        <h4>Your Trading Profile <span class="badge warn">TradingView API — pending Boss</span></h4>
+        <div class="q"><label>1. Experience level</label>
+          <select id="trLevel"><option>Beginner</option><option>Intermediate</option><option>Advanced</option></select></div>
+        <div class="q"><label>2. Market focus</label>
+          <select id="trMarket"><option>Bursa Malaysia</option><option>US Market</option><option>Crypto</option><option>Forex</option></select></div>
+        <div class="q"><label>3. Trading style</label>
+          <select id="trStyle"><option>Monthly DCA</option><option>Swing (days-to-weeks)</option><option>Long-term hold</option></select></div>
+        <div class="q"><label>4. Risk appetite</label>
+          <select id="trRisk"><option>Conservative</option><option>Moderate</option><option>Aggressive</option></select></div>
+        <button class="btn primary" onclick="saveTradingProfile()">Save Profile → Generate Plan</button>
+        <div class="disclaimer" style="margin:16px 0 0">⚠️ Advise-only. Aura never places orders — every buy/sell decision is entirely your own.</div>
       </div>
     </div>
 
-    <div class="panel">
-      <h4>Try the Chat <span>Type in English or Malay — Aura replies in kind</span></h4>
-      <div class="chatlog" id="chatlog">
-        <div class="msg a">Good evening, Khairul! I'm all set. What may I help you with today — content, imagery, or a market check?</div>
+    <div>
+      <div id="chatWrap" id="chat">
+        <div class="panel" style="position:sticky;top:80px">
+          <h4>Try the Chat <span>Type in English or Malay — Aura replies in kind</span></h4>
+          <div class="chatlog" id="chatlog">
+            <div class="msg a">Good evening! I'm all set. What may I help you with today — content, imagery, or a market check?</div>
+          </div>
+          <div class="chatbar">
+            <input id="chatInput" placeholder="Type in English or Malay..." aria-label="Chat message">
+            <button onclick="sendMsg()" aria-label="Send">➤</button>
+          </div>
+        </div>
       </div>
-      <div class="chatbar">
-        <input id="chatInput" placeholder="Type in English or Malay..." onkeydown="if(event.key==='Enter')sendMsg()">
-        <button onclick="sendMsg()">➤</button>
+      <div class="panel" id="watchlistPanel" style="display:none;margin-top:16px">
+        <h4>Watchlist (15-min delayed) <span class="badge">delayed data</span></h4>
+        <div class="stock"><span>MAYBANK</span><span class="up">RM9.98 ▲0.4%</span></div>
+        <div class="stock"><span>PETRONAS Dagangan</span><span class="dn">RM21.40 ▼0.8%</span></div>
+        <div class="stock"><span>GAMUDA</span><span class="up">RM4.86 ▲1.2%</span></div>
+        <div class="stock"><span>SUNWAY</span><span class="dn">RM3.42 ▼0.3%</span></div>
+        <h4 style="margin-top:22px">Today's News Sentiment</h4>
+        <p style="font-size:.88rem;color:var(--muted)">🟢 Banks &amp; REITs: <b>moderately positive</b> — rate hold, easing inflation.</p>
+        <p style="font-size:.88rem;color:var(--muted)">🟡 Construction: new MRT data monitoring — watchlist Gamuda, MRCB.</p>
       </div>
     </div>
- </div>
+  </div>
+  <div class="disclaimer" style="margin-top:22px">⚠️ Trading content provided by AuraOne Cloud is analysis and education only — it is not a licensed investment adviser. No profit is guaranteed. All decisions are your own responsibility.</div>
 </section>
 
-<!-- ===== TRADING ===== -->
-<section class="screen" id="s-trading">
+<!-- ===== ADMIN ===== -->
+<section class="screen" id="s-admin">
   <div class="dash-head">
-    <div><h2 style="font-size:1.5rem">📈 Trading Co-Pilot</h2>
-    <p style="color:var(--muted);font-size:.9rem">Analysis and education only — Aura never places orders.</p></div>
+    <div><h2 style="font-size:1.5rem">🛡️ Admin Console — Boss only</h2>
+    <p style="color:var(--muted);font-size:.9rem">Full platform visibility. Actions here are live in the demo.</p></div>
+  </div>
+
+  <div class="stats4">
+    <div class="stat"><b id="stUsers">5</b><span>Total users</span></div>
+    <div class="stat"><b id="stAgents">12</b><span>Active agents</span></div>
+    <div class="stat"><b>184</b><span>Credits used (mo)</span></div>
+    <div class="stat"><b>RM 68</b><span>Est. MRR</span></div>
+  </div>
+
+  <div class="panel" style="margin-bottom:16px">
+    <h4>Users <span>Pause / Resume any row — prototype live</span></h4>
+    <div style="overflow-x:auto">
+      <table>
+        <thead><tr><th>Name</th><th>Email</th><th>Plan</th><th>Credits used</th><th>Status</th><th></th></tr></thead>
+        <tbody id="adminRows"></tbody>
+      </table>
+    </div>
   </div>
 
   <div class="grid2">
-    <div class="panel profile-quiz">
-      <h4>Your Trading Profile</h4>
-      <div class="q"><label>1. Experience level</label>
-        <select><option>Beginner</option><option>Intermediate</option><option>Advanced</option></select></div>
-      <div class="q"><label>2. Market focus</label>
-        <select><option>Bursa Malaysia</option><option>US Market</option><option>Crypto</option><option>Forex</option></select></div>
-      <div class="q"><label>3. Trading style</label>
-        <select><option>Monthly DCA</option><option>Swing (days-to-weeks)</option><option>Long-term hold</option></select></div>
-      <div class="q"><label>4. Risk appetite</label>
-        <select><option>Conservative</option><option>Moderate</option><option>Aggressive</option></select></div>
-      <button class="btn primary" onclick="alert('Demo: watchlist + daily report generated')">Simpan Profil → Generate Plan</button>
-    </div>
-
     <div class="panel">
-      <h4>Watchlist (15-min delayed) <span class="badge">Starter Plan</span></h4>
-      <div class="stock"><span>MAYBANK</span><span class="up">RM9.98 ▲0.4%</span></div>
-      <div class="stock"><span>PETRONAS Dagangan</span><span class="dn">RM21.4 ▼0.8%</span></div>
-      <div class="stock"><span>GAMUDA</span><span class="up">RM4.86 ▲1.2%</span></div>
-      <div class="stock"><span>SUNWAY</span><span class="dn">RM3.42 ▼0.3%</span></div>
-      <p style="color:var(--muted);font-size:.78rem;margin-top:10px">Upgrade to Pro for real-time data, price alerts, and news sentiment.</p>
-      <h4 style="margin-top:22px">Today's News Sentiment</h4>
-      <p style="font-size:.88rem;color:var(--muted)">🟢 Banks & REITs: <b>moderately positive</b> — rate hold, easing inflation.</p>
-      <p style="font-size:.88rem;color:var(--muted)">🟡 Construction &  data KTM project — watchlist Gamuda, MRCB.</p>
+      <h4>💸 Cost Spend This Month</h4>
+      <div class="stock"><span>TradingView Essential</span><span>RM61</span></div>
+      <div class="stock"><span>VPS hosting</span><span>RM40</span></div>
+      <div class="stock"><span>Supabase (free tier)</span><span>RM0</span></div>
+      <div class="stock"><span><b>Total</b></span><span style="color:var(--accent)"><b>RM113</b></span></div>
     </div>
-
     <div class="panel">
-      <h4>Agent Activity (7 days)</h4>
-      <div class="stock"><span>Daily report delivered</span><span class="badge">Telegram</span></div>
-      <div class="stock"><span>Price alert: MAYBANK at RM10</span><span class="badge warn">active</span></div>
-      <div class="stock"><span>DEX sentiment scan (Crypto)</span><span class="badge">Friday</span></div>
-      <div class="stock"><span>Credits used this month</span><span class="badge">40/300</span></div>
+      <h4>📌 Pending Items (Boss checklist)</h4>
+      <div class="stock"><span>Domain auraone.my — purchase &amp; point DNS</span><span class="badge warn">pending</span></div>
+      <div class="stock"><span>ToyyibPay account — real payments</span><span class="badge warn">pending</span></div>
+      <div class="stock"><span>MT5 broker — real price feed</span><span class="badge warn">pending</span></div>
+      <div class="stock"><span>JPDP registration — PDPA compliance</span><span class="badge warn">pending</span></div>
     </div>
   </div>
-  <div class="disclaimer" style="margin-top:22px">⚠️ AuraOne Cloud provides analysis and education only. It is not a licensed investment adviser. No profit is guaranteed. All buy/sell decisions are entirely your own.</div>
+  <div class="disclaimer" style="margin-top:22px">⚠️ Admin copy verified: AuronraOne Cloud provides analysis and education only — not a licensed investment adviser. (Prototype demo data.)</div>
 </section>
 
+<footer>
+  <div class="disclaimer">⚠️ AuraOne Cloud provides analysis and educational content only. It is not a licensed investment adviser, and no profit is guaranteed. All trading and business decisions remain your own responsibility.</div>
+  <p>© 2026 AuraOne Cloud · by Boss Khairul (khairulxshafiq)</p>
+  <p style="margin-top:6px"><a href="#" onclick="openLegal('terms');return false">Terms</a> · <a href="#" onclick="openLegal('privacy');return false">Privacy</a> · <a href="#" onclick="openLegal('contact');return false">Contact</a></p>
+</footer>
+
 <!-- ===== MODAL: topup ===== -->
-<div class="modal" id="modalTopup">
+<div class="modal" id="modalTopup" role="dialog" aria-modal="true">
   <div class="box">
     <h3>Top Up Credits</h3>
-    <p>(Prototype demo — production will use ToyyibPay)</p>
-    <input placeholder="RM10 = 200 kredit · RM30 = 650 · RM50 = 1,150">
+    <p>RM10 = 200 credits ⚡ · RM30 = 650 · RM50 = 1,150. This is a prototype demo — production will use ToyyibPay.</p>
+    <input class="field" id="topupAmt" placeholder="Amount (RM10 / RM30 / RM50)" value="RM10 = 200 credits">
     <div class="row">
-      <button class="btn ghost" onclick="closeModal()">Cancel</button>
-      <button class="btn primary" onclick="closeModal();alert('ToyyibPay → kredit auto-tambah — demo')">Pay Now</button>
+      <button class="btn ghost" onclick="closeModal('modalTopup')">Cancel</button>
+      <button class="btn primary" onclick="payNow()">Pay Now</button>
     </div>
   </div>
 </div>
 
-<!-- ===== modal: connector API key ===== -->
-<div class="modal" id="modalKey">
+<!-- ===== MODAL: connector API key ===== -->
+<div class="modal" id="modalKey" role="dialog" aria-modal="true">
   <div class="box">
     <h3 id="mKeyTitle">Connect Service</h3>
     <p>Once enabled, your agent needs this connector's credentials (stored AES-256 encrypted).</p>
-    <input placeholder="Paste API key / token sini...">
+    <input class="field" id="mKeyInput" placeholder="Paste API key / token here...">
+    <div class="err" id="keyErr"></div>
     <div class="row">
-      <button class="btn ghost" onclick="closeKey()">Cancel</button>
-      <button class="btn primary" onclick="closeKey();alert('Connected! ✅')">Connect</button>
+      <button class="btn ghost" onclick="closeModal('modalKey')">Cancel</button>
+      <button class="btn primary" onclick="saveKey()">Save</button>
     </div>
+  </div>
+</div>
+
+<!-- ===== MODAL: legal placeholder ===== -->
+<div class="modal" id="modalLegal" role="dialog" aria-modal="true">
+  <div class="box">
+    <h3 id="legalTitle">Legal</h3>
+    <p id="legalBody">Placeholder — full legal text will be published before launch.</p>
+    <div class="row"><button class="btn ghost" onclick="closeModal('modalLegal')">Close</button></div>
   </div>
 </div>
 
 <script>
-function show(id){
-  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
-  document.getElementById('s-'+id).classList.add('active');
-  document.getElementById('navBal').style.display = id=='dashboard'||id=='trading' ? 'inline' : 'none';
-  document.querySelectorAll('nav .navlink').forEach(n=>n.style.color='');
+"use strict";
+/* ---------- state ---------- */
+var USERS={
+  "demo@auraone.my":{pw:"demo123",name:"Khairul",role:"user",root:"#/app"},
+  "boss@auraone.my":{pw:"aura2026",name:"Boss",role:"admin",root:"#/admin"}
+};
+var state={
+  credits:260,
+  conn:{Telegram:true,GDrive:false,Dropbox:false,"Google Sheets":false,"FB Page":false,WhatsApp:false,Shopee:false,Gmail:false},
+  keys:{}
+};
+/* ---------- session ---------- */
+function getSession(){try{return JSON.parse(localStorage.getItem("a1session"))}catch(e){return null}}
+function setSession(s){s?localStorage.setItem("a1session",JSON.stringify(s)):localStorage.removeItem("a1session")}
+function storageCredits(v){try{v==null?localStorage.removeItem("a1credits"):localStorage.setItem("a1credits",v)}catch(e){}}
+function storageConn(v){try{localStorage.setItem("a1conn",JSON.stringify(v))}catch(e){}}
+function loadCredits(){var v=parseInt(localStorage.getItem("a1credits"),10);state.credits=isNaN(v)?260:v}
+function loadConn(){try{var v=JSON.parse(localStorage.getItem("a1conn"));if(v)state.conn=v}catch(e){}}
+
+/* ---------- router ---------- */
+var ROUTES=["home","pricing","login","app","admin"];
+function route(){
+  var h=location.hash||"#/home";
+  var m=h.match(/^#\/([a-z]+)(?:\?(.*))?$/);
+  var page=m?m[1]:"home";
+  if(ROUTES.indexOf(page)<0)page="home";
+  if((page==="app"||page==="admin")&&!getSession()){location.replace("#/login");return}
+  if(page==="admin"&&(!getSession()||getSession().role!=="admin")){location.replace("#/login");return}
+  if(page==="login"&&getSession())page=getSession().role==="admin"?"admin":"app";
+  showPage(page);
+  if(m&&m[2])parseQuery(m[2]);
+}
+function parseQuery(q){
+  var plan=(q.split("&").filter(function(p){return p.indexOf("plan=")===0})[0]||"").split("=")[1];
+  if(plan){var lead=document.getElementById("loginLead");if(lead)lead.textContent="Plan selected: "+plan.toUpperCase()+" — sign in to continue.";if(location.hash.indexOf("#/login")===0)go("#/login");}
+}
+function showPage(page){
+  document.querySelectorAll(".screen").forEach(function(s){s.classList.remove("active")});
+  var el=document.getElementById("s-"+page);if(el)el.classList.add("active");
+  document.querySelectorAll(".navlink").forEach(function(n){n.classList.toggle("act",n.getAttribute("data-nav")===page)});
+  var ses=getSession();
+  document.getElementById("navBal").style.display=ses?"" : "none";
+  document.getElementById("navDash").style.display=ses?"":"none";
+  document.getElementById("navSign").style.display=ses?"none":"";
+  document.getElementById("navOut").style.display=ses?"":"none";
+  document.getElementById("navBalNum").textContent=state.credits;
+  document.getElementById("navDash").href=ses&&ses.role==="admin"?"#/admin":"#/app";
+  if(page==="app"){document.getElementById("userName").textContent=ses?ses.name.split(" ")[0]:"friend";renderConn();document.getElementById("balNum").textContent=state.credits}
   window.scrollTo(0,0);
 }
-function tab(name){
-  document.querySelectorAll('.tabs button').forEach(b=>b.classList.remove('act'));
-  event.target.classList.add('act');
-  ['agents','connect','set'].forEach(p=>{
-    document.getElementById('pane-'+p).style.display = p==name ? '' : 'none';
+function go(hash){location.hash=hash}
+window.addEventListener("hashchange",route);
+
+/* ---------- login ---------- */
+function fillDemo(kind){
+  document.getElementById("loginEmail").value=kind==="user"?"demo@auraone.my":"boss@auraone.my";
+  document.getElementById("loginPass").value=kind==="user"?"demo123":"aura2026";
+  document.getElementById("loginErr").textContent="";
+}
+function doLogin(){
+  var em=document.getElementById("loginEmail").value.trim().toLowerCase();
+  var pw=document.getElementById("loginPass").value;
+  var err=document.getElementById("loginErr");
+  if(!document.getElementById("agree").checked){err.textContent="Please agree to the Terms & Privacy Policy to continue.";return}
+  var u=USERS[em];
+  if(!u||u.pw!==pw){err.textContent="Incorrect email or password. Try the demo accounts below.";return}
+  setSession({email:em,name:u.name,role:u.role});
+  loadCredits();loadConn();
+  location.hash=u.root;
+}
+function logout(){setSession(null);location.hash="#/home"}
+
+/* ---------- credits / topup ---------- */
+function openTopup(){
+  if(!getSession()){location.hash="#/login";return}
+  document.getElementById("modalTopup").classList.add("open")}
+function payNow(){
+  closeModal("modalTopup");
+  state.credits+=200;storageCredits(state.credits);
+  document.getElementById("navBalNum").textContent=state.credits;
+  var b=document.getElementById("balNum");if(b)b.textContent=state.credits;
+}
+/* ---------- tabs ---------- */
+function switchTab(name){
+  document.querySelectorAll("#appTabs button").forEach(function(b){b.classList.toggle("act",b.getAttribute("data-tab")===name)});
+  ["agents","connect","set","trading"].forEach(function(t){
+    var p=document.getElementById("pane-"+t);if(p)p.style.display=t===name?"":"none"});
+  document.getElementById("chatWrap").style.display=name==="agents"?"":"none";
+  var wl=document.getElementById("watchlistPanel");
+  if(wl)wl.style.display=name==="trading"&&localStorage.getItem("a1trade")?"":"none";
+  document.getElementById("appCols").style.gridTemplateColumns=name==="trading"?"1fr":"2fr 1fr";
+}
+function switchTabWrap(e){
+  var btn=e.target.closest("button[data-tab]");if(!btn)return;
+  switchTab(btn.getAttribute("data-tab"));
+}
+
+/* ---------- agents ---------- */
+function runAgent(btn){
+  if(state.credits<5){btn.textContent="No ⚡";setTimeout(function(){btn.textContent="Run"},1500);return}
+  if(btn.textContent.indexOf("Running")>-1)return;
+  btn.textContent="⏳ Running…";btn.disabled=true;
+  setTimeout(function(){
+    btn.textContent="✅ Done";
+    state.credits=Math.max(0,state.credits-5);storageCredits(state.credits);
+    document.getElementById("navBalNum").textContent=state.credits;
+    var b=document.getElementById("balNum");if(b)b.textContent=state.credits;
+    setTimeout(function(){btn.textContent="Run";btn.disabled=false},1600);
+  },1200);
+}
+
+/* ---------- connectors ---------- */
+var pendingConn=null;
+function renderConn(){
+  var list=document.getElementById("connList");if(!list)return;
+  list.innerHTML="";
+  Object.keys(state.conn).forEach(function(name){
+    var on=state.conn[name];
+    var d=document.createElement("div");
+    d.className="conn"+(on?" on":"");
+    d.setAttribute("role","switch");d.setAttribute("aria-checked",on?"true":"false");
+    d.setAttribute("tabindex","0");
+    d.innerHTML='<span class="sw"></span>'+name;
+    d.onclick=function(){
+      if(!on){pendingConn=name;document.getElementById("mKeyTitle").textContent="Connect "+name;
+        document.getElementById("mKeyInput").value="";document.getElementById("keyErr").textContent="";
+        document.getElementById("modalKey").classList.add("open")}
+      else{state.conn[name]=false;storageConn(state.conn);renderConn()};
+    };
+    d.onkeydown=function(e){if(e.key===" "||e.key==="Enter"){e.preventDefault();d.onclick()}};
+    list.appendChild(d);
   });
 }
-function tog(el){
-  if(!el.classList.contains('on')){ openKey(el.textContent.trim()); }
-  el.classList.toggle('on');
+function saveKey(){
+  var v=document.getElementById("mKeyInput").value.trim();
+  if(v.length<4){document.getElementById("keyErr").textContent="Please paste a valid API key.";return}
+  state.conn[pendingConn]=true;storageConn(state.conn);renderConn();
+  closeModal("modalKey");
 }
-function openKey(name){
-  document.getElementById('mKeyTitle').textContent='Connect '+name;
-  document.getElementById('modalKey').classList.add('open');
+/* ---------- settings ---------- */
+function saveSettings(){
+  document.getElementById("setSaved").textContent="✅ Saved";
+  setTimeout(function(){document.getElementById("setSaved").textContent=""},2000);
 }
-function closeKey(){ document.getElementById('modalKey').classList.remove('open') }
-function openModal(){ document.getElementById('modalTopup').classList.add('open') }
-function closeModal(){ document.getElementById('modalTopup').classList.remove('open') }
-function runAgent(el){ el.querySelector('.run').textContent='⏳ Lari...'; setTimeout(()=>{ el.querySelector('.run').textContent='✅ Siap'; setTimeout(()=>el.querySelector('.run').textContent='Run',1800) },1200) }
-function sendMsg(){
-  const inp=document.getElementById('chatInput'); const t=inp.value.trim(); if(!t)return;
-  const log=document.getElementById('chatlog');
-  log.insertAdjacentHTML('beforeend','<div class="msg u">'+t.replace(/</g,'&lt;')+'</div>');
-  inp.value='';
-  setTimeout(()=>{
-    let reply;
-    if(/saham|trade|stock| TP|SL|bursa/i.test(t)) reply='📈 Based on your profile (Beginner · Bursa · DCA): MAYBANK shows steady momentum near RM9.80 support. Suggested DCA entry zone: RM9.70–9.95 · reference take-profit: RM10.50 · reference stop-loss: RM9.40. This is analysis only — the decision is always yours. 😉';
-    else if(/gambar|image|logo|poster/i.test(t)) reply='🎨 Right away! I'll generate 3 brand image variants at 20 credits each. Would you prefer a minimal, contextual, or bold style?';
-    else reply='✅ Noted! I'll draft that for you — you can review and approve before my agent posts to Facebook. Shall I show you the draft now?';
-    log.insertAdjacentHTML('beforeend','<div class="msg a">'+reply+'</div>');
-    log.scrollTop=log.scrollHeight;
-  },700);
+/* ---------- chat ---------- */
+var _chatTimer=null;
+function demoChat(){
+  if(!showChatOnHome()){var w=document.getElementById("chatlog");if(w)w.scrollIntoView({behavior:"smooth",block:"center"})}
 }
+function showChatOnHome(){
+  var built=document.getElementById("homeChatDemo");
+  if(built){built.scrollIntoView({behavior:"smooth",block:"center"});return false}
+  var host=document.createElement("div");host.id="homeChatDemo";
+  var p=document.createElement("div");p.className="panel profile-quiz";p.style.marginTop="14px";
+  p.innerHTML='<h4>Try the Chat <span>Type in English or Malay — Aura replies in kind</span></h4>'+
+    '<div style="display:flex;gap:8px;flex-wrap:wrap"><input class="field" id="homeChatInput" style="flex:1;min-width:200px" placeholder="Type in English or Malay..."><button class="btn primary" onclick="homeSend()">Send</button></div>'+
+    '<div class="msg a" id="homeChatMsg" style="margin-top:12px">Hello! Ask me about content, imagery, or a quick market check.</div>';
+  host.appendChild(p);
+  var heroBtn=host.querySelector("div.panel");
+  document.getElementById("s-home").insertBefore(host,document.getElementById("s-home").querySelector(".features"));
+  host.scrollIntoView({behavior:"smooth",block:"center"});
+  return true;
+}
+function anySend(inputId,logId,msgElId){
+  var inp=document.getElementById(inputId);var t=inp.value.trim();
+  if(!t)return false;
+  logOrMsg(logId,msgElId,"u",t);inp.value="";
+  var reply=chatReply(t);
+  setTimeout(function(){logOrMsg(logId,msgElId,"a",reply);},700);
+  return true;
+}
+function logOrMsg(logId,msgElId,cls,text){
+  var log=logId?document.getElementById(logId):null;
+  var div=document.createElement("div");
+  div.className="msg "+cls;div.textContent=text;
+  if(log){log.appendChild(div);log.scrollTop=log.scrollHeight}
+  else{var m=document.getElementById(msgElId);if(m){m.className="msg "+cls;m.textContent=text}}
+}
+function isMalay(t){
+  return /\b(saham|isi|buat|harga|nak|kena|boleh|macam|apa|kasi|tunggu|saya|kami|anda|terima|kasih|tolong|murah|mahal|jualan|bisnes|kedai|duit|ringgit|hari|esok|pagi|petang|malam|oh|ya|tak|jangan| Dah|cari|suruh)\b/i.test(t)||/\bsiapa|bila|mana|kenapa\b/i.test(t);
+}
+function chatReply(t){
+  var bm=isMalay(t);
+  if(/(dca|trade|trading|saham|stock|bursa|buy|sell|portfolio|TP|SL)/i.test(t)){
+    if(bm)return "📈 Berdasarkan profil anda (Bursa · DCA): MAYBANK menunjukkan momentum stabil di sekitar RM9.98 · sokongan RM9.70–9.95 · rujukan TP RM10.50 · SL RM9.40. Semakan DCA: 3 lot bulan ini mengikut profil konseratif.\n\n⚠️ Ini analisis sahaja — Aura tidak melaksanakan pesanan. Keputusan jual/beli tetap tanggungjawab anda.";
+    return "📈 Based on your profile (Bursa · Monthly DCA): MAYBANK shows steady momentum near RM9.98. Suggested DCA entry zone: RM9.70–9.95 · reference take-profit: RM10.50 · reference stop-loss: RM9.40. Watchlist: PETRONAS Dagangan ▼0.8%, GAMUDA ▲1.2%, SUNWAY ▼0.3%. News sentiment: banks moderately positive on rate hold.\n\n⚠️ Advise only — Aura never places orders. The decision is always yours.";
+  }
+  if(bm)return "Terima kasih! 😊 Saya dah terima notis anda dan akan mula uruskan sekarang. Semak draf saya di tab My Agents — semua output menunggu kelulusan anda dahulu sebelum diterbitkan.";
+  if(/image|logo|poster|picture|gambar/i.test(t))return "🎨 Right away! I'll prepare 3 brand image variants (20 ⚡ each). Would you prefer a minimal, contextual, or bold style? You can review before I save anything.";
+  return "✅ Noted — I'll draft that for you. You can review and approve before my agent publishes anything. Shall I show you the draft now?";
+}
+
+/* ---------- modals / legal ---------- */
+function closeModal(id){document.getElementById(id).classList.remove("open")}
+var LEGAL={
+  terms:{t:"Terms of Service",b:"[Placeholder] AuraOne Cloud demo build. Full Terms of Service will be published before production launch. This prototype does not constitute a binding agreement."},
+  privacy:{t:"Privacy Policy (PDPA)",b:"[Placeholder] AuraOne Cloud demo build. Full Privacy Policy compliant with PDPA (Malaysia) will be published before launch. Demo data is stored only in your browser's localStorage."},
+  contact:{t:"Contact Us",b:"[Placeholder] Reach the team at hello@auraone.my (demo). Production support channels will be announced at launch."}
+};
+function openLegal(k){
+  var m=LEGAL[k]||LEGAL.terms;
+  document.getElementById("legalTitle").textContent=m.t;
+  document.getElementById("legalBody").textContent=m.b;
+  document.getElementById("modalLegal").classList.add("open");
+}
+document.addEventListener("click",function(e){
+  var m=e.target.closest(".modal");
+  if(m&&e.target===m)m.classList.remove("open");
+});
+
+/* ---------- trading ---------- */
+function saveTradingProfile(){
+  var pr={level:document.getElementById("trLevel").value,market:document.getElementById("trMarket").value,style:document.getElementById("trStyle").value,risk:document.getElementById("trRisk").value};
+  localStorage.setItem("a1trade",JSON.stringify(pr));
+  document.getElementById("watchlistPanel").style.display="";
+  document.getElementById("watchlistPanel").scrollIntoView({behavior:"smooth",block:"start"});
+}
+
+/* ---------- admin ---------- */
+var ADM=[["Ai Rina","rina@demo.my","Starter",118,"active"],
+["Zul Hairom","zul@demo.my","Pro",96,"active"],
+["Mak Cik Timah","maktimah@demo.my","Trial",8,"active"],
+["Faiz Reworks","faiz@demo.my","Starter",172,"paused"],
+["Boss Khairul","boss@auraone.my","Pro",40,"active"]];
+var admState=ADM.map(function(r){return r[4]});
+function adminRow(i,r){
+  var tr=document.createElement("tr");
+  var paused=admState[i]==="paused";
+  tr.innerHTML="<td>"+r[0]+"</td><td>"+r[1]+"</td><td>"+r[2]+"</td><td>"+r[3]+" ⚡</td><td><span class='pill-st"+(paused?"":" on")+"'>"+(paused?"Paused":"Active")+"</span></td>";
+  var td=document.createElement("td");
+  var b=document.createElement("button");b.className="rowbtn";b.textContent=paused?"Resume":"Pause";
+  b.onclick=function(){admState[i]=paused?"active":"paused";storageAdm();drawAdmin();
+  };
+  td.appendChild(b);tr.appendChild(td);
+  return tr;
+}
+function storageAdm(){try{localStorage.setItem("a1adm",JSON.stringify(admState))}catch(e){}}
+function loadAdm(){try{var v=JSON.parse(localStorage.getItem("a1adm"));if(Array.isArray(v)&&v.length===ADM.length)admState=v}catch(e){}}
+function drawAdmin(){
+  var tb=document.getElementById("adminRows");if(!tb)return;tb.innerHTML="";
+  ADM.forEach(function(r,i){tb.appendChild(adminRow(i,r))});
+}
+/* ---------- admin stats derived ---------- */
+function drawAdminStats(){
+  var activeCt=admState.filter(function(s){return s==="active"}).length;
+  document.getElementById("stUsers").textContent=ADM.length;
+  document.getElementById("stAgents").textContent=(12-activeCt);
+}
+
+/* ---------- init ---------- */
+function init(){
+  loadCredits();loadConn();loadAdm();drawAdmin();drawAdminStats();
+  document.getElementById("appTabs").addEventListener("click",switchTabWrap);
+  document.getElementById("loginForm").addEventListener("submit",function(e){e.preventDefault();doLogin()});
+  document.getElementById("chatInput").addEventListener("keydown",function(e){if(e.key==="Enter")sendMsg()});
+  route();
+}
+function sendMsg(){if(!anySend("chatInput","chatlog",null)){
+}}
+function homeSend(){anySend("homeChatInput",null,"homeChatMsg")}
+init();
 </script>
 </body>
 </html>
