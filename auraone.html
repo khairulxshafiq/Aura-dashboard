@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="ms">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>AuraOne Cloud — Your Personal AI Workforce & Mission Control</title>
-<meta name="description" content="AuraOne Cloud — Satu dashboard, sembilan AI colleagues. Berita trending, copywriting, analisis saham Bursa, automasi & visual kreatif.">
+<meta name="description" content="AuraOne Cloud — One dashboard, nine AI colleagues. Trending news, copywriting, Bursa market analysis, automation & creative visuals.">
 <style>
 :root {
   --bg: #0b0e14;
@@ -137,7 +137,7 @@ nav .spacer { flex: 1; }
 .sec-title { font-size: clamp(1.5rem, 2.5vw, 2rem); font-weight: 800; letter-spacing: -0.5px; margin-bottom: 8px; }
 .sec-sub { color: var(--muted); max-width: 680px; font-size: 0.94rem; margin-bottom: 24px; }
 
-/* 6 Points "Tentang" */
+/* 6 Points "Tentang" -> About */
 .about-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 20px; }
 .point-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; transition: transform 0.16s ease, border-color 0.16s ease; }
 .point-card:hover { transform: translateY(-2px); border-color: var(--border2); }
@@ -156,7 +156,7 @@ nav .spacer { flex: 1; }
 .cap-card p { font-size: 0.84rem; color: var(--muted); margin-top: 6px; line-height: 1.5; }
 .cap-card .eg { font-family: var(--mono); font-size: 0.72rem; color: var(--muted2); margin-top: 10px; border-top: 1px dashed var(--border); padding-top: 8px; }
 
-/* Skuad 9 Ejen Grid */
+/* 9-Agent Squad Grid */
 .fleet-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 20px; }
 .fleet-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px; position: relative; transition: all 0.16s ease; }
 .fleet-card:hover { transform: translateY(-2px); border-color: var(--accent); }
@@ -412,14 +412,14 @@ footer a:hover { color: var(--accent); }
     <div>
       <div class="hero-kicker"><span class="dot"></span> Personal AI Workforce &amp; Swarm Lead</div>
       <h1>One dashboard.<br>Nine AI colleagues.<br><em>Infinite scaling.</em></h1>
-      <p class="lead">AuraOne memimpin pasukan 9 ejen AI untuk menguruskan berita trending, copywriting iklan, analisis pasaran Bursa Malaysia, visual kreatif &amp; automasi operasi bisnes anda — dalam satu platform bersepadu.</p>
+      <p class="lead">AuraOne orchestrates a squad of 9 AI agents to manage trending news, ad copywriting, Bursa Malaysia market analysis, creative visuals &amp; business operations automation — all within a unified platform.</p>
       <div class="hero-cta">
         <button class="btn primary" onclick="go('#/login')">Start Free Trial →</button>
         <button class="btn ghost" onclick="demoChat()">See Aura in Action</button>
-        <a class="btn ghost" href="#tentang-sec">Lihat Kemampuan ↓</a>
+        <a class="btn ghost" href="#tentang-sec">Explore Capabilities ↓</a>
       </div>
       <div class="hero-tags">
-        <span class="tag hot">● 9 Ejen Aktif</span>
+        <span class="tag hot">● 9 Active Agents</span>
         <span class="tag">deepseek-v4-flash</span>
         <span class="tag">Telegram Bot</span>
         <span class="tag">Airtable</span>
@@ -437,141 +437,141 @@ footer a:hover { color: var(--accent); }
     </div>
   </div>
 
-  <!-- Strip Metrik Ringkas -->
+  <!-- Summary Metric Strip -->
   <div class="stats4" style="margin-top:10px">
-    <div class="stat-card"><div class="k">Artikel Diproses</div><div class="v">1,284</div><div class="d up">▲ 12.4% minggu ini</div></div>
-    <div class="stat-card"><div class="k">Draf Disahkan</div><div class="v">342</div><div class="d up">▲ 8.1% disemak</div></div>
-    <div class="stat-card"><div class="k">Automasi Aktif</div><div class="v">17</div><div class="d">9 ejen · 12 workflow</div></div>
-    <div class="stat-card"><div class="k">Masa Dijimat</div><div class="v">31j</div><div class="d up">▲ 3.2j hari ini</div></div>
+    <div class="stat-card"><div class="k">Articles Processed</div><div class="v">1,284</div><div class="d up">▲ 12.4% this week</div></div>
+    <div class="stat-card"><div class="k">Drafts Verified</div><div class="v">342</div><div class="d up">▲ 8.1% reviewed</div></div>
+    <div class="stat-card"><div class="k">Active Automations</div><div class="v">17</div><div class="d">9 agents · 12 workflows</div></div>
+    <div class="stat-card"><div class="k">Time Saved</div><div class="v">31 hrs</div><div class="d up">▲ 3.2 hrs today</div></div>
   </div>
 
-  <!-- 6 Tonggak Nilai "Tentang" -->
+  <!-- 6 Value Pillars: About AuraOne -->
   <div class="sec-wrap" id="tentang-sec">
-    <div class="kicker">Tentang AuraOne</div>
-    <h2 class="sec-title">Apa itu AuraOne?</h2>
-    <p class="sec-sub">AuraOne bukan sekadar chatbot biasa — ia pasukan 9 AI peribadi yang beroperasi 24/7. Enam AI domain bisnes + tiga ejen suite kreatif &amp; kewangan. Satu arahan, semua bergerak lancar.</p>
+    <div class="kicker">About AuraOne</div>
+    <h2 class="sec-title">What is AuraOne?</h2>
+    <p class="sec-sub">AuraOne is more than just a chatbot — it is a workforce of 9 personal AI colleagues operating 24/7. Six business domain specialists + three creative and financial leaders. One prompt triggers seamless autonomous execution.</p>
     <div class="about-grid">
-      <div class="point-card"><div class="n">01</div><h3>Pantau &amp; Lapor</h3><p>Trending Malaysia dikumpul setiap pagi — berita viral disahkan silang merentas sumber (BH, Metro, Google Trends) sebelum dilaporkan.</p></div>
-      <div class="point-card"><div class="n">02</div><h3>Tulis &amp; Terbit</h3><p>Draf kandungan sosial dan iklan FB/TikTok dijana mengikut 5 gaya persona — santai, cikgu, hook, formal atau emosi — sedia untuk disemak.</p></div>
-      <div class="point-card"><div class="n">03</div><h3>Analisa &amp; Alert</h3><p>Data saham Bursa Malaysia dianalisis berdisiplin (Asri Ahmad Method) — saringan DCA, paras sokongan, rujukan TP &amp; amaran risiko cut loss.</p></div>
-      <div class="point-card"><div class="n">04</div><h3>Cipta Visual</h3><p>KUMAR menjana poster konsisten &amp; visual produk berkualiti tinggi guna model FLUX LoRA + Gemini, disimpan terus ke Drive.</p></div>
-      <div class="point-card"><div class="n">05</div><h3>Automasi &amp; Operasi</h3><p>Maya mengendalikan tugas berjadual (cron), alert Telegram, backup Airtable &amp; integrasi API — sistem hidup tanpa sentuhan manual berlebihan.</p></div>
-      <div class="point-card"><div class="n">06</div><h3>Kewangan &amp; Revenue</h3><p>Akira memantau lejar hasil harian/bulanan, kos operasi vs untung bersih, serta forecast aliran tunai solopreneur.</p></div>
+      <div class="point-card"><div class="n">01</div><h3>Monitor &amp; Report</h3><p>Malaysian trending topics aggregated every morning — viral news cross-verified across major sources (BH, Metro, Google Trends) before reporting.</p></div>
+      <div class="point-card"><div class="n">02</div><h3>Write &amp; Publish</h3><p>Social media content and FB/TikTok ad drafts generated across 5 persona styles — casual, educator, hook, formal, or emotional — ready for human review.</p></div>
+      <div class="point-card"><div class="n">03</div><h3>Analyze &amp; Alert</h3><p>Disciplined Bursa Malaysia stock data analysis (Asri Ahmad Method) — DCA screening, support levels, target price references &amp; cut-loss alerts.</p></div>
+      <div class="point-card"><div class="n">04</div><h3>Create Visuals</h3><p>KUMAR generates brand-consistent posters &amp; high-fidelity product visuals using FLUX LoRA + Gemini models, stored directly to Google Drive.</p></div>
+      <div class="point-card"><div class="n">05</div><h3>Automations &amp; Ops</h3><p>Maya handles scheduled tasks (cron), Telegram alerts, Airtable backups &amp; API integrations — maintaining operations without manual overhead.</p></div>
+      <div class="point-card"><div class="n">06</div><h3>Finance &amp; Revenue</h3><p>Akira monitors daily/monthly revenue ledgers, operating costs vs net profit, and solopreneur cash flow forecasting.</p></div>
     </div>
   </div>
 
-  <!-- 9 Keupayaan Sistem -->
+  <!-- 9 Platform Capabilities -->
   <div class="sec-wrap">
-    <div class="kicker">Kemampuan Platform</div>
-    <h2 class="sec-title">Apa yang Aura boleh lakukan untuk bisnes anda</h2>
-    <p class="sec-sub">Inventori keupayaan penuh digerakkan oleh 9 watak AI. Modul bertanda LIVE sedia digunakan, manakala PLANNED dalam fasa sambungan seterusnya.</p>
+    <div class="kicker">Platform Capabilities</div>
+    <h2 class="sec-title">What Aura Can Do For Your Business</h2>
+    <p class="sec-sub">Full capability suite powered by 9 specialized AI personas. Modules marked LIVE are fully operational, while PLANNED modules are scheduled for subsequent rollout.</p>
     <div class="caps-grid">
-      <div class="cap-card"><div class="ic" style="background:#ffd28a22;color:#ffd28a">📰</div><h3>Berita Trending <span class="st st-live">LIVE</span></h3><p>Kumpul &amp; sahkan berita viral Malaysia setiap pagi dengan enjin pengesahan silang.</p><div class="eg">berita menarik · trending gajet</div></div>
-      <div class="cap-card"><div class="ic" style="background:#f4b86022;color:#f4b860">✍️</div><h3>Kandungan Sosial <span class="st st-live">LIVE</span></h3><p>Draf artikel FB, skrip TikTok &amp; caption iklan ikut 5 persona gaya bahasa tempatan.</p><div class="eg">draf FB viral santai · ads Shopee</div></div>
-      <div class="cap-card"><div class="ic" style="background:#60a5fa22;color:#60a5fa">📈</div><h3>Trading Bursa (Advise) <span class="st st-live">LIVE</span></h3><p>Analisis saham dengan metodologi Asri Ahmad — swing, position, zon belian DCA &amp; RRR berdisiplin.</p><div class="eg">analisa INARI · watchlist Bursa</div></div>
-      <div class="cap-card dim"><div class="ic" style="background:#a78bfa22;color:#a78bfa">🛍️</div><h3>E-Commerce <span class="st st-planned">PLANNED</span></h3><p>Urus katalog produk, semakan harga &amp; soalan lazim pelanggan Shopee/TikTok Shop.</p><div class="eg">update harga · katalog produk</div></div>
-      <div class="cap-card dim"><div class="ic" style="background:#f8717122;color:#f87171">💰</div><h3>Finance &amp; Tax <span class="st st-planned">PLANNED</span></h3><p>Kewangan korporat, bajet operasi &amp; pengurusan aliran tunai teliti perniagaan.</p><div class="eg">bajet bulanan · aliran tunai</div></div>
-      <div class="cap-card dim"><div class="ic" style="background:#00d4ff22;color:#00d4ff">🌐</div><h3>Website &amp; WordPress <span class="st st-planned">PLANNED</span></h3><p>Bina landing page interaktif, ecommerce funnel &amp; automasi artikel WordPress.</p><div class="eg">landing page · auto publish WP</div></div>
-      <div class="cap-card"><div class="ic" style="background:#4ade8022;color:#4ade80">⚙️</div><h3>Automasi Ops <span class="st st-live">LIVE</span></h3><p>Cron job, Telegram push notification, backup pangkalan data &amp; integrasi MCP.</p><div class="eg">alert harga · backup harian</div></div>
-      <div class="cap-card"><div class="ic" style="background:#ffd28a22;color:#ffd28a">🖼️</div><h3>Generate Gambar (KUMAR) <span class="st st-live">LIVE</span></h3><p>Visual branding konsisten, poster promosi produk menggunakan model FLUX LoRA &amp; Gemini.</p><div class="eg">poster produk · brand visual</div></div>
-      <div class="cap-card"><div class="ic" style="background:#f8717122;color:#f87171">📊</div><h3>Revenue &amp; P&amp;L (Akira) <span class="st st-live">LIVE</span></h3><p>Penjejakan hasil jualan harian/bulanan, kos pelayan vs margin kasar, laporan ke Google Sheets.</p><div class="eg">lejar hasil · laporan kos untung</div></div>
+      <div class="cap-card"><div class="ic" style="background:#ffd28a22;color:#ffd28a">📰</div><h3>Trending News <span class="st st-live">LIVE</span></h3><p>Aggregate &amp; verify trending Malaysian news each morning via cross-source verification.</p><div class="eg">breaking news · tech gadgets</div></div>
+      <div class="cap-card"><div class="ic" style="background:#f4b86022;color:#f4b860">✍️</div><h3>Social Content <span class="st st-live">LIVE</span></h3><p>Draft FB articles, TikTok scripts &amp; ad captions across 5 localized tone personas.</p><div class="eg">viral casual FB draft · Shopee ads</div></div>
+      <div class="cap-card"><div class="ic" style="background:#60a5fa22;color:#60a5fa">📈</div><h3>Bursa Trading (Advisory) <span class="st st-live">LIVE</span></h3><p>Stock analysis using the Asri Ahmad methodology — swing, position, DCA accumulation zones &amp; disciplined RRR.</p><div class="eg">analyze INARI · Bursa watchlist</div></div>
+      <div class="cap-card dim"><div class="ic" style="background:#a78bfa22;color:#a78bfa">🛍️</div><h3>E-Commerce <span class="st st-planned">PLANNED</span></h3><p>Manage product catalogs, price monitoring &amp; customer inquiries for Shopee / TikTok Shop.</p><div class="eg">price updates · product catalog</div></div>
+      <div class="cap-card dim"><div class="ic" style="background:#f8717122;color:#f87171">💰</div><h3>Finance &amp; Tax <span class="st st-planned">PLANNED</span></h3><p>Corporate finance, operational budgeting &amp; meticulous business cash flow management.</p><div class="eg">monthly budget · cash flow</div></div>
+      <div class="cap-card dim"><div class="ic" style="background:#00d4ff22;color:#00d4ff">🌐</div><h3>Website &amp; WordPress <span class="st st-planned">PLANNED</span></h3><p>Build interactive landing pages, e-commerce funnels &amp; automated WordPress article publishing.</p><div class="eg">landing page · auto publish WP</div></div>
+      <div class="cap-card"><div class="ic" style="background:#4ade8022;color:#4ade80">⚙️</div><h3>Operations Automation <span class="st st-live">LIVE</span></h3><p>Cron jobs, Telegram push notifications, database backups &amp; MCP tool integrations.</p><div class="eg">price alerts · daily backup</div></div>
+      <div class="cap-card"><div class="ic" style="background:#ffd28a22;color:#ffd28a">🖼️</div><h3>Image Generation (KUMAR) <span class="st st-live">LIVE</span></h3><p>Consistent visual branding and promotional product posters powered by FLUX LoRA &amp; Gemini.</p><div class="eg">product poster · brand visual</div></div>
+      <div class="cap-card"><div class="ic" style="background:#f8717122;color:#f87171">📊</div><h3>Revenue &amp; P&amp;L (Akira) <span class="st st-live">LIVE</span></h3><p>Daily and monthly revenue tracking, server costs vs gross margins, with Google Sheets export.</p><div class="eg">revenue ledger · profit &amp; loss report</div></div>
     </div>
   </div>
 
-  <!-- Skuad 9 Ejen Roster -->
+  <!-- 9-Agent Squad Roster -->
   <div class="sec-wrap">
-    <div class="kicker">Pasukan 9 Ejen</div>
-    <h2 class="sec-title">Kenali Armada Skuad AI Anda</h2>
-    <p class="sec-sub">Setiap satu pakar dalam bidang domain tertentu, berkoordinasi di bawah pimpinan Aura menerusi gelung taakulan ReAct.</p>
+    <div class="kicker">9-Agent Squad</div>
+    <h2 class="sec-title">Meet Your AI Squad Fleet</h2>
+    <p class="sec-sub">Each agent specializes in a distinct business domain, orchestrated under Aura's leadership via continuous ReAct reasoning loops.</p>
     <div class="fleet-grid" id="fleetHomeGrid"></div>
   </div>
 
-  <!-- Aliran Kerja Interaktif -->
+  <!-- Interactive Execution Workflow -->
   <div class="sec-wrap">
-    <div class="kicker">Aliran Pelaksanaan</div>
-    <h2 class="sec-title">Dari Trending Kepada Penerbitan Kandungan</h2>
-    <p class="sec-sub">Human-in-the-Loop: Setiap draf memerlukan kelulusan Boss Khairul sebelum diterbitkan ke mana-mana saluran.</p>
+    <div class="kicker">Execution Workflow</div>
+    <h2 class="sec-title">From Trending Signals to Content Publishing</h2>
+    <p class="sec-sub">Human-in-the-Loop: Every draft requires human verification and approval before publishing to any external channel.</p>
     <div class="flow-box">
       <div class="flow-steps">
-        <span class="flow-node done">✓ Scrape Berita</span>
+        <span class="flow-node done">✓ News Ingestion</span>
         <span class="flow-arr">→</span>
-        <span class="flow-node done">✓ Semak Silang</span>
+        <span class="flow-node done">✓ Cross-Verification</span>
         <span class="flow-arr">→</span>
-        <span class="flow-node run">● Draf 5 Gaya</span>
+        <span class="flow-node run">● 5-Tone Drafting</span>
         <span class="flow-arr">→</span>
-        <span class="flow-node wait">Semakan Boss (Confirm)</span>
+        <span class="flow-node wait">Human Review (Confirm)</span>
         <span class="flow-arr">→</span>
         <span class="flow-node wait">Airtable Content Station</span>
         <span class="flow-arr">→</span>
-        <span class="flow-node wait">Terbit ke Saluran</span>
+        <span class="flow-node wait">Multi-Channel Publish</span>
       </div>
-      <div class="flow-note">🛡️ <b>Prinsip Keselamatan:</b> Aura tidak pernah menyiarkan pos atau membuat pesanan perdagangan secara membuta tuli tanpa persetujuan manusia.</div>
+      <div class="flow-note">🛡️ <b>Safety Protocol:</b> Aura never publishes posts or executes financial trades autonomously without human confirmation.</div>
     </div>
   </div>
 
-  <div class="disclaimer">⚠️ AuraOne Cloud menyediakan analisis pasaran dan automasi bisnes untuk tujuan operasi &amp; pendidikan — bukan penasihat pelaburan berlesen. Semua keputusan dagangan dan operasi perniagaan adalah tanggungjawab pengguna sepenuhnya.</div>
+  <div class="disclaimer">⚠️ AuraOne Cloud provides market data analysis and business automation for operational and educational purposes only — not a licensed investment advisor. All trading and business operational decisions remain solely the user's responsibility.</div>
 </section>
 
 <!-- ========================================================================= -->
 <!-- SCREEN: PRICING (#/pricing)                                               -->
 <!-- ========================================================================= -->
 <section class="screen" id="s-pricing">
-  <div class="kicker">Pelan Langganan</div>
-  <h2 class="sec-title">Pilih Pelan Yang Sesuai Untuk Skala Bisnes Anda</h2>
-  <p class="sec-sub">Setiap pelan termasuk akses sembang AI penuh dwibahasa (BM/EN). Kredit ⚡ ditolak hanya mengikut penggunaan sebenar tanpa pembaziran.</p>
+  <div class="kicker">Subscription Plans</div>
+  <h2 class="sec-title">Choose the Right Plan to Scale Your Business</h2>
+  <p class="sec-sub">Every plan includes full AI chat simulator access. Credits ⚡ are deducted only upon actual execution with zero waste.</p>
   
   <div class="plans">
     <div class="plan">
       <h3>Trial</h3>
-      <div class="price">RM 0<small> / 7 hari</small></div>
+      <div class="price">RM 0<small> / 7 days</small></div>
       <ul>
-        <li>20 kredit percuma ⚡</li>
-        <li>1 templat ejen aktif</li>
-        <li>Pratonton semua penyambung API</li>
-        <li>Sembang AI dwibahasa</li>
+        <li>20 free credits ⚡</li>
+        <li>1 active agent template</li>
+        <li>Preview all API connectors</li>
+        <li>Full AI chat simulator</li>
       </ul>
-      <button class="btn ghost" onclick="go('#/login')">Mulakan Trial</button>
+      <button class="btn ghost" onclick="go('#/login')">Start Free Trial</button>
     </div>
     
     <div class="plan pop">
-      <span class="tag-pop">PILIHAN POPULAR</span>
+      <span class="tag-pop">MOST POPULAR</span>
       <h3>Starter</h3>
-      <div class="price">RM 19<small> / bulan</small></div>
+      <div class="price">RM 19<small> / month</small></div>
       <ul>
-        <li>300 kredit bulanan ⚡</li>
-        <li>1 ejen aktif + sembang tanpa had</li>
-        <li>Trading co-pilot (analisis harian)</li>
-        <li>Penyambung Telegram &amp; Sheets</li>
+        <li>300 monthly credits ⚡</li>
+        <li>1 active agent + unlimited chat</li>
+        <li>Trading co-pilot (daily analysis)</li>
+        <li>Telegram &amp; Sheets connectors</li>
       </ul>
-      <button class="btn primary" onclick="go('#/login?plan=starter')">Langgan Starter</button>
+      <button class="btn primary" onclick="go('#/login?plan=starter')">Subscribe Starter</button>
     </div>
     
     <div class="plan">
       <h3>Pro Solopreneur</h3>
-      <div class="price">RM 49<small> / bulan</small></div>
+      <div class="price">RM 49<small> / month</small></div>
       <ul>
-        <li>1,000 kredit bulanan ⚡</li>
-        <li>Semua 9 ejen skuad aktif</li>
-        <li>Penjana visual brand KUMAR (FLUX)</li>
-        <li>Semua penyambung API + auto-sync</li>
+        <li>1,000 monthly credits ⚡</li>
+        <li>All 9 squad agents active</li>
+        <li>KUMAR brand visual studio (FLUX)</li>
+        <li>All API connectors + auto-sync</li>
       </ul>
-      <button class="btn primary" onclick="go('#/login?plan=pro')">Langgan Pro</button>
+      <button class="btn primary" onclick="go('#/login?plan=pro')">Subscribe Pro</button>
     </div>
     
     <div class="plan">
-      <h3>Top-Up Kredit</h3>
+      <h3>Credit Top-Up</h3>
       <div class="price">RM 10<small> / 200 ⚡</small></div>
       <ul>
-        <li>Bayar mengikut guna (Pay-as-you-go)</li>
-        <li>Tiada komitmen bulanan</li>
-        <li>Kredit sah selama 90 hari</li>
-        <li>Boleh top-up bila-bila masa</li>
+        <li>Pay-as-you-go flexibility</li>
+        <li>No recurring monthly commitment</li>
+        <li>Credits valid for 90 days</li>
+        <li>Top up anytime on demand</li>
       </ul>
-      <button class="btn ghost" onclick="openTopup()">Top-Up Sekarang</button>
+      <button class="btn ghost" onclick="openTopup()">Top Up Now</button>
     </div>
   </div>
 
-  <div class="disclaimer" style="margin-top:30px">⚠️ Penafian Perdagangan: AuraOne Cloud merupakan alat pembantu analisis data pasaran Bursa Malaysia dan tidak memberikan jaminan keuntungan. Segala tindakan belian atau jualan saham adalah keputusan peribadi anda.</div>
+  <div class="disclaimer" style="margin-top:30px">⚠️ Trading Disclaimer: AuraOne Cloud is a market analysis assistant for Bursa Malaysia and makes no guarantees of profit. All securities purchase or sale decisions remain strictly your personal responsibility.</div>
 </section>
 
 <!-- ========================================================================= -->
@@ -580,26 +580,26 @@ footer a:hover { color: var(--accent); }
 <section class="screen" id="s-login">
   <div class="loginwrap">
     <div class="ring"></div>
-    <h2>Selamat Kembali 👋</h2>
-    <p id="loginLead">Log masuk ke ruang kerja AuraOne anda.</p>
+    <h2>Welcome Back 👋</h2>
+    <p id="loginLead">Sign in to your AuraOne workspace.</p>
     <form id="loginForm">
-      <input class="field" id="loginEmail" type="email" placeholder="Alamat emel (e.g. boss@auraone.my)" autocomplete="username" required>
-      <input class="field" id="loginPass" type="password" placeholder="Kata laluan" autocomplete="current-password" required>
+      <input class="field" id="loginEmail" type="email" placeholder="Email address (e.g. boss@auraone.my)" autocomplete="username" required>
+      <input class="field" id="loginPass" type="password" placeholder="Password" autocomplete="current-password" required>
       <div class="err" id="loginErr" role="alert"></div>
       
       <label style="font-size:0.78rem;color:var(--muted);display:flex;gap:8px;align-items:flex-start;text-align:left;margin-bottom:14px;cursor:pointer">
         <input type="checkbox" id="agree" checked style="margin-top:3px;accent-color:var(--accent)">
-        <span>Saya bersetuju dengan <a href="#" onclick="openLegal('terms');return false">Syarat Perkhidmatan</a> &amp; <a href="#" onclick="openLegal('privacy');return false">Dasar Privasi (PDPA)</a>.</span>
+        <span>I agree to the <a href="#" onclick="openLegal('terms');return false">Terms of Service</a> &amp; <a href="#" onclick="openLegal('privacy');return false">Privacy Policy (PDPA)</a>.</span>
       </label>
       
-      <button class="btn primary" type="submit" style="width:100%">Log Masuk</button>
+      <button class="btn primary" type="submit" style="width:100%">Sign In</button>
       
       <div class="quick">
         <button type="button" onclick="fillDemo('user')">Demo User (Khairul)</button>
         <button type="button" onclick="fillDemo('admin')">Demo Admin (Boss)</button>
       </div>
     </form>
-    <p class="fine">Kredensial Demo — User: <code>demo@auraone.my / demo123</code> · Admin: <code>boss@auraone.my / aura2026</code></p>
+    <p class="fine">Demo Credentials — User: <code>demo@auraone.my / demo123</code> · Admin: <code>boss@auraone.my / aura2026</code></p>
   </div>
 </section>
 
@@ -609,15 +609,15 @@ footer a:hover { color: var(--accent); }
 <section class="screen" id="s-app">
   <div class="dash-head">
     <div>
-      <h2 style="font-size:1.6rem">Selamat Kembali, <span id="userName">Khairul</span> 👋</h2>
-      <p style="color:var(--muted);font-size:0.88rem">Ejen AI anda sedia menerima arahan harian.</p>
+      <h2 style="font-size:1.6rem">Welcome Back, <span id="userName">Khairul</span> 👋</h2>
+      <p style="color:var(--muted);font-size:0.88rem">Your AI agents are ready for daily tasks.</p>
     </div>
     <div class="balcard">
-      <small>Baki Kredit Aktif</small><br>
+      <small>Active Credit Balance</small><br>
       <b>📊 <span id="balNum">260</span> ⚡</b>
       <div class="topbar-mini">
-        <button class="chip" onclick="openTopup()">＋ Top-Up</button>
-        <button class="chip" onclick="switchAppTab('trading')">📈 Watchlist Bursa</button>
+        <button class="chip" onclick="openTopup()">＋ Top Up</button>
+        <button class="chip" onclick="switchAppTab('trading')">📈 Bursa Watchlist</button>
       </div>
     </div>
   </div>
@@ -633,102 +633,102 @@ footer a:hover { color: var(--accent); }
     <div>
       <!-- Pane: Agents -->
       <div class="panel" id="pane-agents">
-        <h4>Ejen Aktif Dalam Pakej <span>3 daripada 3 siap sedia</span></h4>
+        <h4>Active Plan Agents <span>3 of 3 ready</span></h4>
         <div class="agents-list">
           <div class="agent-row">
             <span class="dot"></span>
-            <div><b>📸 Content Marketing Agent</b><small>“5 idea pos FB produk salai tempurung kelapa”</small></div>
-            <button class="run" onclick="runAgent(this)">Jalankan (5⚡)</button>
+            <div><b>📸 Content Marketing Agent</b><small>“5 engaging social post ideas for artisan products”</small></div>
+            <button class="run" onclick="runAgent(this)">Run (5⚡)</button>
           </div>
           <div class="agent-row">
             <span class="dot"></span>
-            <div><b>🎨 Image Brand Generator (KUMAR)</b><small>3 variasi visual promosi beresolusi tinggi</small></div>
-            <button class="run" onclick="runAgent(this)">Jalankan (5⚡)</button>
+            <div><b>🎨 Brand Visual Studio (KUMAR)</b><small>3 high-resolution promotional visual variations</small></div>
+            <button class="run" onclick="runAgent(this)">Run (5⚡)</button>
           </div>
           <div class="agent-row">
             <span class="dot off"></span>
-            <div><b>⏰ Daily Business Digest Agent</b><small>Laporan harian ke Telegram jam 8:00 malam</small></div>
-            <button class="run" onclick="runAgent(this)">Jalankan (5⚡)</button>
+            <div><b>⏰ Daily Business Digest Agent</b><small>Automated daily report to Telegram at 8:00 PM</small></div>
+            <button class="run" onclick="runAgent(this)">Run (5⚡)</button>
           </div>
         </div>
-        <p style="color:var(--muted2);font-size:0.76rem;margin-top:14px;font-family:var(--mono)">Setiap pelaksanaan ejen memotong 5 ⚡ kredit.</p>
+        <p style="color:var(--muted2);font-size:0.76rem;margin-top:14px;font-family:var(--mono)">Each agent execution consumes 5 ⚡ credits.</p>
       </div>
 
       <!-- Pane: Connectors -->
       <div class="panel" id="pane-connect" style="display:none">
-        <h4>Penyambung API Luaran <span>Klik togol untuk sambung / putus</span></h4>
+        <h4>External API Connectors <span>Click toggle to connect / disconnect</span></h4>
         <div class="connectors" id="connList"></div>
-        <p style="color:var(--muted);font-size:0.8rem;margin-top:16px">Kunci API disimpan secara enkripsi selamat AES-256. Anda boleh memutuskan sambungan pada bila-bila masa.</p>
+        <p style="color:var(--muted);font-size:0.8rem;margin-top:16px">API keys are securely stored with AES-256 encryption. You can disconnect at any time.</p>
       </div>
 
       <!-- Pane: Settings -->
       <div class="panel profile-quiz" id="pane-set" style="display:none">
-        <h4>Tetapan Persona &amp; Bahasa Ejen</h4>
+        <h4>Agent Persona &amp; Language Settings</h4>
         <div class="q">
-          <label>Bahasa Utama Interaksi</label>
-          <select id="setLang"><option>Auto-detect (Bahasa Melayu &amp; English)</option><option>Bahasa Malaysia Sahaja</option><option>English Only</option></select>
+          <label>Primary Interaction Language</label>
+          <select id="setLang"><option>Auto-detect (English &amp; Malay)</option><option>English Only</option><option>Malay Only</option></select>
         </div>
         <div class="q">
-          <label>Gaya Suara Persona Sembang</label>
-          <select id="setPersona"><option>Santai &amp; Mesra (Gaya Usahawan Malaysia)</option><option>Profesional &amp; Korporat</option><option>Cikgu Disiplin (Risk-First)</option></select>
+          <label>Chat Persona Tone</label>
+          <select id="setPersona"><option>Conversational &amp; Friendly (Entrepreneur Style)</option><option>Professional &amp; Corporate</option><option>Disciplined Mentor (Risk-First)</option></select>
         </div>
         <div class="q">
-          <label>Had Tindakan Ejen Maksimum Sehari</label>
-          <select id="setMax"><option>Standard — 60 tindakan sehari</option><option>Ringan — 20 tindakan sehari</option><option>Intensif — 150 tindakan sehari</option></select>
+          <label>Daily Maximum Agent Action Limit</label>
+          <select id="setMax"><option>Standard — 60 actions/day</option><option>Light — 20 actions/day</option><option>Intensive — 150 actions/day</option></select>
         </div>
-        <button class="btn primary" onclick="saveSettings()">Simpan Tetapan</button>
+        <button class="btn primary" onclick="saveSettings()">Save Settings</button>
         <span id="setSaved" style="color:var(--green);font-size:0.85rem;margin-left:10px"></span>
       </div>
 
       <!-- Pane: Trading & Watchlist (Merged) -->
       <div class="panel profile-quiz" id="pane-trading" style="display:none">
-        <h4>Profil Dagangan Bursa Malaysia <span class="badge ok">Advise-Only Engine Active</span></h4>
-        <div class="q"><label>1. Tahap Pengalaman</label><select id="trLevel"><option>Beginner (Baru Mula)</option><option>Intermediate (1-3 Tahun)</option><option>Advanced (Penuh Disiplin)</option></select></div>
-        <div class="q"><label>2. Pasaran Fokus</label><select id="trMarket"><option>Bursa Malaysia (Main &amp; ACE Market)</option><option>Pasaran Global (US &amp; HK)</option><option>Kripto Terpilih</option></select></div>
-        <div class="q"><label>3. Gaya Dagangan</label><select id="trStyle"><option>Monthly DCA (Simpanan Berkala)</option><option>Swing Trading (Beberapa Hari - Minggu)</option><option>Position Long-Term Hold</option></select></div>
-        <div class="q"><label>4. Selera Risiko</label><select id="trRisk"><option>Konservatif (Modal Selamat Utama)</option><option>Sederhana (Pertumbuhan Stabil)</option><option>Agresif (Momentum Breakout)</option></select></div>
-        <button class="btn primary" onclick="saveTradingProfile()">Simpan Profil &amp; Kemas Kini Cadangan</button>
+        <h4>Bursa Malaysia Trading Profile <span class="badge ok">Advise-Only Engine Active</span></h4>
+        <div class="q"><label>1. Experience Level</label><select id="trLevel"><option>Beginner (Getting Started)</option><option>Intermediate (1-3 Years)</option><option>Advanced (Disciplined Trader)</option></select></div>
+        <div class="q"><label>2. Focus Market</label><select id="trMarket"><option>Bursa Malaysia (Main &amp; ACE Market)</option><option>Global Markets (US &amp; HK)</option><option>Select Crypto Assets</option></select></div>
+        <div class="q"><label>3. Trading Style</label><select id="trStyle"><option>Monthly DCA (Systematic Accumulation)</option><option>Swing Trading (Days to Weeks)</option><option>Position Long-Term Hold</option></select></div>
+        <div class="q"><label>4. Risk Appetite</label><select id="trRisk"><option>Conservative (Capital Preservation First)</option><option>Moderate (Steady Growth)</option><option>Aggressive (Momentum Breakouts)</option></select></div>
+        <button class="btn primary" onclick="saveTradingProfile()">Save Profile &amp; Update Recommendations</button>
 
-        <!-- Watchlist Bursa Bersepadu -->
+        <!-- Integrated Bursa Watchlist -->
         <div style="margin-top:24px;border-top:1px solid var(--border);padding-top:18px">
-          <h4>📊 Senarai Pantauan Saham Bursa (Watchlist DCA) <span class="badge">Data Tertangguh 15-min</span></h4>
+          <h4>📊 Bursa Malaysia Stock Watchlist (DCA Watchlist) <span class="badge">15-min Delayed Data</span></h4>
           <div class="stock-item">
             <div>
-              <b style="color:var(--ink)">INARI (0166)</b> — Teknologi
-              <div class="sub">Semikonduktor · Shariah ✓ · Vol 11.4M · Hampir TP1 (RM4.20)</div>
+              <b style="color:var(--ink)">INARI (0166)</b> — Technology
+              <div class="sub">Semiconductors · Shariah-Compliant · Vol 11.4M · Near TP1 (RM4.20)</div>
             </div>
             <div style="text-align:right"><div class="price">RM 3.82</div><span class="up">▲ +2.1%</span></div>
           </div>
           <div class="stock-item">
             <div>
-              <b style="color:var(--ink)">GENM (4715)</b> — Konsumer / Pelancongan
-              <div class="sub">Genting Malaysia · Dividen Konsisten · Zon Penyatuan</div>
+              <b style="color:var(--ink)">GENM (4715)</b> — Consumer / Hospitality
+              <div class="sub">Genting Malaysia · Consistent Dividends · Consolidation Zone</div>
             </div>
             <div style="text-align:right"><div class="price">RM 2.94</div><span class="up">▲ +0.8%</span></div>
           </div>
           <div class="stock-item">
             <div>
-              <b style="color:var(--ink)">AEMULUS (0181)</b> — Peralatan Ujian Automatik
-              <div class="sub">Order book ~RM87j · Pemulihan kitaran cip semikonduktor</div>
+              <b style="color:var(--ink)">AEMULUS (0181)</b> — Automated Test Equipment
+              <div class="sub">Order book ~RM87M · Semiconductor chip cycle recovery</div>
             </div>
             <div style="text-align:right"><div class="price">RM 0.38</div><span class="down">▼ -1.2%</span></div>
           </div>
           <div class="stock-item">
             <div>
-              <b style="color:var(--ink)">MAYBANK (1155)</b> — Perbankan
-              <div class="sub">Kukuh kewangan · Dividen hasil tinggi · Sokongan RM9.70–9.95</div>
+              <b style="color:var(--ink)">MAYBANK (1155)</b> — Banking &amp; Financials
+              <div class="sub">Strong fundamentals · High dividend yield · Support RM9.70–9.95</div>
             </div>
             <div style="text-align:right"><div class="price">RM 9.98</div><span class="up">▲ +0.4%</span></div>
           </div>
           <div class="stock-item">
             <div>
-              <b style="color:var(--ink)">GAMUDA (5398)</b> — Pembinaan &amp; Infra
-              <div class="sub">Projek MRT &amp; data center serantau · Momentum stabil</div>
+              <b style="color:var(--ink)">GAMUDA (5398)</b> — Construction &amp; Infrastructure
+              <div class="sub">MRT projects &amp; regional data centers · Steady momentum</div>
             </div>
             <div style="text-align:right"><div class="price">RM 4.86</div><span class="up">▲ +1.2%</span></div>
           </div>
         </div>
-        <div class="disclaimer" style="margin:16px 0 0">⚠️ Advise-only. AuraOne tidak pernah membuat pesanan beli/jual secara automatik. Segala keputusan transaksi adalah tanggungjawab anda sepenuhnya.</div>
+        <div class="disclaimer" style="margin:16px 0 0">⚠️ Advisory-only. AuraOne never executes buy or sell orders automatically. All trading decisions remain entirely your responsibility.</div>
       </div>
     </div>
 
@@ -736,13 +736,13 @@ footer a:hover { color: var(--accent); }
     <div>
       <div id="chatWrap">
         <div class="panel" style="position:sticky;top:80px">
-          <h4>Sembang Interaktif AI <span>BM / EN Auto-Detect</span></h4>
+          <h4>Interactive AI Chat <span>Real-time Assistant</span></h4>
           <div class="chatlog" id="chatlog">
-            <div class="msg a">Selamat sejahtera! Saya Aura, pembantu AI anda. Apa yang boleh saya bantu hari ini — analisis saham Bursa, draf iklan, atau semakan trending berita?</div>
+            <div class="msg a">Hello! I am Aura, your personal AI workforce lead. How can I assist you today — Bursa stock analysis, copywriting drafts, or trending news scans?</div>
           </div>
           <div class="chatbar">
-            <input id="chatInput" placeholder="Taip soalan dalam BM atau English..." aria-label="Mesej chat">
-            <button onclick="sendMsg()" aria-label="Hantar">➤</button>
+            <input id="chatInput" placeholder="Ask a question or issue a command..." aria-label="Chat input">
+            <button onclick="sendMsg()" aria-label="Send">➤</button>
           </div>
         </div>
       </div>
@@ -760,24 +760,24 @@ footer a:hover { color: var(--accent); }
         <h2 style="font-size:1.6rem">🛡️ AuraOne Mission Control</h2>
         <span class="admin-badge"><span class="dot"></span> Live Ops · Boss Khairul</span>
       </div>
-      <p style="color:var(--muted);font-size:0.88rem">Pusat Kawalan Eksekutif &amp; Telemetri Infrastruktur Solopreneur.</p>
+      <p style="color:var(--muted);font-size:0.88rem">Executive Command Center &amp; Solopreneur Infrastructure Telemetry.</p>
     </div>
   </div>
 
   <!-- 4 KPI King Strip -->
   <div class="stats4">
     <div class="stat-card">
-      <div class="k">👥 Total Users (Penyewa)</div>
+      <div class="k">👥 Total Tenants (Users)</div>
       <div class="v" id="admKpiUsers">5</div>
-      <div class="d up" id="admKpiUsersSub">4 Aktif · 1 Paused</div>
+      <div class="d up" id="admKpiUsersSub">4 Active · 1 Paused</div>
     </div>
     <div class="stat-card">
-      <div class="k">🤖 Skuad 9 Ejen</div>
+      <div class="k">🤖 9-Agent Squad</div>
       <div class="v" id="admKpiFleet">9 / 9</div>
-      <div class="d up">100% Sihat (7 Live, 2 Plan)</div>
+      <div class="d up">100% Healthy (7 Live, 2 Planned)</div>
     </div>
     <div class="stat-card">
-      <div class="k">💰 Anggaran MRR</div>
+      <div class="k">💰 Estimated MRR</div>
       <div class="v" id="admKpiMrr">RM 117</div>
       <div class="d up">▲ +18% MoM (Net Margin +RM16)</div>
     </div>
@@ -790,85 +790,85 @@ footer a:hover { color: var(--accent); }
 
   <!-- 6 Admin Navigation Tabs -->
   <div class="tabs" id="admTabs">
-    <button class="act" data-admtab="summary">📌 Ringkasan Eksekutif</button>
-    <button data-admtab="users">👥 Pengurusan User</button>
-    <button data-admtab="telemetry">🖥️ Telemetri Pelayan</button>
-    <button data-admtab="fleet">🤖 Skuad 9 Ejen</button>
+    <button class="act" data-admtab="summary">📌 Executive Summary</button>
+    <button data-admtab="users">👥 User Management</button>
+    <button data-admtab="telemetry">🖥️ Server Telemetry</button>
+    <button data-admtab="fleet">🤖 9-Agent Fleet</button>
     <button data-admtab="intel">⚡ Intelligence Audit</button>
-    <button data-admtab="hitl">💸 HITL Hub &amp; Lejar Kos</button>
+    <button data-admtab="hitl">💸 HITL Hub &amp; Cost Ledger</button>
   </div>
 
-  <!-- TAB 1: RINGKASAN EKSEKUTIF (Bento Overview) -->
+  <!-- TAB 1: EXECUTIVE SUMMARY (Bento Overview) -->
   <div class="adm-tab-pane active" id="pane-adm-summary">
     <div class="grid-bento">
-      <!-- Kesihatan Pelayan Ringkas -->
+      <!-- Server Health Overview -->
       <div class="panel span-6">
-        <h4>🖥️ Kesihatan Sistem &amp; Pelayan VPS <span class="subtext">2GB Hermes VPS</span></h4>
+        <h4>🖥️ System Health &amp; VPS Telemetry <span class="subtext">2GB Hermes VPS</span></h4>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px">
-          <div class="stat-card"><div class="k">RAM Diguna</div><div class="v" id="sumRam">48%</div><div class="d">945MB / 1.96GB</div></div>
+          <div class="stat-card"><div class="k">RAM Usage</div><div class="v" id="sumRam">48%</div><div class="d">945MB / 1.96GB</div></div>
           <div class="stat-card"><div class="k">CPU Load</div><div class="v" id="sumCpu">5.0%</div><div class="d">Load: 0.10 0.08</div></div>
         </div>
-        <div class="kv"><span class="k">Disk Digunakan</span><span class="val">39% (17.2 GB Percuma)</span></div>
-        <div class="kv"><span class="k">Uptime Pelayan</span><span class="val">7 Hari 13 Jam 30 Minit</span></div>
-        <div class="kv"><span class="k">Servis Gateway (Telegram)</span><span class="val" style="color:var(--green)">🟢 PID 2115926 (309MB)</span></div>
+        <div class="kv"><span class="k">Disk Usage</span><span class="val">39% (17.2 GB Free)</span></div>
+        <div class="kv"><span class="k">Server Uptime</span><span class="val">7 Days 13 Hours 30 Mins</span></div>
+        <div class="kv"><span class="k">Gateway Service (Telegram)</span><span class="val" style="color:var(--green)">🟢 PID 2115926 (309MB)</span></div>
         <div class="kv"><span class="k">Moomoo Bridge</span><span class="val" style="color:var(--green)">🟢 PID 27104 (92MB)</span></div>
       </div>
 
       <!-- Financial & Margin Overview -->
       <div class="panel span-6">
-        <h4>💸 Kedudukan Kewangan &amp; Kos Operasi <span class="subtext">Bulan Semasa</span></h4>
-        <div class="kv"><span class="k">Hasil Langganan (MRR)</span><span class="val" style="color:var(--green);font-size:1rem">RM 117.00</span></div>
+        <h4>💸 Financial Health &amp; Operating Costs <span class="subtext">Current Month</span></h4>
+        <div class="kv"><span class="k">Subscription Revenue (MRR)</span><span class="val" style="color:var(--green);font-size:1rem">RM 117.00</span></div>
         <div class="kv"><span class="k">TradingView Essential Feed</span><span class="val">RM 61.00</span></div>
-        <div class="kv"><span class="k">Hosting VPS (2GB Hermes)</span><span class="val">RM 40.00</span></div>
+        <div class="kv"><span class="k">VPS Hosting (Hermes 2GB)</span><span class="val">RM 40.00</span></div>
         <div class="kv"><span class="k">Supabase DB &amp; Cloudflare</span><span class="val">RM 0.00 (Free Tier)</span></div>
-        <div class="kv"><span class="k"><b>Jumlah Kos Operasi</b></span><span class="val" style="color:var(--red)"><b>RM 101.00</b></span></div>
-        <div class="kv" style="border-top:1px dashed var(--border);padding-top:10px;margin-top:6px"><span class="k"><b>Untung Bersih (Net Margin)</b></span><span class="val" style="color:var(--green);font-size:1.1rem"><b>+ RM 16.00 (Untung)</b></span></div>
+        <div class="kv"><span class="k"><b>Total Operating Costs</b></span><span class="val" style="color:var(--red)"><b>RM 101.00</b></span></div>
+        <div class="kv" style="border-top:1px dashed var(--border);padding-top:10px;margin-top:6px"><span class="k"><b>Net Profit (Margin)</b></span><span class="val" style="color:var(--green);font-size:1.1rem"><b>+ RM 16.00 (Profitable)</b></span></div>
       </div>
 
       <!-- Intelligence Snapshot Quick -->
       <div class="panel span-6">
-        <h4>⚡ Intelligence &amp; Autonomi Audit <span class="subtext">Aura × Luma Dual-Node</span></h4>
+        <h4>⚡ Intelligence &amp; Autonomy Snapshot <span class="subtext">Aura × Luma Dual-Node</span></h4>
         <div style="background:rgba(74,222,128,0.08);border:1px solid rgba(74,222,128,0.25);border-radius:10px;padding:14px;margin-bottom:12px">
           <div style="font-size:0.75rem;font-weight:700;color:var(--green);text-transform:uppercase;font-family:var(--mono)">Autonomy Score: 95.7%</div>
-          <div style="font-size:0.86rem;color:var(--ink);margin-top:4px">Aura bertindak sebagai Pembuat Keputusan ReAct Loop manakala Luma melaksanakan tugas pembangunan secara autonomi.</div>
+          <div style="font-size:0.86rem;color:var(--ink);margin-top:4px">Aura serves as the central ReAct decision planner while Luma autonomously executes code &amp; system integrations.</div>
         </div>
-        <div class="kv"><span class="k">Jumlah Langkah (Steps)</span><span class="val">1,449 langkah</span></div>
-        <div class="kv"><span class="k">Pelaksanaan Tool MCP</span><span class="val">585 panggilan berjaya</span></div>
-        <div class="kv"><span class="k">Penjimatan Masa Anggaran</span><span class="val" style="color:var(--accent)">42 jam kerja manual</span></div>
+        <div class="kv"><span class="k">Total Execution Steps</span><span class="val">1,449 steps</span></div>
+        <div class="kv"><span class="k">MCP Tool Executions</span><span class="val">585 successful calls</span></div>
+        <div class="kv"><span class="k">Estimated Time Saved</span><span class="val" style="color:var(--accent)">42 hours of manual work</span></div>
       </div>
 
       <!-- HITL Pending Overview -->
       <div class="panel span-6">
-        <h4>📌 Tindakan Keutamaan Boss (HITL) <span class="subtext">Tindakan Diperlukan</span></h4>
-        <div class="hitl-item"><input type="checkbox" id="qhitl1" onchange="toggleHitl(0)"><span class="title">Beli Domain auraone.my &amp; Halakan DNS</span><span class="p-tag p-high">HIGH</span></div>
-        <div class="hitl-item"><input type="checkbox" id="qhitl2" onchange="toggleHitl(1)"><span class="title">Daftar Akaun ToyyibPay (Live Payment Gateway)</span><span class="p-tag p-high">HIGH</span></div>
-        <div class="hitl-item"><input type="checkbox" id="qhitl3" onchange="toggleHitl(2)"><span class="title">Sambung MT5 Broker untuk Feed Harga Masa Nyata</span><span class="p-tag p-med">MED</span></div>
-        <div class="hitl-item"><input type="checkbox" id="qhitl4" onchange="toggleHitl(3)"><span class="title">Pendaftaran Akta JPDP / PDPA Malaysia</span><span class="p-tag p-med">MED</span></div>
+        <h4>📌 Boss Priority Approvals (HITL) <span class="subtext">Action Required</span></h4>
+        <div class="hitl-item"><input type="checkbox" id="qhitl1" onchange="toggleHitl(0)"><span class="title">Purchase auraone.my Domain &amp; Route DNS</span><span class="p-tag p-high">HIGH</span></div>
+        <div class="hitl-item"><input type="checkbox" id="qhitl2" onchange="toggleHitl(1)"><span class="title">Register ToyyibPay Merchant Account (Live Gateway)</span><span class="p-tag p-high">HIGH</span></div>
+        <div class="hitl-item"><input type="checkbox" id="qhitl3" onchange="toggleHitl(2)"><span class="title">Connect MT5 Broker for Real-time Market Feeds</span><span class="p-tag p-med">MED</span></div>
+        <div class="hitl-item"><input type="checkbox" id="qhitl4" onchange="toggleHitl(3)"><span class="title">Register with Malaysian Personal Data Protection Department (PDPA)</span><span class="p-tag p-med">MED</span></div>
       </div>
     </div>
   </div>
 
-  <!-- TAB 2: PENGURUSAN USER -->
+  <!-- TAB 2: USER MANAGEMENT -->
   <div class="adm-tab-pane" id="pane-adm-users">
     <div class="panel">
-      <h4>Pengurusan Akaun Penyewa &amp; Kredit <span class="subtext">Togol Pause/Resume atau tambah kredit pengguna</span></h4>
+      <h4>Tenant Account &amp; Credit Management <span class="subtext">Toggle Pause/Resume or top up user credits</span></h4>
       <div style="display:flex;gap:10px;margin-bottom:16px;flex-wrap:wrap">
-        <input class="field" id="userSearch" placeholder="Cari nama atau emel pengguna..." style="max-width:320px;margin-bottom:0" oninput="filterUsers()">
-        <button class="btn primary sm" onclick="alert('Borang pendaftaran penyewa baharu sedia disambung ke Supabase.')">＋ Tambah Penyewa</button>
+        <input class="field" id="userSearch" placeholder="Search tenant name or email..." style="max-width:320px;margin-bottom:0" oninput="filterUsers()">
+        <button class="btn primary sm" onclick="alert('New tenant registration modal ready for Supabase integration.')">＋ Add Tenant</button>
       </div>
       <div style="overflow-x:auto">
         <table>
           <thead>
             <tr>
               <th>ID</th>
-              <th>Nama</th>
-              <th>Emel</th>
-              <th>Pelan</th>
-              <th>Kredit Diguna</th>
-              <th>Baki Kredit</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Plan</th>
+              <th>Credits Used</th>
+              <th>Credit Balance</th>
               <th>Status</th>
-              <th>Tarikh Daftar</th>
-              <th>Tindakan</th>
+              <th>Joined Date</th>
+              <th>Actions</th>
             </tr>
           </thead>
           <tbody id="admUserRows"></tbody>
@@ -877,17 +877,17 @@ footer a:hover { color: var(--accent); }
     </div>
   </div>
 
-  <!-- TAB 3: TELEMETRI PELAYAN (Merged from dashboard.html) -->
+  <!-- TAB 3: SERVER TELEMETRY (Merged from dashboard.html) -->
   <div class="adm-tab-pane" id="pane-adm-telemetry">
     <div class="grid-bento">
       <!-- 60-Day Trend Chart -->
       <div class="panel span-12">
-        <h4>📈 Trend Penggunaan &amp; Anggaran Kos <span class="subtext">Statistik 60 Hari Terakhir (Canvas 2D)</span></h4>
+        <h4>📈 Usage Trends &amp; Estimated Costs <span class="subtext">Last 60 Days Analytics (Canvas 2D)</span></h4>
         <canvas id="admTrendChart" height="200" style="width:100%"></canvas>
         <div style="display:flex;gap:18px;margin-top:10px;font-size:0.75rem;color:var(--muted);font-family:var(--mono);flex-wrap:wrap">
-          <span><span style="display:inline-block;width:9px;height:9px;background:var(--accent);border-radius:2px;margin-right:4px"></span> Kos Harian (USD)</span>
-          <span><span style="display:inline-block;width:9px;height:9px;background:var(--blue);border-radius:2px;margin-right:4px"></span> Panggilan API (Calls)</span>
-          <span><span style="display:inline-block;width:9px;height:9px;background:var(--green);border-radius:2px;margin-right:4px"></span> Baki DeepSeek ($)</span>
+          <span><span style="display:inline-block;width:9px;height:9px;background:var(--accent);border-radius:2px;margin-right:4px"></span> Daily Cost (USD)</span>
+          <span><span style="display:inline-block;width:9px;height:9px;background:var(--blue);border-radius:2px;margin-right:4px"></span> API Calls</span>
+          <span><span style="display:inline-block;width:9px;height:9px;background:var(--green);border-radius:2px;margin-right:4px"></span> DeepSeek Balance ($)</span>
         </div>
       </div>
 
@@ -895,48 +895,48 @@ footer a:hover { color: var(--accent); }
       <div class="panel span-6">
         <h4>💰 DeepSeek API &amp; Model Routing <span class="subtext">platform.deepseek.com</span></h4>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px">
-          <div class="stat-card"><div class="k">Baki Akaun API</div><div class="v" style="color:var(--accent2)">$14.82</div><div class="d">Top-up: $10 · Grant: $5</div></div>
-          <div class="stat-card"><div class="k">Model Utama</div><div class="v" style="font-size:1.15rem">v4-flash</div><div class="d">Fallback: Gemini 2.5</div></div>
+          <div class="stat-card"><div class="k">API Account Balance</div><div class="v" style="color:var(--accent2)">$14.82</div><div class="d">Top-up: $10 · Grant: $5</div></div>
+          <div class="stat-card"><div class="k">Primary Model</div><div class="v" style="font-size:1.15rem">v4-flash</div><div class="d">Fallback: Gemini 2.5</div></div>
         </div>
-        <div class="kv"><span class="k">Model Utama</span><span class="val">deepseek-v4-flash</span></div>
+        <div class="kv"><span class="k">Primary Model</span><span class="val">deepseek-v4-flash</span></div>
         <div class="kv"><span class="k">Fallback 1 (Google)</span><span class="val">gemini-2.5-flash</span></div>
         <div class="kv"><span class="k">Fallback 2 (Groq)</span><span class="val">llama-3.3-70b-versatile</span></div>
         <div style="margin-top:10px">
           <div style="display:flex;justify-content:space-between;font-family:var(--mono);font-size:0.74rem;color:var(--muted);margin-bottom:4px">
-            <span>Kadar Cache Hit (Prompt Cache)</span><span>95.2%</span>
+            <span>Prompt Cache Hit Rate</span><span>95.2%</span>
           </div>
           <div class="bar-track"><i style="width:95.2%;background:var(--green)"></i></div>
         </div>
       </div>
 
-      <!-- Servis & Proses Aktif -->
+      <!-- Active Services & Processes -->
       <div class="panel span-6">
-        <h4>⚙️ Servis &amp; Proses VPS <span class="subtext">Systemd &amp; Background Runners</span></h4>
+        <h4>⚙️ VPS Services &amp; Processes <span class="subtext">Systemd &amp; Background Runners</span></h4>
         <div style="overflow-x:auto">
           <table>
-            <thead><tr><th>Servis</th><th>Status</th><th>PID</th><th>Mem</th><th>CPU</th></tr></thead>
+            <thead><tr><th>Service</th><th>Status</th><th>PID</th><th>Memory</th><th>CPU</th></tr></thead>
             <tbody id="admServicesRows"></tbody>
           </table>
         </div>
       </div>
 
-      <!-- Kunci API Status -->
+      <!-- API Key Status -->
       <div class="panel span-6">
-        <h4>🔑 Status Kunci API (.env Masked) <span class="subtext">Keselamatan &amp; Sandaran</span></h4>
+        <h4>🔑 API Key Status (.env Masked) <span class="subtext">Security &amp; Fallbacks</span></h4>
         <div style="overflow-x:auto">
           <table>
-            <thead><tr><th>Nama Kunci</th><th>Status</th><th>Peranan</th><th>Prefix</th></tr></thead>
+            <thead><tr><th>Key Name</th><th>Status</th><th>Role</th><th>Prefix</th></tr></thead>
             <tbody id="admKeysRows"></tbody>
           </table>
         </div>
       </div>
 
-      <!-- Cron Jobs Scheduled -->
+      <!-- Scheduled Cron Jobs -->
       <div class="panel span-6">
-        <h4>⏰ Jadual Tugas Automatik (Cron) <span class="subtext">Pelayan VPS</span></h4>
+        <h4>⏰ Scheduled Automation Tasks (Cron) <span class="subtext">VPS Systemd Scheduler</span></h4>
         <div style="overflow-x:auto">
           <table>
-            <thead><tr><th>Nama Tugasan</th><th>Jadual</th><th>Status</th></tr></thead>
+            <thead><tr><th>Task Name</th><th>Schedule</th><th>Status</th></tr></thead>
             <tbody id="admCronRows"></tbody>
           </table>
         </div>
@@ -944,10 +944,10 @@ footer a:hover { color: var(--accent); }
 
       <!-- Injected Tools & MCP -->
       <div class="panel span-12">
-        <h4>🧰 Tools &amp; Modul MCP Disuntik <span class="subtext">Keupayaan Dalaman Aura &amp; Boss</span></h4>
+        <h4>🧰 Injected Tools &amp; MCP Modules <span class="subtext">Internal Capabilities &amp; System Sandboxes</span></h4>
         <div style="overflow-x:auto">
           <table>
-            <thead><tr><th>Alatan / MCP</th><th>Status</th><th>Fungsi</th><th>Nota Pelaksanaan</th></tr></thead>
+            <thead><tr><th>Tool / MCP</th><th>Status</th><th>Function</th><th>Execution Notes</th></tr></thead>
             <tbody id="admToolsRows"></tbody>
           </table>
         </div>
@@ -955,11 +955,11 @@ footer a:hover { color: var(--accent); }
     </div>
   </div>
 
-  <!-- TAB 4: SKUAD 9 EJEN DETAIL -->
+  <!-- TAB 4: 9-AGENT FLEET DETAIL -->
   <div class="adm-tab-pane" id="pane-adm-fleet">
     <div class="panel" style="margin-bottom:16px">
-      <h4>Matriks Kematangan &amp; Kesihatan Skuad 9 Ejen <span class="subtext">Phase P Master Fleet Health</span></h4>
-      <p style="color:var(--muted);font-size:0.86rem;margin-bottom:16px">Semua 9 watak AI beroperasi di bawah ReAct Central Orchestrator AuraOne sebagai modul domain khusus.</p>
+      <h4>9-Agent Squad Maturity &amp; Health Matrix <span class="subtext">Phase P Master Fleet Health</span></h4>
+      <p style="color:var(--muted);font-size:0.86rem;margin-bottom:16px">All 9 AI personas operate under AuraOne's central ReAct orchestrator as specialized domain modules.</p>
       <div class="fleet-grid" id="fleetAdminGrid"></div>
     </div>
   </div>
@@ -967,40 +967,40 @@ footer a:hover { color: var(--accent); }
   <!-- TAB 5: INTELLIGENCE AUDIT (Merged from intelligence.html) -->
   <div class="adm-tab-pane" id="pane-adm-intel">
     <div class="grid-bento">
-      <!-- Verdict Autonomi -->
+      <!-- Autonomy Verdict -->
       <div class="panel span-12" style="background:linear-gradient(135deg,rgba(74,222,128,0.06),rgba(0,212,255,0.06));border-color:rgba(74,222,128,0.3)">
-        <div style="font-size:0.75rem;font-weight:700;color:var(--green);text-transform:uppercase;font-family:var(--mono);margin-bottom:6px">✅ Keputusan Audit Autonomi Rasmi (Snapshot: 31 Aug 2026)</div>
+        <div style="font-size:0.75rem;font-weight:700;color:var(--green);text-transform:uppercase;font-family:var(--mono);margin-bottom:6px">✅ Official Autonomy Audit Verdict (Snapshot: 31 Aug 2026)</div>
         <div style="font-size:0.95rem;line-height:1.6;color:var(--ink)">
-          <strong>Aura = Central ReAct Decision Maker &amp; Orchestrator.</strong> AuraOne bertindak sebagai pembuat keputusan utama ReAct loop untuk semua perbualan pengguna &amp; Telegram. <strong>Luma (Antigravity/AGY)</strong> bertindak sebagai <em>Development Executor</em> untuk koding, integrasi servis &amp; pembaikan sistem. Tahap autonomi diukur pada <strong>95.7%</strong> tanpa halangan manual.
+          <strong>Aura = Central ReAct Decision Maker &amp; Orchestrator.</strong> AuraOne serves as the primary ReAct decision planner for all user conversations and Telegram requests. <strong>Luma (Antigravity/AGY)</strong> operates as the <em>Development Executor</em> for codebase authoring, service integrations &amp; system repairs. Autonomy level verified at <strong>95.7%</strong> unhindered autonomous execution.
         </div>
       </div>
 
       <!-- Stats 4 Card Intel -->
       <div class="panel span-12" style="padding:14px 20px">
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px">
-          <div class="stat-card"><div class="k">Sesi Diaudit</div><div class="v" style="color:var(--cyan)">8</div><div class="d">Conversations</div></div>
-          <div class="stat-card"><div class="k">Total Steps</div><div class="v" style="color:var(--violet)">1,449</div><div class="d">Langkah Agentik</div></div>
-          <div class="stat-card"><div class="k">Tool Executions</div><div class="v" style="color:var(--accent)">585</div><div class="d">Panggilan Alat Luma</div></div>
-          <div class="stat-card"><div class="k">Prompt Boss</div><div class="v" style="color:var(--green)">114</div><div class="d">Arahan Khairul</div></div>
+          <div class="stat-card"><div class="k">Audited Sessions</div><div class="v" style="color:var(--cyan)">8</div><div class="d">Conversations</div></div>
+          <div class="stat-card"><div class="k">Total Steps</div><div class="v" style="color:var(--violet)">1,449</div><div class="d">Agentic Steps</div></div>
+          <div class="stat-card"><div class="k">Tool Executions</div><div class="v" style="color:var(--accent)">585</div><div class="d">Luma Tool Invocations</div></div>
+          <div class="stat-card"><div class="k">Boss Prompts</div><div class="v" style="color:var(--green)">114</div><div class="d">User Directives</div></div>
         </div>
       </div>
 
       <!-- Dual Node Flow Diagram -->
       <div class="panel span-6">
-        <h4>🔗 Seni Bina Dwi-Nod (Aura × Luma) <span class="subtext">ReAct Flow</span></h4>
+        <h4>🔗 Dual-Node Architecture (Aura × Luma) <span class="subtext">ReAct Flow</span></h4>
         <div class="dual-diagram">
           <div class="d-node">
             <div class="d-icon">👑</div>
             <span style="font-size:0.75rem;font-weight:700">Boss Khairul</span>
             <small style="color:var(--muted);font-size:0.68rem">Telegram Interface</small>
           </div>
-          <div class="d-arr"><span>arahan</span><span>→</span></div>
+          <div class="d-arr"><span>directive</span><span>→</span></div>
           <div class="d-node">
             <div class="d-icon aura">🤖</div>
             <span style="font-size:0.75rem;font-weight:700;color:var(--violet)">Aura (Lead)</span>
             <small style="color:var(--muted);font-size:0.68rem">ReAct Planner</small>
           </div>
-          <div class="d-arr"><span>delegate</span><span>⇄</span><span>hasil</span></div>
+          <div class="d-arr"><span>delegate</span><span>⇄</span><span>result</span></div>
           <div class="d-node">
             <div class="d-icon luma">⚡</div>
             <span style="font-size:0.75rem;font-weight:700;color:var(--cyan)">Luma (AGY)</span>
@@ -1015,31 +1015,31 @@ footer a:hover { color: var(--accent); }
         </div>
       </div>
 
-      <!-- Taburan Penggunaan Alatan (Tool Usage Bar Chart) -->
+      <!-- Tool Usage Distribution Bar Chart -->
       <div class="panel span-6">
-        <h4>🔧 Taburan Penggunaan Alatan (Tool Calls) <span class="subtext">585 Total Calls</span></h4>
+        <h4>🔧 Tool Usage Distribution (Tool Calls) <span class="subtext">585 Total Calls</span></h4>
         <div id="admToolUsageBars" style="display:flex;flex-direction:column;gap:8px"></div>
       </div>
 
-      <!-- Timeline Jejak Audit (Trace) -->
+      <!-- Execution Trace Timeline -->
       <div class="panel span-6">
-        <h4>⏱️ Jejak Garis Masa Pelaksanaan (Trace) <span class="subtext">Sesi Utama cd0f76fb</span></h4>
+        <h4>⏱️ Execution Trace Timeline <span class="subtext">Main Session cd0f76fb</span></h4>
         <div class="trace-list" id="admTraceList"></div>
       </div>
 
-      <!-- Evidence / Bukti Sah -->
+      <!-- Verified Autonomous Runtime Evidence -->
       <div class="panel span-6">
-        <h4>📋 Bukti Tindakan Autonomi Disahkan <span class="subtext">Verified Runtime Actions</span></h4>
+        <h4>📋 Verified Autonomous Runtime Evidence <span class="subtext">Verified Runtime Actions</span></h4>
         <div style="overflow-x:auto">
           <table>
-            <thead><tr><th>Tindakan</th><th>Pelaksana</th><th>Alatan</th><th>Status</th></tr></thead>
+            <thead><tr><th>Action</th><th>Executor</th><th>Tool</th><th>Status</th></tr></thead>
             <tbody>
-              <tr><td>Bina 9 Fail Persona Ejen</td><td style="color:var(--cyan)">✦ Luma</td><td><span class="tool-tag">write_to_file</span></td><td><span class="st st-live">VERIFIED</span></td></tr>
-              <tr><td>Audit &amp; Imbas Direktori ~/.hermes</td><td style="color:var(--cyan)">✦ Luma</td><td><span class="tool-tag">run_command</span></td><td><span class="st st-live">VERIFIED</span></td></tr>
-              <tr><td>Pertukaran API Provider &amp; Fallback</td><td style="color:var(--cyan)">✦ Luma</td><td><span class="tool-tag">write_to_file</span></td><td><span class="st st-live">VERIFIED</span></td></tr>
-              <tr><td>Push Git ke Repo auraone-notes</td><td style="color:var(--cyan)">✦ Luma</td><td><span class="tool-tag">git push</span></td><td><span class="st st-live">VERIFIED</span></td></tr>
-              <tr><td>Optimumkan SOUL.md Jimat Token</td><td style="color:var(--cyan)">✦ Luma</td><td><span class="tool-tag">replace_file</span></td><td><span class="st st-live">VERIFIED</span></td></tr>
-              <tr><td>Bina Blueprint Aura Swarm Master</td><td style="color:var(--cyan)">✦ Luma</td><td><span class="tool-tag">write_to_file</span></td><td><span class="st st-live">VERIFIED</span></td></tr>
+              <tr><td>Generate 9 Agent Persona Configurations</td><td style="color:var(--cyan)">✦ Luma</td><td><span class="tool-tag">write_to_file</span></td><td><span class="st st-live">VERIFIED</span></td></tr>
+              <tr><td>Audit &amp; Scan ~/.hermes Directory</td><td style="color:var(--cyan)">✦ Luma</td><td><span class="tool-tag">run_command</span></td><td><span class="st st-live">VERIFIED</span></td></tr>
+              <tr><td>Switch API Provider &amp; Implement Fallbacks</td><td style="color:var(--cyan)">✦ Luma</td><td><span class="tool-tag">write_to_file</span></td><td><span class="st st-live">VERIFIED</span></td></tr>
+              <tr><td>Push Git Commit to auraone-notes Repo</td><td style="color:var(--cyan)">✦ Luma</td><td><span class="tool-tag">git push</span></td><td><span class="st st-live">VERIFIED</span></td></tr>
+              <tr><td>Optimize SOUL.md for Token Efficiency</td><td style="color:var(--cyan)">✦ Luma</td><td><span class="tool-tag">replace_file</span></td><td><span class="st st-live">VERIFIED</span></td></tr>
+              <tr><td>Construct Aura Swarm Master Blueprint</td><td style="color:var(--cyan)">✦ Luma</td><td><span class="tool-tag">write_to_file</span></td><td><span class="st st-live">VERIFIED</span></td></tr>
             </tbody>
           </table>
         </div>
@@ -1047,23 +1047,23 @@ footer a:hover { color: var(--accent); }
     </div>
   </div>
 
-  <!-- TAB 6: HITL HUB & LEJAR KOS -->
+  <!-- TAB 6: HITL HUB & COST LEDGER -->
   <div class="adm-tab-pane" id="pane-adm-hitl">
     <div class="grid-bento">
-      <!-- Lejar Kos Terperinci -->
+      <!-- Monthly Operating Cost Breakdown (Ledger) -->
       <div class="panel span-6">
-        <h4>💸 Pecahan Kos Operasi Bulanan (Lejar) <span class="subtext">Infrastruktur &amp; API Feed</span></h4>
+        <h4>💸 Monthly Operating Cost Breakdown (Ledger) <span class="subtext">Infrastructure &amp; API Feeds</span></h4>
         <div style="overflow-x:auto">
           <table>
-            <thead><tr><th>Perkara</th><th>Kategori</th><th>Kos Bulanan</th></tr></thead>
+            <thead><tr><th>Item</th><th>Category</th><th>Monthly Cost</th></tr></thead>
             <tbody>
-              <tr><td>TradingView Essential Data Feed</td><td>Data Pasaran</td><td class="mono">RM 61.00</td></tr>
-              <tr><td>VPS Hosting (Hermes 2GB RAM)</td><td>Infrastruktur</td><td class="mono">RM 40.00</td></tr>
-              <tr><td>Supabase DB &amp; Auth (Free Tier)</td><td>Pangkalan Data</td><td class="mono">RM 0.00</td></tr>
-              <tr><td>Cloudflare DNS, SSL &amp; WAF</td><td>Keselamatan</td><td class="mono">RM 0.00</td></tr>
-              <tr style="border-top:2px solid var(--border2);font-weight:700"><td>Jumlah Kos Operasi</td><td>Total</td><td class="mono" style="color:var(--red)">RM 101.00</td></tr>
-              <tr style="font-weight:700"><td>Anggaran Hasil Langganan (MRR)</td><td>Revenue</td><td class="mono" style="color:var(--green)">RM 117.00</td></tr>
-              <tr style="font-weight:800;background:rgba(74,222,128,0.06)"><td>Untung Bersih Operasi</td><td>Net Margin</td><td class="mono" style="color:var(--green)">+ RM 16.00</td></tr>
+              <tr><td>TradingView Essential Data Feed</td><td>Market Data</td><td class="mono">RM 61.00</td></tr>
+              <tr><td>VPS Hosting (Hermes 2GB RAM)</td><td>Infrastructure</td><td class="mono">RM 40.00</td></tr>
+              <tr><td>Supabase DB &amp; Auth (Free Tier)</td><td>Database</td><td class="mono">RM 0.00</td></tr>
+              <tr><td>Cloudflare DNS, SSL &amp; WAF</td><td>Security</td><td class="mono">RM 0.00</td></tr>
+              <tr style="border-top:2px solid var(--border2);font-weight:700"><td>Total Operating Costs</td><td>Total</td><td class="mono" style="color:var(--red)">RM 101.00</td></tr>
+              <tr style="font-weight:700"><td>Estimated Subscription Revenue (MRR)</td><td>Revenue</td><td class="mono" style="color:var(--green)">RM 117.00</td></tr>
+              <tr style="font-weight:800;background:rgba(74,222,128,0.06)"><td>Net Operating Profit</td><td>Net Margin</td><td class="mono" style="color:var(--green)">+ RM 16.00</td></tr>
             </tbody>
           </table>
         </div>
@@ -1071,17 +1071,17 @@ footer a:hover { color: var(--accent); }
 
       <!-- Boss HITL Action Checklist -->
       <div class="panel span-6">
-        <h4>📌 Senarai Semak &amp; Kelulusan Boss (HITL) <span class="subtext">Status disimpan automatik</span></h4>
+        <h4>📌 Boss Approvals &amp; Action Checklist (HITL) <span class="subtext">Auto-persisted state</span></h4>
         <div id="admHitlList"></div>
         <div style="margin-top:16px;display:flex;gap:8px">
-          <input class="field" id="newHitlTask" placeholder="Tambah tugasan kelulusan baharu..." style="margin-bottom:0">
-          <button class="btn primary sm" onclick="addNewHitl()">＋ Tambah</button>
+          <input class="field" id="newHitlTask" placeholder="Add new approval task..." style="margin-bottom:0">
+          <button class="btn primary sm" onclick="addNewHitl()">＋ Add Task</button>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="disclaimer" style="margin-top:24px">⚠️ AuraOne Mission Control — Paparan data demonstrasi &amp; telemetri operasi kanonikal platform. Hak cipta terpelihara Saklomak.my.</div>
+  <div class="disclaimer" style="margin-top:24px">⚠️ AuraOne Mission Control — Demonstration data &amp; canonical operational telemetry view. All rights reserved Saklomak.my.</div>
 </section>
 
 <!-- ========================================================================= -->
@@ -1090,17 +1090,17 @@ footer a:hover { color: var(--accent); }
 <!-- Modal Top-Up -->
 <div class="modal" id="modalTopup" role="dialog" aria-modal="true">
   <div class="box">
-    <h3>Top Up Kredit AuraOne ⚡</h3>
-    <p>RM 10 = 200 kredit · RM 30 = 650 kredit · RM 50 = 1,150 kredit. (Prototaip demo — integrasi ToyyibPay sedia disambung).</p>
-    <label style="font-size:0.8rem;color:var(--muted);display:block;margin-bottom:6px">Pilih atau taip jumlah kredit:</label>
+    <h3>Top Up AuraOne Credits ⚡</h3>
+    <p>RM 10 = 200 credits · RM 30 = 650 credits · RM 50 = 1,150 credits. (Demo prototype — ToyyibPay gateway ready).</p>
+    <label style="font-size:0.8rem;color:var(--muted);display:block;margin-bottom:6px">Select credit package:</label>
     <select class="field" id="topupAmt">
-      <option value="200">RM 10 — 200 Kredit ⚡</option>
-      <option value="650">RM 30 — 650 Kredit ⚡ (+50 Bonus)</option>
-      <option value="1150">RM 50 — 1,150 Kredit ⚡ (+150 Bonus)</option>
+      <option value="200">RM 10 — 200 Credits ⚡</option>
+      <option value="650">RM 30 — 650 Credits ⚡ (+50 Bonus)</option>
+      <option value="1150">RM 50 — 1,150 Credits ⚡ (+150 Bonus)</option>
     </select>
     <div class="row">
-      <button class="btn ghost" onclick="closeModal('modalTopup')">Batal</button>
-      <button class="btn primary" onclick="payNow()">Bayar &amp; Tambah Kredit</button>
+      <button class="btn ghost" onclick="closeModal('modalTopup')">Cancel</button>
+      <button class="btn primary" onclick="payNow()">Pay &amp; Add Credits</button>
     </div>
   </div>
 </div>
@@ -1108,13 +1108,13 @@ footer a:hover { color: var(--accent); }
 <!-- Modal Connector API Key -->
 <div class="modal" id="modalKey" role="dialog" aria-modal="true">
   <div class="box">
-    <h3 id="mKeyTitle">Sambungkan Servis</h3>
-    <p>Sila masukkan kunci API / token untuk mengaktifkan penyambung ini (disimpan secara selamat AES-256).</p>
-    <input class="field" id="mKeyInput" placeholder="Tampal API Key / Token di sini...">
+    <h3 id="mKeyTitle">Connect Service</h3>
+    <p>Please enter your API key or token to activate this connector (stored securely via AES-256 encryption).</p>
+    <input class="field" id="mKeyInput" placeholder="Paste API Key / Token here...">
     <div class="err" id="keyErr"></div>
     <div class="row">
-      <button class="btn ghost" onclick="closeModal('modalKey')">Batal</button>
-      <button class="btn primary" onclick="saveKey()">Simpan &amp; Aktifkan</button>
+      <button class="btn ghost" onclick="closeModal('modalKey')">Cancel</button>
+      <button class="btn primary" onclick="saveKey()">Save &amp; Activate</button>
     </div>
   </div>
 </div>
@@ -1122,33 +1122,33 @@ footer a:hover { color: var(--accent); }
 <!-- Modal Legal / PDPA -->
 <div class="modal" id="modalLegal" role="dialog" aria-modal="true">
   <div class="box">
-    <h3 id="legalTitle">Perundangan &amp; Privasi</h3>
+    <h3 id="legalTitle">Legal &amp; Privacy</h3>
     <div id="legalBody" style="color:var(--muted);font-size:0.86rem;line-height:1.6;margin-bottom:16px"></div>
-    <div class="row"><button class="btn ghost" onclick="closeModal('modalLegal')">Tutup</button></div>
+    <div class="row"><button class="btn ghost" onclick="closeModal('modalLegal')">Close</button></div>
   </div>
 </div>
 
 <!-- Modal Admin User Top-up -->
 <div class="modal" id="modalAdminTopup" role="dialog" aria-modal="true">
   <div class="box">
-    <h3>Ubah Kredit Pengguna</h3>
-    <p id="admTopupTarget">Tambah atau tolak kredit untuk penyewa.</p>
-    <input class="field" id="admTopupVal" type="number" placeholder="Jumlah kredit (e.g. 100)">
+    <h3>Adjust User Credits</h3>
+    <p id="admTopupTarget">Add or adjust credits for tenant.</p>
+    <input class="field" id="admTopupVal" type="number" placeholder="Credit amount (e.g. 100)">
     <div class="row">
-      <button class="btn ghost" onclick="closeModal('modalAdminTopup')">Batal</button>
-      <button class="btn primary" onclick="submitAdminTopup()">Kemas Kini</button>
+      <button class="btn ghost" onclick="closeModal('modalAdminTopup')">Cancel</button>
+      <button class="btn primary" onclick="submitAdminTopup()">Update Balance</button>
     </div>
   </div>
 </div>
 
 <!-- ===== FOOTER ===== -->
 <footer>
-  <div class="disclaimer">⚠️ AuraOne Cloud menyediakan perkhidmatan automasi pintar dan analisis data perniagaan untuk tujuan sokongan operasi. Ia bukan penasihat pelaburan berlesen di bawah Akta Pasaran Modal dan Perkhidmatan. Segala keputusan dagangan kekal tanggungjawab pengguna.</div>
-  <p>© 2026 AuraOne Cloud · Dikuasakan oleh Saklomak.my &amp; Boss Khairul (khairulxshafiq)</p>
+  <div class="disclaimer">⚠️ AuraOne Cloud provides intelligent automation and business data analysis for operational support purposes. It is not a licensed investment advisor under the Capital Markets and Services Act. All trading decisions remain the sole responsibility of the user.</div>
+  <p>© 2026 AuraOne Cloud · Powered by Saklomak.my &amp; Boss Khairul (khairulxshafiq)</p>
   <p style="margin-top:6px">
-    <a href="#" onclick="openLegal('terms');return false">Syarat Perkhidmatan</a> · 
-    <a href="#" onclick="openLegal('privacy');return false">Dasar Privasi (PDPA)</a> · 
-    <a href="#" onclick="openLegal('contact');return false">Hubungi Kami</a>
+    <a href="#" onclick="openLegal('terms');return false">Terms of Service</a> · 
+    <a href="#" onclick="openLegal('privacy');return false">Privacy Policy (PDPA)</a> · 
+    <a href="#" onclick="openLegal('contact');return false">Contact Support</a>
   </p>
 </footer>
 
@@ -1158,7 +1158,7 @@ footer a:hover { color: var(--accent); }
 <script>
 "use strict";
 
-/* ---------- DATA STATIK KANONIKAL: ADM_DATA (SPEC 5.3) ---------- */
+/* ---------- CANONICAL STATIC DATA: ADM_DATA (SPEC 5.3) ---------- */
 var ADM_DATA = {
   kpi: {
     total_users: 5,
@@ -1175,7 +1175,7 @@ var ADM_DATA = {
     ram: { used_mb: 945, total_mb: 1967, pct: 48.0 },
     cpu: { pct: 5.0, load: "0.10 0.08 0.20" },
     disk: { used_pct: 39.0, free_gb: 17.2 },
-    uptime: "7h 13j 30m",
+    uptime: "7d 13h 30m",
     generated_at: "2026-09-17 12:30:00 (Demo Mode)"
   },
   services: [
@@ -1185,28 +1185,28 @@ var ADM_DATA = {
     { name: "Cron Scheduler", status: "active", pid: "systemd", mem: "14MB", cpu: "0.0%" }
   ],
   keys: [
-    { name: "DEEPSEEK_API_KEY", status: "aktif", cls: "st-live", role: "Primary (v4-flash)", prefix: "sk-654e51..." },
+    { name: "DEEPSEEK_API_KEY", status: "active", cls: "st-live", role: "Primary (v4-flash)", prefix: "sk-654e51..." },
     { name: "GROQ_API_KEY", status: "backup", cls: "st-live", role: "Fallback 2 (Groq)", prefix: "gsk_Lxi0t..." },
-    { name: "GEMINI_API_KEY", status: "aktif", cls: "st-live", role: "Fallback 1 (Google)", prefix: "AQ.Ab8RN6..." },
-    { name: "ZAI_API_KEY", status: "aktif", cls: "st-live", role: "Auxiliary (GLM-4)", prefix: "0c864d..." },
-    { name: "TELEGRAM_BOT_TOKEN", status: "aktif", cls: "st-live", role: "auraSakluma_bot", prefix: "795896944..." },
-    { name: "AIRTABLE_API_KEY", status: "aktif", cls: "st-live", role: "Content Station", prefix: "patWYR0f..." }
+    { name: "GEMINI_API_KEY", status: "active", cls: "st-live", role: "Fallback 1 (Google)", prefix: "AQ.Ab8RN6..." },
+    { name: "ZAI_API_KEY", status: "active", cls: "st-live", role: "Auxiliary (GLM-4)", prefix: "0c864d..." },
+    { name: "TELEGRAM_BOT_TOKEN", status: "active", cls: "st-live", role: "auraSakluma_bot", prefix: "795896944..." },
+    { name: "AIRTABLE_API_KEY", status: "active", cls: "st-live", role: "Content Station", prefix: "patWYR0f..." }
   ],
   cron: [
-    { name: "Telemetry Collection", schedule: "Setiap 15 minit", status: "active" },
-    { name: "DeepSeek Balance Check", schedule: "Setiap 1 jam", status: "active" },
-    { name: "Morning Market Brief", schedule: "08:00 AM Harian", status: "active" },
+    { name: "Telemetry Collection", schedule: "Every 15 mins", status: "active" },
+    { name: "DeepSeek Balance Check", schedule: "Every 1 hour", status: "active" },
+    { name: "Morning Market Brief", schedule: "08:00 AM Daily", status: "active" },
     { name: "Daily Data Backup", schedule: "00:00 Midnight", status: "active" }
   ],
   tools: [
-    ["run_command", "st-live", "LIVE", "296 runs", "Terminal sandbox & sistem execution"],
-    ["view_file", "st-live", "LIVE", "130 runs", "Pembacaan fail kod & konfigurasi"],
-    ["write_to_file", "st-live", "LIVE", "59 runs", "Penjanaan artifak & skrip"],
-    ["manage_task", "st-live", "LIVE", "32 runs", "Pengurusan tugasan background"],
-    ["find_by_name", "st-live", "LIVE", "24 runs", "Carian fail berasaskan glob"],
-    ["replace_file", "st-live", "LIVE", "20 runs", "Penyuntingan blok kod spesifik"],
-    ["grep_search", "st-live", "LIVE", "9 runs", "Carian corak ripgrep"],
-    ["Moomoo MCP", "st-progress", "PROGRESS", "31 runs", "Bridge harga saham Bursa Malaysia"]
+    ["run_command", "st-live", "LIVE", "296 runs", "Terminal sandbox & system execution"],
+    ["view_file", "st-live", "LIVE", "130 runs", "Code & configuration file reader"],
+    ["write_to_file", "st-live", "LIVE", "59 runs", "Artifact & script generation"],
+    ["manage_task", "st-live", "LIVE", "32 runs", "Background task manager"],
+    ["find_by_name", "st-live", "LIVE", "24 runs", "Glob-based file search"],
+    ["replace_file", "st-live", "LIVE", "20 runs", "Targeted code block editor"],
+    ["grep_search", "st-live", "LIVE", "9 runs", "Ripgrep pattern matching"],
+    ["Moomoo MCP", "st-progress", "PROGRESS", "31 runs", "Bursa Malaysia real-time price bridge"]
   ],
   users: [
     { id: "usr_01", name: "Ai Rina", email: "rina@demo.my", plan: "Starter", credits_used: 118, credits_bal: 182, status: "active", joined: "2026-09-01" },
@@ -1216,26 +1216,26 @@ var ADM_DATA = {
     { id: "usr_05", name: "Boss Khairul", email: "boss@auraone.my", plan: "Pro (Owner)", credits_used: 40, credits_bal: 9999, status: "active", joined: "2026-08-01" }
   ],
   fleet_roster: [
-    { name: "Aura", role: "Swarm Lead & Orchestrator", status: "live", avatar: "👑", color: "#f4b860", tech_maturity: 95, ux_maturity: 92, desc: "Pembuat keputusan utama ReAct loop & perancangan matlamat.", triggers: ["aura", "bantu", "status", "swam"] },
-    { name: "Adrian", role: "News & Social Intelligence", status: "live", avatar: "📰", color: "#34d399", tech_maturity: 92, ux_maturity: 90, desc: "Wartawan digital pantas — kumpul & sahkan berita viral Malaysia.", triggers: ["berita", "trending", "viral", "gajet"] },
-    { name: "Xiao", role: "Copywriting & Ads Creator", status: "live", avatar: "✍️", color: "#f5a623", tech_maturity: 90, ux_maturity: 89, desc: "Penulis kreatif 5 wajah — draf FB, iklan & caption produk.", triggers: ["draf", "content", "ads", "caption"] },
-    { name: "Amira", role: "Bursa Stock Co-Pilot", status: "live", avatar: "📈", color: "#60a5fa", tech_maturity: 88, ux_maturity: 88, desc: "Cikgu trading disiplin risk-first — metodologi Asri Ahmad.", triggers: ["saham", "trading", "analisa", "dca"] },
-    { name: "Kumar", role: "Visual & LoRA Creator", status: "live", avatar: "🎨", color: "#34d399", tech_maturity: 94, ux_maturity: 91, desc: "FLUX LoRA + Gemini image gen — poster brand & watak konsisten.", triggers: ["gambar", "poster", "visual", "lora"] },
-    { name: "Maya", role: "Operations & Automation", status: "live", avatar: "⚙️", color: "#00d4ff", tech_maturity: 92, ux_maturity: 90, desc: "Pentadbir cekap — cron, alert Telegram, backup & integrasi.", triggers: ["ops", "automasi", "alert", "backup"] },
-    { name: "Akira", role: "Revenue & P&L Tracker", status: "live", avatar: "📊", color: "#f87171", tech_maturity: 85, ux_maturity: 84, desc: "Analis kewangan — jejak hasil jualan & margin kos vs untung.", triggers: ["revenue", "kewangan", "untung", "kos"] },
-    { name: "Liya", role: "Commerce & Shopee Closer", status: "planned", avatar: "🛍️", color: "#a78bfa", tech_maturity: 40, ux_maturity: 35, desc: "Sales gal mesra — urus katalog Shopee & khidmat pelanggan.", triggers: ["shopee", "produk", "harga", "pesanan"] },
-    { name: "Aziz", role: "Corporate Finance & Tax", status: "planned", avatar: "💰", color: "#f87171", tech_maturity: 30, ux_maturity: 25, desc: "Perancang kewangan teliti — bajet & pengurusan cukai.", triggers: ["bajet", "tunai", "cukai", "finance"] }
+    { name: "Aura", role: "Swarm Lead & Orchestrator", status: "live", avatar: "👑", color: "#f4b860", tech_maturity: 95, ux_maturity: 92, desc: "Primary ReAct loop decision maker & strategic goal planner.", triggers: ["aura", "help", "status", "swarm"] },
+    { name: "Adrian", role: "News & Social Intelligence", status: "live", avatar: "📰", color: "#34d399", tech_maturity: 92, ux_maturity: 90, desc: "Real-time digital journalist — aggregates & cross-verifies trending news.", triggers: ["news", "trending", "viral", "intel"] },
+    { name: "Xiao", role: "Copywriting & Ads Creator", status: "live", avatar: "✍️", color: "#f5a623", tech_maturity: 90, ux_maturity: 89, desc: "Multi-persona copywriter — crafts FB ads, video scripts & marketing copy.", triggers: ["draft", "copy", "ads", "caption"] },
+    { name: "Amira", role: "Bursa Stock Co-Pilot", status: "live", avatar: "📈", color: "#60a5fa", tech_maturity: 88, ux_maturity: 88, desc: "Disciplined risk-first trading mentor — Asri Ahmad methodology.", triggers: ["stocks", "trading", "analysis", "dca"] },
+    { name: "Kumar", role: "Visual & LoRA Creator", status: "live", avatar: "🎨", color: "#34d399", tech_maturity: 94, ux_maturity: 91, desc: "FLUX LoRA + Gemini visual studio — high-converting brand & product imagery.", triggers: ["image", "poster", "visual", "lora"] },
+    { name: "Maya", role: "Operations & Automation", status: "live", avatar: "⚙️", color: "#00d4ff", tech_maturity: 92, ux_maturity: 90, desc: "Efficient system admin — cron scheduler, Telegram alerts, backups & MCP.", triggers: ["ops", "automation", "alerts", "backup"] },
+    { name: "Akira", role: "Revenue & P&L Tracker", status: "live", avatar: "📊", color: "#f87171", tech_maturity: 85, ux_maturity: 84, desc: "Financial analyst — tracks daily revenue, MRR, operating costs & margins.", triggers: ["revenue", "finance", "profit", "costs"] },
+    { name: "Liya", role: "Commerce & Customer Success", status: "planned", avatar: "🛍️", color: "#a78bfa", tech_maturity: 40, ux_maturity: 35, desc: "Friendly sales closer — manages product catalogs & customer support.", triggers: ["store", "products", "pricing", "orders"] },
+    { name: "Aziz", role: "Corporate Finance & Tax", status: "planned", avatar: "💰", color: "#f87171", tech_maturity: 30, ux_maturity: 25, desc: "Meticulous financial planner — cash flow forecasting & tax planning.", triggers: ["budget", "cashflow", "tax", "finance"] }
   ],
   hitl_checklist: [
-    { task: "Beli Domain auraone.my & Point DNS Cloudflare", status: "pending", priority: "HIGH" },
-    { task: "Daftar Akaun ToyyibPay untuk Live Payment Gateway", status: "pending", priority: "HIGH" },
-    { task: "Integrasi MT5 Broker untuk Feed Harga Bursa Masa Nyata", status: "pending", priority: "MEDIUM" },
-    { task: "Pendaftaran Akta JPDP / PDPA Malaysia", status: "pending", priority: "MEDIUM" },
-    { task: "Hardening SSH Password & Pengaktifan Firewall UFW", status: "pending", priority: "HIGH" },
-    { task: "Sandaran Pangkalan Data SQLite Harian ke Cloudflare R2", status: "completed", priority: "MEDIUM" }
+    { task: "Purchase auraone.my Domain & Route Cloudflare DNS", status: "pending", priority: "HIGH" },
+    { task: "Register ToyyibPay Merchant Account for Live Payments", status: "pending", priority: "HIGH" },
+    { task: "Connect MT5 Broker for Real-time Bursa Price Feeds", status: "pending", priority: "MEDIUM" },
+    { task: "Register with Malaysian Personal Data Protection Department (PDPA)", status: "pending", priority: "MEDIUM" },
+    { task: "Harden SSH Password Authentication & Enable UFW Firewall", status: "pending", priority: "HIGH" },
+    { task: "Configure Daily SQLite Database Backups to Cloudflare R2", status: "completed", priority: "MEDIUM" }
   ],
   cost_breakdown: [
-    { item: "TradingView Essential", cost_myr: 61.00, type: "Data Feed" },
+    { item: "TradingView Essential", cost_myr: 61.00, type: "Market Data" },
     { item: "VPS Hosting (Hermes 2GB)", cost_myr: 40.00, type: "Infrastructure" },
     { item: "Supabase DB & Auth", cost_myr: 0.00, type: "Free Tier" },
     { item: "Domain DNS & SSL", cost_myr: 0.00, type: "Cloudflare Free" }
@@ -1251,12 +1251,12 @@ var ADM_DATA = {
     { name: "read_url", count: 5, color: "#7dd3fc" }
   ],
   trace_events: [
-    { time: "13:15", actor: "Boss Khairul", type: "user", content: "\"Hi Luma! Mula sesi audit kesediaan sistem AuraOne.\"" },
-    { time: "13:16", actor: "Luma AGY", type: "luma", content: "Membaca repositori, README.md, dan dokumen MERGE_PLAN.md" },
-    { time: "13:16", actor: "Luma Tool", type: "tool", tools: ["view_file", "find_by_name"], content: "Imbas fail persona di ~/.hermes/agents & skrip stats.json" },
-    { time: "13:22", actor: "Boss Khairul", type: "user", content: "\"Sahkan 9 persona rasmi untuk dilancarkan.\"" },
-    { time: "13:23", actor: "Luma Tool", type: "tool", tools: ["write_to_file (×9)", "git push"], content: "Jana konfigurasi 9 ejen kanonikal & push komit git" },
-    { time: "13:30", actor: "Luma AGY", type: "luma", content: "\"Semua modul diselaraskan mengikut spesifikasi Single SPA auraone.html.\"" }
+    { time: "13:15", actor: "Boss Khairul", type: "user", content: "\"Hi Luma! Start the AuraOne system readiness audit session.\"" },
+    { time: "13:16", actor: "Luma AGY", type: "luma", content: "Inspecting codebase repository, README.md, and MERGE_PLAN.md" },
+    { time: "13:16", actor: "Luma Tool", type: "tool", tools: ["view_file", "find_by_name"], content: "Scanning persona configs in ~/.hermes/agents & stats.json telemetry" },
+    { time: "13:22", actor: "Boss Khairul", type: "user", content: "\"Verify the 9 canonical personas for launch readiness.\"" },
+    { time: "13:23", actor: "Luma Tool", type: "tool", tools: ["write_to_file (×9)", "git push"], content: "Generated 9 canonical agent configs & committed to git" },
+    { time: "13:30", actor: "Luma AGY", type: "luma", content: "\"All modules consolidated according to Single SPA auraone.html spec.\"" }
   ]
 };
 
@@ -1299,7 +1299,7 @@ function saveHitlState() {
   try { localStorage.setItem("a1hitl", JSON.stringify(state.hitl)); } catch(e) {}
 }
 
-/* ---------- ROUTER BERPUSAT (HASH ROUTER) ---------- */
+/* ---------- CENTRAL ROUTER (HASH ROUTER) ---------- */
 var VALID_ROUTES = ["home", "pricing", "login", "app", "admin", "intelligence"];
 
 function route() {
@@ -1344,7 +1344,7 @@ function parseQuery(q) {
   var plan = (q.split("&").filter(function(p){ return p.indexOf("plan=") === 0; })[0] || "").split("=")[1];
   if (plan) {
     var lead = document.getElementById("loginLead");
-    if (lead) lead.textContent = "Pelan dipilih: " + plan.toUpperCase() + " — Sila log masuk untuk meneruskan.";
+    if (lead) lead.textContent = "Selected plan: " + plan.toUpperCase() + " — Please sign in to continue.";
   }
 }
 
@@ -1368,7 +1368,7 @@ function showPage(page) {
   document.getElementById("navDash").href = (ses && ses.role === "admin") ? "#/admin" : "#/app";
 
   if (page === "app") {
-    document.getElementById("userName").textContent = ses ? ses.name.split(" ")[0] : "Sahabat";
+    document.getElementById("userName").textContent = ses ? ses.name.split(" ")[0] : "User";
     document.getElementById("balNum").textContent = state.credits;
     renderConnectors();
   }
@@ -1395,13 +1395,13 @@ function doLogin() {
   var err = document.getElementById("loginErr");
 
   if (!document.getElementById("agree").checked) {
-    err.textContent = "Sila tandakan persetujuan Syarat & Dasar Privasi PDPA.";
+    err.textContent = "Please agree to the Terms of Service & Privacy Policy (PDPA).";
     return;
   }
 
   var u = USERS[email];
   if (!u || u.pw !== pass) {
-    err.textContent = "Emel atau kata laluan tidak tepat. Sila gunakan akaun demo di bawah.";
+    err.textContent = "Invalid email or password. Please use the demo credentials below.";
     return;
   }
 
@@ -1428,22 +1428,22 @@ function switchAppTab(name) {
 
 function runAgent(btn) {
   if (state.credits < 5) {
-    btn.textContent = "⚡ Kredit Kurang";
-    setTimeout(function(){ btn.textContent = "Jalankan (5⚡)"; }, 1500);
+    btn.textContent = "⚡ Low Credits";
+    setTimeout(function(){ btn.textContent = "Run (5⚡)"; }, 1500);
     return;
   }
-  if (btn.textContent.indexOf("Sedang") > -1) return;
-  btn.textContent = "⏳ Sedang Proses…";
+  if (btn.textContent.indexOf("Processing") > -1) return;
+  btn.textContent = "⏳ Processing…";
   btn.disabled = true;
 
   setTimeout(function(){
-    btn.textContent = "✅ Siap Draf";
+    btn.textContent = "✅ Draft Complete";
     state.credits = Math.max(0, state.credits - 5);
     localStorage.setItem("a1credits", state.credits);
     document.getElementById("navBalNum").textContent = state.credits;
     var b = document.getElementById("balNum");
     if (b) b.textContent = state.credits;
-    setTimeout(function(){ btn.textContent = "Jalankan (5⚡)"; btn.disabled = false; }, 1600);
+    setTimeout(function(){ btn.textContent = "Run (5⚡)"; btn.disabled = false; }, 1600);
   }, 1200);
 }
 
@@ -1462,7 +1462,7 @@ function renderConnectors() {
     d.onclick = function() {
       if (!on) {
         pendingConn = name;
-        document.getElementById("mKeyTitle").textContent = "Sambungkan " + name;
+        document.getElementById("mKeyTitle").textContent = "Connect " + name;
         document.getElementById("mKeyInput").value = "";
         document.getElementById("keyErr").textContent = "";
         document.getElementById("modalKey").classList.add("open");
@@ -1479,7 +1479,7 @@ function renderConnectors() {
 function saveKey() {
   var val = document.getElementById("mKeyInput").value.trim();
   if (val.length < 4) {
-    document.getElementById("keyErr").textContent = "Sila masukkan kunci API yang sah.";
+    document.getElementById("keyErr").textContent = "Please enter a valid API key.";
     return;
   }
   state.conn[pendingConn] = true;
@@ -1490,7 +1490,7 @@ function saveKey() {
 
 function saveSettings() {
   var el = document.getElementById("setSaved");
-  el.textContent = "✅ Tetapan Berjaya Disimpan";
+  el.textContent = "✅ Settings Saved Successfully";
   setTimeout(function(){ el.textContent = ""; }, 2200);
 }
 
@@ -1502,30 +1502,25 @@ function saveTradingProfile() {
     risk: document.getElementById("trRisk").value
   };
   localStorage.setItem("a1trade", JSON.stringify(pr));
-  alert("Profil dagangan dikemas kini! Senarai cadangan DCA diselaraskan.");
+  alert("Trading profile saved! Recommended DCA watchlist updated.");
 }
 
-/* ---------- CHAT SIMULATOR (BM / EN DETECTOR) ---------- */
+/* ---------- CHAT SIMULATOR ---------- */
 function isMalay(t) {
   return /\b(saham|isi|buat|harga|nak|kena|boleh|macam|apa|kasi|tunggu|saya|kami|anda|terima|kasih|tolong|murah|mahal|jualan|bisnes|kedai|duit|ringgit|hari|esok|pagi|petang|malam|oh|ya|tak|jangan|dah|cari|suruh|analisa|bursa|siapa|bila|mana|kenapa|untung|rugi)\b/i.test(t);
 }
 
 function chatReply(t) {
-  var bm = isMalay(t);
   if (/(dca|trade|trading|saham|stock|bursa|buy|sell|portfolio|tp|sl|cut loss|inari|genm|maybank)/i.test(t)) {
-    if (bm) return "📈 Berdasarkan profil anda (Bursa Malaysia · Monthly DCA):\n• MAYBANK menunjukkan momentum stabil di sekitar RM9.98 (Zon DCA RM9.70–9.95 · Rujukan TP RM10.50 · SL RM9.40).\n• INARI (0166) berhampiran sasaran TP1 RM4.20.\n\n⚠️ Peringatan: Ini analisis pendidikan sahaja. Aura tidak membuat pesanan beli/jual secara automatik.";
-    return "📈 Based on your profile (Bursa Malaysia · Monthly DCA):\n• MAYBANK shows solid momentum near RM9.98 (DCA entry zone: RM9.70–9.95 · reference TP: RM10.50 · SL: RM9.40).\n• INARI (0166) is approaching target TP1 RM4.20.\n\n⚠️ Advise-only: Aura never places orders automatically.";
+    return "📈 Based on your profile (Bursa Malaysia · Monthly DCA):\n• MAYBANK shows solid momentum near RM9.98 (DCA entry zone: RM9.70–9.95 · reference TP: RM10.50 · SL: RM9.40).\n• INARI (0166) is approaching target TP1 RM4.20.\n\n⚠️ Advisory note: Educational analysis only. Aura never places buy/sell orders automatically.";
   }
   if (/(gambar|poster|image|visual|kumar|lora|foto)/i.test(t)) {
-    if (bm) return "🎨 Baik! Ejen KUMAR bersedia menjana 3 variasi visual promosi beresolusi tinggi (5 ⚡). Gaya mana anda sukai — minimal, kontekstual atau bold?";
-    return "🎨 Ready! Agent KUMAR is prepared to generate 3 brand-aligned image variants (5 ⚡). Would you prefer minimal, bold, or lifestyle framing?";
+    return "🎨 Ready! Agent KUMAR is prepared to generate 3 high-resolution promotional visual variations (5 ⚡). Which style do you prefer — minimal, contextual, or bold branding?";
   }
   if (/(berita|trending|viral|adrian|news)/i.test(t)) {
-    if (bm) return "📰 Adrian telah mengumpulkan 5 topik viral pagi ini (disahkan silang merentas BH, Metro & Google News). Semak draf artikel di tab My Agents.";
-    return "📰 Adrian has compiled 5 verified trending stories this morning. You can review and approve drafts under the My Agents tab.";
+    return "📰 Adrian has compiled 5 verified trending stories this morning (cross-verified across major news & Google Trends). You can review and approve drafts under the My Agents tab.";
   }
-  if (bm) return "✅ Terima kasih! Arahan anda telah direkodkan. Skuad AI sedang menyediakan draf — anda boleh menyemak dan mengesahkannya di tab My Agents.";
-  return "✅ Noted! Your request is being processed by the AI workforce. Drafts will be ready for your review and approval before publishing.";
+  return "✅ Request acknowledged! The AI workforce is preparing your draft — you can review and approve it under the My Agents tab.";
 }
 
 function sendMsg() {
@@ -1619,7 +1614,7 @@ function renderAdminUsers(filter) {
   // Update KPI counts
   var activeCount = state.users.filter(function(u){ return u.status === "active"; }).length;
   document.getElementById("admKpiUsers").textContent = state.users.length;
-  document.getElementById("admKpiUsersSub").textContent = activeCount + " Aktif · " + (state.users.length - activeCount) + " Paused";
+  document.getElementById("admKpiUsersSub").textContent = activeCount + " Active · " + (state.users.length - activeCount) + " Paused";
 }
 
 function filterUsers() {
@@ -1636,7 +1631,7 @@ function toggleUserStatus(idx) {
 var adminTopupIdx = null;
 function openAdminTopup(idx) {
   adminTopupIdx = idx;
-  document.getElementById("admTopupTarget").textContent = "Tambah kredit untuk: " + state.users[idx].name + " (" + state.users[idx].email + ")";
+  document.getElementById("admTopupTarget").textContent = "Add credits for: " + state.users[idx].name + " (" + state.users[idx].email + ")";
   document.getElementById("admTopupVal").value = "100";
   document.getElementById("modalAdminTopup").classList.add("open");
 }
@@ -1868,15 +1863,15 @@ function payNow() {
   document.getElementById("navBalNum").textContent = state.credits;
   var b = document.getElementById("balNum");
   if (b) b.textContent = state.credits;
-  alert("Pembayaran prototaip berjaya! " + sel + " ⚡ kredit telah dikreditkan.");
+  alert("Demo payment successful! " + sel + " ⚡ credits added to your balance.");
 }
 
 /* ---------- MODALS & LEGAL ---------- */
 function closeModal(id) { document.getElementById(id).classList.remove("open"); }
 var LEGAL = {
-  terms: { t: "Syarat Perkhidmatan AuraOne", b: "AuraOne Cloud merupakan platform SaaS penyelarasan ejen AI untuk solopreneur dan perniagaan. Pengguna bersetuju bahawa output AI memerlukan semakan manusia (HITL). Segala analisis pasaran saham adalah bagi tujuan pendidikan dan bukan nasihat kewangan rasmi." },
-  privacy: { t: "Dasar Privasi & Pematuhan PDPA", b: "Selaras dengan Akta Perlindungan Data Peribadi 2010 (PDPA Malaysia), kami melindungi data pengguna dan kunci API dengan enkripsi AES-256. Data profil dan token tidak dikongsi dengan pihak ketiga tanpa kebenaran." },
-  contact: { t: "Hubungi Pasukan AuraOne", b: "Sebarang pertanyaan teknikal, cadangan integrasi atau perkongsian perniagaan solopreneur boleh diemelkan terus kepada sales@saklomak.my atau Telegram @auraSakluma_bot." }
+  terms: { t: "AuraOne Terms of Service", b: "AuraOne Cloud is an AI agent orchestration SaaS platform designed for solopreneurs and businesses. Users acknowledge that all AI-generated outputs require human review (Human-in-the-Loop). All stock market data and analyses are provided strictly for operational and educational purposes and do not constitute licensed financial advice." },
+  privacy: { t: "Privacy Policy & PDPA Compliance", b: "In accordance with the Personal Data Protection Act 2010 (PDPA Malaysia), we safeguard user data and API keys using AES-256 encryption. User profiles, credentials, and tokens are never shared with third parties without explicit authorization." },
+  contact: { t: "Contact AuraOne Team", b: "For technical inquiries, custom integrations, or enterprise partnerships, reach out directly to support@auraone.my or via Telegram @auraSakluma_bot." }
 };
 function openLegal(k) {
   var m = LEGAL[k] || LEGAL.terms;
