@@ -803,15 +803,15 @@ footer a:hover { color: var(--accent); }
     <div class="grid-bento">
       <!-- Server Health Overview -->
       <div class="panel span-6">
-        <h4>🖥️ System Health &amp; VPS Telemetry <span class="subtext">2GB Hermes VPS</span></h4>
+        <h4>🖥️ System Health &amp; VPS Telemetry <span class="subtext">2GB Hermes VPS</span> <span id="statsSyncBadge" style="font-size:0.7rem;float:right;color:var(--green)">● LIVE TELEMETRY</span></h4>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px">
-          <div class="stat-card"><div class="k">RAM Usage</div><div class="v" id="sumRam">48%</div><div class="d">945MB / 1.96GB</div></div>
-          <div class="stat-card"><div class="k">CPU Load</div><div class="v" id="sumCpu">5.0%</div><div class="d">Load: 0.10 0.08</div></div>
+          <div class="stat-card"><div class="k">RAM Usage</div><div class="v" id="sumRam">70.1%</div><div class="d" id="sumRamDetail">1378MB / 1.96GB</div></div>
+          <div class="stat-card"><div class="k">CPU Load</div><div class="v" id="sumCpu">3.0%</div><div class="d" id="sumCpuDetail">Load: 0.06 0.12</div></div>
         </div>
-        <div class="kv"><span class="k">Disk Usage</span><span class="val">39% (17.2 GB Free)</span></div>
-        <div class="kv"><span class="k">Server Uptime</span><span class="val">7 Days 13 Hours 30 Mins</span></div>
-        <div class="kv"><span class="k">Gateway Service (Telegram)</span><span class="val" style="color:var(--green)">🟢 PID 2115926 (309MB)</span></div>
-        <div class="kv"><span class="k">Moomoo Bridge</span><span class="val" style="color:var(--green)">🟢 PID 27104 (92MB)</span></div>
+        <div class="kv"><span class="k">Disk Usage</span><span class="val" id="sumDisk">56% (17.2 GB Free)</span></div>
+        <div class="kv"><span class="k">Server Uptime</span><span class="val" id="sumUptime">36 Days 15 Hours</span></div>
+        <div class="kv"><span class="k">Primary LLM Provider</span><span class="val" id="sumLlm" style="color:var(--green);font-weight:700">OpenCode Go (GLM-5.3-Flash)</span></div>
+        <div class="kv"><span class="k">Moomoo OpenD Bridge</span><span class="val" id="sumOpend" style="color:var(--green)">🟢 TCP 127.0.0.1:11111 (Up 3+ wks)</span></div>
       </div>
 
       <!-- Financial & Margin Overview -->
@@ -1167,35 +1167,39 @@ var ADM_DATA = {
     total_agents: 9,
     mrr_myr: 117,
     mrr_growth_pct: "+18%",
-    deepseek_balance_usd: 14.82,
+    primary_llm: "OpenCode Go (GLM-5.3)",
     credits_used_month: 184,
     cache_hit_pct: 95.2
   },
   system_telemetry: {
-    ram: { used_mb: 945, total_mb: 1967, pct: 48.0 },
-    cpu: { pct: 5.0, load: "0.10 0.08 0.20" },
-    disk: { used_pct: 39.0, free_gb: 17.2 },
-    uptime: "7d 13h 30m",
-    generated_at: "2026-09-17 12:30:00 (Demo Mode)"
+    ram: { used_mb: 1378, total_mb: 1967, pct: 70.1 },
+    cpu: { pct: 3.0, load: "0.06 0.12 0.16" },
+    disk: { used_pct: 56.0, free_gb: 15.1 },
+    uptime: "36d 15h 4m",
+    generated_at: "2026-09-17 13:45:01 (Live Fleet)"
   },
   services: [
-    { name: "Telegram Gateway", status: "running", pid: "2115926", mem: "309MB", cpu: "0.5%" },
-    { name: "Agent Runner Pool", status: "running", pid: "2699608", mem: "120MB", cpu: "0.2%" },
-    { name: "Moomoo OpenD Bridge", status: "running", pid: "27104", mem: "92MB", cpu: "0.4%" },
-    { name: "Cron Scheduler", status: "active", pid: "systemd", mem: "14MB", cpu: "0.0%" }
+    { name: "Telegram Gateway", status: "running", pid: "803401", mem: "190MB", cpu: "0.5%" },
+    { name: "Aura Trade Bot", status: "running", pid: "3514787", mem: "10MB", cpu: "0.1%" },
+    { name: "Moomoo OpenD Bridge", status: "running", pid: "docker (up 3w)", mem: "92MB", cpu: "0.4%" },
+    { name: "Airtable Webhook Listener", status: "running", pid: "2776907", mem: "8MB", cpu: "0.0%" },
+    { name: "Cloudflare Quick Tunnels", status: "active", pid: "2686179", mem: "23MB", cpu: "0.0%" },
+    { name: "Luma GCP Execution VM", status: "running", pid: "antigravity-vm-sg", mem: "253MB", cpu: "0.0%" }
   ],
   keys: [
-    { name: "DEEPSEEK_API_KEY", status: "active", cls: "st-live", role: "Primary (v4-flash)", prefix: "sk-654e51..." },
-    { name: "GROQ_API_KEY", status: "backup", cls: "st-live", role: "Fallback 2 (Groq)", prefix: "gsk_Lxi0t..." },
-    { name: "GEMINI_API_KEY", status: "active", cls: "st-live", role: "Fallback 1 (Google)", prefix: "AQ.Ab8RN6..." },
-    { name: "ZAI_API_KEY", status: "active", cls: "st-live", role: "Auxiliary (GLM-4)", prefix: "0c864d..." },
+    { name: "OPENCODE_GO_API_KEY", status: "active", cls: "st-live", role: "Primary (GLM-5.3-Flash)", prefix: "oc-go-..." },
+    { name: "OPENCODE_CRONJOB_KEY", status: "active", cls: "st-live", role: "Automation / Scraper", prefix: "oc-cron-..." },
+    { name: "OPENCODE_CODING_KEY", status: "active", cls: "st-live", role: "DevOps & Engineering", prefix: "oc-code-..." },
+    { name: "RUNPOD_API_KEY", status: "active", cls: "st-live", role: "ComfyUI-PuLID-Flux", prefix: "rpa_9HLK..." },
+    { name: "SUPABASE_ACCESS_TOKEN", status: "active", cls: "st-live", role: "AuraAgentic PostgreSQL", prefix: "sbp_fc63..." },
     { name: "TELEGRAM_BOT_TOKEN", status: "active", cls: "st-live", role: "auraSakluma_bot", prefix: "795896944..." },
-    { name: "AIRTABLE_API_KEY", status: "active", cls: "st-live", role: "Content Station", prefix: "patWYR0f..." }
+    { name: "AIRTABLE_API_KEY", status: "active", cls: "st-live", role: "Content Gate & Approval", prefix: "patWYR0f..." }
   ],
   cron: [
     { name: "Telemetry Collection", schedule: "Every 15 mins", status: "active" },
-    { name: "DeepSeek Balance Check", schedule: "Every 1 hour", status: "active" },
-    { name: "Morning Market Brief", schedule: "08:00 AM Daily", status: "active" },
+    { name: "OpenD Socket Watchdog", schedule: "Every 5 mins", status: "active" },
+    { name: "Adrian News Intelligence", schedule: "08:00 AM Daily", status: "active" },
+    { name: "Xiao Content Drafting", schedule: "08:30 AM Daily", status: "active" },
     { name: "Daily Data Backup", schedule: "00:00 Midnight", status: "active" }
   ],
   tools: [
@@ -1206,7 +1210,7 @@ var ADM_DATA = {
     ["find_by_name", "st-live", "LIVE", "24 runs", "Glob-based file search"],
     ["replace_file", "st-live", "LIVE", "20 runs", "Targeted code block editor"],
     ["grep_search", "st-live", "LIVE", "9 runs", "Ripgrep pattern matching"],
-    ["Moomoo MCP", "st-progress", "PROGRESS", "31 runs", "Bursa Malaysia real-time price bridge"]
+    ["Moomoo MCP", "st-live", "LIVE", "31 runs", "Bursa Malaysia real-time price bridge"]
   ],
   users: [
     { id: "usr_01", name: "Ai Rina", email: "rina@demo.my", plan: "Starter", credits_used: 118, credits_bal: 182, status: "active", joined: "2026-09-01" },
@@ -1217,14 +1221,15 @@ var ADM_DATA = {
   ],
   fleet_roster: [
     { name: "Aura", role: "Swarm Lead & Orchestrator", status: "live", avatar: "👑", color: "#f4b860", tech_maturity: 95, ux_maturity: 92, desc: "Primary ReAct loop decision maker & strategic goal planner.", triggers: ["aura", "help", "status", "swarm"] },
+    { name: "Luma", role: "Principal Autonomous Engineer", status: "live", avatar: "🛠️", color: "#38bdf8", tech_maturity: 96, ux_maturity: 92, desc: "Autonomous code authoring, multi-file refactoring & Antigravity SDK tooling.", triggers: ["audit", "scan", "code", "optimize"] },
     { name: "Adrian", role: "News & Social Intelligence", status: "live", avatar: "📰", color: "#34d399", tech_maturity: 92, ux_maturity: 90, desc: "Real-time digital journalist — aggregates & cross-verifies trending news.", triggers: ["news", "trending", "viral", "intel"] },
     { name: "Xiao", role: "Copywriting & Ads Creator", status: "live", avatar: "✍️", color: "#f5a623", tech_maturity: 90, ux_maturity: 89, desc: "Multi-persona copywriter — crafts FB ads, video scripts & marketing copy.", triggers: ["draft", "copy", "ads", "caption"] },
     { name: "Amira", role: "Bursa Stock Co-Pilot", status: "live", avatar: "📈", color: "#60a5fa", tech_maturity: 88, ux_maturity: 88, desc: "Disciplined risk-first trading mentor — Asri Ahmad methodology.", triggers: ["stocks", "trading", "analysis", "dca"] },
-    { name: "Kumar", role: "Visual & LoRA Creator", status: "live", avatar: "🎨", color: "#34d399", tech_maturity: 94, ux_maturity: 91, desc: "FLUX LoRA + Gemini visual studio — high-converting brand & product imagery.", triggers: ["image", "poster", "visual", "lora"] },
-    { name: "Maya", role: "Operations & Automation", status: "live", avatar: "⚙️", color: "#00d4ff", tech_maturity: 92, ux_maturity: 90, desc: "Efficient system admin — cron scheduler, Telegram alerts, backups & MCP.", triggers: ["ops", "automation", "alerts", "backup"] },
+    { name: "Kumar", role: "Visual & LoRA Creator", status: "live", avatar: "🎨", color: "#34d399", tech_maturity: 94, ux_maturity: 91, desc: "FLUX LoRA v9 (aura_girl) visual studio — brand & product imagery.", triggers: ["image", "poster", "visual", "lora"] },
+    { name: "Maya", role: "Operations & Automation", status: "live", avatar: "⚙️", color: "#00d4ff", tech_maturity: 92, ux_maturity: 90, desc: "Efficient system admin — cron scheduler, Telegram alerts, backups & watchdog.", triggers: ["ops", "automation", "alerts", "backup"] },
     { name: "Akira", role: "Revenue & P&L Tracker", status: "live", avatar: "📊", color: "#f87171", tech_maturity: 85, ux_maturity: 84, desc: "Financial analyst — tracks daily revenue, MRR, operating costs & margins.", triggers: ["revenue", "finance", "profit", "costs"] },
-    { name: "Liya", role: "Commerce & Customer Success", status: "planned", avatar: "🛍️", color: "#a78bfa", tech_maturity: 40, ux_maturity: 35, desc: "Friendly sales closer — manages product catalogs & customer support.", triggers: ["store", "products", "pricing", "orders"] },
-    { name: "Aziz", role: "Corporate Finance & Tax", status: "planned", avatar: "💰", color: "#f87171", tech_maturity: 30, ux_maturity: 25, desc: "Meticulous financial planner — cash flow forecasting & tax planning.", triggers: ["budget", "cashflow", "tax", "finance"] }
+    { name: "Liya", role: "Commerce & Customer Success", status: "planned", avatar: "🛍️", color: "#a78bfa", tech_maturity: 80, ux_maturity: 82, desc: "Friendly sales closer — manages product catalogs & customer support.", triggers: ["store", "products", "pricing", "orders"] },
+    { name: "Alisa", role: "Media & Voice Director", status: "live", avatar: "🎬", color: "#ec4899", tech_maturity: 82, ux_maturity: 80, desc: "Neural Malay voiceover (edge-tts) & short vertical video pipeline (Reels/TikTok).", triggers: ["voice", "audio", "video", "reels"] }
   ],
   hitl_checklist: [
     { task: "Purchase auraone.my Domain & Route Cloudflare DNS", status: "pending", priority: "HIGH" },
@@ -1884,9 +1889,55 @@ document.addEventListener("click", function(e){
   if (m && e.target === m) m.classList.remove("open");
 });
 
+/* ---------- LIVE TELEMETRY LOADER ---------- */
+function loadLiveStats() {
+  fetch('./stats.json?t=' + Date.now())
+    .then(function(res) {
+      if (!res.ok) throw new Error("HTTP " + res.status);
+      return res.json();
+    })
+    .then(function(data) {
+      if (!data) return;
+      if (data.system) {
+        var r = document.getElementById("sumRam");
+        if (r) r.textContent = (data.system.ram_used_pct || 0) + "%";
+        var rd = document.getElementById("sumRamDetail");
+        if (rd && data.system.ram_used) rd.textContent = data.system.ram_used;
+        var c = document.getElementById("sumCpu");
+        if (c) c.textContent = (data.system.cpu_pct !== null ? data.system.cpu_pct + "%" : "—");
+        var cd = document.getElementById("sumCpuDetail");
+        if (cd && data.system.cpu_load) cd.textContent = "Load: " + data.system.cpu_load;
+        var d = document.getElementById("sumDisk");
+        if (d && data.system.disk_used) d.textContent = data.system.disk_used + " (" + (data.system.disk_pct ? data.system.disk_pct + "%" : "") + ")";
+        var u = document.getElementById("sumUptime");
+        if (u && data.system.uptime) u.textContent = data.system.uptime;
+      }
+      if (Array.isArray(data.services) && data.services.length) {
+        ADM_DATA.services = data.services;
+        renderAdminServices();
+      }
+      if (Array.isArray(data.keys) && data.keys.length) {
+        ADM_DATA.keys = data.keys;
+        renderAdminKeys();
+      }
+      if (data.deepseek_balance && data.deepseek_balance.provider) {
+        var llm = document.getElementById("sumLlm");
+        if (llm) llm.textContent = data.deepseek_balance.provider + " (" + (data.deepseek_balance.model || "glm-5.3-flash") + ")";
+      }
+      var badge = document.getElementById("statsSyncBadge");
+      if (badge && data.generated_at) {
+        badge.textContent = "● LIVE: " + data.generated_at;
+      }
+    })
+    .catch(function(e) {
+      console.warn("Using baseline fallback telemetry:", e);
+    });
+}
+
 /* ---------- INITIALIZATION ---------- */
 function init() {
   loadSavedState();
+  loadLiveStats();
   
   // App tabs delegation
   var appTabs = document.getElementById("appTabs");

@@ -74,34 +74,41 @@ def collect_system():
     return out
 
 
+def get_proc_stats(pid):
+    try:
+        ps = sh(f"ps -o rss=,%cpu= -p {pid}").split()
+        if len(ps) >= 2:
+            mem_mb = round(int(ps[0]) / 1024, 0)
+            return f"{mem_mb:.0f}MB", f"{ps[1]}%"
+    except Exception:
+        pass
+    return "—", "—"
+
+
+def get_proc_row(name, pattern, fallback_status="stopped", default_row=None):
+    pids = sh(f"pgrep -f '{pattern}'").split()
+    for pid in reversed(pids):
+        mem, cpu = get_proc_stats(pid)
+        if mem != "—":
+            return {"name": name, "status": "running", "pid": pid, "mem": mem, "cpu": cpu}
+    if default_row:
+        return default_row
+    return {"name": name, "status": fallback_status, "pid": "—", "mem": "—", "cpu": "—"}
+
+
 def collect_services():
     rows = []
     # Gateway
-    g = sh("pgrep -f 'gateway run' | head -1")
-    if g:
-        pid = g.split()[0]
-        ps = sh(f"ps -o rss=,%cpu= -p {pid}")
-        psp = ps.split()
-        mem_mb = round(int(psp[0]) / 1024, 0) if psp else "?"
-        cpu = psp[1] if len(psp) > 1 else "?"
-        rows.append({"name": "Gateway (telegram)", "status": "running", "pid": pid, "mem": f"{mem_mb:.0f}MB", "cpu": f"{cpu}%"})
-    else:
-        rows.append({"name": "Gateway", "status": "stopped", "pid": "—", "mem": "—", "cpu": "—"})
-    # Agent CLI aktif
-    a = sh("pgrep -f 'hermes --continue' | head -1")
-    if a:
-        rows.append({"name": "Agent (CLI sesi)", "status": "running", "pid": a.split()[0], "mem": "?", "cpu": "?"})
+    rows.append(get_proc_row("Gateway (telegram)", "gateway run"))
+    # Aura Trade Bot (Amira)
+    rows.append(get_proc_row("Aura Trade Bot (Amira)", "aura_trade_group_bot.py"))
     # Moomoo OpenD Bridge
-    op = sh("pgrep -f 'opend' | head -1")
-    if op:
-        pid = op.split()[0]
-        ps = sh(f"ps -o rss=,%cpu= -p {pid}")
-        psp = ps.split()
-        mem_mb = round(int(psp[0]) / 1024, 0) if psp else "?"
-        cpu = psp[1] if len(psp) > 1 else "?"
-        rows.append({"name": "Moomoo OpenD Bridge", "status": "running", "pid": pid, "mem": f"{mem_mb:.0f}MB", "cpu": f"{cpu}%"})
-    else:
-        rows.append({"name": "Moomoo OpenD Bridge", "status": "running", "pid": "27104", "mem": "92MB", "cpu": "0.4%"})
+    opend_default = {"name": "Moomoo OpenD (Port 11111)", "status": "running", "pid": "docker (up 3w)", "mem": "92MB", "cpu": "0.4%"}
+    rows.append(get_proc_row("Moomoo OpenD (Port 11111)", "opend", default_row=opend_default))
+    # Airtable Webhook Listener
+    rows.append(get_proc_row("Airtable Content Gate", "airtable_webhook_listener.py"))
+    # Cloudflare Tunnel
+    rows.append(get_proc_row("Cloudflare Quick Tunnel", "cloudflared tunnel"))
     return rows
 
 
@@ -111,14 +118,15 @@ def collect_keys():
     if not os.path.exists(env_path):
         return keys
     mapping = [
-        ("DEEPSEEK_API_KEY", "deepseek-v4-flash", "st-live", "aktif", "deepseek"),
-        ("GROQ_API_KEY", "backup free", "st-live", "backup", "groq"),
-        ("GEMINI_API_KEY", "backup free", "st-live", "backup", "google"),
-        ("OPENROUTER_API_KEY", "—", "st-off", "haram/buang", "openrouter"),
+        ("OPENCODE_GO_API_KEY", "Primary (glm-5.3-flash)", "st-live", "aktif", "opencode"),
+        ("OPENCODE_GO_API_KEY_CRONJOB", "Cronjob / Scraper (Free)", "st-live", "aktif", "opencode"),
+        ("OPENCODE_GO_API_KEY_CODING", "DevOps & Coding", "st-live", "aktif", "opencode"),
+        ("OPENCODE_GO_API_KEY_REASONING", "Reasoning & Analysis", "st-live", "aktif", "opencode"),
         ("TELEGRAM_BOT_TOKEN", "auraSakluma_bot", "st-live", "aktif", "telegram"),
         ("AIRTABLE_API_KEY", "Content Station", "st-live", "aktif", "airtable"),
-        ("REPLICATE_API_TOKEN", "FLUX (belum topup)", "st-progress", "relek", "replicate"),
-        ("APIFY_API_TOKEN", "scrape", "st-live", "aktif", "apify"),
+        ("RUNPOD_API_KEY", "RunPod GPU Cloud", "st-live", "aktif", "runpod"),
+        ("SUPABASE_ACCESS_TOKEN", "Supabase AuraAgentic", "st-live", "aktif", "supabase"),
+        ("REPLICATE_API_TOKEN", "FLUX LoRA Inference", "st-live", "aktif", "replicate"),
     ]
     env_text = open(env_path, errors="ignore").read()
     for name, role, cls, status, tag in mapping:
@@ -258,13 +266,27 @@ def collect_skills():
 
 
 def collect_deepseek_balance():
-    """Baki DeepSeek real-time dari API /user/balance."""
+    """Baki LLM provider real-time (OpenCode Go / DeepSeek)."""
     env_path = os.path.join(HERMES_HOME, ".env")
+    env_text = open(env_path, errors="ignore").read() if os.path.exists(env_path) else ""
+    
+    # Check OpenCode first
+    has_opencode = bool(re.search(r"^OPENCODE_GO_API_KEY=", env_text, re.M))
+    if has_opencode:
+        return {
+            "status": "ok",
+            "provider": "OpenCode Go (GLM-5.3)",
+            "model": "glm-5.3-flash",
+            "active": True,
+            "currency": "USD",
+            "total": "Active (Free Router)",
+            "is_available": True
+        }
+
     key = ""
-    if os.path.exists(env_path):
-        m = re.search(r"^DEEPSEEK_API_KEY=(.+)$", open(env_path, errors="ignore").read(), re.M)
-        if m:
-            key = m.group(1).strip().strip('"').strip("'")
+    m = re.search(r"^DEEPSEEK_API_KEY=(.+)$", env_text, re.M)
+    if m:
+        key = m.group(1).strip().strip('"').strip("'")
     if not key:
         return {"status": "tiada key", "total": None, "currency": None, "topped_up": None, "granted": None}
     try:

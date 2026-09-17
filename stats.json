@@ -1,72 +1,86 @@
 {
-  "generated_at": "2026-08-19 12:11:45",
+  "generated_at": "2026-09-17 16:25:16",
   "system": {
     "ram_total_mb": 1967,
-    "ram_used_mb": 945,
-    "ram_used_pct": 48.0,
-    "ram_used": "945MB / 1967MB",
-    "cpu_load": "0.10 0.08 0.20",
+    "ram_used_mb": 1112,
+    "ram_used_pct": 56.5,
+    "ram_used": "1112MB / 1967MB",
+    "cpu_load": "0.10 0.13 0.18",
     "cpu_pct": 5.0,
-    "disk_used": "39%",
-    "disk_pct": 36.6,
-    "uptime": "7h 13j 30m",
-    "uptime_detail": "653454s"
+    "disk_used": "56%",
+    "disk_pct": 52.9,
+    "uptime": "36h 17j 44m",
+    "uptime_detail": "3174265s"
   },
   "services": [
     {
       "name": "Gateway (telegram)",
       "status": "running",
-      "pid": "2115926",
-      "mem": "309MB",
+      "pid": "803401",
+      "mem": "189MB",
       "cpu": "0.5%"
     },
     {
-      "name": "Agent (CLI sesi)",
+      "name": "Aura Trade Bot (Amira)",
       "status": "running",
-      "pid": "2699608",
-      "mem": "?",
-      "cpu": "?"
+      "pid": "3514787",
+      "mem": "10MB",
+      "cpu": "0.0%"
     },
     {
-      "name": "Moomoo OpenD Bridge",
+      "name": "Moomoo OpenD (Port 11111)",
       "status": "running",
-      "pid": "27104",
-      "mem": "92MB",
-      "cpu": "0.4%"
+      "pid": "1231801",
+      "mem": "37MB",
+      "cpu": "3.1%"
+    },
+    {
+      "name": "Airtable Content Gate",
+      "status": "running",
+      "pid": "2776907",
+      "mem": "8MB",
+      "cpu": "0.0%"
+    },
+    {
+      "name": "Cloudflare Quick Tunnel",
+      "status": "running",
+      "pid": "2686179",
+      "mem": "24MB",
+      "cpu": "0.0%"
     }
   ],
   "keys": [
     {
-      "name": "DEEPSEEK_API_KEY",
+      "name": "OPENCODE_GO_API_KEY",
       "status": "aktif",
       "cls": "st-live",
-      "role": "Primary (deepseek-v4-flash)",
-      "prefix": "sk-654e51...",
-      "tag": "deepseek"
+      "role": "Primary (glm-5.3-flash)",
+      "prefix": "sk-Fu9sNT...",
+      "tag": "opencode"
     },
     {
-      "name": "GROQ_API_KEY",
-      "status": "backup",
-      "cls": "st-live",
-      "role": "Fallback (Groq Free Tier)",
-      "prefix": "gsk_Lxi0t...",
-      "tag": "groq"
-    },
-    {
-      "name": "GEMINI_API_KEY",
+      "name": "OPENCODE_GO_API_KEY_CRONJOB",
       "status": "aktif",
       "cls": "st-live",
-      "role": "Auxiliary (Multimodal / Long Context)",
-      "prefix": "AQ.Ab8RN6...",
-      "tag": "google"
+      "role": "Cronjob / Scraper (Free)",
+      "prefix": "sk-AYr5AW...",
+      "tag": "opencode"
     },
     {
-      "name": "ZAI_API_KEY",
+      "name": "OPENCODE_GO_API_KEY_CODING",
       "status": "aktif",
       "cls": "st-live",
-      "role": "Auxiliary (GLM-4 Specialized)",
-      "prefix": "0c864d...",
-      "tag": "zai"
+      "role": "DevOps & Coding",
+      "prefix": "sk-KmxO4u...",
+      "tag": "opencode"
+    },
+    {
+      "name": "OPENCODE_GO_API_KEY_REASONING",
+      "status": "aktif",
+      "cls": "st-live",
+      "role": "Reasoning & Analysis",
+      "prefix": "sk-wUH5fK...",
+      "tag": "opencode"
     },
     {
       "name": "TELEGRAM_BOT_TOKEN",
@@ -80,39 +94,41 @@
       "name": "AIRTABLE_API_KEY",
       "status": "aktif",
       "cls": "st-live",
-      "role": "Content Station (Unified)",
-      "prefix": "patWYR0f...",
+      "role": "Content Station",
+      "prefix": "patWYR0fn...",
       "tag": "airtable"
     },
     {
-      "name": "APIFY_API_TOKEN",
+      "name": "RUNPOD_API_KEY",
       "status": "aktif",
       "cls": "st-live",
-      "role": "Web Scraping Engine",
-      "prefix": "apify_api...",
-      "tag": "apify"
+      "role": "RunPod GPU Cloud",
+      "prefix": "rpa_XL704...",
+      "tag": "runpod"
+    },
+    {
+      "name": "SUPABASE_ACCESS_TOKEN",
+      "status": "takda",
+      "cls": "st-off",
+      "role": "Supabase AuraAgentic",
+      "prefix": "—",
+      "tag": "supabase"
     },
     {
       "name": "REPLICATE_API_TOKEN",
-      "status": "relek",
-      "cls": "st-progress",
-      "role": "FLUX Image/Video (Idle)",
+      "status": "aktif",
+      "cls": "st-live",
+      "role": "FLUX LoRA Inference",
       "prefix": "r8_DByefj...",
       "tag": "replicate"
     }
   ],
   "model": {
-    "default": "glm-5.1",
-    "provider": "tokenhub",
-    "fallback1": "deepseek-v4-flash (deepseek)",
-    "fallback2": "gemini-3.5-flash (gemini)",
-    "cache_hit_pct": 95.8,
-    "primary": "DeepSeek-V4-Flash",
-    "fallback": "Groq Llama-3",
-    "auxiliary": [
-      "Gemini-2.5-Flash",
-      "GLM-4 (zAI)"
-    ]
+    "default": "glm-5.3-flash",
+    "provider": "opencode-go",
+    "fallback1": "—",
+    "fallback2": "—",
+    "cache_hit_pct": 87.2
   },
   "cron": [
     {
@@ -123,60 +139,60 @@
   ],
   "calls": [
     {
-      "time": "2026-08-19 12:10:59",
+      "time": "2026-09-17 14:04:09",
       "platform": "agent",
-      "model": "deepseek-v4-flash",
-      "tokens": "94,294 in / 408 out",
-      "latency": "5.7s"
+      "model": "glm-5.3-flash",
+      "tokens": "26,011 in / 350 out",
+      "latency": "7.0s"
     },
     {
-      "time": "2026-08-19 11:23:21",
+      "time": "2026-09-17 14:04:01",
       "platform": "agent",
-      "model": "deepseek-v4-flash",
-      "tokens": "132,088 in / 634 out",
-      "latency": "7.2s"
+      "model": "glm-5.3-flash",
+      "tokens": "25,277 in / 60 out",
+      "latency": "1.9s"
     },
     {
-      "time": "2026-08-19 11:23:14",
+      "time": "2026-09-17 14:02:09",
       "platform": "agent",
-      "model": "deepseek-v4-flash",
-      "tokens": "130,506 in / 1,506 out",
-      "latency": "11.5s"
+      "model": "glm-5.3-flash",
+      "tokens": "25,068 in / 182 out",
+      "latency": "6.2s"
     },
     {
-      "time": "2026-08-19 11:23:03",
+      "time": "2026-09-17 14:02:02",
       "platform": "agent",
-      "model": "deepseek-v4-flash",
-      "tokens": "129,187 in / 1,155 out",
-      "latency": "9.3s"
+      "model": "glm-5.3-flash",
+      "tokens": "22,637 in / 85 out",
+      "latency": "3.2s"
     },
     {
-      "time": "2026-08-19 11:22:53",
+      "time": "2026-09-17 14:01:57",
       "platform": "agent",
-      "model": "deepseek-v4-flash",
-      "tokens": "127,585 in / 102 out",
-      "latency": "2.2s"
+      "model": "glm-5.3-flash",
+      "tokens": "21,265 in / 73 out",
+      "latency": "2.0s"
     },
     {
-      "time": "2026-08-19 11:22:51",
+      "time": "2026-09-17 14:01:55",
       "platform": "agent",
-      "model": "deepseek-v4-flash",
-      "tokens": "126,254 in / 1,278 out",
-      "latency": "8.1s"
+      "model": "glm-5.3-flash",
+      "tokens": "21,122 in / 25 out",
+      "latency": "5.1s"
     },
     {
-      "time": "2026-08-19 11:22:43",
+      "time": "2026-09-17 13:44:21",
       "platform": "agent",
-      "model": "deepseek-v4-flash",
-      "tokens": "124,664 in / 1,511 out",
-      "latency": "13.6s"
+      "model": "glm-5.3-flash",
+      "tokens": "20,946 in / 159 out",
+      "latency": "3.5s"
     },
     {
-      "time": "2026-08-19 11:22:29",
+      "time": "2026-09-17 13:43:36",
       "platform": "agent",
-      "model": "deepseek-v4-flash",
-      "tokens": "124,015 in / 527 out",
-      "latency": "4.2s"
+      "model": "glm-5.3-flash",
+      "tokens": "20,872 in / 28 out",
+      "latency": "2.9s"
     }
   ],
   "tools": [
@@ -191,8 +207,8 @@
       "Moomoo/OpenD (MCP)",
       "st-live",
       "LIVE",
-      "Trading Bursa/US/HK/SG (Live VPS Gateway)",
-      "OpenD Bridge + MCP active on VPS"
+      "Trading Bursa/US/HK/SG",
+      "OpenD Live Gateway aktif di VPS + Level-2 data"
     ],
     [
       "Jina Reader",
@@ -223,11 +239,11 @@
       "API key aktif · push flow"
     ],
     [
-      "Google Workspace (Drive/Sheets/Docs)",
-      "st-live",
-      "LIVE",
-      "Drive Assets, Sheets Finance & Docs Quotation",
-      "OAuth2 live — AuraOne, Kumar, Akira & Aziz shared storage"
+      "Google Drive",
+      "st-progress",
+      "PROGRESS",
+      "Host gambar artikel",
+      "Service account email ada; JSON key perlu semak"
     ],
     [
       "DeepSeek API",
@@ -389,27 +405,28 @@
   "quick": {
     "gateway": "🟢 running",
     "telegram": "🟢 connected (polling)",
-    "airtable": "🟢 key ada",
+    "airtable": "🔴 tiada key",
     "moomoo": "🟢 connected (OpenD VPS Gateway)",
     "mcp": "🟢 exa / opend",
     "image": "🟢 Pollinations + Gemini"
   },
   "deepseek_balance": {
     "status": "ok",
-    "total": "1.20",
+    "provider": "OpenCode Go (GLM-5.3)",
+    "model": "glm-5.3-flash",
+    "active": true,
     "currency": "USD",
-    "topped_up": "1.20",
-    "granted": "0.00",
+    "total": "Active (Free Router)",
     "is_available": true
   },
   "tokens": {
-    "in_avg": "67,071 tok",
-    "out_avg": "428 tok",
-    "lat_avg": "11.6s",
-    "calls_total": 242,
-    "in_total": 16231396,
-    "out_total": 103682,
-    "est_cost_usd": 0.1427
+    "in_avg": "49,841 tok",
+    "out_avg": "329 tok",
+    "lat_avg": "6.6s",
+    "calls_total": 349,
+    "in_total": 17394610,
+    "out_total": 114888,
+    "est_cost_usd": 0.1539
   },
   "history": [
     {
@@ -443,6 +460,14 @@
       "in_total": 16231396,
       "out_total": 103682,
       "balance": 1.2
+    },
+    {
+      "date": "2026-09-17",
+      "est_cost_usd": 0.1539,
+      "calls": 349,
+      "in_total": 17394610,
+      "out_total": 114888,
+      "balance": null
     }
   ]
 }
