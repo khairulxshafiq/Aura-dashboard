@@ -1,24 +1,24 @@
 {
-  "generated_at": "2026-09-17 16:25:16",
+  "generated_at": "2026-09-17 17:46:02",
   "system": {
     "ram_total_mb": 1967,
-    "ram_used_mb": 1112,
-    "ram_used_pct": 56.5,
-    "ram_used": "1112MB / 1967MB",
-    "cpu_load": "0.10 0.13 0.18",
-    "cpu_pct": 5.0,
+    "ram_used_mb": 1444,
+    "ram_used_pct": 73.4,
+    "ram_used": "1444MB / 1967MB",
+    "cpu_load": "0.30 0.29 0.25",
+    "cpu_pct": 15.0,
     "disk_used": "56%",
     "disk_pct": 52.9,
-    "uptime": "36h 17j 44m",
-    "uptime_detail": "3174265s"
+    "uptime": "36h 19j 5m",
+    "uptime_detail": "3179111s"
   },
   "services": [
     {
       "name": "Gateway (telegram)",
       "status": "running",
       "pid": "803401",
-      "mem": "189MB",
-      "cpu": "0.5%"
+      "mem": "188MB",
+      "cpu": "0.4%"
     },
     {
       "name": "Aura Trade Bot (Amira)",
@@ -31,7 +31,7 @@
       "name": "Moomoo OpenD (Port 11111)",
       "status": "running",
       "pid": "1231801",
-      "mem": "37MB",
+      "mem": "29MB",
       "cpu": "3.1%"
     },
     {
@@ -45,7 +45,7 @@
       "name": "Cloudflare Quick Tunnel",
       "status": "running",
       "pid": "2686179",
-      "mem": "24MB",
+      "mem": "19MB",
       "cpu": "0.0%"
     }
   ],
@@ -128,7 +128,7 @@
     "provider": "opencode-go",
     "fallback1": "—",
     "fallback2": "—",
-    "cache_hit_pct": 87.2
+    "cache_hit_pct": 86.9
   },
   "cron": [
     {
@@ -139,60 +139,60 @@
   ],
   "calls": [
     {
-      "time": "2026-09-17 14:04:09",
+      "time": "2026-09-17 17:46:00",
       "platform": "agent",
       "model": "glm-5.3-flash",
-      "tokens": "26,011 in / 350 out",
-      "latency": "7.0s"
+      "tokens": "39,876 in / 510 out",
+      "latency": "20.7s"
     },
     {
-      "time": "2026-09-17 14:04:01",
+      "time": "2026-09-17 17:45:39",
       "platform": "agent",
       "model": "glm-5.3-flash",
-      "tokens": "25,277 in / 60 out",
-      "latency": "1.9s"
+      "tokens": "39,199 in / 503 out",
+      "latency": "8.2s"
     },
     {
-      "time": "2026-09-17 14:02:09",
+      "time": "2026-09-17 17:45:31",
       "platform": "agent",
       "model": "glm-5.3-flash",
-      "tokens": "25,068 in / 182 out",
-      "latency": "6.2s"
+      "tokens": "38,520 in / 505 out",
+      "latency": "6.5s"
     },
     {
-      "time": "2026-09-17 14:02:02",
+      "time": "2026-09-17 17:45:24",
       "platform": "agent",
       "model": "glm-5.3-flash",
-      "tokens": "22,637 in / 85 out",
-      "latency": "3.2s"
+      "tokens": "37,946 in / 504 out",
+      "latency": "8.3s"
     },
     {
-      "time": "2026-09-17 14:01:57",
+      "time": "2026-09-17 17:45:16",
       "platform": "agent",
       "model": "glm-5.3-flash",
-      "tokens": "21,265 in / 73 out",
-      "latency": "2.0s"
+      "tokens": "37,343 in / 588 out",
+      "latency": "14.5s"
     },
     {
-      "time": "2026-09-17 14:01:55",
+      "time": "2026-09-17 17:45:01",
       "platform": "agent",
       "model": "glm-5.3-flash",
-      "tokens": "21,122 in / 25 out",
-      "latency": "5.1s"
+      "tokens": "36,323 in / 172 out",
+      "latency": "4.0s"
     },
     {
-      "time": "2026-09-17 13:44:21",
+      "time": "2026-09-17 17:44:57",
       "platform": "agent",
       "model": "glm-5.3-flash",
-      "tokens": "20,946 in / 159 out",
-      "latency": "3.5s"
+      "tokens": "36,105 in / 192 out",
+      "latency": "3.8s"
     },
     {
-      "time": "2026-09-17 13:43:36",
+      "time": "2026-09-17 17:44:54",
       "platform": "agent",
       "model": "glm-5.3-flash",
-      "tokens": "20,872 in / 28 out",
-      "latency": "2.9s"
+      "tokens": "35,898 in / 181 out",
+      "latency": "21.1s"
     }
   ],
   "tools": [
@@ -420,13 +420,13 @@
     "is_available": true
   },
   "tokens": {
-    "in_avg": "49,841 tok",
+    "in_avg": "48,457 tok",
     "out_avg": "329 tok",
-    "lat_avg": "6.6s",
-    "calls_total": 349,
-    "in_total": 17394610,
-    "out_total": 114888,
-    "est_cost_usd": 0.1539
+    "lat_avg": "6.9s",
+    "calls_total": 375,
+    "in_total": 18171625,
+    "out_total": 123468,
+    "est_cost_usd": 0.1618
   },
   "history": [
     {
@@ -463,10 +463,10 @@
     },
     {
       "date": "2026-09-17",
-      "est_cost_usd": 0.1539,
-      "calls": 349,
-      "in_total": 17394610,
-      "out_total": 114888,
+      "est_cost_usd": 0.1618,
+      "calls": 375,
+      "in_total": 18171625,
+      "out_total": 123468,
       "balance": null
     }
   ]

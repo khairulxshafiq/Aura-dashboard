@@ -1,0 +1,1242 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AuraOne Cockpit</title>
+<style>
+/* ══════════════════════════════════════════════════════
+   DESIGN TOKENS — LightVela inspired dark slate
+══════════════════════════════════════════════════════ */
+:root {
+  --bg-base:        #0B0F19;
+  --bg-surface:     #111827;
+  --bg-card:        #161D2E;
+  --bg-card-hover:  #1C2538;
+  --bg-input:       #0F1623;
+  --border:         rgba(255,255,255,0.07);
+  --border-accent:  rgba(139,92,246,0.35);
+  --glass:          rgba(255,255,255,0.04);
+  --glass-hover:    rgba(255,255,255,0.07);
+
+  --accent:         #8B5CF6;
+  --accent-glow:    rgba(139,92,246,0.25);
+  --accent-2:       #06B6D4;
+  --green:          #22D3A5;
+  --amber:          #F59E0B;
+  --red:            #EF4444;
+  --muted:          #6B7280;
+
+  --text-primary:   #F1F5F9;
+  --text-secondary: #94A3B8;
+  --text-muted:     #475569;
+
+  --radius-lg:      16px;
+  --radius-md:      10px;
+  --radius-sm:      6px;
+
+  --font: 'Inter', 'Segoe UI', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono&display=swap');
+
+body {
+  font-family: var(--font);
+  background: var(--bg-base);
+  color: var(--text-primary);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ══════════════════════════════════════════════════════
+   ANIMATED BACKGROUND
+══════════════════════════════════════════════════════ */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 70% 10%, rgba(139,92,246,0.08) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 40% at 10% 80%, rgba(6,182,212,0.05) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ══════════════════════════════════════════════════════
+   TOPBAR
+══════════════════════════════════════════════════════ */
+#topbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  height: 56px;
+  background: rgba(11,15,25,0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+}
+
+.topbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: -0.3px;
+}
+.topbar-brand .logo-dot {
+  width: 28px; height: 28px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px;
+  box-shadow: 0 0 16px var(--accent-glow);
+}
+.topbar-brand span { color: var(--text-primary); }
+.topbar-brand em { color: var(--accent); font-style: normal; }
+
+.topbar-status {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+.topbar-pill {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  background: var(--glass);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  font-size: 11px;
+  font-family: var(--font-mono);
+}
+.topbar-pill .dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--muted);
+}
+.topbar-pill .dot.green { background: var(--green); box-shadow: 0 0 6px var(--green); }
+.topbar-pill .dot.amber { background: var(--amber); }
+.topbar-pill .dot.red   { background: var(--red); }
+.topbar-pill .dot.pulse {
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.btn-link {
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 12px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.15s;
+}
+.btn-link:hover {
+  background: var(--glass-hover);
+  color: var(--text-primary);
+  border-color: var(--border-accent);
+}
+
+/* ══════════════════════════════════════════════════════
+   LOGIN OVERLAY
+══════════════════════════════════════════════════════ */
+#login-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(11,15,25,0.97);
+  backdrop-filter: blur(8px);
+}
+.login-card {
+  width: 360px;
+  padding: 40px 32px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-accent);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 0 60px var(--accent-glow);
+  text-align: center;
+}
+.login-card .logo-dot {
+  width: 52px; height: 52px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 24px;
+  margin: 0 auto 20px;
+  box-shadow: 0 0 30px var(--accent-glow);
+}
+.login-card h2 { font-size: 20px; font-weight: 700; margin-bottom: 4px; }
+.login-card p  { font-size: 13px; color: var(--text-secondary); margin-bottom: 28px; }
+#login-input {
+  width: 100%;
+  padding: 12px 16px;
+  background: var(--bg-input);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  font-size: 14px;
+  margin-bottom: 12px;
+  outline: none;
+  transition: border-color 0.15s;
+}
+#login-input:focus { border-color: var(--accent); }
+#login-btn {
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(135deg, var(--accent), #7C3AED);
+  border: none;
+  border-radius: var(--radius-md);
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.15s, transform 0.1s;
+}
+#login-btn:hover  { opacity: 0.9; }
+#login-btn:active { transform: scale(0.98); }
+#login-error {
+  margin-top: 10px;
+  font-size: 12px;
+  color: var(--red);
+  min-height: 16px;
+}
+
+/* ══════════════════════════════════════════════════════
+   MAIN LAYOUT
+══════════════════════════════════════════════════════ */
+#app { position: relative; z-index: 1; }
+
+.main-grid {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  grid-template-rows: auto 1fr;
+  gap: 16px;
+  padding: 20px 24px 24px;
+  max-width: 1400px;
+  margin: 0 auto;
+  min-height: calc(100vh - 56px);
+}
+
+/* ══════════════════════════════════════════════════════
+   CARDS / GLASS PANELS
+══════════════════════════════════════════════════════ */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+}
+.card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--glass);
+  pointer-events: none;
+}
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+.card-title {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.card-badge {
+  font-size: 10px;
+  padding: 2px 8px;
+  border-radius: 10px;
+  background: rgba(139,92,246,0.15);
+  color: var(--accent);
+  border: 1px solid rgba(139,92,246,0.2);
+}
+
+/* ══════════════════════════════════════════════════════
+   LEFT SIDEBAR
+══════════════════════════════════════════════════════ */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  grid-row: 1 / 3;
+}
+
+/* ── Persona Cards ── */
+.persona-list { display: flex; flex-direction: column; gap: 10px; }
+
+.persona-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  background: var(--glass);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  cursor: default;
+  transition: all 0.2s;
+}
+.persona-card:hover {
+  background: var(--glass-hover);
+  border-color: rgba(139,92,246,0.25);
+}
+.persona-avatar {
+  width: 36px; height: 36px;
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+.persona-info { flex: 1; min-width: 0; }
+.persona-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.persona-role {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 1px;
+}
+.status-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  background: var(--muted);
+}
+.status-dot.online  { background: var(--green); box-shadow: 0 0 8px var(--green); animation: pulse 2s infinite; }
+.status-dot.standby { background: var(--amber); }
+.status-dot.offline { background: var(--red); }
+
+/* ── System Health ── */
+.stat-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-size: 12px;
+}
+.stat-row:last-child { margin-bottom: 0; }
+.stat-label { color: var(--text-secondary); }
+.stat-val   { font-family: var(--font-mono); font-size: 11px; color: var(--text-primary); font-weight: 600; }
+.stat-bar-wrap {
+  width: 100%;
+  height: 4px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 2px;
+  margin-top: 4px;
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+.stat-bar {
+  height: 100%;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  transition: width 0.6s ease;
+}
+.stat-bar.warn  { background: linear-gradient(90deg, var(--amber), #EF4444); }
+.stat-bar.green { background: linear-gradient(90deg, var(--green), #059669); }
+
+.service-row {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 12px; color: var(--text-secondary);
+  padding: 5px 0;
+  border-bottom: 1px solid var(--border);
+}
+.service-row:last-child { border-bottom: none; }
+.service-row .sdot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--muted); flex-shrink: 0;
+}
+.service-row .sdot.on  { background: var(--green); }
+.service-row .sdot.off { background: var(--red); }
+
+/* ══════════════════════════════════════════════════════
+   CHAT PANEL
+══════════════════════════════════════════════════════ */
+.chat-panel {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 56px - 40px);
+  min-height: 500px;
+}
+.chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 4px 0 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+.chat-messages::-webkit-scrollbar { width: 4px; }
+.chat-messages::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 2px;
+}
+
+.msg {
+  display: flex;
+  gap: 10px;
+  max-width: 88%;
+  animation: msgIn 0.2s ease;
+}
+@keyframes msgIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.msg.user { align-self: flex-end; flex-direction: row-reverse; }
+.msg.assistant { align-self: flex-start; }
+
+.msg-avatar {
+  width: 32px; height: 32px;
+  border-radius: 9px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.msg.user     .msg-avatar { background: linear-gradient(135deg, var(--accent), #7C3AED); }
+.msg.assistant .msg-avatar { background: linear-gradient(135deg, #1E3A5F, var(--accent-2)); }
+
+.msg-body {}
+.msg-sender { font-size: 10px; color: var(--text-muted); margin-bottom: 4px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; }
+.msg.user .msg-sender { text-align: right; }
+.msg-bubble {
+  padding: 10px 14px;
+  border-radius: var(--radius-md);
+  font-size: 13.5px;
+  line-height: 1.6;
+  word-break: break-word;
+}
+.msg.user      .msg-bubble { background: linear-gradient(135deg, rgba(139,92,246,0.22), rgba(124,58,237,0.18)); border: 1px solid rgba(139,92,246,0.25); border-bottom-right-radius: 4px; }
+.msg.assistant .msg-bubble { background: var(--glass); border: 1px solid var(--border); border-bottom-left-radius: 4px; }
+
+.msg-bubble pre {
+  background: rgba(0,0,0,0.3);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 10px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  overflow-x: auto;
+  margin-top: 8px;
+}
+.msg-bubble code { font-family: var(--font-mono); font-size: 12px; color: var(--accent-2); }
+.msg-bubble p { margin-bottom: 6px; }
+.msg-bubble p:last-child { margin-bottom: 0; }
+
+/* thinking/reasoning indicator */
+.thinking-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: var(--text-muted);
+  padding: 4px 10px;
+  background: rgba(139,92,246,0.08);
+  border: 1px solid rgba(139,92,246,0.15);
+  border-radius: 20px;
+  margin-bottom: 8px;
+  font-style: italic;
+}
+.thinking-chip .spin {
+  width: 8px; height: 8px;
+  border: 1.5px solid rgba(139,92,246,0.4);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* metering bar */
+.metering-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 6px;
+  font-size: 10px;
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+}
+.tps-badge {
+  padding: 2px 8px;
+  border-radius: 10px;
+  background: rgba(6,182,212,0.1);
+  border: 1px solid rgba(6,182,212,0.2);
+  color: var(--accent-2);
+}
+
+/* cursor blink */
+.cursor {
+  display: inline-block;
+  width: 2px; height: 14px;
+  background: var(--accent);
+  border-radius: 1px;
+  animation: blink 1s step-end infinite;
+  vertical-align: middle;
+  margin-left: 2px;
+}
+@keyframes blink { 50% { opacity: 0; } }
+
+/* ── Chat Composer ── */
+.chat-footer {
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+}
+.composer {
+  display: flex;
+  gap: 10px;
+  align-items: flex-end;
+}
+#chat-input {
+  flex: 1;
+  background: var(--bg-input);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  font-family: var(--font);
+  font-size: 13.5px;
+  padding: 11px 14px;
+  resize: none;
+  outline: none;
+  line-height: 1.5;
+  max-height: 140px;
+  transition: border-color 0.15s;
+  scrollbar-width: thin;
+}
+#chat-input:focus { border-color: rgba(139,92,246,0.4); }
+#chat-input::placeholder { color: var(--text-muted); }
+
+#send-btn {
+  width: 40px; height: 40px;
+  border-radius: var(--radius-md);
+  border: none;
+  background: linear-gradient(135deg, var(--accent), #7C3AED);
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  transition: opacity 0.15s, transform 0.1s;
+  box-shadow: 0 4px 12px var(--accent-glow);
+}
+#send-btn:hover  { opacity: 0.9; }
+#send-btn:active { transform: scale(0.95); }
+#send-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+.chat-meta {
+  margin-top: 8px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 10px;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+}
+.chat-meta .sep { color: var(--border); }
+
+/* ══════════════════════════════════════════════════════
+   WELCOME EMPTY STATE
+══════════════════════════════════════════════════════ */
+#chat-welcome {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--text-muted);
+}
+#chat-welcome .welcome-icon {
+  font-size: 40px;
+  margin-bottom: 14px;
+  filter: drop-shadow(0 0 20px rgba(139,92,246,0.4));
+}
+#chat-welcome h3 { font-size: 16px; font-weight: 600; color: var(--text-secondary); margin-bottom: 6px; }
+#chat-welcome p  { font-size: 12px; line-height: 1.7; max-width: 260px; }
+
+/* ══════════════════════════════════════════════════════
+   SCROLLBAR GLOBAL
+══════════════════════════════════════════════════════ */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<!-- ──────────────────────────────────────────
+     LOGIN OVERLAY
+────────────────────────────────────────── -->
+<div id="login-overlay">
+  <div class="login-card">
+    <div class="logo-dot">⚡</div>
+    <h2>AuraOne Cockpit</h2>
+    <p>Masukkan kata laluan Hermes untuk teruskan</p>
+    <input type="password" id="login-input" placeholder="••••••••••" autocomplete="current-password">
+    <button id="login-btn" onclick="doLogin()">Masuk ke Cockpit</button>
+    <div id="login-error"></div>
+  </div>
+</div>
+
+<!-- ──────────────────────────────────────────
+     MAIN APP
+────────────────────────────────────────── -->
+<div id="app" style="display:none;">
+
+  <!-- TOPBAR -->
+  <div id="topbar">
+    <div class="topbar-brand">
+      <div class="logo-dot">⚡</div>
+      <span>AuraOne <em>Cockpit</em></span>
+    </div>
+    <div class="topbar-status">
+      <div class="topbar-pill">
+        <div class="dot green pulse" id="tb-hermes-dot"></div>
+        <span id="tb-hermes-label">Hermes ...</span>
+      </div>
+      <div class="topbar-pill">
+        <span id="tb-ram">RAM —</span>
+        <div class="dot" style="background:var(--border)"></div>
+        <span id="tb-cpu">CPU —</span>
+      </div>
+    </div>
+    <div class="topbar-right">
+      <a href="https://khairulxshafiq.github.io/Aura-dashboard/auraone.html" target="_blank" class="btn-link">↗ Full Dashboard</a>
+    </div>
+  </div>
+
+  <!-- BENTO GRID -->
+  <div class="main-grid">
+
+    <!-- LEFT SIDEBAR -->
+    <div class="sidebar">
+
+      <!-- Persona Squad -->
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">Persona Squad</span>
+          <span class="card-badge" id="squad-online-count">— online</span>
+        </div>
+        <div class="persona-list">
+          <div class="persona-card" id="persona-aura">
+            <div class="persona-avatar" style="background:linear-gradient(135deg,#3B0764,#7C3AED)">🌟</div>
+            <div class="persona-info">
+              <div class="persona-name">Aura</div>
+              <div class="persona-role">Lead Orchestrator</div>
+            </div>
+            <div class="status-dot" id="dot-aura"></div>
+          </div>
+          <div class="persona-card" id="persona-xiao">
+            <div class="persona-avatar" style="background:linear-gradient(135deg,#0F2027,#0891B2)">✍️</div>
+            <div class="persona-info">
+              <div class="persona-name">Xiao</div>
+              <div class="persona-role">Content Director</div>
+            </div>
+            <div class="status-dot" id="dot-xiao"></div>
+          </div>
+          <div class="persona-card" id="persona-amira">
+            <div class="persona-avatar" style="background:linear-gradient(135deg,#052e16,#059669)">📈</div>
+            <div class="persona-info">
+              <div class="persona-name">Amira</div>
+              <div class="persona-role">Trading Analyst</div>
+            </div>
+            <div class="status-dot" id="dot-amira"></div>
+          </div>
+          <div class="persona-card" id="persona-luma">
+            <div class="persona-avatar" style="background:linear-gradient(135deg,#1a1a2e,#4338CA)">🛸</div>
+            <div class="persona-info">
+              <div class="persona-name">Luma</div>
+              <div class="persona-role">DevOps Engineer</div>
+            </div>
+            <div class="status-dot" id="dot-luma"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- System Health -->
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">Sistem Hermes VPS</span>
+          <span style="font-size:9px;color:var(--text-muted);font-family:var(--font-mono)" id="health-ts">—</span>
+        </div>
+        <div>
+          <div class="stat-row">
+            <span class="stat-label">RAM</span>
+            <span class="stat-val" id="ram-val">—</span>
+          </div>
+          <div class="stat-bar-wrap"><div class="stat-bar" id="ram-bar" style="width:0%"></div></div>
+          <div class="stat-row">
+            <span class="stat-label">CPU Load</span>
+            <span class="stat-val" id="cpu-val">—</span>
+          </div>
+          <div class="stat-bar-wrap"><div class="stat-bar green" id="cpu-bar" style="width:0%"></div></div>
+          <div class="stat-row">
+            <span class="stat-label">Disk</span>
+            <span class="stat-val" id="disk-val">—</span>
+          </div>
+          <div class="stat-bar-wrap"><div class="stat-bar" id="disk-bar" style="width:0%"></div></div>
+          <div class="stat-row" style="margin-top:4px">
+            <span class="stat-label">Sesi Aktif</span>
+            <span class="stat-val" id="sess-val">—</span>
+          </div>
+          <div class="stat-row">
+            <span class="stat-label">Strim Aktif</span>
+            <span class="stat-val" id="stream-val">—</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Services -->
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">Servis Langsung</span>
+        </div>
+        <div id="services-list">
+          <div class="service-row"><div class="sdot" id="svc-gateway"></div><span>Gateway Telegram</span></div>
+          <div class="service-row"><div class="sdot" id="svc-opend"></div><span>Moomoo OpenD :11111</span></div>
+          <div class="service-row"><div class="sdot" id="svc-platform"></div><span>Platform Connected</span></div>
+        </div>
+      </div>
+
+    </div><!-- /sidebar -->
+
+    <!-- CHAT PANEL -->
+    <div class="card chat-panel">
+      <div class="card-header" style="flex-shrink:0">
+        <span class="card-title">Chat Terus dengan Hermes</span>
+        <span class="card-badge" id="model-badge">glm-5.3-flash</span>
+      </div>
+
+      <!-- Messages -->
+      <div class="chat-messages" id="chat-messages">
+        <div id="chat-welcome">
+          <div class="welcome-icon">⚡</div>
+          <h3>AuraOne Sedia</h3>
+          <p>Taip sebarang arahan, soalan, atau tugas untuk Hermes agent.</p>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div class="chat-footer">
+        <div class="composer">
+          <textarea id="chat-input" rows="1" placeholder="Hantar arahan kepada Aura..."></textarea>
+          <button id="send-btn" onclick="sendMessage()">▶</button>
+        </div>
+        <div class="chat-meta">
+          <span id="meta-session">session —</span>
+          <span class="sep">•</span>
+          <span id="meta-model">glm-5.3-flash · opencode-go</span>
+          <span class="sep">•</span>
+          <span id="meta-tps">—</span>
+        </div>
+      </div>
+    </div><!-- /chat-panel -->
+
+  </div><!-- /main-grid -->
+</div><!-- /app -->
+
+<script>
+/* ════════════════════════════════════════════
+   CONFIG
+════════════════════════════════════════════ */
+const API = '';           // same origin — no CORS
+// stats.json served from GitHub Pages (has CORS * headers, updated every 15min by cron)
+const STATS_URL = 'https://khairulxshafiq.github.io/Aura-dashboard/stats.json';
+let SESSION_ID  = null;
+let IS_STREAMING = false;
+let HEALTH_INTERVAL = null;
+let LAST_TPS = '—';
+
+/* ════════════════════════════════════════════
+   AUTH
+════════════════════════════════════════════ */
+async function doLogin() {
+  const pw  = document.getElementById('login-input').value.trim();
+  const err = document.getElementById('login-error');
+  const btn = document.getElementById('login-btn');
+  if (!pw) { err.textContent = 'Sila masukkan kata laluan.'; return; }
+
+  btn.disabled = true;
+  btn.textContent = 'Mengesahkan...';
+  err.textContent = '';
+
+  try {
+    const res = await fetch(API + '/api/auth/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      credentials: 'include',
+      body: JSON.stringify({ password: pw })
+    });
+    const d = await res.json();
+    if (d.ok) {
+      document.getElementById('login-overlay').style.display = 'none';
+      document.getElementById('app').style.display = 'block';
+      await bootApp();
+    } else {
+      err.textContent = 'Kata laluan salah.';
+      btn.disabled = false;
+      btn.textContent = 'Masuk ke Cockpit';
+    }
+  } catch(e) {
+    err.textContent = 'Gagal hubungi Hermes. Semak sambungan.';
+    btn.disabled = false;
+    btn.textContent = 'Masuk ke Cockpit';
+  }
+}
+
+document.getElementById('login-input').addEventListener('keydown', e => {
+  if (e.key === 'Enter') doLogin();
+});
+
+/* ════════════════════════════════════════════
+   BOOT
+════════════════════════════════════════════ */
+async function bootApp() {
+  await Promise.all([
+    fetchHealth(),
+    fetchAgentHealth(),
+    initSession()
+  ]);
+  // Also try stats.json for persona + service details
+  fetchStatsJson();
+  // Auto-refresh every 60s
+  HEALTH_INTERVAL = setInterval(() => {
+    fetchHealth();
+    fetchAgentHealth();
+  }, 60000);
+}
+
+/* ════════════════════════════════════════════
+   SYSTEM HEALTH
+════════════════════════════════════════════ */
+async function fetchHealth() {
+  try {
+    const res = await fetch(API + '/api/system/health', { credentials: 'include' });
+    const d = await res.json();
+    if (d.status !== 'ok') return;
+
+    const ram  = d.memory.percent;
+    const cpu  = d.cpu.percent || 0;
+    const disk = d.disk.percent || 0;
+
+    const ramMB  = Math.round(d.memory.used_bytes / 1024 / 1024);
+    const ramTot = Math.round(d.memory.total_bytes / 1024 / 1024);
+    const diskU  = Math.round(d.disk.used_bytes / 1024 / 1024 / 1024);
+    const diskT  = Math.round(d.disk.total_bytes / 1024 / 1024 / 1024);
+
+    set('ram-val', `${ram}%`);
+    set('cpu-val', `${cpu}%`);
+    set('disk-val', `${diskU}GB / ${diskT}GB`);
+    set('tb-ram', `RAM ${ram}%`);
+    set('tb-cpu', `CPU ${cpu}%`);
+    set('health-ts', new Date().toLocaleTimeString('ms-MY', {hour:'2-digit', minute:'2-digit'}));
+
+    setBar('ram-bar',  ram,  ram > 85 ? 'warn' : null);
+    setBar('cpu-bar',  cpu,  cpu > 80 ? 'warn' : 'green');
+    setBar('disk-bar', disk, disk > 80 ? 'warn' : null);
+
+    const sess    = d.webui_runtime?.sessions?.resident ?? '?';
+    const streams = d.webui_runtime?.streams?.active ?? 0;
+    set('sess-val',   sess + ' sesi');
+    set('stream-val', streams + ' aktif');
+
+  } catch(e) { console.warn('health fetch failed', e); }
+}
+
+async function fetchAgentHealth() {
+  try {
+    const res = await fetch(API + '/api/health/agent', { credentials: 'include' });
+    const d = await res.json();
+
+    const alive   = d.alive === true;
+    const gwState = d.details?.gateway_state || 'unknown';
+    const platforms = d.details?.platform_count || 0;
+
+    // Topbar
+    const tbDot = document.getElementById('tb-hermes-dot');
+    const tbLbl = document.getElementById('tb-hermes-label');
+    tbDot.className = 'dot ' + (alive ? 'green pulse' : 'red');
+    tbLbl.textContent = alive ? 'Hermes Live' : 'Hermes Down';
+
+    // Aura persona = Hermes alive
+    setPersona('aura', alive ? 'online' : 'offline');
+
+    // Services
+    setService('svc-gateway',  gwState === 'running');
+    setService('svc-platform', platforms > 0);
+
+    updateSquadCount();
+  } catch(e) {
+    setPersona('aura', 'offline');
+    const tbDot = document.getElementById('tb-hermes-dot');
+    tbDot.className = 'dot red';
+    document.getElementById('tb-hermes-label').textContent = 'Hermes Down';
+  }
+}
+
+/* ════════════════════════════════════════════
+   STATS.JSON (persona + services detail)
+════════════════════════════════════════════ */
+async function fetchStatsJson() {
+  try {
+    // Try to get from the same server's aura-dashboard stats
+    // (cockpit is served from hermes-webui, stats.json is in aura-dashboard)
+    // We use GitHub Pages as fallback data source
+    const urls = [
+      STATS_URL + '?t=' + Date.now()
+    ];
+    let d = null;
+    for (const url of urls) {
+      try {
+        const r = await fetch(url);
+        if (r.ok) { d = await r.json(); break; }
+      } catch {}
+    }
+    if (!d) return;
+
+    // Xiao — check if content engine cron is in services
+    const services = d.services || [];
+    const xiaoRunning = services.some(s =>
+      s.name && (s.name.toLowerCase().includes('xiao') || s.name.toLowerCase().includes('content') || s.name.toLowerCase().includes('airtable'))
+      && s.status === 'running'
+    );
+    setPersona('xiao', xiaoRunning ? 'online' : 'standby');
+
+    // Amira — check trade bot
+    const amiraRunning = services.some(s =>
+      s.name && (s.name.toLowerCase().includes('amira') || s.name.toLowerCase().includes('trade'))
+      && s.status === 'running'
+    );
+    setPersona('amira', amiraRunning ? 'online' : 'standby');
+
+    // Luma — standby (GCP VM, not always connected to VPS)
+    setPersona('luma', 'standby');
+
+    // OpenD service
+    const opendOk = services.some(s =>
+      s.name && s.name.toLowerCase().includes('opend') && s.status === 'running'
+    );
+    setService('svc-opend', opendOk);
+
+    updateSquadCount();
+
+    // Model badge
+    const model = d.model?.default;
+    if (model) {
+      set('model-badge', model);
+      set('meta-model', model + ' · ' + (d.model?.provider || 'opencode-go'));
+    }
+
+  } catch(e) { console.warn('stats.json fetch failed', e); }
+}
+
+/* ════════════════════════════════════════════
+   CHAT — SESSION INIT
+════════════════════════════════════════════ */
+async function initSession() {
+  // Re-use session from sessionStorage if still valid
+  const cached = sessionStorage.getItem('cockpit_session_id');
+  if (cached) {
+    SESSION_ID = cached;
+    set('meta-session', 'session ' + SESSION_ID.slice(-6));
+    return;
+  }
+  try {
+    const res = await fetch(API + '/api/session/new', {
+      method: 'POST',
+      credentials: 'include',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({})
+    });
+    const d = await res.json();
+    SESSION_ID = d.session?.session_id;
+    if (SESSION_ID) {
+      sessionStorage.setItem('cockpit_session_id', SESSION_ID);
+      set('meta-session', 'session ' + SESSION_ID.slice(-6));
+      set('model-badge', d.session?.model || 'glm-5.3-flash');
+      set('meta-model', (d.session?.model || 'glm-5.3-flash') + ' · ' + (d.session?.model_provider || 'opencode-go'));
+    }
+  } catch(e) { console.warn('session init failed', e); }
+}
+
+/* ════════════════════════════════════════════
+   CHAT — SEND + STREAM
+════════════════════════════════════════════ */
+document.getElementById('chat-input').addEventListener('keydown', e => {
+  if (e.key === 'Enter' && !e.shiftKey) {
+    e.preventDefault();
+    sendMessage();
+  }
+});
+
+document.getElementById('chat-input').addEventListener('input', function() {
+  this.style.height = 'auto';
+  this.style.height = Math.min(this.scrollHeight, 140) + 'px';
+});
+
+async function sendMessage() {
+  if (IS_STREAMING) return;
+  const input = document.getElementById('chat-input');
+  const text  = input.value.trim();
+  if (!text || !SESSION_ID) return;
+
+  input.value = '';
+  input.style.height = 'auto';
+
+  // Hide welcome
+  const welcome = document.getElementById('chat-welcome');
+  if (welcome) welcome.remove();
+
+  // Append user message
+  appendMsg('user', text);
+
+  // Start assistant bubble (streaming)
+  const msgId = 'msg-' + Date.now();
+  const { bubble, thinker, meter } = appendAssistantMsg(msgId);
+
+  IS_STREAMING = true;
+  document.getElementById('send-btn').disabled = true;
+
+  try {
+    // POST to start chat
+    const startRes = await fetch(API + '/api/chat/start', {
+      method: 'POST',
+      credentials: 'include',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message: text, session_id: SESSION_ID })
+    });
+    const startD = await startRes.json();
+
+    if (startD.error) {
+      // Session may have expired — reset and retry once
+      if (startD.error.toLowerCase().includes('session')) {
+        sessionStorage.removeItem('cockpit_session_id');
+        await initSession();
+        // Retry
+        const retryRes = await fetch(API + '/api/chat/start', {
+          method: 'POST',
+          credentials: 'include',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ message: text, session_id: SESSION_ID })
+        });
+        const retryD = await retryRes.json();
+        if (retryD.error) throw new Error(retryD.error);
+        Object.assign(startD, retryD);
+      } else {
+        throw new Error(startD.error);
+      }
+    }
+
+    const streamId = startD.stream_id;
+    await streamResponse(streamId, bubble, thinker, meter);
+
+  } catch(e) {
+    bubble.innerHTML = '<span style="color:var(--red)">⚠ ' + e.message + '</span>';
+  } finally {
+    // Remove cursor
+    const cur = document.getElementById('cursor-' + msgId);
+    if (cur) cur.remove();
+    IS_STREAMING = false;
+    document.getElementById('send-btn').disabled = false;
+  }
+}
+
+async function streamResponse(streamId, bubble, thinker, meter) {
+  return new Promise((resolve, reject) => {
+    const url = API + '/api/chat/stream?stream_id=' + streamId;
+    const es  = new EventSource(url, { withCredentials: true });
+
+    let fullText = '';
+    let reasoning = '';
+    let lastTps = null;
+
+    es.addEventListener('token', e => {
+      const d = JSON.parse(e.data);
+      fullText += d.text || '';
+      bubble.innerHTML = renderMd(fullText) + '<span class="cursor" id="cursor-' + streamId + '"></span>';
+      scrollChat();
+    });
+
+    es.addEventListener('reasoning', e => {
+      const d = JSON.parse(e.data);
+      reasoning += d.text || '';
+      if (thinker) thinker.title = reasoning;
+    });
+
+    es.addEventListener('metering', e => {
+      const d = JSON.parse(e.data);
+      if (d.tps && d.tps_available) {
+        lastTps = d.tps;
+        set('meta-tps', d.tps + ' tok/s');
+        LAST_TPS = d.tps + ' tok/s';
+      }
+    });
+
+    es.addEventListener('done', () => {
+      es.close();
+      // Remove cursor
+      const cur = document.getElementById('cursor-' + streamId);
+      if (cur) cur.remove();
+      // Final render
+      bubble.innerHTML = renderMd(fullText);
+      // Show metering
+      if (lastTps && meter) {
+        meter.innerHTML = '<span class="tps-badge">' + lastTps + ' tok/s</span>';
+        meter.style.display = 'flex';
+      }
+      scrollChat();
+      resolve();
+    });
+
+    es.addEventListener('error', e => {
+      es.close();
+      resolve(); // don't reject — partial response is ok
+    });
+
+    // Remove thinking chip once first token arrives
+    es.addEventListener('token', () => {
+      if (thinker && thinker.parentNode) thinker.remove();
+    }, { once: true });
+  });
+}
+
+/* ════════════════════════════════════════════
+   CHAT RENDERING HELPERS
+════════════════════════════════════════════ */
+function appendMsg(role, text) {
+  const c = document.getElementById('chat-messages');
+  const div = document.createElement('div');
+  div.className = 'msg ' + role;
+  const avatar = role === 'user' ? '👤' : '⚡';
+  const sender = role === 'user' ? 'Anda' : 'Hermes · Aura';
+  div.innerHTML = `
+    <div class="msg-avatar">${avatar}</div>
+    <div class="msg-body">
+      <div class="msg-sender">${sender}</div>
+      <div class="msg-bubble">${renderMd(text)}</div>
+    </div>`;
+  c.appendChild(div);
+  scrollChat();
+  return div;
+}
+
+function appendAssistantMsg(msgId) {
+  const c = document.getElementById('chat-messages');
+  const div = document.createElement('div');
+  div.className = 'msg assistant';
+  div.id = msgId;
+
+  const thinker = document.createElement('div');
+  thinker.className = 'thinking-chip';
+  thinker.innerHTML = '<div class="spin"></div> Aura sedang berfikir...';
+
+  const bubble = document.createElement('div');
+  bubble.className = 'msg-bubble';
+  bubble.innerHTML = '<span class="cursor"></span>';
+
+  const meter = document.createElement('div');
+  meter.className = 'metering-bar';
+  meter.style.display = 'none';
+
+  const body = document.createElement('div');
+  body.className = 'msg-body';
+  body.innerHTML = '<div class="msg-sender">HERMES · AURA</div>';
+  body.appendChild(thinker);
+  body.appendChild(bubble);
+  body.appendChild(meter);
+
+  div.innerHTML = '<div class="msg-avatar">⚡</div>';
+  div.appendChild(body);
+  c.appendChild(div);
+  scrollChat();
+  return { bubble, thinker, meter };
+}
+
+function scrollChat() {
+  const c = document.getElementById('chat-messages');
+  c.scrollTop = c.scrollHeight;
+}
+
+/* Minimal markdown — bold, code, newlines */
+function renderMd(text) {
+  if (!text) return '';
+  return text
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+    .replace(/`([^`]+)`/g, '<code>$1</code>')
+    .replace(/```([\s\S]*?)```/g, (_, c) => '<pre>' + c + '</pre>')
+    .replace(/\n/g, '<br>');
+}
+
+/* ════════════════════════════════════════════
+   DOM HELPERS
+════════════════════════════════════════════ */
+function set(id, text) {
+  const el = document.getElementById(id);
+  if (el) el.textContent = text;
+}
+
+function setBar(id, pct, cls) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.style.width = Math.min(pct, 100) + '%';
+  el.className = 'stat-bar' + (cls ? ' ' + cls : '');
+}
+
+function setPersona(name, state) {
+  const dot = document.getElementById('dot-' + name);
+  if (!dot) return;
+  dot.className = 'status-dot ' + state;
+}
+
+function setService(id, online) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.className = 'sdot ' + (online ? 'on' : 'off');
+}
+
+function updateSquadCount() {
+  const names = ['aura','xiao','amira','luma'];
+  const count = names.filter(n => {
+    const d = document.getElementById('dot-' + n);
+    return d && d.className.includes('online');
+  }).length;
+  set('squad-online-count', count + ' online');
+}
+</script>
+</body>
+</html>
