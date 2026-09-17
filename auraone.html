@@ -1,732 +1,1933 @@
 <!doctype html>
-<html lang="en">
+<html lang="ms">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>AuraOne Cloud — Your Personal AI Workforce</title>
+<title>AuraOne Cloud — Your Personal AI Workforce & Mission Control</title>
+<meta name="description" content="AuraOne Cloud — Satu dashboard, sembilan AI colleagues. Berita trending, copywriting, analisis saham Bursa, automasi & visual kreatif.">
 <style>
-:root{
-  --bg:#0b0e14; --surface:#11141c; --surface2:#181c26; --border:#232838;
-  --ink:#e8eaf2; --muted:#8a91a5; --accent:#f4b860; --accent2:#e8956d;
-  --green:#4ade80; --red:#f87171;
-  --radius:14px; --radius-sm:10px;
+:root {
+  --bg: #0b0e14;
+  --bg-subtle: #0e121b;
+  --surface: #11141c;
+  --surface2: #161a26;
+  --surface3: #1d2232;
+  --border: #232838;
+  --border2: #2e354a;
+  --ink: #e8eaf2;
+  --muted: #8a91a5;
+  --muted2: #5a6175;
+  --accent: #f4b860;
+  --accent2: #ffd28a;
+  --accent-glow: rgba(244, 184, 96, 0.28);
+  --green: #4ade80;
+  --green-glow: rgba(74, 222, 128, 0.25);
+  --red: #f87171;
+  --blue: #60a5fa;
+  --violet: #a78bfa;
+  --cyan: #00d4ff;
+  --radius: 14px;
+  --radius-sm: 9px;
+  --mono: "SF Mono", "JetBrains Mono", ui-monospace, "Cascadia Code", monospace;
+  --sans: "Inter", "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
 }
-*{margin:0;box-sizing:border-box}
-body{font-family:"Segoe UI",system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.5}
-button{font:inherit;cursor:pointer;border:none;border-radius:var(--radius-sm);background:none;color:inherit}
-a{color:var(--accent)}
-input,select{font:inherit}
-:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--sans);
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.55;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+::selection { background: var(--accent-glow); color: #fff; }
+button { font: inherit; cursor: pointer; border: none; border-radius: var(--radius-sm); background: none; color: inherit; transition: all 0.16s ease; }
+a { color: var(--accent2); text-decoration: none; transition: color 0.15s ease; }
+a:hover { color: #fff; }
+input, select, textarea { font: inherit; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 
-/* ===== NAV ===== */
-nav{display:flex;align-items:center;gap:14px;padding:14px 26px;border-bottom:1px solid var(--border);background:#0d1018;position:sticky;top:0;z-index:20;flex-wrap:wrap}
-.logo{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:.5px;text-decoration:none;color:var(--ink)}
-.logo .ring{width:26px;height:26px;border-radius:50%;background:conic-gradient(from 180deg,var(--accent),var(--accent2),var(--accent));-webkit-mask:radial-gradient(circle,transparent 42%,#000 45%);mask:radial-gradient(circle,transparent 42%,#000 45%)}
-.logo small{color:var(--muted);font-weight:400}
-nav .spacer{flex:1}
-.navlink{color:var(--muted);text-decoration:none;padding:6px 12px;border-radius:8px}
-.navlink:hover{color:var(--ink);background:var(--surface2)}
-.navlink.act{color:var(--accent)}
-.pill{background:var(--surface2);border:1px solid var(--border);color:var(--accent);padding:6px 14px;border-radius:999px;font-size:.85rem}
+/* ===== BACKGROUND GRID & ORBS ===== */
+.bg-grid {
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.024) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.024) 1px, transparent 1px);
+  background-size: 40px 40px;
+  mask-image: radial-gradient(ellipse 85% 65% at 50% 0%, black 30%, transparent 80%);
+}
+.orb-glow { position: fixed; z-index: 0; pointer-events: none; border-radius: 50%; filter: blur(95px); opacity: 0.18; }
+.orb-g1 { width: 500px; height: 500px; top: -160px; left: -120px; background: var(--accent); }
+.orb-g2 { width: 440px; height: 440px; bottom: -140px; right: -100px; background: var(--violet); }
+
+/* ===== SHARED NAV ===== */
+nav {
+  display: flex; align-items: center; gap: 14px; padding: 13px 28px;
+  border-bottom: 1px solid var(--border); background: rgba(13, 16, 24, 0.88);
+  backdrop-filter: blur(14px); position: sticky; top: 0; z-index: 50; flex-wrap: wrap;
+}
+.logo { display: flex; align-items: center; gap: 10px; font-weight: 700; letter-spacing: .4px; text-decoration: none; color: var(--ink); }
+.logo .ring {
+  width: 28px; height: 28px; border-radius: 50%;
+  background: conic-gradient(from 180deg, var(--accent), var(--accent2), var(--accent));
+  -webkit-mask: radial-gradient(circle, transparent 42%, #000 45%);
+  mask: radial-gradient(circle, transparent 42%, #000 45%);
+  box-shadow: 0 0 14px var(--accent-glow);
+}
+.logo small { color: var(--muted); font-weight: 400; font-size: 0.85em; margin-left: 2px; }
+nav .spacer { flex: 1; }
+.nav-links { display: flex; align-items: center; gap: 6px; }
+.navlink { color: var(--muted); text-decoration: none; padding: 7px 13px; border-radius: 8px; font-size: 0.88rem; font-weight: 500; }
+.navlink:hover { color: var(--ink); background: var(--surface2); }
+.navlink.act { color: var(--accent); background: rgba(244,184,96,0.08); font-weight: 600; }
+.pill { background: var(--surface2); border: 1px solid var(--border); color: var(--accent); padding: 5px 13px; border-radius: 999px; font-size: 0.82rem; font-weight: 600; font-family: var(--mono); }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 10px 20px; border-radius: 10px; font-weight: 600; font-size: 0.88rem; text-decoration: none; }
+.btn.primary { background: linear-gradient(135deg, var(--accent), #e09b3d); color: #1a1206; box-shadow: 0 2px 12px var(--accent-glow); }
+.btn.primary:hover { filter: brightness(1.09); transform: translateY(-1px); color: #1a1206; }
+.btn.ghost { background: var(--surface2); color: var(--ink); border: 1px solid var(--border); }
+.btn.ghost:hover { border-color: var(--accent); color: var(--accent2); }
+.btn.danger { background: rgba(248,113,113,0.12); color: var(--red); border: 1px solid rgba(248,113,113,0.3); }
+.btn.danger:hover { background: rgba(248,113,113,0.22); }
+.btn.sm { padding: 6px 12px; font-size: 0.78rem; border-radius: 7px; }
 
 /* ===== SCREENS ===== */
-.screen{display:none;padding:34px 26px;max-width:1180px;margin:0 auto}
-.screen.active{display:block}
+.screen { display: none; padding: 32px 28px 60px; max-width: 1240px; margin: 0 auto; position: relative; z-index: 1; }
+.screen.active { display: block; animation: fadeIn 0.25s ease forwards; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
 
-.btn{padding:12px 22px;border-radius:10px;font-weight:600}
-.btn.primary{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#1a1206}
-.btn.primary:hover{filter:brightness(1.08)}
-.btn.ghost{background:var(--surface2);color:var(--ink);border:1px solid var(--border)}
-.btn.ghost:hover{border-color:var(--accent)}
+/* ===== HERO & AURA ORB ANIMATION ===== */
+.hero { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 40px; align-items: center; padding: 40px 0 54px; }
+.hero-kicker { font-size: 0.8rem; font-weight: 700; letter-spacing: 2px; color: var(--accent); text-transform: uppercase; margin-bottom: 12px; display: inline-flex; align-items: center; gap: 7px; }
+.hero-kicker .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--green); box-shadow: 0 0 8px var(--green); animation: pulseDot 2s infinite; }
+.hero h1 { font-size: clamp(2.2rem, 4.2vw, 3.4rem); line-height: 1.12; letter-spacing: -0.8px; font-weight: 800; }
+.hero h1 em { font-style: normal; color: var(--accent2); background: linear-gradient(135deg, var(--accent2), var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.hero p.lead { color: var(--muted); margin: 18px 0 24px; max-width: 52ch; font-size: 1.02rem; line-height: 1.6; }
+.hero-cta { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 22px; }
+.hero-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+.tag { font-family: var(--mono); font-size: 0.75rem; padding: 4px 10px; border: 1px solid var(--border); border-radius: 7px; color: var(--muted); background: var(--surface); }
+.tag.hot { color: var(--accent2); border-color: rgba(244,184,96,0.35); background: rgba(244,184,96,0.08); font-weight: 600; }
 
-/* HOME */
-.hero{display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:center;padding:30px 0 50px}
-.hero h1{font-size:2.6rem;line-height:1.15;letter-spacing:-.5px}
-.hero h1 em{font-style:normal;color:var(--accent)}
-.hero p{color:var(--muted);margin:18px 0 26px;max-width:46ch}
-.cardrow{display:grid;gap:12px}
-.stat{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:14px 18px}
-.stat b{font-size:1.3rem;display:block}
-.stat span{color:var(--muted);font-size:.8rem}
-.features{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:26px 0 40px}
-.feature{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:24px}
-.feature h3{font-size:1.05rem;margin-bottom:8px}
-.feature p{color:var(--muted);font-size:.88rem}
-
-/* PRICING */
-.plans{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:26px}
-.plan{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:22px;position:relative;display:flex;flex-direction:column;gap:10px}
-.plan.pop{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent)}
-.plan .tag{position:absolute;top:-11px;left:50%;transform:translateX(-50%);background:var(--accent);color:#1a1206;font-size:.72rem;font-weight:700;padding:3px 12px;border-radius:999px}
-.plan h3{font-size:1rem}
-.plan .price{font-size:1.8rem;font-weight:700}
-.plan .price small{font-size:.8rem;color:var(--muted);font-weight:400}
-.plan ul{list-style:none;display:flex;flex-direction:column;gap:7px;font-size:.85rem;color:var(--muted);flex:1}
-.plan li::before{content:"▸ ";color:var(--accent)}
-.plan button{margin-top:auto;width:100%}
-
-/* LOGIN */
-.loginwrap{max-width:400px;margin:60px auto;text-align:center}
-.loginwrap .ring{width:54px;height:54px;margin:0 auto 18px;background:conic-gradient(from 180deg,var(--accent),var(--accent2),var(--accent));-webkit-mask:radial-gradient(circle,transparent 40%,#000 44%);mask:radial-gradient(circle,transparent 40%,#000 44%)}
-.loginwrap h2{margin-bottom:6px}
-.loginwrap p{color:var(--muted);font-size:.9rem;margin-bottom:26px}
-.field{width:100%;background:var(--surface2);border:1px solid var(--border);color:var(--ink);padding:11px;border-radius:10px;outline:none;margin-bottom:12px}
-.field:focus{border-color:var(--accent)}
-.fine{margin-top:14px;font-size:.75rem;color:var(--muted)}
-.err{color:var(--red);font-size:.85rem;min-height:1.3em;margin:8px 0}
-.quick{display:flex;gap:10px;margin-top:14px}
-.quick button{flex:1;background:var(--surface2);border:1px solid var(--border);color:var(--muted);padding:9px;border-radius:10px;font-size:.85rem}
-.quick button:hover{border-color:var(--accent);color:var(--accent)}
-
-/* APP */
-.dash-head{display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:14px;margin-bottom:22px}
-.bar{display:flex;gap:10px}
-.balcard{background:linear-gradient(135deg,#1b1508,#231b0e);border:1px solid #4a3a14;border-radius:var(--radius);padding:18px 22px;min-width:220px}
-.balcard small{color:var(--muted)}
-.balcard b{font-size:1.6rem;color:var(--accent)}
-.topbar-mini{display:flex;gap:8px;margin-top:10px}
-.chip{background:var(--surface2);border:1px solid var(--border);color:var(--ink);padding:6px 12px;border-radius:999px;font-size:.85rem}
-.chip:hover{border-color:var(--accent)}
-.chip.on{border-color:var(--accent);color:var(--accent)}
-.grid2{display:grid;grid-template-columns:2fr 1fr;gap:16px}
-.panel{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:20px}
-.panel h4{font-size:.95rem;margin-bottom:14px;display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
-.panel h4 span{color:var(--muted);font-weight:400;font-size:.8rem}
-.agents{display:flex;flex-direction:column;gap:10px}
-.agent{display:flex;align-items:center;gap:14px;background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius-sm);padding:12px 16px}
-.agent .dot{width:9px;height:9px;border-radius:50%;background:var(--green);flex-shrink:0}
-.agent .dot.off{background:var(--muted)}
-.agent b{display:block;font-size:.9rem}
-.agent small{color:var(--muted)}
-.agent .run{margin-left:auto;background:transparent;color:var(--accent);border:1px solid var(--border);padding:6px 14px;border-radius:8px;flex-shrink:0}
-.agent .run:hover{border-color:var(--accent)}
-.connectors{display:flex;flex-wrap:wrap;gap:8px}
-.conn{display:flex;align-items:center;gap:8px;background:var(--surface2);border:1px solid var(--border);border-radius:999px;padding:7px 14px;font-size:.85rem}
-.conn .sw{width:26px;height:15px;border-radius:999px;background:var(--border);position:relative;flex-shrink:0}
-.conn .sw::after{content:"";position:absolute;width:11px;height:11px;border-radius:50%;background:var(--muted);top:2px;left:2px;transition:.15s}
-.conn.on .sw{background:#3a5a2a}
-.conn.on .sw::after{left:13px;background:var(--green)}
-.conn.on{border-color:#3a5a2a}
-.conn:hover{border-color:var(--accent)}
-
-/* chat */
-.chatlog{display:flex;flex-direction:column;gap:10px;max-height:300px;overflow-y:auto;font-size:.88rem}
-.msg{padding:10px 14px;border-radius:12px;max-width:85%;white-space:pre-wrap}
-.msg.u{align-self:flex-end;background:var(--accent);color:#1a1206;border-bottom-right-radius:4px}
-.msg.a{align-self:flex-start;background:var(--surface2);border:1px solid var(--border);border-bottom-left-radius:4px}
-.chatbar{display:flex;gap:8px;margin-top:12px}
-.chatbar input{flex:1;background:var(--surface2);border:1px solid var(--border);color:var(--ink);padding:10px 14px;border-radius:10px;outline:none}
-.chatbar input:focus{border-color:var(--accent)}
-.chatbar button{background:var(--accent);color:#1a1206;padding:0 18px;font-weight:700;border-radius:10px}
-
-/* TRADING */
-.profile-quiz .q{margin-bottom:18px}
-.profile-quiz label{display:block;margin-bottom:8px;font-size:.9rem}
-.profile-quiz select{width:100%;background:var(--surface2);border:1px solid var(--border);color:var(--ink);padding:10px;border-radius:10px}
-.stock{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:10px 0;border-bottom:1px solid var(--border);font-size:.9rem}
-.stock:last-child{border:none}
-.stock .up{color:var(--green)} .stock .dn{color:var(--red)}
-.badge{font-size:.68rem;padding:2px 8px;border-radius:999px;border:1px solid var(--border);color:var(--muted);white-space:nowrap}
-.badge.warn{border-color:#8a5a1a;color:var(--accent)}
-.badge.ok{border-color:#2a5a3a;color:var(--green)}
-
-/* tabs */
-.tabs{display:flex;gap:6px;margin-bottom:20px;flex-wrap:wrap}
-.tabs button{background:var(--surface2);color:var(--muted);padding:8px 18px;border-radius:999px;border:1px solid var(--border)}
-.tabs button.act{color:var(--accent);border-color:var(--accent)}
-
-/* ADMIN */
-.stats4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px}
-table{width:100%;border-collapse:collapse;font-size:.88rem}
-th,td{text-align:left;padding:10px 8px;border-bottom:1px solid var(--border)}
-th{color:var(--muted);font-weight:500;font-size:.78rem}
-.pill-st{font-size:.7rem;padding:2px 10px;border-radius:999px;border:1px solid var(--border);color:var(--muted)}
-.pill-st.on{border-color:#2a5a3a;color:var(--green)}
-.rowbtn{background:transparent;border:1px solid var(--border);color:var(--accent);padding:4px 12px;border-radius:8px;font-size:.78rem}
-.rowbtn:hover{border-color:var(--accent)}
-
-/* footer */
-footer{text-align:center;color:var(--muted);font-size:.78rem;padding:26px;border-top:1px solid var(--border);margin-top:40px}
-footer a{color:var(--muted);margin:0 8px}
-footer a:hover{color:var(--accent)}
-.disclaimer{background:#1a1410;border:1px solid #4a3a14;color:#d9b87a;border-radius:var(--radius-sm);padding:10px 16px;font-size:.78rem;max-width:900px;margin:0 auto 14px}
-
-/* modal */
-.modal{display:none;position:fixed;inset:0;background:rgba(5,7,12,.7);z-index:50;align-items:center;justify-content:center;padding:20px}
-.modal.open{display:flex}
-.modal .box{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:26px;max-width:440px;width:100%;max-height:80vh;overflow-y:auto}
-.modal h3{margin-bottom:8px}
-.modal p{color:var(--muted);font-size:.88rem;margin-bottom:16px}
-.modal .row{display:flex;gap:10px}
-.modal .row .btn{flex:1}
-
-@media(max-width:900px){
-  .hero{grid-template-columns:1fr}
-  .features{grid-template-columns:1fr}
-  .plans{grid-template-columns:1fr 1fr}
-  .grid2{grid-template-columns:1fr}
-  .stats4{grid-template-columns:1fr 1fr}
+/* Aura Orb Stage */
+.stage { position: relative; height: 340px; display: grid; place-items: center; }
+.ring { position: absolute; border-radius: 50%; border: 1px solid rgba(244,184,96,0.22); }
+.r1 { width: 300px; height: 300px; animation: spin 20s linear infinite; border-style: dashed; }
+.r2 { width: 220px; height: 220px; animation: spin 13s linear infinite reverse; border-color: rgba(244,184,96,0.16); }
+.r3 { width: 140px; height: 140px; animation: spin 8s linear infinite; border-color: rgba(255,210,138,0.4); border-style: dotted; }
+.core {
+  position: relative; width: 96px; height: 96px; border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #ffe9c4, #f4b860 55%, #b35f0e);
+  box-shadow: 0 0 44px var(--accent-glow), 0 0 90px rgba(244,184,96,0.22);
+  animation: breathe 3.2s ease-in-out infinite;
 }
-@media(max-width:560px){
-  .plans{grid-template-columns:1fr}
-  nav{padding:12px 16px}
-  .screen{padding:24px 16px}
+.core::after {
+  content: ""; position: absolute; inset: 8px; border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.4); border-top-color: transparent;
+  animation: spin 3.5s linear infinite;
+}
+@keyframes breathe { 0%,100% { transform: scale(1); } 50% { transform: scale(1.07); } }
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes pulseDot { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
+.stage .status-orb { position: absolute; top: 24px; right: 10px; font-family: var(--mono); font-size: 0.72rem; color: var(--green); background: rgba(74,222,128,0.1); border: 1px solid rgba(74,222,128,0.3); padding: 4px 10px; border-radius: 999px; font-weight: 600; }
+.stage .id-orb { position: absolute; bottom: 12px; font-family: var(--mono); font-size: 0.75rem; color: var(--muted); letter-spacing: 0.5px; }
+
+/* ===== SECTION TITLES ===== */
+.sec-wrap { padding: 46px 0; border-top: 1px solid var(--border); }
+.kicker { font-size: 0.75rem; font-weight: 700; letter-spacing: 2px; color: var(--accent); text-transform: uppercase; margin-bottom: 6px; }
+.sec-title { font-size: clamp(1.5rem, 2.5vw, 2rem); font-weight: 800; letter-spacing: -0.5px; margin-bottom: 8px; }
+.sec-sub { color: var(--muted); max-width: 680px; font-size: 0.94rem; margin-bottom: 24px; }
+
+/* 6 Points "Tentang" */
+.about-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 20px; }
+.point-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; transition: transform 0.16s ease, border-color 0.16s ease; }
+.point-card:hover { transform: translateY(-2px); border-color: var(--border2); }
+.point-card .n { font-family: var(--mono); font-size: 0.75rem; color: var(--accent); font-weight: 700; margin-bottom: 6px; }
+.point-card h3 { font-size: 1.02rem; margin-bottom: 6px; color: var(--ink); }
+.point-card p { font-size: 0.86rem; color: var(--muted); line-height: 1.5; }
+
+/* 9 Capabilities Grid */
+.caps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 20px; }
+.cap-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; transition: all 0.16s ease; position: relative; }
+.cap-card:hover { transform: translateY(-3px); border-color: var(--accent); }
+.cap-card.dim { opacity: 0.5; filter: grayscale(0.35); }
+.cap-card.dim:hover { opacity: 0.8; transform: none; border-color: var(--border2); }
+.cap-card .ic { width: 40px; height: 40px; border-radius: 10px; display: grid; place-items: center; font-size: 1.15rem; margin-bottom: 12px; }
+.cap-card h3 { font-size: 0.98rem; font-weight: 700; display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.cap-card p { font-size: 0.84rem; color: var(--muted); margin-top: 6px; line-height: 1.5; }
+.cap-card .eg { font-family: var(--mono); font-size: 0.72rem; color: var(--muted2); margin-top: 10px; border-top: 1px dashed var(--border); padding-top: 8px; }
+
+/* Skuad 9 Ejen Grid */
+.fleet-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 20px; }
+.fleet-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px; position: relative; transition: all 0.16s ease; }
+.fleet-card:hover { transform: translateY(-2px); border-color: var(--accent); }
+.fleet-card.planned { opacity: 0.55; }
+.fleet-card .head { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+.fleet-card .av { width: 42px; height: 42px; border-radius: 12px; display: grid; place-items: center; font-size: 1.25rem; flex-shrink: 0; }
+.fleet-card .nm { font-size: 1rem; font-weight: 700; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.fleet-card .wt { font-size: 0.78rem; color: var(--muted); }
+.fleet-card .role { font-family: var(--mono); font-size: 0.74rem; color: var(--accent2); margin-bottom: 8px; }
+.fleet-card .sv { font-size: 0.82rem; color: var(--muted); line-height: 1.45; border-top: 1px dashed var(--border); padding-top: 8px; }
+.fleet-card .trig { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 10px; }
+.fleet-card .trig span { font-family: var(--mono); font-size: 0.68rem; padding: 2px 7px; border-radius: 5px; border: 1px solid var(--border); color: var(--muted2); background: var(--surface2); }
+.fleet-card .meter { margin-top: 10px; }
+.fleet-card .meter-row { display: flex; justify-content: space-between; font-family: var(--mono); font-size: 0.7rem; color: var(--muted); margin-bottom: 3px; }
+.bar-track { height: 6px; border-radius: 4px; background: var(--surface3); overflow: hidden; }
+.bar-track i { display: block; height: 100%; border-radius: 4px; background: var(--accent); }
+
+/* Status Badges */
+.st { font-family: var(--mono); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.6px; padding: 2px 8px; border-radius: 999px; text-transform: uppercase; }
+.st-live { color: var(--green); background: rgba(74,222,128,0.12); border: 1px solid rgba(74,222,128,0.35); }
+.st-progress { color: var(--accent2); background: rgba(244,184,96,0.12); border: 1px solid rgba(244,184,96,0.35); }
+.st-planned { color: var(--muted2); background: rgba(90,97,117,0.15); border: 1px dashed var(--border2); }
+
+/* Workflow Box */
+.flow-box { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px 24px; margin: 20px 0; }
+.flow-steps { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; font-family: var(--mono); font-size: 0.82rem; }
+.flow-node { background: var(--surface2); border: 1px solid var(--border2); padding: 7px 13px; border-radius: 8px; color: var(--ink); display: flex; align-items: center; gap: 6px; }
+.flow-node.done { border-color: rgba(74,222,128,0.4); color: var(--green); }
+.flow-node.run { border-color: rgba(244,184,96,0.6); color: var(--accent2); animation: pulseNode 1.6s infinite; }
+.flow-node.wait { opacity: 0.55; }
+.flow-arr { color: var(--muted2); }
+@keyframes pulseNode { 0%,100% { opacity: 1; } 50% { opacity: 0.5; } }
+.flow-note { font-size: 0.82rem; color: var(--muted); margin-top: 14px; border-top: 1px dashed var(--border); padding-top: 10px; }
+
+/* Stat Strip (Home & Admin) */
+.stats4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 22px; }
+.stat-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px 20px; transition: border-color 0.16s ease; }
+.stat-card:hover { border-color: var(--border2); }
+.stat-card .k { font-size: 0.72rem; color: var(--muted); letter-spacing: 0.6px; text-transform: uppercase; font-weight: 600; }
+.stat-card .v { font-size: 1.65rem; font-weight: 800; font-family: var(--mono); letter-spacing: -0.5px; margin: 4px 0 2px; }
+.stat-card .d { font-size: 0.75rem; font-family: var(--mono); }
+.up { color: var(--green); } .down { color: var(--red); }
+
+/* ===== PRICING ===== */
+.plans { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 24px; }
+.plan { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; position: relative; display: flex; flex-direction: column; gap: 12px; }
+.plan.pop { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent), 0 4px 20px var(--accent-glow); }
+.plan .tag-pop { position: absolute; top: -11px; left: 50%; transform: translateX(-50%); background: var(--accent); color: #1a1206; font-size: 0.7rem; font-weight: 800; padding: 3px 12px; border-radius: 999px; letter-spacing: 0.5px; }
+.plan h3 { font-size: 1.05rem; }
+.plan .price { font-size: 1.85rem; font-weight: 800; font-family: var(--mono); }
+.plan .price small { font-size: 0.8rem; color: var(--muted); font-weight: 400; font-family: var(--sans); }
+.plan ul { list-style: none; display: flex; flex-direction: column; gap: 8px; font-size: 0.84rem; color: var(--muted); flex: 1; margin: 10px 0 16px; }
+.plan li::before { content: "▸ "; color: var(--accent); }
+.plan button { margin-top: auto; width: 100%; }
+
+/* ===== LOGIN ===== */
+.loginwrap { max-width: 420px; margin: 50px auto; text-align: center; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 32px 28px; }
+.loginwrap .ring { width: 56px; height: 56px; margin: 0 auto 16px; background: conic-gradient(from 180deg, var(--accent), var(--accent2), var(--accent)); -webkit-mask: radial-gradient(circle, transparent 40%, #000 44%); mask: radial-gradient(circle, transparent 40%, #000 44%); box-shadow: 0 0 20px var(--accent-glow); }
+.loginwrap h2 { font-size: 1.35rem; margin-bottom: 6px; }
+.loginwrap p { color: var(--muted); font-size: 0.88rem; margin-bottom: 22px; }
+.field { width: 100%; background: var(--surface2); border: 1px solid var(--border); color: var(--ink); padding: 11px 14px; border-radius: 10px; outline: none; margin-bottom: 12px; font-size: 0.88rem; transition: border-color 0.15s; }
+.field:focus { border-color: var(--accent); }
+.err { color: var(--red); font-size: 0.82rem; min-height: 1.3em; margin: 6px 0; }
+.quick { display: flex; gap: 8px; margin-top: 14px; }
+.quick button { flex: 1; background: var(--surface2); border: 1px solid var(--border); color: var(--muted); padding: 8px 10px; border-radius: 8px; font-size: 0.78rem; font-weight: 500; }
+.quick button:hover { border-color: var(--accent); color: var(--accent); }
+.fine { margin-top: 16px; font-size: 0.74rem; color: var(--muted); }
+
+/* ===== APP & BENTO GRID ===== */
+.dash-head { display: flex; align-items: flex-end; justify-content: space-between; flex-wrap: wrap; gap: 14px; margin-bottom: 20px; }
+.balcard { background: linear-gradient(135deg, #18140c, #241c10); border: 1px solid #4a3a14; border-radius: var(--radius); padding: 16px 20px; min-width: 220px; }
+.balcard small { color: var(--muted); font-size: 0.78rem; }
+.balcard b { font-size: 1.55rem; color: var(--accent); font-family: var(--mono); }
+.topbar-mini { display: flex; gap: 6px; margin-top: 8px; }
+.chip { background: var(--surface2); border: 1px solid var(--border); color: var(--ink); padding: 5px 12px; border-radius: 999px; font-size: 0.78rem; font-weight: 500; }
+.chip:hover { border-color: var(--accent); color: var(--accent); }
+.chip.on { border-color: var(--accent); color: var(--accent); }
+.grid2 { display: grid; grid-template-columns: 2fr 1fr; gap: 16px; }
+.grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.grid-bento { display: grid; grid-template-columns: repeat(12, 1fr); gap: 14px; }
+.span-4 { grid-column: span 4; }
+.span-6 { grid-column: span 6; }
+.span-8 { grid-column: span 8; }
+.span-12 { grid-column: span 12; }
+
+/* Panels */
+.panel { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; }
+.panel h4 { font-size: 0.95rem; margin-bottom: 14px; display: flex; justify-content: space-between; align-items: center; gap: 8px; flex-wrap: wrap; }
+.panel h4 span.subtext { color: var(--muted); font-weight: 400; font-size: 0.78rem; font-family: var(--mono); }
+
+/* Agents in App */
+.agents-list { display: flex; flex-direction: column; gap: 10px; }
+.agent-row { display: flex; align-items: center; gap: 14px; background: var(--surface2); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 12px 16px; }
+.agent-row .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--green); flex-shrink: 0; box-shadow: 0 0 6px var(--green); }
+.agent-row .dot.off { background: var(--muted2); box-shadow: none; }
+.agent-row b { display: block; font-size: 0.9rem; }
+.agent-row small { color: var(--muted); font-size: 0.78rem; }
+.agent-row .run { margin-left: auto; background: transparent; color: var(--accent); border: 1px solid var(--border); padding: 6px 14px; border-radius: 8px; font-weight: 600; font-size: 0.8rem; }
+.agent-row .run:hover { border-color: var(--accent); background: rgba(244,184,96,0.08); }
+
+/* Connectors */
+.connectors { display: flex; flex-wrap: wrap; gap: 8px; }
+.conn { display: flex; align-items: center; gap: 8px; background: var(--surface2); border: 1px solid var(--border); border-radius: 999px; padding: 7px 14px; font-size: 0.84rem; cursor: pointer; transition: all 0.15s; }
+.conn .sw { width: 26px; height: 15px; border-radius: 999px; background: var(--border); position: relative; flex-shrink: 0; }
+.conn .sw::after { content: ""; position: absolute; width: 11px; height: 11px; border-radius: 50%; background: var(--muted); top: 2px; left: 2px; transition: 0.15s; }
+.conn.on { border-color: #3a5a2a; }
+.conn.on .sw { background: #2f5424; }
+.conn.on .sw::after { left: 13px; background: var(--green); }
+.conn:hover { border-color: var(--accent); }
+
+/* Chat Simulator */
+.chatlog { display: flex; flex-direction: column; gap: 10px; max-height: 320px; overflow-y: auto; font-size: 0.86rem; padding-right: 4px; }
+.msg { padding: 10px 14px; border-radius: 12px; max-width: 86%; white-space: pre-wrap; line-height: 1.5; }
+.msg.u { align-self: flex-end; background: var(--accent); color: #1a1206; border-bottom-right-radius: 3px; font-weight: 500; }
+.msg.a { align-self: flex-start; background: var(--surface2); border: 1px solid var(--border); border-bottom-left-radius: 3px; color: var(--ink); }
+.chatbar { display: flex; gap: 8px; margin-top: 12px; }
+.chatbar input { flex: 1; background: var(--surface2); border: 1px solid var(--border); color: var(--ink); padding: 10px 14px; border-radius: 10px; outline: none; font-size: 0.86rem; }
+.chatbar input:focus { border-color: var(--accent); }
+.chatbar button { background: var(--accent); color: #1a1206; padding: 0 16px; font-weight: 700; border-radius: 10px; }
+
+/* Trading & Watchlist */
+.profile-quiz .q { margin-bottom: 16px; }
+.profile-quiz label { display: block; margin-bottom: 6px; font-size: 0.86rem; color: var(--ink); }
+.profile-quiz select { width: 100%; background: var(--surface2); border: 1px solid var(--border); color: var(--ink); padding: 9px 12px; border-radius: 9px; font-size: 0.86rem; }
+.stock-item { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 0.88rem; }
+.stock-item:last-child { border-bottom: none; }
+.stock-item .sub { font-size: 0.74rem; color: var(--muted); }
+.stock-item .price { font-family: var(--mono); font-weight: 700; }
+.badge { font-size: 0.68rem; padding: 2px 8px; border-radius: 999px; border: 1px solid var(--border); color: var(--muted); white-space: nowrap; font-family: var(--mono); }
+.badge.warn { border-color: rgba(244,184,96,0.4); color: var(--accent); background: rgba(244,184,96,0.08); }
+.badge.ok { border-color: rgba(74,222,128,0.4); color: var(--green); background: rgba(74,222,128,0.08); }
+
+/* Tabs */
+.tabs { display: flex; gap: 6px; margin-bottom: 18px; flex-wrap: wrap; }
+.tabs button { background: var(--surface2); color: var(--muted); padding: 8px 16px; border-radius: 999px; border: 1px solid var(--border); font-size: 0.84rem; font-weight: 500; }
+.tabs button:hover { color: var(--ink); border-color: var(--border2); }
+.tabs button.act { color: var(--accent); border-color: var(--accent); background: rgba(244,184,96,0.08); font-weight: 600; }
+
+/* ===== ADMIN MISSION CONTROL ===== */
+.admin-badge { display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px; border-radius: 999px; border: 1px solid rgba(244,184,96,0.4); background: rgba(244,184,96,0.08); font-size: 0.78rem; font-family: var(--mono); color: var(--accent); }
+.admin-badge .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--red); box-shadow: 0 0 8px var(--red); animation: pulseDot 2s infinite; }
+.adm-tab-pane { display: none; }
+.adm-tab-pane.active { display: block; animation: fadeIn 0.2s ease; }
+
+/* Tables */
+table { width: 100%; border-collapse: collapse; font-size: 0.84rem; }
+th, td { text-align: left; padding: 10px 10px; border-bottom: 1px solid var(--border); }
+th { color: var(--muted2); font-weight: 600; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.8px; font-family: var(--mono); }
+td { font-family: var(--sans); }
+td.mono { font-family: var(--mono); font-size: 0.82rem; }
+.pill-st { font-size: 0.68rem; padding: 2px 9px; border-radius: 999px; border: 1px solid var(--border); color: var(--muted); font-family: var(--mono); font-weight: 600; }
+.pill-st.on { border-color: rgba(74,222,128,0.4); color: var(--green); background: rgba(74,222,128,0.08); }
+.pill-st.paused { border-color: rgba(244,184,96,0.4); color: var(--accent); background: rgba(244,184,96,0.08); }
+.rowbtn { background: transparent; border: 1px solid var(--border); color: var(--accent); padding: 4px 10px; border-radius: 7px; font-size: 0.74rem; font-weight: 600; }
+.rowbtn:hover { border-color: var(--accent); background: rgba(244,184,96,0.08); }
+
+/* KV Lists */
+.kv { display: flex; justify-content: space-between; font-size: 0.82rem; padding: 7px 0; border-bottom: 1px solid var(--border); font-family: var(--mono); }
+.kv:last-child { border-bottom: 0; }
+.kv .k { color: var(--muted); font-family: var(--sans); }
+.kv .val { color: var(--ink); font-weight: 600; }
+
+/* Timeline trace */
+.trace-list { position: relative; padding-left: 20px; }
+.trace-list::before { content: ""; position: absolute; left: 6px; top: 6px; bottom: 6px; width: 2px; background: linear-gradient(to bottom, var(--violet), var(--cyan), var(--accent)); opacity: 0.4; }
+.trace-item { position: relative; margin-bottom: 16px; font-size: 0.82rem; }
+.trace-dot { position: absolute; left: -18px; top: 5px; width: 8px; height: 8px; border-radius: 50%; border: 1px solid var(--bg); }
+.tdot-user { background: var(--violet); }
+.tdot-luma { background: var(--cyan); }
+.tdot-tool { background: var(--accent); }
+.trace-time { font-size: 0.7rem; font-family: var(--mono); color: var(--muted2); }
+.trace-actor { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.6px; margin: 1px 0 3px; }
+.tact-user { color: var(--violet); }
+.tact-luma { color: var(--cyan); }
+.tact-tool { color: var(--accent); }
+.tool-tag { display: inline-flex; align-items: center; background: rgba(244,184,96,0.1); border: 1px solid rgba(244,184,96,0.25); border-radius: 5px; padding: 1px 6px; font-size: 0.7rem; font-family: var(--mono); color: var(--accent); margin-right: 4px; }
+
+/* Flow Diagram (Dual Node) */
+.dual-diagram { display: flex; align-items: center; justify-content: center; gap: 8px; padding: 16px 0; flex-wrap: wrap; }
+.d-node { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+.d-icon { width: 56px; height: 56px; border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; border: 1px solid var(--border); background: var(--surface2); }
+.d-icon.aura { border-color: rgba(167,139,250,0.4); box-shadow: 0 0 16px rgba(167,139,250,0.2); }
+.d-icon.luma { border-color: rgba(0,212,255,0.4); box-shadow: 0 0 16px rgba(0,212,255,0.2); }
+.d-arr { font-size: 0.8rem; color: var(--muted2); font-family: var(--mono); display: flex; flex-direction: column; align-items: center; padding: 0 8px; }
+
+/* HITL Tasks */
+.hitl-item { display: flex; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 0.86rem; }
+.hitl-item:last-child { border-bottom: 0; }
+.hitl-item input[type="checkbox"] { width: 16px; height: 16px; accent-color: var(--accent); cursor: pointer; }
+.hitl-item.done span.title { text-decoration: line-through; color: var(--muted); }
+.p-tag { font-family: var(--mono); font-size: 0.68rem; font-weight: 700; padding: 2px 7px; border-radius: 4px; }
+.p-high { background: rgba(248,113,113,0.12); color: var(--red); border: 1px solid rgba(248,113,113,0.3); }
+.p-med { background: rgba(244,184,96,0.12); color: var(--accent); border: 1px solid rgba(244,184,96,0.3); }
+
+/* Disclaimer & Footer */
+.disclaimer { background: #18130d; border: 1px solid #4a3a14; color: #d9b87a; border-radius: var(--radius-sm); padding: 10px 16px; font-size: 0.76rem; max-width: 900px; margin: 0 auto 14px; line-height: 1.45; }
+footer { text-align: center; color: var(--muted); font-size: 0.78rem; padding: 32px 20px; border-top: 1px solid var(--border); margin-top: 40px; position: relative; z-index: 1; }
+footer a { color: var(--muted); margin: 0 8px; }
+footer a:hover { color: var(--accent); }
+
+/* Modal */
+.modal { display: none; position: fixed; inset: 0; background: rgba(5,7,12,0.78); backdrop-filter: blur(6px); z-index: 100; align-items: center; justify-content: center; padding: 20px; }
+.modal.open { display: flex; }
+.modal .box { background: var(--surface); border: 1px solid var(--border2); border-radius: var(--radius); padding: 26px; max-width: 460px; width: 100%; max-height: 85vh; overflow-y: auto; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+.modal h3 { margin-bottom: 8px; font-size: 1.15rem; }
+.modal p { color: var(--muted); font-size: 0.86rem; margin-bottom: 16px; }
+.modal .row { display: flex; gap: 10px; margin-top: 16px; }
+.modal .row .btn { flex: 1; }
+
+@media(max-width:980px) {
+  .hero { grid-template-columns: 1fr; }
+  .about-grid, .caps-grid, .fleet-grid, .plans { grid-template-columns: repeat(2, 1fr); }
+  .grid2 { grid-template-columns: 1fr; }
+  .stats4 { grid-template-columns: repeat(2, 1fr); }
+  .span-4, .span-6, .span-8 { grid-column: span 12; }
+}
+@media(max-width:640px) {
+  .about-grid, .caps-grid, .fleet-grid, .plans, .stats4 { grid-template-columns: 1fr; }
+  nav { padding: 10px 16px; }
+  .screen { padding: 20px 14px 40px; }
 }
 </style>
 </head>
 <body>
 
+<div class="bg-grid"></div>
+<div class="orb-glow orb-g1"></div>
+<div class="orb-glow orb-g2"></div>
+
+<!-- ===== TOP NAVIGATION ===== -->
 <nav>
-  <a class="logo" href="#/home"><div class="ring"></div>AuraOne <small>Cloud</small></a>
+  <a class="logo" href="#/home">
+    <div class="ring"></div>
+    <span>AuraOne <small>Cloud</small></span>
+  </a>
   <div class="spacer"></div>
-  <a class="navlink" href="#/home" data-nav="home">Home</a>
-  <a class="navlink" href="#/pricing" data-nav="pricing">Pricing</a>
-  <span class="pill" id="navBal" style="display:none"><span id="navBalNum">260</span> ⚡</span>
-  <a class="btn ghost" id="navDash" style="padding:7px 16px;display:none;text-decoration:none" href="#/app">My Dashboard</a>
-  <button class="btn primary" id="navSign" style="padding:7px 16px" onclick="go('#/login')">Sign In</button>
-  <button class="btn ghost" id="navOut" style="padding:7px 16px;display:none" onclick="logout()">Sign Out</button>
+  <div class="nav-links">
+    <a class="navlink" href="#/home" data-nav="home">Home</a>
+    <a class="navlink" href="#/pricing" data-nav="pricing">Pricing</a>
+    <a class="navlink" href="#/admin" data-nav="admin" id="navAdminLink" style="display:none;color:var(--accent)">🛡️ Mission Control</a>
+    <span class="pill" id="navBal" style="display:none"><span id="navBalNum">260</span> ⚡</span>
+    <a class="btn ghost sm" id="navDash" style="display:none" href="#/app">My Dashboard</a>
+    <button class="btn primary sm" id="navSign" onclick="go('#/login')">Sign In</button>
+    <button class="btn ghost sm" id="navOut" style="display:none" onclick="logout()">Sign Out</button>
+  </div>
 </nav>
 
-<!-- ===== HOME ===== -->
+<!-- ========================================================================= -->
+<!-- SCREEN: HOME (#/home)                                                     -->
+<!-- ========================================================================= -->
 <section class="screen active" id="s-home">
   <div class="hero">
     <div>
-      <h1>Meet <em>Aura</em> — the AI agent that actually <em>works</em> for your business.</h1>
-      <p>Generate brand imagery, write content, monitor the market — simply choose an agent, connect your APIs, and go. No coding. No prompt engineering. Just results.</p>
-      <div style="display:flex;gap:10px;flex-wrap:wrap">
-        <button class="btn primary" onclick="go('#/login')">Start Free Trial</button>
+      <div class="hero-kicker"><span class="dot"></span> Personal AI Workforce &amp; Swarm Lead</div>
+      <h1>One dashboard.<br>Nine AI colleagues.<br><em>Infinite scaling.</em></h1>
+      <p class="lead">AuraOne memimpin pasukan 9 ejen AI untuk menguruskan berita trending, copywriting iklan, analisis pasaran Bursa Malaysia, visual kreatif &amp; automasi operasi bisnes anda — dalam satu platform bersepadu.</p>
+      <div class="hero-cta">
+        <button class="btn primary" onclick="go('#/login')">Start Free Trial →</button>
         <button class="btn ghost" onclick="demoChat()">See Aura in Action</button>
+        <a class="btn ghost" href="#tentang-sec">Lihat Kemampuan ↓</a>
+      </div>
+      <div class="hero-tags">
+        <span class="tag hot">● 9 Ejen Aktif</span>
+        <span class="tag">deepseek-v4-flash</span>
+        <span class="tag">Telegram Bot</span>
+        <span class="tag">Airtable</span>
+        <span class="tag">Bursa Malaysia</span>
+        <span class="tag">Dual-Node ReAct</span>
       </div>
     </div>
-    <div class="cardrow">
-      <div class="stat"><b>3</b><span>ready-made agent templates</span></div>
-      <div class="stat"><b>10+</b><span>API connectors — toggle on/off</span></div>
-      <div class="stat"><b>BM / EN</b><span>replies in your language</span></div>
-      <div class="stat"><b>⚡ advise</b><span>trading co-pilot — advises, never executes</span></div>
+    <div class="stage">
+      <div class="ring r1"></div>
+      <div class="ring r2"></div>
+      <div class="ring r3"></div>
+      <div class="core"></div>
+      <span class="status-orb">AURA · LIVE</span>
+      <span class="id-orb">aura@auraone.my · ReAct Swarm Lead</span>
     </div>
   </div>
-  <div class="features">
-    <div class="feature"><h3>🤖 Agent Templates</h3><p>Pick a ready-made agent — content writer, brand image generator, or business reminder — and it starts working the moment you connect. Every draft is yours to review and approve before anything is published.</p></div>
-    <div class="feature"><h3>🔌 Toggle Connectors</h3><p>Connect Telegram, Google Drive, Facebook Page, Shopee, Gmail and more with a single click. API keys are stored encrypted, and you can disconnect any connector at any time — your data stays yours.</p></div>
-    <div class="feature"><h3>📈 Trading Co-Pilot (advise-only)</h3><p>Aura watches Bursa Malaysia and delivers a daily DCA analysis and news sentiment report. It only ever advises and never places orders — every buy or sell decision remains entirely yours.</p></div>
+
+  <!-- Strip Metrik Ringkas -->
+  <div class="stats4" style="margin-top:10px">
+    <div class="stat-card"><div class="k">Artikel Diproses</div><div class="v">1,284</div><div class="d up">▲ 12.4% minggu ini</div></div>
+    <div class="stat-card"><div class="k">Draf Disahkan</div><div class="v">342</div><div class="d up">▲ 8.1% disemak</div></div>
+    <div class="stat-card"><div class="k">Automasi Aktif</div><div class="v">17</div><div class="d">9 ejen · 12 workflow</div></div>
+    <div class="stat-card"><div class="k">Masa Dijimat</div><div class="v">31j</div><div class="d up">▲ 3.2j hari ini</div></div>
   </div>
-  <div class="disclaimer">⚠️ AuraOne Cloud provides analysis and educational content only — it is not a licensed investment adviser. Past performance is no guarantee of future results. All trading decisions remain your own responsibility.</div>
+
+  <!-- 6 Tonggak Nilai "Tentang" -->
+  <div class="sec-wrap" id="tentang-sec">
+    <div class="kicker">Tentang AuraOne</div>
+    <h2 class="sec-title">Apa itu AuraOne?</h2>
+    <p class="sec-sub">AuraOne bukan sekadar chatbot biasa — ia pasukan 9 AI peribadi yang beroperasi 24/7. Enam AI domain bisnes + tiga ejen suite kreatif &amp; kewangan. Satu arahan, semua bergerak lancar.</p>
+    <div class="about-grid">
+      <div class="point-card"><div class="n">01</div><h3>Pantau &amp; Lapor</h3><p>Trending Malaysia dikumpul setiap pagi — berita viral disahkan silang merentas sumber (BH, Metro, Google Trends) sebelum dilaporkan.</p></div>
+      <div class="point-card"><div class="n">02</div><h3>Tulis &amp; Terbit</h3><p>Draf kandungan sosial dan iklan FB/TikTok dijana mengikut 5 gaya persona — santai, cikgu, hook, formal atau emosi — sedia untuk disemak.</p></div>
+      <div class="point-card"><div class="n">03</div><h3>Analisa &amp; Alert</h3><p>Data saham Bursa Malaysia dianalisis berdisiplin (Asri Ahmad Method) — saringan DCA, paras sokongan, rujukan TP &amp; amaran risiko cut loss.</p></div>
+      <div class="point-card"><div class="n">04</div><h3>Cipta Visual</h3><p>KUMAR menjana poster konsisten &amp; visual produk berkualiti tinggi guna model FLUX LoRA + Gemini, disimpan terus ke Drive.</p></div>
+      <div class="point-card"><div class="n">05</div><h3>Automasi &amp; Operasi</h3><p>Maya mengendalikan tugas berjadual (cron), alert Telegram, backup Airtable &amp; integrasi API — sistem hidup tanpa sentuhan manual berlebihan.</p></div>
+      <div class="point-card"><div class="n">06</div><h3>Kewangan &amp; Revenue</h3><p>Akira memantau lejar hasil harian/bulanan, kos operasi vs untung bersih, serta forecast aliran tunai solopreneur.</p></div>
+    </div>
+  </div>
+
+  <!-- 9 Keupayaan Sistem -->
+  <div class="sec-wrap">
+    <div class="kicker">Kemampuan Platform</div>
+    <h2 class="sec-title">Apa yang Aura boleh lakukan untuk bisnes anda</h2>
+    <p class="sec-sub">Inventori keupayaan penuh digerakkan oleh 9 watak AI. Modul bertanda LIVE sedia digunakan, manakala PLANNED dalam fasa sambungan seterusnya.</p>
+    <div class="caps-grid">
+      <div class="cap-card"><div class="ic" style="background:#ffd28a22;color:#ffd28a">📰</div><h3>Berita Trending <span class="st st-live">LIVE</span></h3><p>Kumpul &amp; sahkan berita viral Malaysia setiap pagi dengan enjin pengesahan silang.</p><div class="eg">berita menarik · trending gajet</div></div>
+      <div class="cap-card"><div class="ic" style="background:#f4b86022;color:#f4b860">✍️</div><h3>Kandungan Sosial <span class="st st-live">LIVE</span></h3><p>Draf artikel FB, skrip TikTok &amp; caption iklan ikut 5 persona gaya bahasa tempatan.</p><div class="eg">draf FB viral santai · ads Shopee</div></div>
+      <div class="cap-card"><div class="ic" style="background:#60a5fa22;color:#60a5fa">📈</div><h3>Trading Bursa (Advise) <span class="st st-live">LIVE</span></h3><p>Analisis saham dengan metodologi Asri Ahmad — swing, position, zon belian DCA &amp; RRR berdisiplin.</p><div class="eg">analisa INARI · watchlist Bursa</div></div>
+      <div class="cap-card dim"><div class="ic" style="background:#a78bfa22;color:#a78bfa">🛍️</div><h3>E-Commerce <span class="st st-planned">PLANNED</span></h3><p>Urus katalog produk, semakan harga &amp; soalan lazim pelanggan Shopee/TikTok Shop.</p><div class="eg">update harga · katalog produk</div></div>
+      <div class="cap-card dim"><div class="ic" style="background:#f8717122;color:#f87171">💰</div><h3>Finance &amp; Tax <span class="st st-planned">PLANNED</span></h3><p>Kewangan korporat, bajet operasi &amp; pengurusan aliran tunai teliti perniagaan.</p><div class="eg">bajet bulanan · aliran tunai</div></div>
+      <div class="cap-card dim"><div class="ic" style="background:#00d4ff22;color:#00d4ff">🌐</div><h3>Website &amp; WordPress <span class="st st-planned">PLANNED</span></h3><p>Bina landing page interaktif, ecommerce funnel &amp; automasi artikel WordPress.</p><div class="eg">landing page · auto publish WP</div></div>
+      <div class="cap-card"><div class="ic" style="background:#4ade8022;color:#4ade80">⚙️</div><h3>Automasi Ops <span class="st st-live">LIVE</span></h3><p>Cron job, Telegram push notification, backup pangkalan data &amp; integrasi MCP.</p><div class="eg">alert harga · backup harian</div></div>
+      <div class="cap-card"><div class="ic" style="background:#ffd28a22;color:#ffd28a">🖼️</div><h3>Generate Gambar (KUMAR) <span class="st st-live">LIVE</span></h3><p>Visual branding konsisten, poster promosi produk menggunakan model FLUX LoRA &amp; Gemini.</p><div class="eg">poster produk · brand visual</div></div>
+      <div class="cap-card"><div class="ic" style="background:#f8717122;color:#f87171">📊</div><h3>Revenue &amp; P&amp;L (Akira) <span class="st st-live">LIVE</span></h3><p>Penjejakan hasil jualan harian/bulanan, kos pelayan vs margin kasar, laporan ke Google Sheets.</p><div class="eg">lejar hasil · laporan kos untung</div></div>
+    </div>
+  </div>
+
+  <!-- Skuad 9 Ejen Roster -->
+  <div class="sec-wrap">
+    <div class="kicker">Pasukan 9 Ejen</div>
+    <h2 class="sec-title">Kenali Armada Skuad AI Anda</h2>
+    <p class="sec-sub">Setiap satu pakar dalam bidang domain tertentu, berkoordinasi di bawah pimpinan Aura menerusi gelung taakulan ReAct.</p>
+    <div class="fleet-grid" id="fleetHomeGrid"></div>
+  </div>
+
+  <!-- Aliran Kerja Interaktif -->
+  <div class="sec-wrap">
+    <div class="kicker">Aliran Pelaksanaan</div>
+    <h2 class="sec-title">Dari Trending Kepada Penerbitan Kandungan</h2>
+    <p class="sec-sub">Human-in-the-Loop: Setiap draf memerlukan kelulusan Boss Khairul sebelum diterbitkan ke mana-mana saluran.</p>
+    <div class="flow-box">
+      <div class="flow-steps">
+        <span class="flow-node done">✓ Scrape Berita</span>
+        <span class="flow-arr">→</span>
+        <span class="flow-node done">✓ Semak Silang</span>
+        <span class="flow-arr">→</span>
+        <span class="flow-node run">● Draf 5 Gaya</span>
+        <span class="flow-arr">→</span>
+        <span class="flow-node wait">Semakan Boss (Confirm)</span>
+        <span class="flow-arr">→</span>
+        <span class="flow-node wait">Airtable Content Station</span>
+        <span class="flow-arr">→</span>
+        <span class="flow-node wait">Terbit ke Saluran</span>
+      </div>
+      <div class="flow-note">🛡️ <b>Prinsip Keselamatan:</b> Aura tidak pernah menyiarkan pos atau membuat pesanan perdagangan secara membuta tuli tanpa persetujuan manusia.</div>
+    </div>
+  </div>
+
+  <div class="disclaimer">⚠️ AuraOne Cloud menyediakan analisis pasaran dan automasi bisnes untuk tujuan operasi &amp; pendidikan — bukan penasihat pelaburan berlesen. Semua keputusan dagangan dan operasi perniagaan adalah tanggungjawab pengguna sepenuhnya.</div>
 </section>
 
-<!-- ===== PRICING ===== -->
+<!-- ========================================================================= -->
+<!-- SCREEN: PRICING (#/pricing)                                               -->
+<!-- ========================================================================= -->
 <section class="screen" id="s-pricing">
-  <h2 style="font-size:1.6rem">Choose the plan that fits your business</h2>
-  <p style="color:var(--muted);margin-top:6px">Every plan includes the full AI chat. Credits are deducted only for what you actually use — nothing goes to waste.</p>
+  <div class="kicker">Pelan Langganan</div>
+  <h2 class="sec-title">Pilih Pelan Yang Sesuai Untuk Skala Bisnes Anda</h2>
+  <p class="sec-sub">Setiap pelan termasuk akses sembang AI penuh dwibahasa (BM/EN). Kredit ⚡ ditolak hanya mengikut penggunaan sebenar tanpa pembaziran.</p>
+  
   <div class="plans">
     <div class="plan">
-      <h3>Trial</h3><div class="price">RM0<small>/7 days</small></div>
-      <ul><li>20 free credits</li><li>1 agent template</li><li>Preview all connectors</li></ul>
-      <button class="btn ghost" onclick="go('#/login')">Start Trial</button>
+      <h3>Trial</h3>
+      <div class="price">RM 0<small> / 7 hari</small></div>
+      <ul>
+        <li>20 kredit percuma ⚡</li>
+        <li>1 templat ejen aktif</li>
+        <li>Pratonton semua penyambung API</li>
+        <li>Sembang AI dwibahasa</li>
+      </ul>
+      <button class="btn ghost" onclick="go('#/login')">Mulakan Trial</button>
     </div>
+    
     <div class="plan pop">
-      <span class="tag">MOST POPULAR</span>
-      <h3>Starter</h3><div class="price">RM19<small>/mo</small></div>
-      <ul><li>300 credits / month</li><li>1 active agent + unlimited chat</li><li>Trading co-pilot (delayed data)</li></ul>
-      <button class="btn primary" onclick="go('#/login?plan=starter')">Choose Starter</button>
+      <span class="tag-pop">PILIHAN POPULAR</span>
+      <h3>Starter</h3>
+      <div class="price">RM 19<small> / bulan</small></div>
+      <ul>
+        <li>300 kredit bulanan ⚡</li>
+        <li>1 ejen aktif + sembang tanpa had</li>
+        <li>Trading co-pilot (analisis harian)</li>
+        <li>Penyambung Telegram &amp; Sheets</li>
+      </ul>
+      <button class="btn primary" onclick="go('#/login?plan=starter')">Langgan Starter</button>
     </div>
+    
     <div class="plan">
-      <h3>Pro</h3><div class="price">RM49<small>/mo</small></div>
-      <ul><li>1,000 credits / month</li><li>All connectors + FB auto-post</li><li>Brand image generator</li></ul>
-      <button class="btn primary" onclick="go('#/login?plan=pro')">Choose Pro</button>
+      <h3>Pro Solopreneur</h3>
+      <div class="price">RM 49<small> / bulan</small></div>
+      <ul>
+        <li>1,000 kredit bulanan ⚡</li>
+        <li>Semua 9 ejen skuad aktif</li>
+        <li>Penjana visual brand KUMAR (FLUX)</li>
+        <li>Semua penyambung API + auto-sync</li>
+      </ul>
+      <button class="btn primary" onclick="go('#/login?plan=pro')">Langgan Pro</button>
     </div>
+    
     <div class="plan">
-      <h3>Top-Up</h3><div class="price">RM10<small>/200 credits</small></div>
-      <ul><li>Pay-as-you-go</li><li>No monthly commitment</li><li>Credits valid for 90 days</li></ul>
-      <button class="btn ghost" onclick="openTopup()">Top-Up</button>
+      <h3>Top-Up Kredit</h3>
+      <div class="price">RM 10<small> / 200 ⚡</small></div>
+      <ul>
+        <li>Bayar mengikut guna (Pay-as-you-go)</li>
+        <li>Tiada komitmen bulanan</li>
+        <li>Kredit sah selama 90 hari</li>
+        <li>Boleh top-up bila-bila masa</li>
+      </ul>
+      <button class="btn ghost" onclick="openTopup()">Top-Up Sekarang</button>
     </div>
   </div>
-  <div class="disclaimer" style="margin-top:26px">⚠️ AuraOne Cloud provides analysis and educational content only — it is not a licensed investment adviser. Past performance is no guarantee of future results. All trading decisions remain your own responsibility.</div>
+
+  <div class="disclaimer" style="margin-top:30px">⚠️ Penafian Perdagangan: AuraOne Cloud merupakan alat pembantu analisis data pasaran Bursa Malaysia dan tidak memberikan jaminan keuntungan. Segala tindakan belian atau jualan saham adalah keputusan peribadi anda.</div>
 </section>
 
-<!-- ===== LOGIN ===== -->
+<!-- ========================================================================= -->
+<!-- SCREEN: LOGIN (#/login)                                                   -->
+<!-- ========================================================================= -->
 <section class="screen" id="s-login">
   <div class="loginwrap">
     <div class="ring"></div>
-    <h2>Welcome back 👋</h2>
-    <p id="loginLead">Sign in to your AuraOne dashboard. (Google sign-in coming soon.)</p>
+    <h2>Selamat Kembali 👋</h2>
+    <p id="loginLead">Log masuk ke ruang kerja AuraOne anda.</p>
     <form id="loginForm">
-      <input class="field" id="loginEmail" type="email" placeholder="Email address" autocomplete="username" required>
-      <input class="field" id="loginPass" type="password" placeholder="Password" autocomplete="current-password" required>
+      <input class="field" id="loginEmail" type="email" placeholder="Alamat emel (e.g. boss@auraone.my)" autocomplete="username" required>
+      <input class="field" id="loginPass" type="password" placeholder="Kata laluan" autocomplete="current-password" required>
       <div class="err" id="loginErr" role="alert"></div>
-      <label style="font-size:.8rem;color:var(--muted);display:flex;gap:8px;align-items:flex-start;text-align:left;margin-bottom:14px">
-        <input type="checkbox" id="agree" style="margin-top:3px">
-        <span>I agree to the <a href="#" onclick="openLegal('terms');return false">Terms of Service</a> &amp; <a href="#" onclick="openLegal('privacy');return false">Privacy Policy (PDPA)</a>.</span>
+      
+      <label style="font-size:0.78rem;color:var(--muted);display:flex;gap:8px;align-items:flex-start;text-align:left;margin-bottom:14px;cursor:pointer">
+        <input type="checkbox" id="agree" checked style="margin-top:3px;accent-color:var(--accent)">
+        <span>Saya bersetuju dengan <a href="#" onclick="openLegal('terms');return false">Syarat Perkhidmatan</a> &amp; <a href="#" onclick="openLegal('privacy');return false">Dasar Privasi (PDPA)</a>.</span>
       </label>
-      <button class="btn primary" type="submit" style="width:100%">Continue</button>
+      
+      <button class="btn primary" type="submit" style="width:100%">Log Masuk</button>
+      
       <div class="quick">
-        <button type="button" onclick="fillDemo('user')">Use demo user</button>
-        <button type="button" onclick="fillDemo('admin')">Use demo admin</button>
+        <button type="button" onclick="fillDemo('user')">Demo User (Khairul)</button>
+        <button type="button" onclick="fillDemo('admin')">Demo Admin (Boss)</button>
       </div>
     </form>
-    <p class="fine">Demo accounts — user: demo@auraone.my / demo123 · admin: boss@auraone.my / aura2026</p>
+    <p class="fine">Kredensial Demo — User: <code>demo@auraone.my / demo123</code> · Admin: <code>boss@auraone.my / aura2026</code></p>
   </div>
 </section>
 
-<!-- ===== APP (USER) ===== -->
+<!-- ========================================================================= -->
+<!-- SCREEN: APP (CUSTOMER WORKSPACE) (#/app)                                  -->
+<!-- ========================================================================= -->
 <section class="screen" id="s-app">
   <div class="dash-head">
     <div>
-      <h2 style="font-size:1.5rem">Welcome back, <span id="userName">Khairul</span> 👋</h2>
-      <p style="color:var(--muted);font-size:.9rem">Your agents are standing by for your instructions.</p>
+      <h2 style="font-size:1.6rem">Selamat Kembali, <span id="userName">Khairul</span> 👋</h2>
+      <p style="color:var(--muted);font-size:0.88rem">Ejen AI anda sedia menerima arahan harian.</p>
     </div>
-    <div class="bar">
-      <div class="balcard"><small>Credit balance</small><br><b>📊 <span id="balNum">260</span> ⚡</b>
-        <div class="topbar-mini">
-          <button class="chip" onclick="openTopup()">＋ Top-Up</button>
-          <button class="chip" onclick="switchTab('trading')">📈 Trading</button>
-        </div>
+    <div class="balcard">
+      <small>Baki Kredit Aktif</small><br>
+      <b>📊 <span id="balNum">260</span> ⚡</b>
+      <div class="topbar-mini">
+        <button class="chip" onclick="openTopup()">＋ Top-Up</button>
+        <button class="chip" onclick="switchAppTab('trading')">📈 Watchlist Bursa</button>
       </div>
     </div>
   </div>
 
   <div class="tabs" id="appTabs">
-    <button class="act" data-tab="agents">My Agents</button>
-    <button data-tab="connect">Connectors</button>
-    <button data-tab="set">Settings</button>
-    <button data-tab="trading">Trading</button>
+    <button class="act" data-tab="agents">🤖 My Agents</button>
+    <button data-tab="connect">🔌 Connectors</button>
+    <button data-tab="set">⚙️ Settings</button>
+    <button data-tab="trading">📈 Bursa Trading Co-Pilot</button>
   </div>
 
   <div class="grid2" id="appCols">
     <div>
+      <!-- Pane: Agents -->
       <div class="panel" id="pane-agents">
-        <h4>Active Agents <span>3 of 3 ready</span></h4>
-        <div class="agents">
-          <div class="agent">
+        <h4>Ejen Aktif Dalam Pakej <span>3 daripada 3 siap sedia</span></h4>
+        <div class="agents-list">
+          <div class="agent-row">
             <span class="dot"></span>
-            <div><b>📸 Content Marketing</b><small>“5 fresh Facebook post ideas for our smoked products line”</small></div>
-            <button class="run" onclick="runAgent(this)">Run</button>
+            <div><b>📸 Content Marketing Agent</b><small>“5 idea pos FB produk salai tempurung kelapa”</small></div>
+            <button class="run" onclick="runAgent(this)">Jalankan (5⚡)</button>
           </div>
-          <div class="agent">
+          <div class="agent-row">
             <span class="dot"></span>
-            <div><b>🎨 Image Brand Generator</b><small>3 brand-aligned variants per run</small></div>
-            <button class="run" onclick="runAgent(this)">Run</button>
+            <div><b>🎨 Image Brand Generator (KUMAR)</b><small>3 variasi visual promosi beresolusi tinggi</small></div>
+            <button class="run" onclick="runAgent(this)">Jalankan (5⚡)</button>
           </div>
-          <div class="agent">
+          <div class="agent-row">
             <span class="dot off"></span>
-            <div><b>⏰ Reminder &amp; Report Agent</b><small>Daily business report to Telegram</small></div>
-            <button class="run" onclick="runAgent(this)">Run</button>
+            <div><b>⏰ Daily Business Digest Agent</b><small>Laporan harian ke Telegram jam 8:00 malam</small></div>
+            <button class="run" onclick="runAgent(this)">Jalankan (5⚡)</button>
           </div>
         </div>
-        <p style="color:var(--muted);font-size:.78rem;margin-top:14px">Each run deducts 5 ⚡ credits.</p>
+        <p style="color:var(--muted2);font-size:0.76rem;margin-top:14px;font-family:var(--mono)">Setiap pelaksanaan ejen memotong 5 ⚡ kredit.</p>
       </div>
 
+      <!-- Pane: Connectors -->
       <div class="panel" id="pane-connect" style="display:none">
-        <h4>Connectors <span>Click to toggle ON/OFF</span></h4>
+        <h4>Penyambung API Luaran <span>Klik togol untuk sambung / putus</span></h4>
         <div class="connectors" id="connList"></div>
-        <p style="color:var(--muted);font-size:.8rem;margin-top:14px">When toggled ON, your agent will request the connector's API key. Keys are stored AES-256 encrypted. You can disconnect anytime.</p>
+        <p style="color:var(--muted);font-size:0.8rem;margin-top:16px">Kunci API disimpan secara enkripsi selamat AES-256. Anda boleh memutuskan sambungan pada bila-bila masa.</p>
       </div>
 
+      <!-- Pane: Settings -->
       <div class="panel profile-quiz" id="pane-set" style="display:none">
-        <h4>Agent Preferences</h4>
-        <div class="q"><label>Primary agent language</label>
-          <select id="setLang"><option>Auto-detect (BM / EN)</option><option>Bahasa Malaysia only</option><option>English only</option></select>
+        <h4>Tetapan Persona &amp; Bahasa Ejen</h4>
+        <div class="q">
+          <label>Bahasa Utama Interaksi</label>
+          <select id="setLang"><option>Auto-detect (Bahasa Melayu &amp; English)</option><option>Bahasa Malaysia Sahaja</option><option>English Only</option></select>
         </div>
-        <div class="q"><label>Agent persona</label>
-          <select id="setPersona"><option>Professional, friendly</option><option>Professional, formal</option><option>Casual, mentor-style</option></select>
+        <div class="q">
+          <label>Gaya Suara Persona Sembang</label>
+          <select id="setPersona"><option>Santai &amp; Mesra (Gaya Usahawan Malaysia)</option><option>Profesional &amp; Korporat</option><option>Cikgu Disiplin (Risk-First)</option></select>
         </div>
-        <div class="q"><label>Maximum agent actions per day</label>
-          <select id="setMax"><option>Light — 20 actions/day</option><option>Standard — 60 actions/day</option></select>
+        <div class="q">
+          <label>Had Tindakan Ejen Maksimum Sehari</label>
+          <select id="setMax"><option>Standard — 60 tindakan sehari</option><option>Ringan — 20 tindakan sehari</option><option>Intensif — 150 tindakan sehari</option></select>
         </div>
-        <button class="btn primary" onclick="saveSettings()">Save Preferences</button>
-        <span id="setSaved" style="color:var(--green);font-size:.85rem;margin-left:10px"></span>
+        <button class="btn primary" onclick="saveSettings()">Simpan Tetapan</button>
+        <span id="setSaved" style="color:var(--green);font-size:0.85rem;margin-left:10px"></span>
       </div>
 
+      <!-- Pane: Trading & Watchlist (Merged) -->
       <div class="panel profile-quiz" id="pane-trading" style="display:none">
-        <h4>Your Trading Profile <span class="badge warn">TradingView API — pending Boss</span></h4>
-        <div class="q"><label>1. Experience level</label>
-          <select id="trLevel"><option>Beginner</option><option>Intermediate</option><option>Advanced</option></select></div>
-        <div class="q"><label>2. Market focus</label>
-          <select id="trMarket"><option>Bursa Malaysia</option><option>US Market</option><option>Crypto</option><option>Forex</option></select></div>
-        <div class="q"><label>3. Trading style</label>
-          <select id="trStyle"><option>Monthly DCA</option><option>Swing (days-to-weeks)</option><option>Long-term hold</option></select></div>
-        <div class="q"><label>4. Risk appetite</label>
-          <select id="trRisk"><option>Conservative</option><option>Moderate</option><option>Aggressive</option></select></div>
-        <button class="btn primary" onclick="saveTradingProfile()">Save Profile → Generate Plan</button>
-        <div class="disclaimer" style="margin:16px 0 0">⚠️ Advise-only. Aura never places orders — every buy/sell decision is entirely your own.</div>
+        <h4>Profil Dagangan Bursa Malaysia <span class="badge ok">Advise-Only Engine Active</span></h4>
+        <div class="q"><label>1. Tahap Pengalaman</label><select id="trLevel"><option>Beginner (Baru Mula)</option><option>Intermediate (1-3 Tahun)</option><option>Advanced (Penuh Disiplin)</option></select></div>
+        <div class="q"><label>2. Pasaran Fokus</label><select id="trMarket"><option>Bursa Malaysia (Main &amp; ACE Market)</option><option>Pasaran Global (US &amp; HK)</option><option>Kripto Terpilih</option></select></div>
+        <div class="q"><label>3. Gaya Dagangan</label><select id="trStyle"><option>Monthly DCA (Simpanan Berkala)</option><option>Swing Trading (Beberapa Hari - Minggu)</option><option>Position Long-Term Hold</option></select></div>
+        <div class="q"><label>4. Selera Risiko</label><select id="trRisk"><option>Konservatif (Modal Selamat Utama)</option><option>Sederhana (Pertumbuhan Stabil)</option><option>Agresif (Momentum Breakout)</option></select></div>
+        <button class="btn primary" onclick="saveTradingProfile()">Simpan Profil &amp; Kemas Kini Cadangan</button>
+
+        <!-- Watchlist Bursa Bersepadu -->
+        <div style="margin-top:24px;border-top:1px solid var(--border);padding-top:18px">
+          <h4>📊 Senarai Pantauan Saham Bursa (Watchlist DCA) <span class="badge">Data Tertangguh 15-min</span></h4>
+          <div class="stock-item">
+            <div>
+              <b style="color:var(--ink)">INARI (0166)</b> — Teknologi
+              <div class="sub">Semikonduktor · Shariah ✓ · Vol 11.4M · Hampir TP1 (RM4.20)</div>
+            </div>
+            <div style="text-align:right"><div class="price">RM 3.82</div><span class="up">▲ +2.1%</span></div>
+          </div>
+          <div class="stock-item">
+            <div>
+              <b style="color:var(--ink)">GENM (4715)</b> — Konsumer / Pelancongan
+              <div class="sub">Genting Malaysia · Dividen Konsisten · Zon Penyatuan</div>
+            </div>
+            <div style="text-align:right"><div class="price">RM 2.94</div><span class="up">▲ +0.8%</span></div>
+          </div>
+          <div class="stock-item">
+            <div>
+              <b style="color:var(--ink)">AEMULUS (0181)</b> — Peralatan Ujian Automatik
+              <div class="sub">Order book ~RM87j · Pemulihan kitaran cip semikonduktor</div>
+            </div>
+            <div style="text-align:right"><div class="price">RM 0.38</div><span class="down">▼ -1.2%</span></div>
+          </div>
+          <div class="stock-item">
+            <div>
+              <b style="color:var(--ink)">MAYBANK (1155)</b> — Perbankan
+              <div class="sub">Kukuh kewangan · Dividen hasil tinggi · Sokongan RM9.70–9.95</div>
+            </div>
+            <div style="text-align:right"><div class="price">RM 9.98</div><span class="up">▲ +0.4%</span></div>
+          </div>
+          <div class="stock-item">
+            <div>
+              <b style="color:var(--ink)">GAMUDA (5398)</b> — Pembinaan &amp; Infra
+              <div class="sub">Projek MRT &amp; data center serantau · Momentum stabil</div>
+            </div>
+            <div style="text-align:right"><div class="price">RM 4.86</div><span class="up">▲ +1.2%</span></div>
+          </div>
+        </div>
+        <div class="disclaimer" style="margin:16px 0 0">⚠️ Advise-only. AuraOne tidak pernah membuat pesanan beli/jual secara automatik. Segala keputusan transaksi adalah tanggungjawab anda sepenuhnya.</div>
       </div>
     </div>
 
+    <!-- Right Side: Sticky Chat Simulator -->
     <div>
-      <div id="chatWrap" id="chat">
+      <div id="chatWrap">
         <div class="panel" style="position:sticky;top:80px">
-          <h4>Try the Chat <span>Type in English or Malay — Aura replies in kind</span></h4>
+          <h4>Sembang Interaktif AI <span>BM / EN Auto-Detect</span></h4>
           <div class="chatlog" id="chatlog">
-            <div class="msg a">Good evening! I'm all set. What may I help you with today — content, imagery, or a market check?</div>
+            <div class="msg a">Selamat sejahtera! Saya Aura, pembantu AI anda. Apa yang boleh saya bantu hari ini — analisis saham Bursa, draf iklan, atau semakan trending berita?</div>
           </div>
           <div class="chatbar">
-            <input id="chatInput" placeholder="Type in English or Malay..." aria-label="Chat message">
-            <button onclick="sendMsg()" aria-label="Send">➤</button>
+            <input id="chatInput" placeholder="Taip soalan dalam BM atau English..." aria-label="Mesej chat">
+            <button onclick="sendMsg()" aria-label="Hantar">➤</button>
           </div>
         </div>
       </div>
-      <div class="panel" id="watchlistPanel" style="display:none;margin-top:16px">
-        <h4>Watchlist (15-min delayed) <span class="badge">delayed data</span></h4>
-        <div class="stock"><span>MAYBANK</span><span class="up">RM9.98 ▲0.4%</span></div>
-        <div class="stock"><span>PETRONAS Dagangan</span><span class="dn">RM21.40 ▼0.8%</span></div>
-        <div class="stock"><span>GAMUDA</span><span class="up">RM4.86 ▲1.2%</span></div>
-        <div class="stock"><span>SUNWAY</span><span class="dn">RM3.42 ▼0.3%</span></div>
-        <h4 style="margin-top:22px">Today's News Sentiment</h4>
-        <p style="font-size:.88rem;color:var(--muted)">🟢 Banks &amp; REITs: <b>moderately positive</b> — rate hold, easing inflation.</p>
-        <p style="font-size:.88rem;color:var(--muted)">🟡 Construction: new MRT data monitoring — watchlist Gamuda, MRCB.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================================================= -->
+<!-- SCREEN: ADMIN MISSION CONTROL (#/admin)                                   -->
+<!-- ========================================================================= -->
+<section class="screen" id="s-admin">
+  <div class="dash-head">
+    <div>
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:4px">
+        <h2 style="font-size:1.6rem">🛡️ AuraOne Mission Control</h2>
+        <span class="admin-badge"><span class="dot"></span> Live Ops · Boss Khairul</span>
+      </div>
+      <p style="color:var(--muted);font-size:0.88rem">Pusat Kawalan Eksekutif &amp; Telemetri Infrastruktur Solopreneur.</p>
+    </div>
+  </div>
+
+  <!-- 4 KPI King Strip -->
+  <div class="stats4">
+    <div class="stat-card">
+      <div class="k">👥 Total Users (Penyewa)</div>
+      <div class="v" id="admKpiUsers">5</div>
+      <div class="d up" id="admKpiUsersSub">4 Aktif · 1 Paused</div>
+    </div>
+    <div class="stat-card">
+      <div class="k">🤖 Skuad 9 Ejen</div>
+      <div class="v" id="admKpiFleet">9 / 9</div>
+      <div class="d up">100% Sihat (7 Live, 2 Plan)</div>
+    </div>
+    <div class="stat-card">
+      <div class="k">💰 Anggaran MRR</div>
+      <div class="v" id="admKpiMrr">RM 117</div>
+      <div class="d up">▲ +18% MoM (Net Margin +RM16)</div>
+    </div>
+    <div class="stat-card">
+      <div class="k">⚡ DeepSeek API Balance</div>
+      <div class="v" id="admKpiDs" style="color:var(--accent2)">$14.82</div>
+      <div class="d up">Cache Hit 95.2% (~184k Tok)</div>
+    </div>
+  </div>
+
+  <!-- 6 Admin Navigation Tabs -->
+  <div class="tabs" id="admTabs">
+    <button class="act" data-admtab="summary">📌 Ringkasan Eksekutif</button>
+    <button data-admtab="users">👥 Pengurusan User</button>
+    <button data-admtab="telemetry">🖥️ Telemetri Pelayan</button>
+    <button data-admtab="fleet">🤖 Skuad 9 Ejen</button>
+    <button data-admtab="intel">⚡ Intelligence Audit</button>
+    <button data-admtab="hitl">💸 HITL Hub &amp; Lejar Kos</button>
+  </div>
+
+  <!-- TAB 1: RINGKASAN EKSEKUTIF (Bento Overview) -->
+  <div class="adm-tab-pane active" id="pane-adm-summary">
+    <div class="grid-bento">
+      <!-- Kesihatan Pelayan Ringkas -->
+      <div class="panel span-6">
+        <h4>🖥️ Kesihatan Sistem &amp; Pelayan VPS <span class="subtext">2GB Hermes VPS</span></h4>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px">
+          <div class="stat-card"><div class="k">RAM Diguna</div><div class="v" id="sumRam">48%</div><div class="d">945MB / 1.96GB</div></div>
+          <div class="stat-card"><div class="k">CPU Load</div><div class="v" id="sumCpu">5.0%</div><div class="d">Load: 0.10 0.08</div></div>
+        </div>
+        <div class="kv"><span class="k">Disk Digunakan</span><span class="val">39% (17.2 GB Percuma)</span></div>
+        <div class="kv"><span class="k">Uptime Pelayan</span><span class="val">7 Hari 13 Jam 30 Minit</span></div>
+        <div class="kv"><span class="k">Servis Gateway (Telegram)</span><span class="val" style="color:var(--green)">🟢 PID 2115926 (309MB)</span></div>
+        <div class="kv"><span class="k">Moomoo Bridge</span><span class="val" style="color:var(--green)">🟢 PID 27104 (92MB)</span></div>
+      </div>
+
+      <!-- Financial & Margin Overview -->
+      <div class="panel span-6">
+        <h4>💸 Kedudukan Kewangan &amp; Kos Operasi <span class="subtext">Bulan Semasa</span></h4>
+        <div class="kv"><span class="k">Hasil Langganan (MRR)</span><span class="val" style="color:var(--green);font-size:1rem">RM 117.00</span></div>
+        <div class="kv"><span class="k">TradingView Essential Feed</span><span class="val">RM 61.00</span></div>
+        <div class="kv"><span class="k">Hosting VPS (2GB Hermes)</span><span class="val">RM 40.00</span></div>
+        <div class="kv"><span class="k">Supabase DB &amp; Cloudflare</span><span class="val">RM 0.00 (Free Tier)</span></div>
+        <div class="kv"><span class="k"><b>Jumlah Kos Operasi</b></span><span class="val" style="color:var(--red)"><b>RM 101.00</b></span></div>
+        <div class="kv" style="border-top:1px dashed var(--border);padding-top:10px;margin-top:6px"><span class="k"><b>Untung Bersih (Net Margin)</b></span><span class="val" style="color:var(--green);font-size:1.1rem"><b>+ RM 16.00 (Untung)</b></span></div>
+      </div>
+
+      <!-- Intelligence Snapshot Quick -->
+      <div class="panel span-6">
+        <h4>⚡ Intelligence &amp; Autonomi Audit <span class="subtext">Aura × Luma Dual-Node</span></h4>
+        <div style="background:rgba(74,222,128,0.08);border:1px solid rgba(74,222,128,0.25);border-radius:10px;padding:14px;margin-bottom:12px">
+          <div style="font-size:0.75rem;font-weight:700;color:var(--green);text-transform:uppercase;font-family:var(--mono)">Autonomy Score: 95.7%</div>
+          <div style="font-size:0.86rem;color:var(--ink);margin-top:4px">Aura bertindak sebagai Pembuat Keputusan ReAct Loop manakala Luma melaksanakan tugas pembangunan secara autonomi.</div>
+        </div>
+        <div class="kv"><span class="k">Jumlah Langkah (Steps)</span><span class="val">1,449 langkah</span></div>
+        <div class="kv"><span class="k">Pelaksanaan Tool MCP</span><span class="val">585 panggilan berjaya</span></div>
+        <div class="kv"><span class="k">Penjimatan Masa Anggaran</span><span class="val" style="color:var(--accent)">42 jam kerja manual</span></div>
+      </div>
+
+      <!-- HITL Pending Overview -->
+      <div class="panel span-6">
+        <h4>📌 Tindakan Keutamaan Boss (HITL) <span class="subtext">Tindakan Diperlukan</span></h4>
+        <div class="hitl-item"><input type="checkbox" id="qhitl1" onchange="toggleHitl(0)"><span class="title">Beli Domain auraone.my &amp; Halakan DNS</span><span class="p-tag p-high">HIGH</span></div>
+        <div class="hitl-item"><input type="checkbox" id="qhitl2" onchange="toggleHitl(1)"><span class="title">Daftar Akaun ToyyibPay (Live Payment Gateway)</span><span class="p-tag p-high">HIGH</span></div>
+        <div class="hitl-item"><input type="checkbox" id="qhitl3" onchange="toggleHitl(2)"><span class="title">Sambung MT5 Broker untuk Feed Harga Masa Nyata</span><span class="p-tag p-med">MED</span></div>
+        <div class="hitl-item"><input type="checkbox" id="qhitl4" onchange="toggleHitl(3)"><span class="title">Pendaftaran Akta JPDP / PDPA Malaysia</span><span class="p-tag p-med">MED</span></div>
       </div>
     </div>
   </div>
-  <div class="disclaimer" style="margin-top:22px">⚠️ Trading content provided by AuraOne Cloud is analysis and education only — it is not a licensed investment adviser. No profit is guaranteed. All decisions are your own responsibility.</div>
+
+  <!-- TAB 2: PENGURUSAN USER -->
+  <div class="adm-tab-pane" id="pane-adm-users">
+    <div class="panel">
+      <h4>Pengurusan Akaun Penyewa &amp; Kredit <span class="subtext">Togol Pause/Resume atau tambah kredit pengguna</span></h4>
+      <div style="display:flex;gap:10px;margin-bottom:16px;flex-wrap:wrap">
+        <input class="field" id="userSearch" placeholder="Cari nama atau emel pengguna..." style="max-width:320px;margin-bottom:0" oninput="filterUsers()">
+        <button class="btn primary sm" onclick="alert('Borang pendaftaran penyewa baharu sedia disambung ke Supabase.')">＋ Tambah Penyewa</button>
+      </div>
+      <div style="overflow-x:auto">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nama</th>
+              <th>Emel</th>
+              <th>Pelan</th>
+              <th>Kredit Diguna</th>
+              <th>Baki Kredit</th>
+              <th>Status</th>
+              <th>Tarikh Daftar</th>
+              <th>Tindakan</th>
+            </tr>
+          </thead>
+          <tbody id="admUserRows"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB 3: TELEMETRI PELAYAN (Merged from dashboard.html) -->
+  <div class="adm-tab-pane" id="pane-adm-telemetry">
+    <div class="grid-bento">
+      <!-- 60-Day Trend Chart -->
+      <div class="panel span-12">
+        <h4>📈 Trend Penggunaan &amp; Anggaran Kos <span class="subtext">Statistik 60 Hari Terakhir (Canvas 2D)</span></h4>
+        <canvas id="admTrendChart" height="200" style="width:100%"></canvas>
+        <div style="display:flex;gap:18px;margin-top:10px;font-size:0.75rem;color:var(--muted);font-family:var(--mono);flex-wrap:wrap">
+          <span><span style="display:inline-block;width:9px;height:9px;background:var(--accent);border-radius:2px;margin-right:4px"></span> Kos Harian (USD)</span>
+          <span><span style="display:inline-block;width:9px;height:9px;background:var(--blue);border-radius:2px;margin-right:4px"></span> Panggilan API (Calls)</span>
+          <span><span style="display:inline-block;width:9px;height:9px;background:var(--green);border-radius:2px;margin-right:4px"></span> Baki DeepSeek ($)</span>
+        </div>
+      </div>
+
+      <!-- DeepSeek Ledger Detail -->
+      <div class="panel span-6">
+        <h4>💰 DeepSeek API &amp; Model Routing <span class="subtext">platform.deepseek.com</span></h4>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px">
+          <div class="stat-card"><div class="k">Baki Akaun API</div><div class="v" style="color:var(--accent2)">$14.82</div><div class="d">Top-up: $10 · Grant: $5</div></div>
+          <div class="stat-card"><div class="k">Model Utama</div><div class="v" style="font-size:1.15rem">v4-flash</div><div class="d">Fallback: Gemini 2.5</div></div>
+        </div>
+        <div class="kv"><span class="k">Model Utama</span><span class="val">deepseek-v4-flash</span></div>
+        <div class="kv"><span class="k">Fallback 1 (Google)</span><span class="val">gemini-2.5-flash</span></div>
+        <div class="kv"><span class="k">Fallback 2 (Groq)</span><span class="val">llama-3.3-70b-versatile</span></div>
+        <div style="margin-top:10px">
+          <div style="display:flex;justify-content:space-between;font-family:var(--mono);font-size:0.74rem;color:var(--muted);margin-bottom:4px">
+            <span>Kadar Cache Hit (Prompt Cache)</span><span>95.2%</span>
+          </div>
+          <div class="bar-track"><i style="width:95.2%;background:var(--green)"></i></div>
+        </div>
+      </div>
+
+      <!-- Servis & Proses Aktif -->
+      <div class="panel span-6">
+        <h4>⚙️ Servis &amp; Proses VPS <span class="subtext">Systemd &amp; Background Runners</span></h4>
+        <div style="overflow-x:auto">
+          <table>
+            <thead><tr><th>Servis</th><th>Status</th><th>PID</th><th>Mem</th><th>CPU</th></tr></thead>
+            <tbody id="admServicesRows"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Kunci API Status -->
+      <div class="panel span-6">
+        <h4>🔑 Status Kunci API (.env Masked) <span class="subtext">Keselamatan &amp; Sandaran</span></h4>
+        <div style="overflow-x:auto">
+          <table>
+            <thead><tr><th>Nama Kunci</th><th>Status</th><th>Peranan</th><th>Prefix</th></tr></thead>
+            <tbody id="admKeysRows"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Cron Jobs Scheduled -->
+      <div class="panel span-6">
+        <h4>⏰ Jadual Tugas Automatik (Cron) <span class="subtext">Pelayan VPS</span></h4>
+        <div style="overflow-x:auto">
+          <table>
+            <thead><tr><th>Nama Tugasan</th><th>Jadual</th><th>Status</th></tr></thead>
+            <tbody id="admCronRows"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Injected Tools & MCP -->
+      <div class="panel span-12">
+        <h4>🧰 Tools &amp; Modul MCP Disuntik <span class="subtext">Keupayaan Dalaman Aura &amp; Boss</span></h4>
+        <div style="overflow-x:auto">
+          <table>
+            <thead><tr><th>Alatan / MCP</th><th>Status</th><th>Fungsi</th><th>Nota Pelaksanaan</th></tr></thead>
+            <tbody id="admToolsRows"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB 4: SKUAD 9 EJEN DETAIL -->
+  <div class="adm-tab-pane" id="pane-adm-fleet">
+    <div class="panel" style="margin-bottom:16px">
+      <h4>Matriks Kematangan &amp; Kesihatan Skuad 9 Ejen <span class="subtext">Phase P Master Fleet Health</span></h4>
+      <p style="color:var(--muted);font-size:0.86rem;margin-bottom:16px">Semua 9 watak AI beroperasi di bawah ReAct Central Orchestrator AuraOne sebagai modul domain khusus.</p>
+      <div class="fleet-grid" id="fleetAdminGrid"></div>
+    </div>
+  </div>
+
+  <!-- TAB 5: INTELLIGENCE AUDIT (Merged from intelligence.html) -->
+  <div class="adm-tab-pane" id="pane-adm-intel">
+    <div class="grid-bento">
+      <!-- Verdict Autonomi -->
+      <div class="panel span-12" style="background:linear-gradient(135deg,rgba(74,222,128,0.06),rgba(0,212,255,0.06));border-color:rgba(74,222,128,0.3)">
+        <div style="font-size:0.75rem;font-weight:700;color:var(--green);text-transform:uppercase;font-family:var(--mono);margin-bottom:6px">✅ Keputusan Audit Autonomi Rasmi (Snapshot: 31 Aug 2026)</div>
+        <div style="font-size:0.95rem;line-height:1.6;color:var(--ink)">
+          <strong>Aura = Central ReAct Decision Maker &amp; Orchestrator.</strong> AuraOne bertindak sebagai pembuat keputusan utama ReAct loop untuk semua perbualan pengguna &amp; Telegram. <strong>Luma (Antigravity/AGY)</strong> bertindak sebagai <em>Development Executor</em> untuk koding, integrasi servis &amp; pembaikan sistem. Tahap autonomi diukur pada <strong>95.7%</strong> tanpa halangan manual.
+        </div>
+      </div>
+
+      <!-- Stats 4 Card Intel -->
+      <div class="panel span-12" style="padding:14px 20px">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px">
+          <div class="stat-card"><div class="k">Sesi Diaudit</div><div class="v" style="color:var(--cyan)">8</div><div class="d">Conversations</div></div>
+          <div class="stat-card"><div class="k">Total Steps</div><div class="v" style="color:var(--violet)">1,449</div><div class="d">Langkah Agentik</div></div>
+          <div class="stat-card"><div class="k">Tool Executions</div><div class="v" style="color:var(--accent)">585</div><div class="d">Panggilan Alat Luma</div></div>
+          <div class="stat-card"><div class="k">Prompt Boss</div><div class="v" style="color:var(--green)">114</div><div class="d">Arahan Khairul</div></div>
+        </div>
+      </div>
+
+      <!-- Dual Node Flow Diagram -->
+      <div class="panel span-6">
+        <h4>🔗 Seni Bina Dwi-Nod (Aura × Luma) <span class="subtext">ReAct Flow</span></h4>
+        <div class="dual-diagram">
+          <div class="d-node">
+            <div class="d-icon">👑</div>
+            <span style="font-size:0.75rem;font-weight:700">Boss Khairul</span>
+            <small style="color:var(--muted);font-size:0.68rem">Telegram Interface</small>
+          </div>
+          <div class="d-arr"><span>arahan</span><span>→</span></div>
+          <div class="d-node">
+            <div class="d-icon aura">🤖</div>
+            <span style="font-size:0.75rem;font-weight:700;color:var(--violet)">Aura (Lead)</span>
+            <small style="color:var(--muted);font-size:0.68rem">ReAct Planner</small>
+          </div>
+          <div class="d-arr"><span>delegate</span><span>⇄</span><span>hasil</span></div>
+          <div class="d-node">
+            <div class="d-icon luma">⚡</div>
+            <span style="font-size:0.75rem;font-weight:700;color:var(--cyan)">Luma (AGY)</span>
+            <small style="color:var(--muted);font-size:0.68rem">Dev Executor</small>
+          </div>
+          <div class="d-arr"><span>execute</span><span>→</span></div>
+          <div class="d-node">
+            <div class="d-icon">🛠️</div>
+            <span style="font-size:0.75rem;font-weight:700;color:var(--accent)">Tools / VPS</span>
+            <small style="color:var(--muted);font-size:0.68rem">Git, CLI, File</small>
+          </div>
+        </div>
+      </div>
+
+      <!-- Taburan Penggunaan Alatan (Tool Usage Bar Chart) -->
+      <div class="panel span-6">
+        <h4>🔧 Taburan Penggunaan Alatan (Tool Calls) <span class="subtext">585 Total Calls</span></h4>
+        <div id="admToolUsageBars" style="display:flex;flex-direction:column;gap:8px"></div>
+      </div>
+
+      <!-- Timeline Jejak Audit (Trace) -->
+      <div class="panel span-6">
+        <h4>⏱️ Jejak Garis Masa Pelaksanaan (Trace) <span class="subtext">Sesi Utama cd0f76fb</span></h4>
+        <div class="trace-list" id="admTraceList"></div>
+      </div>
+
+      <!-- Evidence / Bukti Sah -->
+      <div class="panel span-6">
+        <h4>📋 Bukti Tindakan Autonomi Disahkan <span class="subtext">Verified Runtime Actions</span></h4>
+        <div style="overflow-x:auto">
+          <table>
+            <thead><tr><th>Tindakan</th><th>Pelaksana</th><th>Alatan</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr><td>Bina 9 Fail Persona Ejen</td><td style="color:var(--cyan)">✦ Luma</td><td><span class="tool-tag">write_to_file</span></td><td><span class="st st-live">VERIFIED</span></td></tr>
+              <tr><td>Audit &amp; Imbas Direktori ~/.hermes</td><td style="color:var(--cyan)">✦ Luma</td><td><span class="tool-tag">run_command</span></td><td><span class="st st-live">VERIFIED</span></td></tr>
+              <tr><td>Pertukaran API Provider &amp; Fallback</td><td style="color:var(--cyan)">✦ Luma</td><td><span class="tool-tag">write_to_file</span></td><td><span class="st st-live">VERIFIED</span></td></tr>
+              <tr><td>Push Git ke Repo auraone-notes</td><td style="color:var(--cyan)">✦ Luma</td><td><span class="tool-tag">git push</span></td><td><span class="st st-live">VERIFIED</span></td></tr>
+              <tr><td>Optimumkan SOUL.md Jimat Token</td><td style="color:var(--cyan)">✦ Luma</td><td><span class="tool-tag">replace_file</span></td><td><span class="st st-live">VERIFIED</span></td></tr>
+              <tr><td>Bina Blueprint Aura Swarm Master</td><td style="color:var(--cyan)">✦ Luma</td><td><span class="tool-tag">write_to_file</span></td><td><span class="st st-live">VERIFIED</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB 6: HITL HUB & LEJAR KOS -->
+  <div class="adm-tab-pane" id="pane-adm-hitl">
+    <div class="grid-bento">
+      <!-- Lejar Kos Terperinci -->
+      <div class="panel span-6">
+        <h4>💸 Pecahan Kos Operasi Bulanan (Lejar) <span class="subtext">Infrastruktur &amp; API Feed</span></h4>
+        <div style="overflow-x:auto">
+          <table>
+            <thead><tr><th>Perkara</th><th>Kategori</th><th>Kos Bulanan</th></tr></thead>
+            <tbody>
+              <tr><td>TradingView Essential Data Feed</td><td>Data Pasaran</td><td class="mono">RM 61.00</td></tr>
+              <tr><td>VPS Hosting (Hermes 2GB RAM)</td><td>Infrastruktur</td><td class="mono">RM 40.00</td></tr>
+              <tr><td>Supabase DB &amp; Auth (Free Tier)</td><td>Pangkalan Data</td><td class="mono">RM 0.00</td></tr>
+              <tr><td>Cloudflare DNS, SSL &amp; WAF</td><td>Keselamatan</td><td class="mono">RM 0.00</td></tr>
+              <tr style="border-top:2px solid var(--border2);font-weight:700"><td>Jumlah Kos Operasi</td><td>Total</td><td class="mono" style="color:var(--red)">RM 101.00</td></tr>
+              <tr style="font-weight:700"><td>Anggaran Hasil Langganan (MRR)</td><td>Revenue</td><td class="mono" style="color:var(--green)">RM 117.00</td></tr>
+              <tr style="font-weight:800;background:rgba(74,222,128,0.06)"><td>Untung Bersih Operasi</td><td>Net Margin</td><td class="mono" style="color:var(--green)">+ RM 16.00</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Boss HITL Action Checklist -->
+      <div class="panel span-6">
+        <h4>📌 Senarai Semak &amp; Kelulusan Boss (HITL) <span class="subtext">Status disimpan automatik</span></h4>
+        <div id="admHitlList"></div>
+        <div style="margin-top:16px;display:flex;gap:8px">
+          <input class="field" id="newHitlTask" placeholder="Tambah tugasan kelulusan baharu..." style="margin-bottom:0">
+          <button class="btn primary sm" onclick="addNewHitl()">＋ Tambah</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="disclaimer" style="margin-top:24px">⚠️ AuraOne Mission Control — Paparan data demonstrasi &amp; telemetri operasi kanonikal platform. Hak cipta terpelihara Saklomak.my.</div>
 </section>
 
-<!-- ===== ADMIN ===== -->
-<section class="screen" id="s-admin">
-  <div class="dash-head">
-    <div><h2 style="font-size:1.5rem">🛡️ Admin Console — Boss only</h2>
-    <p style="color:var(--muted);font-size:.9rem">Full platform visibility. Actions here are live in the demo.</p></div>
-  </div>
-
-  <div class="stats4">
-    <div class="stat"><b id="stUsers">5</b><span>Total users</span></div>
-    <div class="stat"><b id="stAgents">12</b><span>Active agents</span></div>
-    <div class="stat"><b>184</b><span>Credits used (mo)</span></div>
-    <div class="stat"><b>RM 68</b><span>Est. MRR</span></div>
-  </div>
-
-  <div class="panel" style="margin-bottom:16px">
-    <h4>Users <span>Pause / Resume any row — prototype live</span></h4>
-    <div style="overflow-x:auto">
-      <table>
-        <thead><tr><th>Name</th><th>Email</th><th>Plan</th><th>Credits used</th><th>Status</th><th></th></tr></thead>
-        <tbody id="adminRows"></tbody>
-      </table>
-    </div>
-  </div>
-
-  <div class="grid2">
-    <div class="panel">
-      <h4>💸 Cost Spend This Month</h4>
-      <div class="stock"><span>TradingView Essential</span><span>RM61</span></div>
-      <div class="stock"><span>VPS hosting</span><span>RM40</span></div>
-      <div class="stock"><span>Supabase (free tier)</span><span>RM0</span></div>
-      <div class="stock"><span><b>Total</b></span><span style="color:var(--accent)"><b>RM113</b></span></div>
-    </div>
-    <div class="panel">
-      <h4>📌 Pending Items (Boss checklist)</h4>
-      <div class="stock"><span>Domain auraone.my — purchase &amp; point DNS</span><span class="badge warn">pending</span></div>
-      <div class="stock"><span>ToyyibPay account — real payments</span><span class="badge warn">pending</span></div>
-      <div class="stock"><span>MT5 broker — real price feed</span><span class="badge warn">pending</span></div>
-      <div class="stock"><span>JPDP registration — PDPA compliance</span><span class="badge warn">pending</span></div>
-    </div>
-  </div>
-  <div class="disclaimer" style="margin-top:22px">⚠️ Admin copy verified: AuronraOne Cloud provides analysis and education only — not a licensed investment adviser. (Prototype demo data.)</div>
-</section>
-
-<footer>
-  <div class="disclaimer">⚠️ AuraOne Cloud provides analysis and educational content only. It is not a licensed investment adviser, and no profit is guaranteed. All trading and business decisions remain your own responsibility.</div>
-  <p>© 2026 AuraOne Cloud · by Boss Khairul (khairulxshafiq)</p>
-  <p style="margin-top:6px"><a href="#" onclick="openLegal('terms');return false">Terms</a> · <a href="#" onclick="openLegal('privacy');return false">Privacy</a> · <a href="#" onclick="openLegal('contact');return false">Contact</a></p>
-</footer>
-
-<!-- ===== MODAL: topup ===== -->
+<!-- ========================================================================= -->
+<!-- MODALS                                                                    -->
+<!-- ========================================================================= -->
+<!-- Modal Top-Up -->
 <div class="modal" id="modalTopup" role="dialog" aria-modal="true">
   <div class="box">
-    <h3>Top Up Credits</h3>
-    <p>RM10 = 200 credits ⚡ · RM30 = 650 · RM50 = 1,150. This is a prototype demo — production will use ToyyibPay.</p>
-    <input class="field" id="topupAmt" placeholder="Amount (RM10 / RM30 / RM50)" value="RM10 = 200 credits">
+    <h3>Top Up Kredit AuraOne ⚡</h3>
+    <p>RM 10 = 200 kredit · RM 30 = 650 kredit · RM 50 = 1,150 kredit. (Prototaip demo — integrasi ToyyibPay sedia disambung).</p>
+    <label style="font-size:0.8rem;color:var(--muted);display:block;margin-bottom:6px">Pilih atau taip jumlah kredit:</label>
+    <select class="field" id="topupAmt">
+      <option value="200">RM 10 — 200 Kredit ⚡</option>
+      <option value="650">RM 30 — 650 Kredit ⚡ (+50 Bonus)</option>
+      <option value="1150">RM 50 — 1,150 Kredit ⚡ (+150 Bonus)</option>
+    </select>
     <div class="row">
-      <button class="btn ghost" onclick="closeModal('modalTopup')">Cancel</button>
-      <button class="btn primary" onclick="payNow()">Pay Now</button>
+      <button class="btn ghost" onclick="closeModal('modalTopup')">Batal</button>
+      <button class="btn primary" onclick="payNow()">Bayar &amp; Tambah Kredit</button>
     </div>
   </div>
 </div>
 
-<!-- ===== MODAL: connector API key ===== -->
+<!-- Modal Connector API Key -->
 <div class="modal" id="modalKey" role="dialog" aria-modal="true">
   <div class="box">
-    <h3 id="mKeyTitle">Connect Service</h3>
-    <p>Once enabled, your agent needs this connector's credentials (stored AES-256 encrypted).</p>
-    <input class="field" id="mKeyInput" placeholder="Paste API key / token here...">
+    <h3 id="mKeyTitle">Sambungkan Servis</h3>
+    <p>Sila masukkan kunci API / token untuk mengaktifkan penyambung ini (disimpan secara selamat AES-256).</p>
+    <input class="field" id="mKeyInput" placeholder="Tampal API Key / Token di sini...">
     <div class="err" id="keyErr"></div>
     <div class="row">
-      <button class="btn ghost" onclick="closeModal('modalKey')">Cancel</button>
-      <button class="btn primary" onclick="saveKey()">Save</button>
+      <button class="btn ghost" onclick="closeModal('modalKey')">Batal</button>
+      <button class="btn primary" onclick="saveKey()">Simpan &amp; Aktifkan</button>
     </div>
   </div>
 </div>
 
-<!-- ===== MODAL: legal placeholder ===== -->
+<!-- Modal Legal / PDPA -->
 <div class="modal" id="modalLegal" role="dialog" aria-modal="true">
   <div class="box">
-    <h3 id="legalTitle">Legal</h3>
-    <p id="legalBody">Placeholder — full legal text will be published before launch.</p>
-    <div class="row"><button class="btn ghost" onclick="closeModal('modalLegal')">Close</button></div>
+    <h3 id="legalTitle">Perundangan &amp; Privasi</h3>
+    <div id="legalBody" style="color:var(--muted);font-size:0.86rem;line-height:1.6;margin-bottom:16px"></div>
+    <div class="row"><button class="btn ghost" onclick="closeModal('modalLegal')">Tutup</button></div>
   </div>
 </div>
 
+<!-- Modal Admin User Top-up -->
+<div class="modal" id="modalAdminTopup" role="dialog" aria-modal="true">
+  <div class="box">
+    <h3>Ubah Kredit Pengguna</h3>
+    <p id="admTopupTarget">Tambah atau tolak kredit untuk penyewa.</p>
+    <input class="field" id="admTopupVal" type="number" placeholder="Jumlah kredit (e.g. 100)">
+    <div class="row">
+      <button class="btn ghost" onclick="closeModal('modalAdminTopup')">Batal</button>
+      <button class="btn primary" onclick="submitAdminTopup()">Kemas Kini</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="disclaimer">⚠️ AuraOne Cloud menyediakan perkhidmatan automasi pintar dan analisis data perniagaan untuk tujuan sokongan operasi. Ia bukan penasihat pelaburan berlesen di bawah Akta Pasaran Modal dan Perkhidmatan. Segala keputusan dagangan kekal tanggungjawab pengguna.</div>
+  <p>© 2026 AuraOne Cloud · Dikuasakan oleh Saklomak.my &amp; Boss Khairul (khairulxshafiq)</p>
+  <p style="margin-top:6px">
+    <a href="#" onclick="openLegal('terms');return false">Syarat Perkhidmatan</a> · 
+    <a href="#" onclick="openLegal('privacy');return false">Dasar Privasi (PDPA)</a> · 
+    <a href="#" onclick="openLegal('contact');return false">Hubungi Kami</a>
+  </p>
+</footer>
+
+<!-- ========================================================================= -->
+<!-- JAVASCRIPT: CANONICAL SINGLE-PAGE APP LOGIC                               -->
+<!-- ========================================================================= -->
 <script>
 "use strict";
-/* ---------- state ---------- */
-var USERS={
-  "demo@auraone.my":{pw:"demo123",name:"Khairul",role:"user",root:"#/app"},
-  "boss@auraone.my":{pw:"aura2026",name:"Boss",role:"admin",root:"#/admin"}
-};
-var state={
-  credits:260,
-  conn:{Telegram:true,GDrive:false,Dropbox:false,"Google Sheets":false,"FB Page":false,WhatsApp:false,Shopee:false,Gmail:false},
-  keys:{}
-};
-/* ---------- session ---------- */
-function getSession(){try{return JSON.parse(localStorage.getItem("a1session"))}catch(e){return null}}
-function setSession(s){s?localStorage.setItem("a1session",JSON.stringify(s)):localStorage.removeItem("a1session")}
-function storageCredits(v){try{v==null?localStorage.removeItem("a1credits"):localStorage.setItem("a1credits",v)}catch(e){}}
-function storageConn(v){try{localStorage.setItem("a1conn",JSON.stringify(v))}catch(e){}}
-function loadCredits(){var v=parseInt(localStorage.getItem("a1credits"),10);state.credits=isNaN(v)?260:v}
-function loadConn(){try{var v=JSON.parse(localStorage.getItem("a1conn"));if(v)state.conn=v}catch(e){}}
 
-/* ---------- router ---------- */
-var ROUTES=["home","pricing","login","app","admin"];
-function route(){
-  var h=location.hash||"#/home";
-  var m=h.match(/^#\/([a-z]+)(?:\?(.*))?$/);
-  var page=m?m[1]:"home";
-  if(ROUTES.indexOf(page)<0)page="home";
-  if((page==="app"||page==="admin")&&!getSession()){location.replace("#/login");return}
-  if(page==="admin"&&(!getSession()||getSession().role!=="admin")){location.replace("#/login");return}
-  if(page==="login"&&getSession())page=getSession().role==="admin"?"admin":"app";
+/* ---------- DATA STATIK KANONIKAL: ADM_DATA (SPEC 5.3) ---------- */
+var ADM_DATA = {
+  kpi: {
+    total_users: 5,
+    active_users: 4,
+    active_agents: 9,
+    total_agents: 9,
+    mrr_myr: 117,
+    mrr_growth_pct: "+18%",
+    deepseek_balance_usd: 14.82,
+    credits_used_month: 184,
+    cache_hit_pct: 95.2
+  },
+  system_telemetry: {
+    ram: { used_mb: 945, total_mb: 1967, pct: 48.0 },
+    cpu: { pct: 5.0, load: "0.10 0.08 0.20" },
+    disk: { used_pct: 39.0, free_gb: 17.2 },
+    uptime: "7h 13j 30m",
+    generated_at: "2026-09-17 12:30:00 (Demo Mode)"
+  },
+  services: [
+    { name: "Telegram Gateway", status: "running", pid: "2115926", mem: "309MB", cpu: "0.5%" },
+    { name: "Agent Runner Pool", status: "running", pid: "2699608", mem: "120MB", cpu: "0.2%" },
+    { name: "Moomoo OpenD Bridge", status: "running", pid: "27104", mem: "92MB", cpu: "0.4%" },
+    { name: "Cron Scheduler", status: "active", pid: "systemd", mem: "14MB", cpu: "0.0%" }
+  ],
+  keys: [
+    { name: "DEEPSEEK_API_KEY", status: "aktif", cls: "st-live", role: "Primary (v4-flash)", prefix: "sk-654e51..." },
+    { name: "GROQ_API_KEY", status: "backup", cls: "st-live", role: "Fallback 2 (Groq)", prefix: "gsk_Lxi0t..." },
+    { name: "GEMINI_API_KEY", status: "aktif", cls: "st-live", role: "Fallback 1 (Google)", prefix: "AQ.Ab8RN6..." },
+    { name: "ZAI_API_KEY", status: "aktif", cls: "st-live", role: "Auxiliary (GLM-4)", prefix: "0c864d..." },
+    { name: "TELEGRAM_BOT_TOKEN", status: "aktif", cls: "st-live", role: "auraSakluma_bot", prefix: "795896944..." },
+    { name: "AIRTABLE_API_KEY", status: "aktif", cls: "st-live", role: "Content Station", prefix: "patWYR0f..." }
+  ],
+  cron: [
+    { name: "Telemetry Collection", schedule: "Setiap 15 minit", status: "active" },
+    { name: "DeepSeek Balance Check", schedule: "Setiap 1 jam", status: "active" },
+    { name: "Morning Market Brief", schedule: "08:00 AM Harian", status: "active" },
+    { name: "Daily Data Backup", schedule: "00:00 Midnight", status: "active" }
+  ],
+  tools: [
+    ["run_command", "st-live", "LIVE", "296 runs", "Terminal sandbox & sistem execution"],
+    ["view_file", "st-live", "LIVE", "130 runs", "Pembacaan fail kod & konfigurasi"],
+    ["write_to_file", "st-live", "LIVE", "59 runs", "Penjanaan artifak & skrip"],
+    ["manage_task", "st-live", "LIVE", "32 runs", "Pengurusan tugasan background"],
+    ["find_by_name", "st-live", "LIVE", "24 runs", "Carian fail berasaskan glob"],
+    ["replace_file", "st-live", "LIVE", "20 runs", "Penyuntingan blok kod spesifik"],
+    ["grep_search", "st-live", "LIVE", "9 runs", "Carian corak ripgrep"],
+    ["Moomoo MCP", "st-progress", "PROGRESS", "31 runs", "Bridge harga saham Bursa Malaysia"]
+  ],
+  users: [
+    { id: "usr_01", name: "Ai Rina", email: "rina@demo.my", plan: "Starter", credits_used: 118, credits_bal: 182, status: "active", joined: "2026-09-01" },
+    { id: "usr_02", name: "Zul Hairom", email: "zul@demo.my", plan: "Pro", credits_used: 96, credits_bal: 904, status: "active", joined: "2026-09-03" },
+    { id: "usr_03", name: "Mak Cik Timah", email: "maktimah@demo.my", plan: "Trial", credits_used: 8, credits_bal: 12, status: "active", joined: "2026-09-14" },
+    { id: "usr_04", name: "Faiz Reworks", email: "faiz@demo.my", plan: "Starter", credits_used: 172, credits_bal: 128, status: "paused", joined: "2026-08-28" },
+    { id: "usr_05", name: "Boss Khairul", email: "boss@auraone.my", plan: "Pro (Owner)", credits_used: 40, credits_bal: 9999, status: "active", joined: "2026-08-01" }
+  ],
+  fleet_roster: [
+    { name: "Aura", role: "Swarm Lead & Orchestrator", status: "live", avatar: "👑", color: "#f4b860", tech_maturity: 95, ux_maturity: 92, desc: "Pembuat keputusan utama ReAct loop & perancangan matlamat.", triggers: ["aura", "bantu", "status", "swam"] },
+    { name: "Adrian", role: "News & Social Intelligence", status: "live", avatar: "📰", color: "#34d399", tech_maturity: 92, ux_maturity: 90, desc: "Wartawan digital pantas — kumpul & sahkan berita viral Malaysia.", triggers: ["berita", "trending", "viral", "gajet"] },
+    { name: "Xiao", role: "Copywriting & Ads Creator", status: "live", avatar: "✍️", color: "#f5a623", tech_maturity: 90, ux_maturity: 89, desc: "Penulis kreatif 5 wajah — draf FB, iklan & caption produk.", triggers: ["draf", "content", "ads", "caption"] },
+    { name: "Amira", role: "Bursa Stock Co-Pilot", status: "live", avatar: "📈", color: "#60a5fa", tech_maturity: 88, ux_maturity: 88, desc: "Cikgu trading disiplin risk-first — metodologi Asri Ahmad.", triggers: ["saham", "trading", "analisa", "dca"] },
+    { name: "Kumar", role: "Visual & LoRA Creator", status: "live", avatar: "🎨", color: "#34d399", tech_maturity: 94, ux_maturity: 91, desc: "FLUX LoRA + Gemini image gen — poster brand & watak konsisten.", triggers: ["gambar", "poster", "visual", "lora"] },
+    { name: "Maya", role: "Operations & Automation", status: "live", avatar: "⚙️", color: "#00d4ff", tech_maturity: 92, ux_maturity: 90, desc: "Pentadbir cekap — cron, alert Telegram, backup & integrasi.", triggers: ["ops", "automasi", "alert", "backup"] },
+    { name: "Akira", role: "Revenue & P&L Tracker", status: "live", avatar: "📊", color: "#f87171", tech_maturity: 85, ux_maturity: 84, desc: "Analis kewangan — jejak hasil jualan & margin kos vs untung.", triggers: ["revenue", "kewangan", "untung", "kos"] },
+    { name: "Liya", role: "Commerce & Shopee Closer", status: "planned", avatar: "🛍️", color: "#a78bfa", tech_maturity: 40, ux_maturity: 35, desc: "Sales gal mesra — urus katalog Shopee & khidmat pelanggan.", triggers: ["shopee", "produk", "harga", "pesanan"] },
+    { name: "Aziz", role: "Corporate Finance & Tax", status: "planned", avatar: "💰", color: "#f87171", tech_maturity: 30, ux_maturity: 25, desc: "Perancang kewangan teliti — bajet & pengurusan cukai.", triggers: ["bajet", "tunai", "cukai", "finance"] }
+  ],
+  hitl_checklist: [
+    { task: "Beli Domain auraone.my & Point DNS Cloudflare", status: "pending", priority: "HIGH" },
+    { task: "Daftar Akaun ToyyibPay untuk Live Payment Gateway", status: "pending", priority: "HIGH" },
+    { task: "Integrasi MT5 Broker untuk Feed Harga Bursa Masa Nyata", status: "pending", priority: "MEDIUM" },
+    { task: "Pendaftaran Akta JPDP / PDPA Malaysia", status: "pending", priority: "MEDIUM" },
+    { task: "Hardening SSH Password & Pengaktifan Firewall UFW", status: "pending", priority: "HIGH" },
+    { task: "Sandaran Pangkalan Data SQLite Harian ke Cloudflare R2", status: "completed", priority: "MEDIUM" }
+  ],
+  cost_breakdown: [
+    { item: "TradingView Essential", cost_myr: 61.00, type: "Data Feed" },
+    { item: "VPS Hosting (Hermes 2GB)", cost_myr: 40.00, type: "Infrastructure" },
+    { item: "Supabase DB & Auth", cost_myr: 0.00, type: "Free Tier" },
+    { item: "Domain DNS & SSL", cost_myr: 0.00, type: "Cloudflare Free" }
+  ],
+  tool_distribution: [
+    { name: "run_command", count: 296, color: "#f4b860" },
+    { name: "view_file", count: 130, color: "#00d4ff" },
+    { name: "write_to_file", count: 59, color: "#ffd28a" },
+    { name: "manage_task", count: 32, color: "#4ade80" },
+    { name: "find_by_name", count: 24, color: "#a78bfa" },
+    { name: "replace_file", count: 20, color: "#60a5fa" },
+    { name: "grep_search", count: 9, color: "#fbbf24" },
+    { name: "read_url", count: 5, color: "#7dd3fc" }
+  ],
+  trace_events: [
+    { time: "13:15", actor: "Boss Khairul", type: "user", content: "\"Hi Luma! Mula sesi audit kesediaan sistem AuraOne.\"" },
+    { time: "13:16", actor: "Luma AGY", type: "luma", content: "Membaca repositori, README.md, dan dokumen MERGE_PLAN.md" },
+    { time: "13:16", actor: "Luma Tool", type: "tool", tools: ["view_file", "find_by_name"], content: "Imbas fail persona di ~/.hermes/agents & skrip stats.json" },
+    { time: "13:22", actor: "Boss Khairul", type: "user", content: "\"Sahkan 9 persona rasmi untuk dilancarkan.\"" },
+    { time: "13:23", actor: "Luma Tool", type: "tool", tools: ["write_to_file (×9)", "git push"], content: "Jana konfigurasi 9 ejen kanonikal & push komit git" },
+    { time: "13:30", actor: "Luma AGY", type: "luma", content: "\"Semua modul diselaraskan mengikut spesifikasi Single SPA auraone.html.\"" }
+  ]
+};
+
+/* ---------- STATE & SESSIONS ---------- */
+var USERS = {
+  "demo@auraone.my": { pw: "demo123", name: "Khairul", role: "user", root: "#/app" },
+  "boss@auraone.my": { pw: "aura2026", name: "Boss Khairul", role: "admin", root: "#/admin" }
+};
+
+var state = {
+  credits: 260,
+  conn: { Telegram: true, GDrive: false, Dropbox: false, "Google Sheets": true, "FB Page": false, WhatsApp: false, Shopee: false, Gmail: false },
+  users: JSON.parse(JSON.stringify(ADM_DATA.users)),
+  hitl: JSON.parse(JSON.stringify(ADM_DATA.hitl_checklist))
+};
+
+function getSession() {
+  try { return JSON.parse(localStorage.getItem("a1session")); } catch(e) { return null; }
+}
+function setSession(s) {
+  if (s) localStorage.setItem("a1session", JSON.stringify(s));
+  else localStorage.removeItem("a1session");
+}
+function loadSavedState() {
+  var c = parseInt(localStorage.getItem("a1credits"), 10);
+  if (!isNaN(c)) state.credits = c;
+  try {
+    var con = JSON.parse(localStorage.getItem("a1conn"));
+    if (con) state.conn = con;
+    var u = JSON.parse(localStorage.getItem("a1users"));
+    if (Array.isArray(u) && u.length) state.users = u;
+    var h = JSON.parse(localStorage.getItem("a1hitl"));
+    if (Array.isArray(h) && h.length) state.hitl = h;
+  } catch(e) {}
+}
+function saveUsersState() {
+  try { localStorage.setItem("a1users", JSON.stringify(state.users)); } catch(e) {}
+}
+function saveHitlState() {
+  try { localStorage.setItem("a1hitl", JSON.stringify(state.hitl)); } catch(e) {}
+}
+
+/* ---------- ROUTER BERPUSAT (HASH ROUTER) ---------- */
+var VALID_ROUTES = ["home", "pricing", "login", "app", "admin", "intelligence"];
+
+function route() {
+  var hash = location.hash || "#/home";
+  var match = hash.match(/^#\/([a-z]+)(?:\?(.*))?$/);
+  var page = match ? match[1] : "home";
+
+  if (VALID_ROUTES.indexOf(page) < 0) page = "home";
+
+  var ses = getSession();
+
+  // Role Guarding logic
+  if ((page === "app" || page === "admin" || page === "intelligence") && !ses) {
+    location.replace("#/login");
+    return;
+  }
+  if (page === "admin" && (!ses || ses.role !== "admin")) {
+    location.replace("#/app");
+    return;
+  }
+  if (page === "intelligence") {
+    if (!ses) { location.replace("#/login"); return; }
+    if (ses.role === "admin") {
+      page = "admin";
+      showPage("admin");
+      switchAdminTab("intel");
+      return;
+    } else {
+      location.replace("#/app");
+      return;
+    }
+  }
+  if (page === "login" && ses) {
+    page = ses.role === "admin" ? "admin" : "app";
+  }
+
   showPage(page);
-  if(m&&m[2])parseQuery(m[2]);
-}
-function parseQuery(q){
-  var plan=(q.split("&").filter(function(p){return p.indexOf("plan=")===0})[0]||"").split("=")[1];
-  if(plan){var lead=document.getElementById("loginLead");if(lead)lead.textContent="Plan selected: "+plan.toUpperCase()+" — sign in to continue.";if(location.hash.indexOf("#/login")===0)go("#/login");}
-}
-function showPage(page){
-  document.querySelectorAll(".screen").forEach(function(s){s.classList.remove("active")});
-  var el=document.getElementById("s-"+page);if(el)el.classList.add("active");
-  document.querySelectorAll(".navlink").forEach(function(n){n.classList.toggle("act",n.getAttribute("data-nav")===page)});
-  var ses=getSession();
-  document.getElementById("navBal").style.display=ses?"" : "none";
-  document.getElementById("navDash").style.display=ses?"":"none";
-  document.getElementById("navSign").style.display=ses?"none":"";
-  document.getElementById("navOut").style.display=ses?"":"none";
-  document.getElementById("navBalNum").textContent=state.credits;
-  document.getElementById("navDash").href=ses&&ses.role==="admin"?"#/admin":"#/app";
-  if(page==="app"){document.getElementById("userName").textContent=ses?ses.name.split(" ")[0]:"friend";renderConn();document.getElementById("balNum").textContent=state.credits}
-  window.scrollTo(0,0);
-}
-function go(hash){location.hash=hash}
-window.addEventListener("hashchange",route);
-
-/* ---------- login ---------- */
-function fillDemo(kind){
-  document.getElementById("loginEmail").value=kind==="user"?"demo@auraone.my":"boss@auraone.my";
-  document.getElementById("loginPass").value=kind==="user"?"demo123":"aura2026";
-  document.getElementById("loginErr").textContent="";
-}
-function doLogin(){
-  var em=document.getElementById("loginEmail").value.trim().toLowerCase();
-  var pw=document.getElementById("loginPass").value;
-  var err=document.getElementById("loginErr");
-  if(!document.getElementById("agree").checked){err.textContent="Please agree to the Terms & Privacy Policy to continue.";return}
-  var u=USERS[em];
-  if(!u||u.pw!==pw){err.textContent="Incorrect email or password. Try the demo accounts below.";return}
-  setSession({email:em,name:u.name,role:u.role});
-  loadCredits();loadConn();
-  location.hash=u.root;
-}
-function logout(){setSession(null);location.hash="#/home"}
-
-/* ---------- credits / topup ---------- */
-function openTopup(){
-  if(!getSession()){location.hash="#/login";return}
-  document.getElementById("modalTopup").classList.add("open")}
-function payNow(){
-  closeModal("modalTopup");
-  state.credits+=200;storageCredits(state.credits);
-  document.getElementById("navBalNum").textContent=state.credits;
-  var b=document.getElementById("balNum");if(b)b.textContent=state.credits;
-}
-/* ---------- tabs ---------- */
-function switchTab(name){
-  document.querySelectorAll("#appTabs button").forEach(function(b){b.classList.toggle("act",b.getAttribute("data-tab")===name)});
-  ["agents","connect","set","trading"].forEach(function(t){
-    var p=document.getElementById("pane-"+t);if(p)p.style.display=t===name?"":"none"});
-  document.getElementById("chatWrap").style.display=name==="agents"?"":"none";
-  var wl=document.getElementById("watchlistPanel");
-  if(wl)wl.style.display=name==="trading"&&localStorage.getItem("a1trade")?"":"none";
-  document.getElementById("appCols").style.gridTemplateColumns=name==="trading"?"1fr":"2fr 1fr";
-}
-function switchTabWrap(e){
-  var btn=e.target.closest("button[data-tab]");if(!btn)return;
-  switchTab(btn.getAttribute("data-tab"));
+  if (match && match[2]) parseQuery(match[2]);
 }
 
-/* ---------- agents ---------- */
-function runAgent(btn){
-  if(state.credits<5){btn.textContent="No ⚡";setTimeout(function(){btn.textContent="Run"},1500);return}
-  if(btn.textContent.indexOf("Running")>-1)return;
-  btn.textContent="⏳ Running…";btn.disabled=true;
+function parseQuery(q) {
+  var plan = (q.split("&").filter(function(p){ return p.indexOf("plan=") === 0; })[0] || "").split("=")[1];
+  if (plan) {
+    var lead = document.getElementById("loginLead");
+    if (lead) lead.textContent = "Pelan dipilih: " + plan.toUpperCase() + " — Sila log masuk untuk meneruskan.";
+  }
+}
+
+function showPage(page) {
+  document.querySelectorAll(".screen").forEach(function(s){ s.classList.remove("active"); });
+  var el = document.getElementById("s-" + page);
+  if (el) el.classList.add("active");
+
+  document.querySelectorAll(".navlink").forEach(function(n){
+    n.classList.toggle("act", n.getAttribute("data-nav") === page);
+  });
+
+  var ses = getSession();
+  document.getElementById("navBal").style.display = ses ? "" : "none";
+  document.getElementById("navDash").style.display = ses ? "" : "none";
+  document.getElementById("navSign").style.display = ses ? "none" : "";
+  document.getElementById("navOut").style.display = ses ? "" : "none";
+  document.getElementById("navAdminLink").style.display = (ses && ses.role === "admin") ? "" : "none";
+  
+  document.getElementById("navBalNum").textContent = state.credits;
+  document.getElementById("navDash").href = (ses && ses.role === "admin") ? "#/admin" : "#/app";
+
+  if (page === "app") {
+    document.getElementById("userName").textContent = ses ? ses.name.split(" ")[0] : "Sahabat";
+    document.getElementById("balNum").textContent = state.credits;
+    renderConnectors();
+  }
+  if (page === "admin") {
+    renderAdminAll();
+  }
+
+  window.scrollTo(0, 0);
+}
+
+function go(hash) { location.hash = hash; }
+window.addEventListener("hashchange", route);
+
+/* ---------- AUTH / LOGIN ---------- */
+function fillDemo(kind) {
+  document.getElementById("loginEmail").value = kind === "user" ? "demo@auraone.my" : "boss@auraone.my";
+  document.getElementById("loginPass").value = kind === "user" ? "demo123" : "aura2026";
+  document.getElementById("loginErr").textContent = "";
+}
+
+function doLogin() {
+  var email = document.getElementById("loginEmail").value.trim().toLowerCase();
+  var pass = document.getElementById("loginPass").value;
+  var err = document.getElementById("loginErr");
+
+  if (!document.getElementById("agree").checked) {
+    err.textContent = "Sila tandakan persetujuan Syarat & Dasar Privasi PDPA.";
+    return;
+  }
+
+  var u = USERS[email];
+  if (!u || u.pw !== pass) {
+    err.textContent = "Emel atau kata laluan tidak tepat. Sila gunakan akaun demo di bawah.";
+    return;
+  }
+
+  setSession({ email: email, name: u.name, role: u.role });
+  loadSavedState();
+  location.hash = u.root;
+}
+
+function logout() {
+  setSession(null);
+  location.hash = "#/home";
+}
+
+/* ---------- CUSTOMER WORKSPACE (s-app) ---------- */
+function switchAppTab(name) {
+  document.querySelectorAll("#appTabs button").forEach(function(b){
+    b.classList.toggle("act", b.getAttribute("data-tab") === name);
+  });
+  ["agents", "connect", "set", "trading"].forEach(function(t){
+    var p = document.getElementById("pane-" + t);
+    if (p) p.style.display = (t === name) ? "" : "none";
+  });
+}
+
+function runAgent(btn) {
+  if (state.credits < 5) {
+    btn.textContent = "⚡ Kredit Kurang";
+    setTimeout(function(){ btn.textContent = "Jalankan (5⚡)"; }, 1500);
+    return;
+  }
+  if (btn.textContent.indexOf("Sedang") > -1) return;
+  btn.textContent = "⏳ Sedang Proses…";
+  btn.disabled = true;
+
   setTimeout(function(){
-    btn.textContent="✅ Done";
-    state.credits=Math.max(0,state.credits-5);storageCredits(state.credits);
-    document.getElementById("navBalNum").textContent=state.credits;
-    var b=document.getElementById("balNum");if(b)b.textContent=state.credits;
-    setTimeout(function(){btn.textContent="Run";btn.disabled=false},1600);
-  },1200);
+    btn.textContent = "✅ Siap Draf";
+    state.credits = Math.max(0, state.credits - 5);
+    localStorage.setItem("a1credits", state.credits);
+    document.getElementById("navBalNum").textContent = state.credits;
+    var b = document.getElementById("balNum");
+    if (b) b.textContent = state.credits;
+    setTimeout(function(){ btn.textContent = "Jalankan (5⚡)"; btn.disabled = false; }, 1600);
+  }, 1200);
 }
 
-/* ---------- connectors ---------- */
-var pendingConn=null;
-function renderConn(){
-  var list=document.getElementById("connList");if(!list)return;
-  list.innerHTML="";
+var pendingConn = null;
+function renderConnectors() {
+  var list = document.getElementById("connList");
+  if (!list) return;
+  list.innerHTML = "";
   Object.keys(state.conn).forEach(function(name){
-    var on=state.conn[name];
-    var d=document.createElement("div");
-    d.className="conn"+(on?" on":"");
-    d.setAttribute("role","switch");d.setAttribute("aria-checked",on?"true":"false");
-    d.setAttribute("tabindex","0");
-    d.innerHTML='<span class="sw"></span>'+name;
-    d.onclick=function(){
-      if(!on){pendingConn=name;document.getElementById("mKeyTitle").textContent="Connect "+name;
-        document.getElementById("mKeyInput").value="";document.getElementById("keyErr").textContent="";
-        document.getElementById("modalKey").classList.add("open")}
-      else{state.conn[name]=false;storageConn(state.conn);renderConn()};
+    var on = state.conn[name];
+    var d = document.createElement("div");
+    d.className = "conn" + (on ? " on" : "");
+    d.setAttribute("role", "switch");
+    d.setAttribute("aria-checked", on ? "true" : "false");
+    d.innerHTML = '<span class="sw"></span><span>' + name + '</span>';
+    d.onclick = function() {
+      if (!on) {
+        pendingConn = name;
+        document.getElementById("mKeyTitle").textContent = "Sambungkan " + name;
+        document.getElementById("mKeyInput").value = "";
+        document.getElementById("keyErr").textContent = "";
+        document.getElementById("modalKey").classList.add("open");
+      } else {
+        state.conn[name] = false;
+        localStorage.setItem("a1conn", JSON.stringify(state.conn));
+        renderConnectors();
+      }
     };
-    d.onkeydown=function(e){if(e.key===" "||e.key==="Enter"){e.preventDefault();d.onclick()}};
     list.appendChild(d);
   });
 }
-function saveKey(){
-  var v=document.getElementById("mKeyInput").value.trim();
-  if(v.length<4){document.getElementById("keyErr").textContent="Please paste a valid API key.";return}
-  state.conn[pendingConn]=true;storageConn(state.conn);renderConn();
+
+function saveKey() {
+  var val = document.getElementById("mKeyInput").value.trim();
+  if (val.length < 4) {
+    document.getElementById("keyErr").textContent = "Sila masukkan kunci API yang sah.";
+    return;
+  }
+  state.conn[pendingConn] = true;
+  localStorage.setItem("a1conn", JSON.stringify(state.conn));
+  renderConnectors();
   closeModal("modalKey");
 }
-/* ---------- settings ---------- */
-function saveSettings(){
-  document.getElementById("setSaved").textContent="✅ Saved";
-  setTimeout(function(){document.getElementById("setSaved").textContent=""},2000);
-}
-/* ---------- chat ---------- */
-var _chatTimer=null;
-function demoChat(){
-  if(!showChatOnHome()){var w=document.getElementById("chatlog");if(w)w.scrollIntoView({behavior:"smooth",block:"center"})}
-}
-function showChatOnHome(){
-  var built=document.getElementById("homeChatDemo");
-  if(built){built.scrollIntoView({behavior:"smooth",block:"center"});return false}
-  var host=document.createElement("div");host.id="homeChatDemo";
-  var p=document.createElement("div");p.className="panel profile-quiz";p.style.marginTop="14px";
-  p.innerHTML='<h4>Try the Chat <span>Type in English or Malay — Aura replies in kind</span></h4>'+
-    '<div style="display:flex;gap:8px;flex-wrap:wrap"><input class="field" id="homeChatInput" style="flex:1;min-width:200px" placeholder="Type in English or Malay..."><button class="btn primary" onclick="homeSend()">Send</button></div>'+
-    '<div class="msg a" id="homeChatMsg" style="margin-top:12px">Hello! Ask me about content, imagery, or a quick market check.</div>';
-  host.appendChild(p);
-  var heroBtn=host.querySelector("div.panel");
-  document.getElementById("s-home").insertBefore(host,document.getElementById("s-home").querySelector(".features"));
-  host.scrollIntoView({behavior:"smooth",block:"center"});
-  return true;
-}
-function anySend(inputId,logId,msgElId){
-  var inp=document.getElementById(inputId);var t=inp.value.trim();
-  if(!t)return false;
-  logOrMsg(logId,msgElId,"u",t);inp.value="";
-  var reply=chatReply(t);
-  setTimeout(function(){logOrMsg(logId,msgElId,"a",reply);},700);
-  return true;
-}
-function logOrMsg(logId,msgElId,cls,text){
-  var log=logId?document.getElementById(logId):null;
-  var div=document.createElement("div");
-  div.className="msg "+cls;div.textContent=text;
-  if(log){log.appendChild(div);log.scrollTop=log.scrollHeight}
-  else{var m=document.getElementById(msgElId);if(m){m.className="msg "+cls;m.textContent=text}}
-}
-function isMalay(t){
-  return /\b(saham|isi|buat|harga|nak|kena|boleh|macam|apa|kasi|tunggu|saya|kami|anda|terima|kasih|tolong|murah|mahal|jualan|bisnes|kedai|duit|ringgit|hari|esok|pagi|petang|malam|oh|ya|tak|jangan| Dah|cari|suruh)\b/i.test(t)||/\bsiapa|bila|mana|kenapa\b/i.test(t);
-}
-function chatReply(t){
-  var bm=isMalay(t);
-  if(/(dca|trade|trading|saham|stock|bursa|buy|sell|portfolio|TP|SL)/i.test(t)){
-    if(bm)return "📈 Berdasarkan profil anda (Bursa · DCA): MAYBANK menunjukkan momentum stabil di sekitar RM9.98 · sokongan RM9.70–9.95 · rujukan TP RM10.50 · SL RM9.40. Semakan DCA: 3 lot bulan ini mengikut profil konseratif.\n\n⚠️ Ini analisis sahaja — Aura tidak melaksanakan pesanan. Keputusan jual/beli tetap tanggungjawab anda.";
-    return "📈 Based on your profile (Bursa · Monthly DCA): MAYBANK shows steady momentum near RM9.98. Suggested DCA entry zone: RM9.70–9.95 · reference take-profit: RM10.50 · reference stop-loss: RM9.40. Watchlist: PETRONAS Dagangan ▼0.8%, GAMUDA ▲1.2%, SUNWAY ▼0.3%. News sentiment: banks moderately positive on rate hold.\n\n⚠️ Advise only — Aura never places orders. The decision is always yours.";
-  }
-  if(bm)return "Terima kasih! 😊 Saya dah terima notis anda dan akan mula uruskan sekarang. Semak draf saya di tab My Agents — semua output menunggu kelulusan anda dahulu sebelum diterbitkan.";
-  if(/image|logo|poster|picture|gambar/i.test(t))return "🎨 Right away! I'll prepare 3 brand image variants (20 ⚡ each). Would you prefer a minimal, contextual, or bold style? You can review before I save anything.";
-  return "✅ Noted — I'll draft that for you. You can review and approve before my agent publishes anything. Shall I show you the draft now?";
+
+function saveSettings() {
+  var el = document.getElementById("setSaved");
+  el.textContent = "✅ Tetapan Berjaya Disimpan";
+  setTimeout(function(){ el.textContent = ""; }, 2200);
 }
 
-/* ---------- modals / legal ---------- */
-function closeModal(id){document.getElementById(id).classList.remove("open")}
-var LEGAL={
-  terms:{t:"Terms of Service",b:"[Placeholder] AuraOne Cloud demo build. Full Terms of Service will be published before production launch. This prototype does not constitute a binding agreement."},
-  privacy:{t:"Privacy Policy (PDPA)",b:"[Placeholder] AuraOne Cloud demo build. Full Privacy Policy compliant with PDPA (Malaysia) will be published before launch. Demo data is stored only in your browser's localStorage."},
-  contact:{t:"Contact Us",b:"[Placeholder] Reach the team at hello@auraone.my (demo). Production support channels will be announced at launch."}
+function saveTradingProfile() {
+  var pr = {
+    level: document.getElementById("trLevel").value,
+    market: document.getElementById("trMarket").value,
+    style: document.getElementById("trStyle").value,
+    risk: document.getElementById("trRisk").value
+  };
+  localStorage.setItem("a1trade", JSON.stringify(pr));
+  alert("Profil dagangan dikemas kini! Senarai cadangan DCA diselaraskan.");
+}
+
+/* ---------- CHAT SIMULATOR (BM / EN DETECTOR) ---------- */
+function isMalay(t) {
+  return /\b(saham|isi|buat|harga|nak|kena|boleh|macam|apa|kasi|tunggu|saya|kami|anda|terima|kasih|tolong|murah|mahal|jualan|bisnes|kedai|duit|ringgit|hari|esok|pagi|petang|malam|oh|ya|tak|jangan|dah|cari|suruh|analisa|bursa|siapa|bila|mana|kenapa|untung|rugi)\b/i.test(t);
+}
+
+function chatReply(t) {
+  var bm = isMalay(t);
+  if (/(dca|trade|trading|saham|stock|bursa|buy|sell|portfolio|tp|sl|cut loss|inari|genm|maybank)/i.test(t)) {
+    if (bm) return "📈 Berdasarkan profil anda (Bursa Malaysia · Monthly DCA):\n• MAYBANK menunjukkan momentum stabil di sekitar RM9.98 (Zon DCA RM9.70–9.95 · Rujukan TP RM10.50 · SL RM9.40).\n• INARI (0166) berhampiran sasaran TP1 RM4.20.\n\n⚠️ Peringatan: Ini analisis pendidikan sahaja. Aura tidak membuat pesanan beli/jual secara automatik.";
+    return "📈 Based on your profile (Bursa Malaysia · Monthly DCA):\n• MAYBANK shows solid momentum near RM9.98 (DCA entry zone: RM9.70–9.95 · reference TP: RM10.50 · SL: RM9.40).\n• INARI (0166) is approaching target TP1 RM4.20.\n\n⚠️ Advise-only: Aura never places orders automatically.";
+  }
+  if (/(gambar|poster|image|visual|kumar|lora|foto)/i.test(t)) {
+    if (bm) return "🎨 Baik! Ejen KUMAR bersedia menjana 3 variasi visual promosi beresolusi tinggi (5 ⚡). Gaya mana anda sukai — minimal, kontekstual atau bold?";
+    return "🎨 Ready! Agent KUMAR is prepared to generate 3 brand-aligned image variants (5 ⚡). Would you prefer minimal, bold, or lifestyle framing?";
+  }
+  if (/(berita|trending|viral|adrian|news)/i.test(t)) {
+    if (bm) return "📰 Adrian telah mengumpulkan 5 topik viral pagi ini (disahkan silang merentas BH, Metro & Google News). Semak draf artikel di tab My Agents.";
+    return "📰 Adrian has compiled 5 verified trending stories this morning. You can review and approve drafts under the My Agents tab.";
+  }
+  if (bm) return "✅ Terima kasih! Arahan anda telah direkodkan. Skuad AI sedang menyediakan draf — anda boleh menyemak dan mengesahkannya di tab My Agents.";
+  return "✅ Noted! Your request is being processed by the AI workforce. Drafts will be ready for your review and approval before publishing.";
+}
+
+function sendMsg() {
+  var inp = document.getElementById("chatInput");
+  var t = inp.value.trim();
+  if (!t) return;
+  
+  var log = document.getElementById("chatlog");
+  var uDiv = document.createElement("div");
+  uDiv.className = "msg u";
+  uDiv.textContent = t;
+  log.appendChild(uDiv);
+  inp.value = "";
+  log.scrollTop = log.scrollHeight;
+
+  setTimeout(function(){
+    var aDiv = document.createElement("div");
+    aDiv.className = "msg a";
+    aDiv.textContent = chatReply(t);
+    log.appendChild(aDiv);
+    log.scrollTop = log.scrollHeight;
+  }, 600);
+}
+
+function demoChat() {
+  var scr = document.getElementById("s-app");
+  if (getSession()) {
+    go("#/app");
+  } else {
+    go("#/login");
+  }
+}
+
+/* ---------- ADMIN MISSION CONTROL (s-admin) ---------- */
+function switchAdminTab(tabName) {
+  document.querySelectorAll("#admTabs button").forEach(function(b){
+    b.classList.toggle("act", b.getAttribute("data-admtab") === tabName);
+  });
+  document.querySelectorAll(".adm-tab-pane").forEach(function(p){
+    p.classList.remove("active");
+  });
+  var target = document.getElementById("pane-adm-" + tabName);
+  if (target) target.classList.add("active");
+  
+  if (tabName === "telemetry") {
+    setTimeout(drawAdminTrendChart, 100);
+  }
+}
+
+function renderAdminAll() {
+  renderAdminUsers();
+  renderAdminServices();
+  renderAdminKeys();
+  renderAdminCron();
+  renderAdminTools();
+  renderAdminFleet();
+  renderAdminIntel();
+  renderAdminHitl();
+}
+
+/* Render Users Table */
+function renderAdminUsers(filter) {
+  var tb = document.getElementById("admUserRows");
+  if (!tb) return;
+  tb.innerHTML = "";
+  var list = state.users;
+  if (filter) {
+    var f = filter.toLowerCase();
+    list = list.filter(function(u){ return u.name.toLowerCase().indexOf(f) > -1 || u.email.toLowerCase().indexOf(f) > -1; });
+  }
+
+  list.forEach(function(u, idx){
+    var tr = document.createElement("tr");
+    var isPaused = (u.status === "paused");
+    tr.innerHTML = 
+      '<td class="mono">' + u.id + '</td>' +
+      '<td><b>' + u.name + '</b></td>' +
+      '<td class="mono">' + u.email + '</td>' +
+      '<td><span class="badge">' + u.plan + '</span></td>' +
+      '<td class="mono">' + u.credits_used + ' ⚡</td>' +
+      '<td class="mono"><b>' + u.credits_bal + ' ⚡</b></td>' +
+      '<td><span class="pill-st ' + (isPaused ? 'paused' : 'on') + '">' + (isPaused ? 'Paused' : 'Active') + '</span></td>' +
+      '<td class="mono">' + u.joined + '</td>' +
+      '<td>' +
+        '<button class="rowbtn" onclick="toggleUserStatus(' + idx + ')">' + (isPaused ? 'Resume' : 'Pause') + '</button> ' +
+        '<button class="rowbtn" onclick="openAdminTopup(' + idx + ')">＋ Topup</button>' +
+      '</td>';
+    tb.appendChild(tr);
+  });
+
+  // Update KPI counts
+  var activeCount = state.users.filter(function(u){ return u.status === "active"; }).length;
+  document.getElementById("admKpiUsers").textContent = state.users.length;
+  document.getElementById("admKpiUsersSub").textContent = activeCount + " Aktif · " + (state.users.length - activeCount) + " Paused";
+}
+
+function filterUsers() {
+  var v = document.getElementById("userSearch").value.trim();
+  renderAdminUsers(v);
+}
+
+function toggleUserStatus(idx) {
+  state.users[idx].status = (state.users[idx].status === "paused") ? "active" : "paused";
+  saveUsersState();
+  renderAdminUsers();
+}
+
+var adminTopupIdx = null;
+function openAdminTopup(idx) {
+  adminTopupIdx = idx;
+  document.getElementById("admTopupTarget").textContent = "Tambah kredit untuk: " + state.users[idx].name + " (" + state.users[idx].email + ")";
+  document.getElementById("admTopupVal").value = "100";
+  document.getElementById("modalAdminTopup").classList.add("open");
+}
+function submitAdminTopup() {
+  var v = parseInt(document.getElementById("admTopupVal").value, 10);
+  if (!isNaN(v) && adminTopupIdx !== null) {
+    state.users[adminTopupIdx].credits_bal += v;
+    saveUsersState();
+    renderAdminUsers();
+  }
+  closeModal("modalAdminTopup");
+}
+
+/* Render Services */
+function renderAdminServices() {
+  var tb = document.getElementById("admServicesRows");
+  if (!tb) return;
+  tb.innerHTML = ADM_DATA.services.map(function(s){
+    return '<tr><td><b>' + s.name + '</b></td><td><span class="st st-live">' + s.status + '</span></td><td class="mono">' + s.pid + '</td><td class="mono">' + s.mem + '</td><td class="mono">' + s.cpu + '</td></tr>';
+  }).join("");
+}
+
+/* Render API Keys */
+function renderAdminKeys() {
+  var tb = document.getElementById("admKeysRows");
+  if (!tb) return;
+  tb.innerHTML = ADM_DATA.keys.map(function(k){
+    return '<tr><td class="mono"><b>' + k.name + '</b></td><td><span class="st ' + k.cls + '">' + k.status + '</span></td><td>' + k.role + '</td><td class="mono">' + k.prefix + '</td></tr>';
+  }).join("");
+}
+
+/* Render Cron */
+function renderAdminCron() {
+  var tb = document.getElementById("admCronRows");
+  if (!tb) return;
+  tb.innerHTML = ADM_DATA.cron.map(function(c){
+    return '<tr><td><b>' + c.name + '</b></td><td class="mono">' + c.schedule + '</td><td><span class="st st-live">' + c.status + '</span></td></tr>';
+  }).join("");
+}
+
+/* Render Tools */
+function renderAdminTools() {
+  var tb = document.getElementById("admToolsRows");
+  if (!tb) return;
+  tb.innerHTML = ADM_DATA.tools.map(function(t){
+    return '<tr><td class="mono"><b>' + t[0] + '</b></td><td><span class="st ' + t[1] + '">' + t[2] + '</span></td><td class="mono">' + t[3] + '</td><td>' + t[4] + '</td></tr>';
+  }).join("");
+}
+
+/* Render Fleet Roster (Both in Home & Admin) */
+function renderAdminFleet() {
+  var targetAdm = document.getElementById("fleetAdminGrid");
+  var targetHome = document.getElementById("fleetHomeGrid");
+  var html = ADM_DATA.fleet_roster.map(function(p){
+    var isPlanned = (p.status === "planned");
+    var stCls = isPlanned ? "st-planned" : "st-live";
+    return '<div class="fleet-card' + (isPlanned ? ' planned' : '') + '">' +
+      '<div class="head">' +
+        '<div class="av" style="background:' + p.color + '22;color:' + p.color + '">' + p.avatar + '</div>' +
+        '<div><div class="nm">' + p.name + ' <span class="st ' + stCls + '">' + p.status + '</span></div><div class="wt">' + p.role + '</div></div>' +
+      '</div>' +
+      '<div class="sv">' + p.desc + '</div>' +
+      '<div class="meter">' +
+        '<div class="meter-row"><span>Technical Maturity</span><span>' + p.tech_maturity + '%</span></div>' +
+        '<div class="bar-track"><i style="width:' + p.tech_maturity + '%;background:' + p.color + '"></i></div>' +
+      '</div>' +
+      '<div class="trig">' + p.triggers.map(function(t){ return '<span>' + t + '</span>'; }).join("") + '</div>' +
+    '</div>';
+  }).join("");
+
+  if (targetAdm) targetAdm.innerHTML = html;
+  if (targetHome) targetHome.innerHTML = html;
+}
+
+/* Render Intel Tab */
+function renderAdminIntel() {
+  // Tool usage bars
+  var bWrap = document.getElementById("admToolUsageBars");
+  if (bWrap) {
+    var maxC = ADM_DATA.tool_distribution[0].count;
+    bWrap.innerHTML = ADM_DATA.tool_distribution.map(function(t){
+      var pct = Math.round((t.count / maxC) * 100);
+      return '<div style="display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:0.75rem">' +
+        '<span style="width:110px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--ink)">' + t.name + '</span>' +
+        '<div class="bar-track" style="flex:1"><i style="width:' + pct + '%;background:' + t.color + '"></i></div>' +
+        '<span style="width:30px;text-align:right;color:var(--muted)">' + t.count + '</span>' +
+      '</div>';
+    }).join("");
+  }
+
+  // Trace list
+  var tWrap = document.getElementById("admTraceList");
+  if (tWrap) {
+    tWrap.innerHTML = ADM_DATA.trace_events.map(function(e){
+      var dCls = (e.type === "user") ? "tdot-user" : (e.type === "luma" ? "tdot-luma" : "tdot-tool");
+      var aCls = (e.type === "user") ? "tact-user" : (e.type === "luma" ? "tact-luma" : "tact-tool");
+      var tools = e.tools ? e.tools.map(function(tl){ return '<span class="tool-tag">' + tl + '</span>'; }).join("") : "";
+      return '<div class="trace-item">' +
+        '<div class="trace-dot ' + dCls + '"></div>' +
+        '<div class="trace-time">' + e.time + ' UTC · 2026-08-31</div>' +
+        '<div class="trace-actor ' + aCls + '">' + e.actor + '</div>' +
+        '<div>' + tools + e.content + '</div>' +
+      '</div>';
+    }).join("");
+  }
+}
+
+/* Render HITL Checklist */
+function renderAdminHitl() {
+  var wrap = document.getElementById("admHitlList");
+  if (!wrap) return;
+  wrap.innerHTML = state.hitl.map(function(item, i){
+    var isDone = (item.status === "completed");
+    var pCls = (item.priority === "HIGH") ? "p-high" : "p-med";
+    return '<div class="hitl-item' + (isDone ? ' done' : '') + '">' +
+      '<input type="checkbox" ' + (isDone ? 'checked' : '') + ' onchange="toggleHitl(' + i + ')">' +
+      '<span class="title" style="flex:1">' + item.task + '</span>' +
+      '<span class="p-tag ' + pCls + '">' + item.priority + '</span>' +
+    '</div>';
+  }).join("");
+
+  // Sync quick items in Tab 1
+  for (var k = 0; k < 4; k++) {
+    var cb = document.getElementById("qhitl" + (k + 1));
+    if (cb && state.hitl[k]) cb.checked = (state.hitl[k].status === "completed");
+  }
+}
+
+function toggleHitl(idx) {
+  if (state.hitl[idx]) {
+    state.hitl[idx].status = (state.hitl[idx].status === "completed") ? "pending" : "completed";
+    saveHitlState();
+    renderAdminHitl();
+  }
+}
+
+function addNewHitl() {
+  var inp = document.getElementById("newHitlTask");
+  var t = inp.value.trim();
+  if (!t) return;
+  state.hitl.push({ task: t, status: "pending", priority: "MEDIUM" });
+  saveHitlState();
+  inp.value = "";
+  renderAdminHitl();
+}
+
+/* Canvas 2D Trend Chart (Zero External CDN) */
+function drawAdminTrendChart() {
+  var cv = document.getElementById("admTrendChart");
+  if (!cv) return;
+  var dpr = window.devicePixelRatio || 1;
+  var W = cv.clientWidth || 900;
+  var H = 200;
+  cv.width = W * dpr;
+  cv.height = H * dpr;
+  var ctx = cv.getContext("2d");
+  ctx.scale(dpr, dpr);
+  ctx.clearRect(0, 0, W, H);
+
+  // Generate 60 days mock data
+  var days = 60;
+  var hist = [];
+  for (var i = 0; i < days; i++) {
+    var c = 0.08 + Math.sin(i / 5) * 0.04 + (i % 7 === 0 ? 0.05 : 0);
+    var calls = 20 + Math.floor(Math.sin(i / 4) * 12) + (i % 6 === 0 ? 15 : 0);
+    var bal = 15.0 - (i * 0.015);
+    hist.push({ cost: c, calls: calls, balance: bal, date: "08-" + (i < 9 ? "0" + (i + 1) : (i + 1)) });
+  }
+
+  var padL = 40, padR = 14, padT = 14, padB = 24;
+  var iw = W - padL - padR, ih = H - padT - padB;
+  var maxCost = 0.20;
+  var maxCalls = 50;
+  var maxBal = 16.0;
+
+  // Draw Grid Lines
+  ctx.strokeStyle = "rgba(255,255,255,0.05)";
+  ctx.fillStyle = "#5a6175";
+  ctx.font = "9px var(--mono)";
+  for (var g = 0; g <= 4; g++) {
+    var y = padT + ih - (ih * g / 4);
+    ctx.beginPath(); ctx.moveTo(padL, y); ctx.lineTo(W - padR, y); ctx.stroke();
+    var val = (maxCost * g / 4).toFixed(2);
+    ctx.fillText("$" + val, 4, y + 3);
+  }
+
+  // Draw Cost Bars (Gold)
+  var bw = Math.max(2, (iw / days) * 0.55);
+  hist.forEach(function(h, idx){
+    var x = padL + (iw * idx / Math.max(days - 1, 1)) - bw / 2;
+    var hh = (h.cost / maxCost) * ih;
+    ctx.fillStyle = "rgba(244,184,96,0.65)";
+    ctx.fillRect(x, padT + ih - hh, bw, hh);
+  });
+
+  // Draw API Calls Line (Blue)
+  ctx.strokeStyle = "#60a5fa";
+  ctx.lineWidth = 1.6;
+  ctx.beginPath();
+  hist.forEach(function(h, idx){
+    var x = padL + (iw * idx / Math.max(days - 1, 1));
+    var y = padT + ih - (h.calls / maxCalls * ih);
+    if (idx === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+  });
+  ctx.stroke();
+
+  // Draw Balance Line (Green)
+  ctx.strokeStyle = "#4ade80";
+  ctx.lineWidth = 1.6;
+  ctx.beginPath();
+  hist.forEach(function(h, idx){
+    var x = padL + (iw * idx / Math.max(days - 1, 1));
+    var y = padT + ih - (h.balance / maxBal * ih);
+    if (idx === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+  });
+  ctx.stroke();
+}
+
+/* ---------- CREDITS / TOPUP MODAL ---------- */
+function openTopup() {
+  if (!getSession()) { location.hash = "#/login"; return; }
+  document.getElementById("modalTopup").classList.add("open");
+}
+function payNow() {
+  var sel = parseInt(document.getElementById("topupAmt").value, 10) || 200;
+  closeModal("modalTopup");
+  state.credits += sel;
+  localStorage.setItem("a1credits", state.credits);
+  document.getElementById("navBalNum").textContent = state.credits;
+  var b = document.getElementById("balNum");
+  if (b) b.textContent = state.credits;
+  alert("Pembayaran prototaip berjaya! " + sel + " ⚡ kredit telah dikreditkan.");
+}
+
+/* ---------- MODALS & LEGAL ---------- */
+function closeModal(id) { document.getElementById(id).classList.remove("open"); }
+var LEGAL = {
+  terms: { t: "Syarat Perkhidmatan AuraOne", b: "AuraOne Cloud merupakan platform SaaS penyelarasan ejen AI untuk solopreneur dan perniagaan. Pengguna bersetuju bahawa output AI memerlukan semakan manusia (HITL). Segala analisis pasaran saham adalah bagi tujuan pendidikan dan bukan nasihat kewangan rasmi." },
+  privacy: { t: "Dasar Privasi & Pematuhan PDPA", b: "Selaras dengan Akta Perlindungan Data Peribadi 2010 (PDPA Malaysia), kami melindungi data pengguna dan kunci API dengan enkripsi AES-256. Data profil dan token tidak dikongsi dengan pihak ketiga tanpa kebenaran." },
+  contact: { t: "Hubungi Pasukan AuraOne", b: "Sebarang pertanyaan teknikal, cadangan integrasi atau perkongsian perniagaan solopreneur boleh diemelkan terus kepada sales@saklomak.my atau Telegram @auraSakluma_bot." }
 };
-function openLegal(k){
-  var m=LEGAL[k]||LEGAL.terms;
-  document.getElementById("legalTitle").textContent=m.t;
-  document.getElementById("legalBody").textContent=m.b;
+function openLegal(k) {
+  var m = LEGAL[k] || LEGAL.terms;
+  document.getElementById("legalTitle").textContent = m.t;
+  document.getElementById("legalBody").textContent = m.b;
   document.getElementById("modalLegal").classList.add("open");
 }
-document.addEventListener("click",function(e){
-  var m=e.target.closest(".modal");
-  if(m&&e.target===m)m.classList.remove("open");
+document.addEventListener("click", function(e){
+  var m = e.target.closest(".modal");
+  if (m && e.target === m) m.classList.remove("open");
 });
 
-/* ---------- trading ---------- */
-function saveTradingProfile(){
-  var pr={level:document.getElementById("trLevel").value,market:document.getElementById("trMarket").value,style:document.getElementById("trStyle").value,risk:document.getElementById("trRisk").value};
-  localStorage.setItem("a1trade",JSON.stringify(pr));
-  document.getElementById("watchlistPanel").style.display="";
-  document.getElementById("watchlistPanel").scrollIntoView({behavior:"smooth",block:"start"});
-}
+/* ---------- INITIALIZATION ---------- */
+function init() {
+  loadSavedState();
+  
+  // App tabs delegation
+  var appTabs = document.getElementById("appTabs");
+  if (appTabs) {
+    appTabs.addEventListener("click", function(e){
+      var btn = e.target.closest("button[data-tab]");
+      if (btn) switchAppTab(btn.getAttribute("data-tab"));
+    });
+  }
 
-/* ---------- admin ---------- */
-var ADM=[["Ai Rina","rina@demo.my","Starter",118,"active"],
-["Zul Hairom","zul@demo.my","Pro",96,"active"],
-["Mak Cik Timah","maktimah@demo.my","Trial",8,"active"],
-["Faiz Reworks","faiz@demo.my","Starter",172,"paused"],
-["Boss Khairul","boss@auraone.my","Pro",40,"active"]];
-var admState=ADM.map(function(r){return r[4]});
-function adminRow(i,r){
-  var tr=document.createElement("tr");
-  var paused=admState[i]==="paused";
-  tr.innerHTML="<td>"+r[0]+"</td><td>"+r[1]+"</td><td>"+r[2]+"</td><td>"+r[3]+" ⚡</td><td><span class='pill-st"+(paused?"":" on")+"'>"+(paused?"Paused":"Active")+"</span></td>";
-  var td=document.createElement("td");
-  var b=document.createElement("button");b.className="rowbtn";b.textContent=paused?"Resume":"Pause";
-  b.onclick=function(){admState[i]=paused?"active":"paused";storageAdm();drawAdmin();
-  };
-  td.appendChild(b);tr.appendChild(td);
-  return tr;
-}
-function storageAdm(){try{localStorage.setItem("a1adm",JSON.stringify(admState))}catch(e){}}
-function loadAdm(){try{var v=JSON.parse(localStorage.getItem("a1adm"));if(Array.isArray(v)&&v.length===ADM.length)admState=v}catch(e){}}
-function drawAdmin(){
-  var tb=document.getElementById("adminRows");if(!tb)return;tb.innerHTML="";
-  ADM.forEach(function(r,i){tb.appendChild(adminRow(i,r))});
-}
-/* ---------- admin stats derived ---------- */
-function drawAdminStats(){
-  var activeCt=admState.filter(function(s){return s==="active"}).length;
-  document.getElementById("stUsers").textContent=ADM.length;
-  document.getElementById("stAgents").textContent=(12-activeCt);
-}
+  // Admin tabs delegation
+  var admTabs = document.getElementById("admTabs");
+  if (admTabs) {
+    admTabs.addEventListener("click", function(e){
+      var btn = e.target.closest("button[data-admtab]");
+      if (btn) switchAdminTab(btn.getAttribute("data-admtab"));
+    });
+  }
 
-/* ---------- init ---------- */
-function init(){
-  loadCredits();loadConn();loadAdm();drawAdmin();drawAdminStats();
-  document.getElementById("appTabs").addEventListener("click",switchTabWrap);
-  document.getElementById("loginForm").addEventListener("submit",function(e){e.preventDefault();doLogin()});
-  document.getElementById("chatInput").addEventListener("keydown",function(e){if(e.key==="Enter")sendMsg()});
+  // Forms
+  document.getElementById("loginForm").addEventListener("submit", function(e){
+    e.preventDefault();
+    doLogin();
+  });
+  document.getElementById("chatInput").addEventListener("keydown", function(e){
+    if (e.key === "Enter") sendMsg();
+  });
+
+  // Render initial fleet
+  renderAdminFleet();
+
+  // Run route on load
   route();
 }
-function sendMsg(){if(!anySend("chatInput","chatlog",null)){
-}}
-function homeSend(){anySend("homeChatInput",null,"homeChatMsg")}
-init();
+
+window.addEventListener("DOMContentLoaded", init);
 </script>
 </body>
 </html>
